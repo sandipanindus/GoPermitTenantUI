@@ -1,0 +1,104 @@
+<div class="card">
+    <div class="card-header">
+        <h5>Edit Profile</h5>
+    </div>
+    <div class="card-divider"></div>
+    <div class="site-preloader" style="display: none;" id="loader"></div>
+    <div class="card-body">
+        <div class="row no-gutters">
+            <div class="col-12 col-lg-7 col-xl-10">
+                <form [formGroup]="profileform">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Site Name</label>
+                            <input type="text" class="form-control" placeholder="Site Name"
+                            [(ngModel)]="sitename" [ngModelOptions]="{standalone: true}" disabled="true">
+                              
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>First Name</label>
+                            <input type="text" class="form-control" placeholder="First Name"
+                            [(ngModel)]="firstname" [ngModelOptions]="{standalone: true}" disabled="true">
+                              
+                        </div>
+                       
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Last Name</label>
+                            <input type="text" class="form-control"  placeholder="Last Name"
+                            [(ngModel)]="lastname" [ngModelOptions]="{standalone: true}" disabled="true">
+                            
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Address</label>
+                            <input type="text" class="form-control" placeholder="Address"
+                            [(ngModel)]="address" [ngModelOptions]="{standalone: true}" disabled="true">
+                            
+                        </div>
+                      
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>City</label>
+                            <input type="text" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="City"
+                            [(ngModel)]="city" disabled="true">
+                          
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>State</label>
+                            <input type="text" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="State" 
+                             [(ngModel)]="state" disabled="true">
+                          
+                        </div>
+                      
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Zipcode</label>
+                            <input type="text" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Zipcode"
+                            [(ngModel)]="zipcode" disabled="true">
+                           
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Mobile Number</label>
+                            <input type="text" class="form-control" placeholder="Mobile Number"
+                            [(ngModel)]="mobileno" formControlName="Pmobileno" required
+                            [ngClass]="{'is-invalid': profilesubmitted && p.Pmobileno.errors }">
+                            <div *ngIf="profilesubmitted && p.Pmobileno.errors" class="invalid-feedback">
+                                <div *ngIf="p.Pmobileno.errors.required" style="color: #ffd333">Mobile Number is
+                                    required</div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="profile-email">E-mail</label>
+                            <input type="email" disabled="true" class="form-control" id="profile-email" placeholder="Email Address"
+                            [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+                           
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Profile</label>
+                            <input type="file" class="form-control" accept=".jpg, .png, .jpeg " 
+                            id="txtfileupload"
+                            name="fileupload" #fileNormalInput value=""
+                            (change)="onSelectFile($event.target.files)" formControlName="Pprofile" required
+                            [ngClass]="{'is-invalid': profilesubmitted && p.Pprofile.errors }">
+                            <div *ngIf="profilesubmitted && p.Pprofile.errors" class="invalid-feedback">
+                                <div *ngIf="p.Pprofile.errors.required" style="color: #ffd333">Profile is
+                                    required</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group mt-5 mb-0">
+                        <a routerLink="../password" class="btn btn-primary" style="float:left;">Change Password</a>
+                        <button class="btn btn-primary"  (click)="UpdateProfile()" style="float: right;">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

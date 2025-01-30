@@ -1,0 +1,258 @@
+<div class="site-preloader" style="display: none;" id="loader"></div>
+<div  id="schedulediv">
+    <div class="card">
+        <div class="row no-gutters">
+            <div class="col-lg-4 col-md-6 col right-details">
+                <div class="content" style="padding: 25px 0px;">
+                    <div class="inner-content">
+                        <!-- <a class="arrow-icon" aria-label="Go to previous page" routerLink="/account/VisitorParking">
+                            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        </a> -->
+                        <div class="profile-info">
+
+
+                            <h4 class="profile-info-name" id="tenantname"></h4>
+                            <h1 class="profile-info-time">{{duration}} {{sessionunit}} Parking</h1>
+                        </div>
+                        <div class="timing">
+                            <div data-container="details" class="timing-details">
+                                <div class="time-icon-details" style="display: none;">
+                                    <i class="fa fa-clock" aria-hidden="true"></i>
+                                    <span>{{duration}}&nbsp;{{sessionunit}}</span></div>
+
+                            </div>
+
+                        </div>
+                        <div class="column" style="padding-top: 0px !important;">
+                            <h2>
+                                Select a Date & Time
+                            </h2>
+                            <div class="calender_cls">
+                                <div class="form-group">
+                                    <bs-datepicker-inline [ngModelOptions]="{standalone: true}" [(ngModel)]="date"
+                                        [minDate]="mindate" style="width: 100%;" class="datepicker-inline"
+                                        [bsValue]="bsInlineValue" (bsValueChange)="BindTimeSlots($event)"
+                                        [bsConfig]="{showWeekNumbers: false}"></bs-datepicker-inline>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-5 time_st" id="timeslotdiv" style="display: none;">
+                <div class="column" style="padding-top: 0px !important;">
+                    <h2>{{date}}</h2>
+
+                    <div *ngFor="let timeslot of timeslots">
+                        <div class="timeslot_cls" id="timeslotandiv_{{timeslot.id}}"
+                            (click)="ShowDiv(timeslot.id,timeslot.time)">
+                            <a href="javascript::" style="color:#f5d331" (click)="ShowDiv(timeslot.id,timeslot.time)"
+                                id="time_{{timeslot.id}}">{{timeslot.time}}</a>
+                        </div>
+                        <div style="display: none;margin-bottom: 8px; border:1px solid white !important"
+                            id="timebtndiv_{{timeslot.id}}">
+                            <button class="timeslot_btn btn btn-secondary mr-1 btn-lg" style="border-radius: 5px;width: 50%;"
+                                id="btntime_{{timeslot.id}}">{{timeslot.time}}</button>
+                            <button class="btn btn-primary btn-lg" style="border-radius: 5px;width: 50%;"
+                                id="btnconfirm_{{timeslot.id}}" (click)="ShowModal(timeslot.time)">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4" style="display: none;" id="detailsdiv">
+                <form [formGroup]="visitorForm" style="width: 100% !important;">
+                    <div class="divdetails">
+                        <label>Enter driver details</label>
+                    </div>
+                    <div class="divinput">
+                        <label class="labelcls">First Name</label>
+                        <input type="text" class="form-control" placeholder="First Name"
+                            [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
+                        <!-- <div *ngIf="visitorsubmitted && v.Vname.errors" class="invalid-feedback">
+                            <div *ngIf="v.Vname.errors.required" style="color: #ffd333">FirstName is
+                                required</div>
+                        </div> -->
+                    </div>
+                    <div class="divinput">
+                        <label class="labelcls">Surname</label>
+                        <input type="text" class="form-control" placeholder="Surname"
+                            [(ngModel)]="surname" [ngModelOptions]="{standalone: true}">
+                        <!-- <div *ngIf="visitorsubmitted && v.Vsurname.errors" class="invalid-feedback">
+                            <div *ngIf="v.Vsurname.errors.required" style="color: #ffd333">Surname is
+                                required</div>
+                        </div> -->
+                    </div>
+                    <div class="divinput">
+                        <label class="labelcls">Mobile No</label>
+                        <input type="text"  class="form-control" placeholder="Mobile No"
+                            [(ngModel)]="mobileno" [ngModelOptions]="{standalone: true}">
+                        <!-- <div *ngIf="visitorsubmitted && v.Vmobileno.errors" class="invalid-feedback">
+                            <div *ngIf="v.Vmobileno.errors.required" style="color: #ffd333">
+                                Mobile Number is
+                                required</div>
+                        </div> -->
+                    </div>
+
+                    <div class="divinput">
+                        <label class="labelcls">Email</label>
+                        <input type="text"  class="form-control" placeholder="Email"
+                            [(ngModel)]="email" formControlName="Vemail" required
+                            [ngClass]="{'is-invalid': visitorsubmitted && v.Vemail.errors }">
+                        <div *ngIf="visitorsubmitted && v.Vemail.errors" class="invalid-feedback">
+                            <div *ngIf="v.Vemail.errors.required" style="color:  #ffd333;">
+                                Email is required
+                            </div>
+                            <div *ngIf="v.Vemail.errors.email" style="color:  #ffd333;">
+                                Email must be a
+                                valid email address</div>
+                        </div>
+                    </div>
+                    <div class="divinput">
+
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="chkcc" value=""><span class="ml-2">CC to me</span>
+                        </label>
+
+                    </div>
+                    <div class="divinput">
+                        <label class="labelcls">VRM</label>
+                        <input type="text" class="form-control" placeholder="VRM"
+                            [(ngModel)]="vrm" [ngModelOptions]="{standalone: true}">
+                        <!-- <div *ngIf="visitorsubmitted && v.Vvrm.errors" class="invalid-feedback">
+                            <div *ngIf="v.Vvrm.errors.required" style="color: #ffd333">VRM is
+                                required</div>
+                        </div> -->
+                    </div>
+
+                    <div class="divbtn">
+                        <button class="btn btn-primary mb-2" style="border-radius: 10px;"
+                            (click)="AddVisitor()">Submit</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #template>
+
+    <div>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Visitor Parking</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="visitorForm" style="width: 100% !important;">
+                <div class="form-group">
+
+                    <input type="text" class="form-control" id="checkout-name" placeholder="Name" [(ngModel)]="name"
+                        formControlName="Vname" required
+                        [ngClass]="{'is-invalid': visitorsubmitted && v.Vname.errors }">
+                    <div *ngIf="visitorsubmitted && v.Vname.errors" class="invalid-feedback">
+                        <div *ngIf="v.Vname.errors.required" style="color: #ffd333">Name is
+                            required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <input type="text" class="form-control" id="checkout-mobileno" placeholder="Mobile No"
+                        [(ngModel)]="mobileno" formControlName="Vmobileno" required
+                        [ngClass]="{'is-invalid': visitorsubmitted && v.Vmobileno.errors }">
+                    <div *ngIf="visitorsubmitted && v.Vmobileno.errors" class="invalid-feedback">
+                        <div *ngIf="v.Vmobileno.errors.required" style="color: #ffd333">
+                            Mobile Number is
+                            required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <input type="text" class="form-control" id="checkout-vrm" placeholder="VRM" [(ngModel)]="vrm"
+                        formControlName="Vvrm" required [ngClass]="{'is-invalid': visitorsubmitted && v.Vvrm.errors }">
+                    <div *ngIf="visitorsubmitted && v.Vvrm.errors" class="invalid-feedback">
+                        <div *ngIf="v.Vvrm.errors.required" style="color: #ffd333">VRM is
+                            required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <input type="text" class="form-control" id="checkout-email" placeholder="Email" [(ngModel)]="email"
+                        formControlName="Vemail" required
+                        [ngClass]="{'is-invalid': visitorsubmitted && v.Vemail.errors }">
+                    <div *ngIf="visitorsubmitted && v.Vemail.errors" class="invalid-feedback">
+                        <div *ngIf="v.Vemail.errors.required" style="color:  #ffd333;">
+                            Email is required
+                        </div>
+                        <div *ngIf="v.Vemail.errors.email" style="color:  #ffd333;">
+                            Email must be a
+                            valid email address</div>
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" id="checkout-make"
+                        placeholder="Make" [(ngModel)]="make" required>
+
+                </div>
+                <div class="form-group">
+
+                    <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" id="checkout-model"
+                        placeholder="Model" [(ngModel)]="model">
+
+                </div>
+            </form>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-outline-primary" style="margin-right: 10px;" (click)="AddVisitor()">Save</button>
+            <button class="btn btn-primary" (click)="cancel()">Cancel</button>
+        </div>
+    </div>
+
+</ng-template>
+
+<ng-template #template1>
+    <div class="modal-body text-center">
+        <h6 class="modal-title mb-4" style="margin:30px;">Your Parking Slot has been booked on {{date}}
+            valid from {{starttime}} to {{endtime}} and your Bay is {{bayno}}.</h6>
+        you can park your vehicle in bay
+        <button type="button" class="btn btn-primary" (click)="ProceedPopup()">OK</button>
+    </div>
+</ng-template>
+<div class="fixed-background"></div>
+<div class="bs-example" id="thankyoudiv" style="display: none;">
+    <div class="card" style="margin: 0px auto;max-width: 100%;height: 450px !important;">
+        <div class="row no-gutters" style="height: 450px!important;">
+            <div style="width: 100% !important;">
+                <a class="c-pointer">
+                </a>
+                <div class="text-center" style="background: initial !important;">
+                    <p><img src="assets/images/logo/check-48-primary.png"  width="100" height="48" alt=""
+                            style="-ms-interpolation-mode: bicubic; vertical-align:
+                     middle;border: 0;line-height: 100%;height: auto;outline: none;text-decoration: none;" /></p>
+                    <h1 class="display-3">Thank You!</h1>
+                    <!-- <p class="lead">Your Parking Slot has been booked on {{date}}
+                        valid from {{starttime}} to {{endtime}} and your Bay is <strong>{{bayno}}</strong>.</p> -->
+                    <p class="lead"> <strong> The invitation for an E-Permit has been sent to {{name}}, {{email}}. The driver will need to validate this E-permit by following the instrutions on the email. Please note: The driver must validate the permit before the parking session starts. This space will be held for 15 minutes and may become availble again if the driver does not confirm..</strong></p>
+                    <hr>
+
+                    <p class="lead">
+                        <button Class="btn btn-primary btn-lg btn-shadow" (click)="Refresh()">
+                            Ok
+                        </button>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,85 @@
+@import '~ngx-toastr/toastr';
+@import 'scss/style';
+
+
+
+
+.bs-datepicker-head
+{
+    background-color: #f5d331 !important;
+}
+.theme-green .bs-datepicker-body table td span.selected, .theme-green .bs-datepicker-body table td.selected span, .theme-green .bs-datepicker-body table td span[class*="select-"]:after, .theme-green .bs-datepicker-body table td[class*="select-"] span:after {
+    background-color: #f5d331!important;
+}
+.theme-green .bs-datepicker-body table td.week span {
+    color:  #f5d331!important;
+}
+.calendar {
+    background-color: #f5d331!important;
+}
+
+.time-picker {
+    background-color: #f5d331!important;
+}
+.ngx-picker--btn__selected {
+    background-color: #f5d331;
+}
+
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~open-iconic/font/css/open-iconic-bootstrap.css';
+
+.dl-abdtp-now[_ngcontent-serverApp-c141], .dl-abdtp-now.disabled[_ngcontent-serverApp-c141], .dl-abdtp-now.disabled[_ngcontent-serverApp-c141]:hover, .dl-abdtp-now[_ngcontent-serverApp-c141]:hover {
+    border-radius: 999px;
+    border: 1px solid rgb(245 211 49)!important;
+}
+
+.timespan .card-table tbody th,
+.timespan .card-table tbody td,
+.timespan .card-table tfoot th,
+.timespan  .card-table tfoot td {
+ padding: 0PX!IMPORTANT;
+}
+
+.card-table table {
+     min-width: 0px !important;
+}
+
+
+.modal-content {
+    margin: 0px 0px 0px -194px !important;
+
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 239% !important;
+      pointer-events: auto;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid rgba(0,0,0,.2);
+      border-radius: .3rem;
+      outline: 0;
+    }
+
+
+    @media (max-width: 992px){
+        .modal-content {
+            margin: 0px 0px 0px 0px !important;
+            position: relative;
+              display: flex;
+              flex-direction: column;
+              width: 100% !important;
+              pointer-events: auto;
+              background-color: #fff;
+              background-clip: padding-box;
+              border: 1px solid rgba(0,0,0,.2);
+              border-radius: .3rem;
+              outline: 0;
+            }
+    }
+
+
+
+    @import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+

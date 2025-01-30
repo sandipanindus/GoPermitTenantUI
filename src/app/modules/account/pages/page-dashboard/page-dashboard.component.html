@@ -1,0 +1,75 @@
+<owl-carousel-o [options]="customOptions">
+  <ng-template carouselSlide>
+    <img style="width: 93% !important;height: 224px;" src="../../../../../assets/images/parking1.jpg" />
+  </ng-template>
+  <ng-template carouselSlide>
+    <img style="width: 93% !important;height: 224px;" src="../../../../../assets/images/parking2.jpg" />
+
+  </ng-template>
+  <ng-template carouselSlide>
+    <img style="width: 93% !important;height: 224px;" src="../../../../../assets/images/parking3.jpg" />
+  </ng-template>
+  <ng-template carouselSlide>
+    <img style="width: 93% !important;height: 224px;" src="../../../../../assets/images/parking4.jpg" />
+  </ng-template>
+  <ng-template carouselSlide>
+    <img style="width: 93% !important;height: 224px;" src="../../../../../assets/images/parking5.jpg" />
+  </ng-template>
+</owl-carousel-o>
+
+<div class="dashboard" style="margin-top: -20px;">
+  <div class="dashboard__profile card profile-card" style="width: 100%;">
+    <div class="card-body profile-card__body">
+      <!-- <div class="profile-card__avatar" style=" background-image: url({{profilepath}});">
+              
+            </div>
+            <div class="profile-card__name">{{ address.firstName + ' ' + address.lastName}}</div>
+            <div class="profile-card__email">{{ address.email }}</div>
+            <div class="profile-card__email" style="margin-top: -18px;">{{ address.phone }}</div> 
+            <div class="profile-card__edit">
+                <a routerLink="../profile" class="btn btn-secondary btn-sm">Edit Profile</a>
+            </div> -->
+
+
+
+
+
+      <p>Welcome to Go Permit! Our Fast and Reliable permit management service. <br /><br />
+
+        Go Permit is intended to facilitate online permit management services, which will give you Option to choose the
+        right parking bay according to your requirements and needs in just one go!
+        <br /><br />
+
+        You can add, remove, edit you bay configuration and also register visitors. <br /><br />
+
+        Ok, Lets get started:<br />
+        To Set up or edit your bay, click on Bay Configuration. <br />
+        To book a visitor, click on visitor parking. <br />
+        Use this hassle free feature and enjoy a smooth parking facility!<br /><br />
+
+        Go Permit has a dedicated permit management team who are highly professional and experienced in dealing with all
+        permit inquiries, requests, and on-going permit and client management issues. If you need help, use the support
+        page to send us an enquiry.
+
+      </p>
+    </div>
+    <div class="row" style="margin-left: 10px;display: none;">
+      <div class="col-md-4">
+        <p>
+          Manage parking
+        </p>
+        <bs-datepicker-inline [dateCustomClasses]="selectedClass" [bsValue]="dateSelected">
+        </bs-datepicker-inline>
+      </div>
+      <div class="col-md-4">
+        <p>
+          visitor parking
+        </p>
+        <bs-datepicker-inline [dateCustomClasses]="visitorselectedClass" [bsValue]="visitordateSelected">
+        </bs-datepicker-inline>
+      </div>
+    </div>
+  </div>
+
+
+</div>

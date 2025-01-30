@@ -1,0 +1,160 @@
+.fixed-background {
+    background: url("../../../../../assets/images/logo/backimage1.jpg")
+        no-repeat center center fixed;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.card_cls {
+    width: 100% !important;
+    padding:80px;
+}
+.auth-card {
+    border-top-left-radius: 1.25rem;
+    border-bottom-left-radius: 1.25rem;
+    position: relative;
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    // width: 55%;
+    background: rgb(245 242 242 / 60%);
+    min-width: 0;
+    color: #333 !important;
+    box-shadow: 0 0px 56px rgba(0, 0, 0, 0.3);
+}
+.c-pointer {
+    cursor: pointer;
+}
+.logo-single {
+    width: 385px;
+    height: 75px;
+    background: url("../../../../../assets/images/logo/Logo.png") no-repeat;
+    background-position: center center;
+    display: inline-block;
+    margin-bottom: 30px;
+    background-size: contain;
+}
+.btn-lg {
+    position: relative;
+    transition: opacity 500ms;
+    line-height: 1.5;
+    font-weight: 700;
+    letter-spacing: 0.05rem;
+    font-size: 0.9rem;
+    padding: 0.6rem 2.5rem 0.6rem 2.5rem;
+    background-color: #ffd333;
+    border-color: #ffd333;
+    color: #fff;
+    border-radius: 50px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15),
+        0 1px 3px 1px rgba(0, 0, 0, 0.15) !important;
+}
+.lead {
+    font-size: 1.3rem;
+    font-weight: 200;
+    line-height: 0.5rem;
+}
+p {
+    font-size: 0.85rem;
+    line-height: 1.3rem;
+    font-family: "Nunito", sans-serif;
+}
+a {
+    color: #3a3a3a;
+    transition: color 200ms;
+    outline: initial !important;
+}
+.codepen-wrapper {
+    width: 50%;
+    //margin: 0 37.5%;
+}
+.registration-ui {
+    background: linear-gradient(to bottom, #f8d038 0%, #f5ca2e 100%);
+    // margin: 14px;
+    margin: 16px 0px 0px 38px;
+    font-weight: bold;
+    font-size: 2em;
+    border-radius: 5px;
+    border: 1px solid #000;
+    box-shadow: 1px 1px 1px #ddd;
+    position: relative;
+    font-family: helvetica, ariel, sans-serif;
+    font-weight: 600;
+    width: 191px;
+    padding: 0px 0px 0px 6px;
+    text-transform: uppercase;
+}
+
+.registration-ui-gb {
+    content: "GB";
+    display: block;
+    width: 18%;
+    height: 50px;
+    background: #063298;
+    position: absolute;
+    top: 16px;
+    border-radius: 5px 0 0 5px;
+    color: #f8d038;
+    font-size: 16px;
+    line-height: 75px;
+    padding-left: 10px;
+    font-weight: 600;
+}
+
+.registration-ui-logo {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 7px;
+    left: 11px;
+    width: 43%;
+    height: 15px;
+    border-radius: 30px;
+    border: 1px dashed #f8d038;
+}
+
+@media screen and (max-width: 375px) {
+    .registration-ui {
+        background: linear-gradient(to bottom, #f8d038 0%, #f5ca2e 100%);
+        // margin: 14px;
+        margin: 16px 0px 0px 38px;
+        font-weight: bold;
+        width: 80% !important;
+        font-size: 2em;
+        border-radius: 5px;
+        border: 1px solid #000;
+        box-shadow: 1px 1px 1px #ddd;
+        position: relative;
+        font-family: helvetica, ariel, sans-serif;
+        font-weight: 600;
+        width: 150px;
+        padding: 0px 0px 0px 6px;
+        text-transform: uppercase;
+    }
+
+    .registration-ui-gb {
+        content: "GB";
+        display: block;
+        height: 50px;
+        background: #063298;
+        position: absolute;
+        top: 16px;
+        border-radius: 5px 0 0 5px;
+        color: #f8d038;
+        font-size: 16px;
+        line-height: 75px;
+        padding-left: 10px;
+        font-weight: 600;
+    }
+    .card_cls {
+        width: 100% !important;
+        padding:50px;
+    }
+}

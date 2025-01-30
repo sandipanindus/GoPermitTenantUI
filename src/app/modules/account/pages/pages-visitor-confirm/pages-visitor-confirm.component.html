@@ -1,0 +1,200 @@
+<!-- <app-page-header [header]="'My Account'" [breadcrumbs]="[
+    {label: 'Home',       url: '/'},
+    {label: 'My Account', url: ''}
+]"></app-page-header> -->
+
+<div class="site-preloader" style="display: none;" id="loader"></div>
+<div class="fixed-background"></div>
+<div class="block" id="formdiv" style="display:none;">
+    <div class="container">
+        <div class="row h-100">
+
+            <div class="card auth-card">
+
+                <div class="card_cls">
+                    <a class="c-pointer">
+
+                    </a>
+                    <form [formGroup]="confirmform">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="checkout-property-name">Property Name</label>
+                                <input type="text" class="form-control" [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="propertyname" id="checkout-property-name" placeholder="Property Name"
+                                    disabled>
+
+                            </div>
+                            <div class="form-group col-md-6">
+                                <div>
+                                    <div class="registration-ui-gb">
+                                        GB
+                                        <div class="registration-ui-logo">
+
+                                        </div>
+                                    </div>
+                                    <input type="text" class="registration-ui" placeholder="VRM No" required
+                                        maxlength="9" [(ngModel)]="vrm" formControlName="Lvrm"
+                                        [ngClass]="{'is-invalid': confirmsubmitted && f.Lvrm.errors }">
+                                    <div *ngIf="confirmsubmitted && f.Lvrm.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Lvrm.errors.required" style="color: #ffd333">VRM No is
+                                            required</div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="checkout-first-name">First Name</label>
+                                <input type="text" class="form-control" [(ngModel)]="firstname" id="checkout-first-name"
+                                    placeholder="First Name" formControlName="Lname"
+                                    [ngClass]="{'is-invalid': confirmsubmitted && f.Lname.errors }">
+                                <div *ngIf="confirmsubmitted && f.Lname.errors" class="invalid-feedback">
+                                    <div *ngIf="f.Lname.errors.required" style="color: #ffd333"> First Name required
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="checkout-surname">Surname</label>
+                                <input type="text" class="form-control" [(ngModel)]="surname" id="checkout-surname"
+                                    placeholder="Surname" formControlName="Lsname"
+                                    [ngClass]="{'is-invalid': confirmsubmitted && f.Lsname.errors }">
+                                <div *ngIf="confirmsubmitted && f.Lsname.errors" class="invalid-feedback">
+                                    <div *ngIf="f.Lsname.errors.required" style="color: #ffd333"> Surname required
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="checkout-email">Email</label>
+                                <input type="text" class="form-control" [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="email" id="checkout-email" placeholder="Email" disabled>
+
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="checkout-contact">Contact No</label>
+                                <input type="text" class="form-control" [(ngModel)]="contact" id="checkout-contact"
+                                    placeholder="Contact No" formControlName="Lemail"
+                                    [ngClass]="{'is-invalid': confirmsubmitted && f.Lemail.errors }">
+                                <div *ngIf="confirmsubmitted && f.Lemail.errors" class="invalid-feedback">
+                                    <div *ngIf="f.Lemail.errors.required" style="color: #ffd333"> Contact NO required
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="checkout-date">Date</label>
+                                <input type="text" class="form-control" [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="date" id="checkout-date" placeholder="Date" disabled>
+
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="checkout-duration">Duration</label>
+                                <input type="text" class="form-control" [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="duration" id="checkout-duration" placeholder="Duration" disabled>
+
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="checkout-from-time">From Time</label>
+                                <input type="text" class="form-control" [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="fromtime" id="checkout-from-time" placeholder="From Time" disabled>
+
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="checkout-to-time">To Time</label>
+                                <input type="text" class="form-control" [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="totime" id="checkout-to-time" placeholder="To Time" disabled>
+
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="chkcc" value="">
+                                <span class="ml-2">By clicking 'Submit', you agree to Go Permit's <a
+                                        href="assets/images/Condition of use of permit -residents & visitors.docx"
+                                        style="color: blue;"> Tenant Terms </a> & <a
+                                        href="assets/images/Privacy Policy.docx" style="color: blue;"> Privacy
+                                        Policy</a>.</span>
+                            </label>
+                        </div>
+                        <div class="form-row float-right">
+                            <button class="btn btn-primary" (click)="UpdateVisitorSlot()">Confirm</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="bs-example" id="thankyoudiv" style="display:none;">
+    <div class="card" style="margin: 0px auto;max-width: 100%;height: 450px !important;">
+        <div class="row no-gutters" style="height: 450px!important;">
+            <div style="width: 100% !important;">
+                <a class="c-pointer">
+                </a>
+                <div class="text-center" style="background: initial !important;">
+                    <p><img src="assets/images/logo/check-48-primary.png" width="100" height="48" alt="" style="-ms-interpolation-mode: bicubic; vertical-align:
+                     middle;border: 0;line-height: 100%;height: auto;outline: none;text-decoration: none;" /></p>
+                    <h1 class="display-3">Thank You!</h1>
+                    <p class="lead"> Your E-Permit has been validated Sucessfully</p>
+                </div>
+                <div style="margin-left: 35%;">
+                    <p class="lead" style="text-transform: capitalize;font-weight: 800;"> Parking Session :</p>
+                    <p class="lead"> Valid From <span style="margin-left: 2%;">:</span> {{starttime}} {{date}} </p>
+                    <p class="lead"> Valid Till <span style="margin-left: 5%;">:</span> {{endtime}} {{date}}</p>
+                    <p class="lead"> Bay <span style="margin-left: 11%;">:</span> {{bayname}}</p>
+                </div>
+                <div class="text-center">
+
+                    <p> Please note: Grace peroid dont apply to any parking session less then 1 hour </p>
+                    <!-- <p class="lead">Your Parking Slot has been booked on {{date}}
+                        valid from {{starttime}} to {{endtime}} and your Bay is <strong>{{bayno}}</strong>.</p>
+                    <p class="lead"> You can park your vehicle in <strong>{{bayname}}</strong></p> -->
+                    <hr>
+
+                    <p class="lead">
+                        <button Class="btn btn-primary btn-lg btn-shadow" (click)="Refresh()">
+                            Ok
+                        </button>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bs-example" id="linkdiv" style="display: none;">
+    <div class="card" style="margin: 0px auto;width: 65% !important;">
+        <div class="row no-gutters">
+            <div style="width: 100% !important;">
+                <a class="c-pointer">
+                </a>
+                <div class="text-center" style="background: initial !important;">
+                    <p><img src="{{logopath}}" width="100" height="48" alt="" style="-ms-interpolation-mode: bicubic; vertical-align:
+                     middle;border: 0;line-height: 100%;height: auto;outline: none;text-decoration: none;" /></p>
+
+                    <p class="lead" id="showtext" style="padding: 0px 25px 0px 25px;line-height: 1.5rem;">{{errortext}}
+                    </p>
+
+
+
+                    <p class="lead">
+                        <button Class="btn btn-primary btn-lg btn-shadow" (click)="Refresh()">
+                            Ok
+                        </button>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

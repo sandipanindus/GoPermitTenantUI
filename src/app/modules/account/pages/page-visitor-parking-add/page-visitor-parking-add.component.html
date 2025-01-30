@@ -1,0 +1,222 @@
+<div class="card">
+    <div class="card-header">
+        <h5>Visitor Parking</h5>
+    </div>
+    <div class="card-divider"></div>
+    <div class="site-preloader" style="display: none;" id="loader"></div>
+    <div class="card-body">
+        <div class="row no-gutters">
+
+            <div class="col-lg-12 col-lg-12 col-xl-12">
+                <form [formGroup]="visitorForm">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="checkout-site-name">Site Name</label>
+                            <input type="text" class="form-control" [(ngModel)]="sitename"
+                                [ngModelOptions]="{standalone: true}" disabled id="checkout-site-name"
+                                placeholder="Site Name">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="checkout-tenant">Tenant</label>
+                            <input type="text" class="form-control" [(ngModel)]="tenantname"
+                                [ngModelOptions]="{standalone: true}" disabled id="checkout-tenant"
+                                placeholder="Tenant">
+                        </div>
+                    </div>
+
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="checkout-first-name">First Name</label>
+                            <input type="text" class="form-control" id="checkout-first-name" placeholder="First Name"
+                                [(ngModel)]="firstname" formControlName="Vfirstname" required
+                                [ngClass]="{'is-invalid': visitorsubmitted && v.Vfirstname.errors }">
+                            <div *ngIf="visitorsubmitted && v.Vfirstname.errors" class="invalid-feedback">
+                                <div *ngIf="v.Vfirstname.errors.required" style="color: #ffd333">First name is
+                                    required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="checkout-last-name">Last Name</label>
+                            <input type="text" class="form-control" id="checkout-last-name" placeholder="Last Name"
+                                [(ngModel)]="lastname" formControlName="Vlastname" required
+                                [ngClass]="{'is-invalid': visitorsubmitted && v.Vlastname.errors }">
+                            <div *ngIf="visitorsubmitted && v.Vlastname.errors" class="invalid-feedback">
+                                <div *ngIf="v.Vlastname.errors.required" style="color: #ffd333">Last name is
+                                    required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="checkout-address">Address</label>
+                            <input type="text" class="form-control" id="checkout-address" placeholder="Address"
+                                [(ngModel)]="address" formControlName="Vaddress" required
+                                [ngClass]="{'is-invalid': visitorsubmitted && v.Vaddress.errors }">
+                            <div *ngIf="visitorsubmitted && v.Vaddress.errors" class="invalid-feedback">
+                                <div *ngIf="v.Vaddress.errors.required" style="color: #ffd333">Address is
+                                    required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="checkout-city">City</label>
+                            <input type="text" class="form-control" id="checkout-city" placeholder="City"
+                                [(ngModel)]="city" formControlName="Vcity" required
+                                [ngClass]="{'is-invalid': visitorsubmitted && v.Vcity.errors }">
+                            <div *ngIf="visitorsubmitted && v.Vcity.errors" class="invalid-feedback">
+                                <div *ngIf="v.Vcity.errors.required" style="color: #ffd333">City is
+                                    required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="checkout-state">State</label>
+                            <input type="text" class="form-control" id="checkout-state" placeholder="State"
+                                [(ngModel)]="state" formControlName="Vstate" required
+                                [ngClass]="{'is-invalid': visitorsubmitted && v.Vstate.errors }">
+                            <div *ngIf="visitorsubmitted && v.Vstate.errors" class="invalid-feedback">
+                                <div *ngIf="v.Vstate.errors.required" style="color: #ffd333">State is
+                                    required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="checkout-zipcode">Zipcode</label>
+                            <input type="text" class="form-control" id="checkout-zipcode" placeholder="Zipcode"
+                                [(ngModel)]="zipcode" formControlName="Vzipcode" required
+                                [ngClass]="{'is-invalid': visitorsubmitted && v.Vzipcode.errors }">
+                            <div *ngIf="visitorsubmitted && v.Vzipcode.errors" class="invalid-feedback">
+                                <div *ngIf="v.Vzipcode.errors.required" style="color: #ffd333">Zipcode
+                                    is
+                                    required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <datetime-popup [(value)]="myDate"></datetime-popup>
+                        </div>
+                    </div> -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="checkout-mobileno">Mobile No</label>
+                            <input type="text" class="form-control" id="checkout-mobileno" placeholder="Mobile No"
+                                [(ngModel)]="mobileno" formControlName="Vmobileno" required
+                                [ngClass]="{'is-invalid': visitorsubmitted && v.Vmobileno.errors }">
+                            <div *ngIf="visitorsubmitted && v.Vmobileno.errors" class="invalid-feedback">
+                                <div *ngIf="v.Vmobileno.errors.required" style="color: #ffd333">
+                                    Mobile Number is
+                                    required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="checkout-email">Email</label>
+                            <input type="text" class="form-control" id="checkout-email" placeholder="Email"
+                                [(ngModel)]="email" formControlName="Vemail" required
+                                [ngClass]="{'is-invalid': visitorsubmitted && v.Vemail.errors }">
+                            <div *ngIf="visitorsubmitted && v.Vemail.errors" class="invalid-feedback">
+                                <div *ngIf="v.Vemail.errors.required" style="color:  #ffd333;">
+                                    Email is required
+                                </div>
+                                <div *ngIf="v.Vemail.errors.email" style="color:  #ffd333;">
+                                    Email must be a
+                                    valid email address</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="dashboard__orders card timespan">
+                            <div class="card-divider"></div>
+                            <div class="card-table">
+                                <div class="">
+
+                                    <h5 style="margin-top: 15px;
+                                margin-left: 10px;">Vehicle Details</h5>
+                                    <button class="btn btn-primary" style="float: right;
+                                 margin-top: -40px;
+                                 margin-right: 10px;" id="txtadd" (click)="AddNewRow()">Add New <i class="fa fa-plus"></i></button>
+                                    <div class="table-responsive-sm" style="width:100%;margin:30px 0px;">
+                                        <table class="">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width:145px!important;">Bay No</th>
+                                                    <th>Make</th>
+                                                    <th>Model</th>
+                                                    <th>VRM</th>
+                                                    <th>Start Date</th>
+                                                    <th>Time</th>
+                                                    <th>End Date</th>
+                                                    <th>Time</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let vehiclelist of vehiclelists">
+                                                    <td style="padding: 12px!important;"><select class="form-control"
+                                                            [ngModelOptions]="{standalone: true}"
+                                                            id="txtbayno_{{vehiclelist.id}}"
+                                                            [(ngModel)]="vehiclelist.bayid"
+                                                            (change)="AvoidDuplicate(vehiclelist.bayid,vehiclelist.id)"
+                                                            required="required">
+                                                            <option value="">Select</option>
+                                                            <option *ngFor="let bayno of baynos"
+                                                                id="txtoptionbay_{{bayno.id}}{{vehiclelist.id}}"
+                                                                [value]="bayno.id">
+                                                                {{bayno.bayName}}</option>
+                                                        </select></td>
+                                                    <td><input type="text" class="form-control"
+                                                            [ngModelOptions]="{standalone: true}"
+                                                            id="txtmake_{{vehiclelist.id}}" style="width: 95% !important;"
+                                                            [(ngModel)]="vehiclelist.make" />
+                                                    </td>
+                                                    <td><input type="text" class="form-control"
+                                                            [ngModelOptions]="{standalone: true}" style="width: 95% !important;"
+                                                            id="txtmodel_{{vehiclelist.id}}"
+                                                            [(ngModel)]="vehiclelist.model" />
+                                                    </td>
+                                                    <td><input type="text" class="form-control"
+                                                            [ngModelOptions]="{standalone: true}" style="width: 95% !important;"
+                                                            id="txtvrm{{vehiclelist.id}}"
+                                                            [(ngModel)]="vehiclelist.vrm" />
+                                                    </td>
+                                                    <td><input type="text" class="form-control" readonly="true"
+                                                            bsDatepicker [minDate]="mindate" [container]="'html'"
+                                                            [(ngModel)]="vehiclelist.startdate" style="width: 95% !important;"
+                                                            [ngModelOptions]="{standalone: true}"
+                                                            [bsConfig]="{ adaptivePosition: true, dateInputFormat: 'DD-MM-YYYY' }"
+                                                            id="txtstartdate_{{vehiclelist.id}}" />
+                                                            
+                                                    </td>
+                                                    <td>
+                                                        <timepicker style="width: 95% !important;" [(ngModel)]="vehiclelist.starttime" id="txtstarttime_{{vehiclelist.id}}" [ngModelOptions]="{standalone: true}" 
+                                                        class="timespan" [showMeridian]="false">
+                                                         </timepicker>
+                                                    </td>
+                                                    <td><input type="text" [(ngModel)]="vehiclelist.enddate"
+                                                            [ngModelOptions]="{standalone: true}" [minDate]="mindate"
+                                                            id="txtenddate_{{vehiclelist.id}}" [container]="'html'"
+                                                            class="form-control" bsDatepicker readonly="true" style="width: 95% !important;"
+                                                            [bsConfig]="{ adaptivePosition: true, dateInputFormat: 'DD-MM-YYYY' }" />
+                                                    </td>
+                                                    <td>
+                                                        <timepicker style="width: 95% !important;" [(ngModel)]="vehiclelist.endtime" id="txtendtime_{{vehiclelist.id}}" [ngModelOptions]="{standalone: true}" 
+                                                        class="timespan" [showMeridian]="false" >
+                                                         </timepicker>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3 mb-0" style="display: flex;float:right;">
+                        <button class="btn btn-primary" style="margin-right: 10px;" (click)="AddVisitor()">Save</button>
+                        <button class="btn btn-primary" (click)="canceladdvisitor()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

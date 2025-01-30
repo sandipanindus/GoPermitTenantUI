@@ -1,0 +1,264 @@
+.spantop
+{
+    margin-top: 5px;
+}
+
+.timespan .card-table tbody th, 
+.timespan .card-table tbody td, 
+.timespan .card-table tfoot th,
+.timespan .card-table tfoot td {
+ padding: 0px!important; 
+}
+
+.modal-dialog .div{
+    border-radius: .75rem!important;
+}
+
+
+
+.bo1 .card-table tbody th, 
+.bo1 .card-table tbody td, 
+.bo1 .card-table tfoot th,
+.bo1 .card-table tfoot td {
+ //padding: 0px!important;
+ border-right: 1px solid #ffd333 !important; 
+}
+
+
+::ng-deep .bs-datepicker-body table td span.custom-selected-date,
+::ng-deep .bs-datepicker-body table td span.custom-selected-date.selected {
+  background-color:#063298 !important;
+  color: white !important;
+}
+
+::ng-deep .bs-datepicker-body table td span.selected {
+  background-color: transparent !important;
+  color: #54708b !important;
+}
+
+::ng-deep .bs-datepicker-body table.days span.in-range:before {
+  background-color: transparent !important;
+}
+
+
+::ng-deep .bs-datepicker-body table td span.custom-selected-yellow,
+::ng-deep .bs-datepicker-body table td span.custom-selected-yellow.selected {
+  background-color:#ffd333 !important;
+  color: white !important;
+}
+
+::ng-deep .bs-datepicker-body table td span.selected {
+  background-color: transparent !important;
+  color: #54708b !important;
+}
+
+::ng-deep .bs-datepicker-body table.days span.in-range:before {
+  background-color: transparent !important;
+}
+
+
+    
+
+// ::ng-deep .bs-datepicker-body table td span.custom-selected-date,
+// ::ng-deep .bs-datepicker-body table td span.yellow.selected {
+//   background-color:#ffd333 !important;
+//   color: white !important;
+// }
+
+// .select-start, .selected
+// {
+//   background-color: red !important;
+
+// }
+
+
+// just stuff to make the pen not look terrible
+
+h1 {
+  margin: 2em 0 0;
+  font-size: 2em;
+  font-family: helvetica, ariel, sans-serif;
+  text-align: center;
+}
+
+h2 {
+  margin: 1em 0 2em;
+  font-size: 1.4em;
+  font-family: helvetica, ariel, sans-serif;
+  text-align: center; 
+}
+
+.codepen-wrapper {
+  width: 50%;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10+ and Edge */
+  user-select: none; /* Standard syntax */
+  //margin: 0 37.5%;
+}
+
+// this is the stuff you want.
+
+.registration-ui {
+	background: linear-gradient(to bottom, #f8d038 0%,#f5ca2e 100%);
+  padding: -1px -1px 0px -1px;
+   // margin: 14px;
+   margin: -4px 0px 0px 38px;
+	font-weight: bold;
+	font-size: 2em;
+	border-radius: 5px;
+	border: 1px solid #000;
+	box-shadow: 1px 1px 1px #ddd;
+	position: relative;
+  font-family: helvetica, ariel, sans-serif;
+  font-weight: 600;
+  width: 191px;
+    padding: 10px 5px -7px -3px;
+    padding: 0px 0px 0px 6px;
+}
+
+.registration-ui-gb {
+	content: 'GB';
+	display: block;
+	width: 4%;
+  height: 47px;
+	background: #063298;
+	position: absolute;
+  top: 10px;
+  border-radius: 5px 0 0 5px;
+	color: #f8d038;
+  font-size: 16px;
+  line-height: 75px;
+  padding-left: 5px;
+  font-weight: 600;
+}
+
+.registration-ui-logo {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 7px;
+	left: 11px;
+	width: 40%;
+    height: 15px;
+    border-radius: 30px;
+    border: 1px dashed #f8d038;
+}
+
+.p-date{
+color: red;
+font-size: 12px;
+margin-top: 13px;
+}
+
+
+
+// table {
+//   border: 1px solid black;
+//   table-layout: fixed;
+//   width: 1000px;
+// }
+
+// th,
+// td {
+//   border: 1px solid black;
+//   width: 50px;
+//   overflow: hidden;
+// }
+
+// .td_size {    
+//   width:200px; 
+//   height:50px;
+//   max-width:200px;
+//   min-width:200px; 
+//   max-height:50px; 
+//   min-height:50px;
+//   overflow:hidden;
+//   //** /*(Optional)This might be useful for some overflow contents*/   
+// }
+
+
+// table {
+//   border-collapse: collapse;
+//   table-layout: fixed;
+//   width: 100%;
+//   min-width: 100px;
+// }
+// td {
+//   //border: 3px solid red;
+//   overflow: hidden;
+// }
+// .fluid {
+//   width: 24%!important;
+// }
+// .fixed {
+//   width: 10%;
+// }
+ .card-table th:first-child,  .card-table td:first-child {
+ padding-left: 0px !important; 
+}
+.btn {
+  border-radius: 2px;
+  transition: all 0.1s ease-in-out;
+  font-size: 1rem;
+ 
+  line-height: 1.5;
+  padding: 0.375rem 1.25rem;
+  font-weight: 500;
+}
+
+@media (max-width: 992px){
+
+  .width-0
+  {
+width: 50%!important;
+  }
+
+  .codepen-wrapper {
+    width: 60%;
+   margin-top: -40px;
+  }
+
+
+.registration-ui-gb {
+  content: "GB";
+  display: block;
+  width: 33% !important;
+  height: 49px !important;
+  background: #063298;
+  position: relative !important;
+  top: 43px !important;
+  border-radius: 5px 0 0 5px;
+  color: #f8d038;
+  font-size: 16px;
+  line-height: 75px;
+  padding-left: 5px;
+  font-weight: 600;
+}
+.registration-ui {
+  background: linear-gradient(to bottom, #f8d038 0%, #f5ca2e 100%);
+  padding: -1px -1px 0px -1px;
+  margin: -6px 0px 0px 38px!important;
+  font-weight: bold;
+  font-size: 2em;
+  border-radius: 5px;
+  border: 1px solid #000;
+  box-shadow: 1px 1px 1px #ddd;
+  position: relative;
+  font-family: helvetica, ariel, sans-serif;
+  font-weight: 600;
+  width: 170px;
+  height: 49px !important;
+
+  padding: 10px 5px -7px -3px;
+  padding: 3px 0px 0px 6px;
+}
+}
+
+::-moz-selection { /* Code for Firefox */
+  background: transparent;
+}
+
+::selection {
+  background :transparent;
+}
+

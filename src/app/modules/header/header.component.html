@@ -1,0 +1,30 @@
+<div class="site-header">
+    <!-- <app-header-topbar></app-header-topbar> -->
+
+    <div *ngIf="layout === 'classic'" class="site-header__middle container">
+        <div class="site-header__logo" id="logodiv" style="display: block;">
+            <a  (click)="movetohome()" >
+                <img src="assets/images/logo/Logo.png" />
+            
+                
+            </a>
+        </div>
+        <div class="site-header__search" style="display: none;" >
+            <app-search location="header"></app-search>
+        </div>
+        <div class="site-header__phone" id="epsdiv" style="display: block;">
+            <!-- <a (click)="movetohome()" >
+                <img src="assets/images/logo/EPS.png" style="height:65px"   />
+            </a> -->
+        </div>
+    </div>
+
+    <div class="site-header__nav-panel" style="display: block;" id="ulmenu">
+        <app-header-nav
+            [departments]="layout === 'classic'"
+            [logo]="layout === 'compact'"
+            [search]="layout === 'compact'"
+            stickyMode="pullToShow"
+        ></app-header-nav>
+    </div>
+</div>

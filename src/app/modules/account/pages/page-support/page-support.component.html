@@ -1,0 +1,225 @@
+<div class="site-preloader" style="display: none;" id="loader"></div>
+<div class="card">
+    <div class="card-header" id="supportheaderdiv">
+        <h5>Support</h5>
+        <button type="button" class="btn btn-primary newbtncls" (click)="openformdiv()">Log New Case</button>
+    </div>
+
+    <div class="card-divider"></div>
+    <div class="card-body">
+        <div class="row no-gutters">
+            <div class="col-md-12" style="display: none;" id="supportformdiv">
+
+                <form [formGroup]="supportform">
+                    <div class="form-group">
+                        <label for="checkout-name">Name</label>
+                        <input type="text" class="form-control" required [(ngModel)]="name" id="checkout-name" disabled
+                            [ngModelOptions]="{standalone: true}" placeholder="Name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="checkout-email">Email</label>
+                        <input type="text" class="form-control" [ngModelOptions]="{standalone: true}"
+                            id="checkout-email" [(ngModel)]="email" disabled placeholder="Email">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="checkout-subject">Subject</label>
+                        <input type="text" class="form-control" [(ngModel)]="subject" id="checkout-subject"
+                            formControlName="Lsubject" placeholder="Subject" required
+                            [ngClass]="{'is-invalid': supportsubmitted && f.Lsubject.errors }">
+                        <div *ngIf="supportsubmitted && f.Lsubject.errors" class="invalid-feedback">
+                            <div *ngIf="f.Lsubject.errors.required" style="color: #ffd333">Subject is
+                                required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkout-issue">Tell us a little more about your issue.</label>
+
+                        <textarea type="text" class="form-control issuecls" [(ngModel)]="issue" formControlName="Lissue"
+                            required [ngClass]="{'is-invalid': supportsubmitted && f.Lissue.errors }"
+                            id="checkout-issue"></textarea>
+                        <div *ngIf="supportsubmitted && f.Lissue.errors" class="invalid-feedback">
+                            <div *ngIf="f.Lissue.errors.required" style="color: #ffd333">Issue is
+                                required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>By clicking 'Submit', you agree to Go Permit's Tenant <a href="assets/images/Condition of use of permit -residents & visitors.docx">Terms</a>
+                            & <a href="assets/images/Privacy Policy.docx">Privacy Policy</a>.</label>
+                    </div>
+
+                    <div class="form-group mt-3 mb-0 d-flex">
+                        <button type="submit" (click)="support()" class="btn btn-primary form-control">Submit</button>
+                        <button (click)="closeformdiv()" class="btn btn-primary form-control cancls">Cancel</button>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="col-md-12" id="pastquerydiv">
+
+                <h6 id="subjectdiv" class="subjectcls">Subject : <span style="color:black">{{showsubject}}</span></h6>
+                <div style="display: none;" id="arrowdiv">
+
+                    <a class="arrow-icon" aria-label="Go to previous page" (click)="openform()" href="javascript::">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div id="responsereplydiv" class="responsereplycls" style="height: 70vh;">
+                    <div *ngFor="let supportlist of supportlists">
+                        <div class="card mb-3 d-inline-block responsedivcls" style="width: 70% !important;"
+                            [ngClass]="{'float-right': supportlist.createdBy!==1 ,'float-left': supportlist.createdBy===1 ,'mw-90': supportlist.createdBy===1 }">
+                            <!-- <div class="position-absolute pt-1 pr-2 r-0" style="padding-left: 10px;">
+                                <span class="text-extra-small text-muted">{{supportlist.name}}</span>
+                            </div> -->
+                            <div class="position-absolute pt-1 pr-2 r-0" style="right: 0;">
+                                <span class="text-extra-small text-muted"
+                                    style="font-size: small;">{{supportlist.date}}</span>
+                            </div>
+                            <div class="card-body cardcls">
+                                <div class="d-flex flex-row pb-2"><a href="javascript:;" class="d-flex">
+                                    
+                                    <div class="profile-card__avatar" style=" background-image: url({{ supportlist.profilePath == null ? 'assets/images/avatars/avatar-1.jpg' :supportlist.profilePath }}); width: 65px;height: 65px;background-position: center;background-size: cover;border-radius: 50px">
+              
+                                    </div>
+                                    
+                                    <!-- <img
+                                    
+                                            class="img-thumbnail border-0 rounded-circle mr-3 list-thumbnail align-self-center xsmall"
+                                            style="width: 60px; height: 60px; background-position: center; background-size: contain; border-radius: 100%;"
+                                            [src]="supportlist.profilePath==null?'assets/images/avatars/avatar-1.jpg':supportlist.profilePath"> -->
+                                        </a>
+                                    <div class="d-flex flex-grow-1 min-width-zero">
+                                        <div
+                                            class="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero">
+                                            <div class="min-width-zero">
+                                                <p class="mb-0 truncate list-item-heading">{{supportlist.name}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chat-text-left reply_issue" *ngIf="supportlist.createdBy!==1">
+                                    <p class="mb-0 text-semi-muted respcls" style="font-size: .85rem !important;
+                                    line-height: 1.3rem !important;
+                                    font-family: Nunito,sans-serif;padding-left: 64px;
+    margin-top: -19px;">
+                                        {{supportlist.issue}}
+                                    </p>
+                                </div>
+                                <div class="chat-text-left response_issue" *ngIf="supportlist.createdBy===1">
+                                    <p class="mb-0 text-semi-muted respcls" style="font-size: .85rem !important;
+                                    line-height: 1.3rem !important;
+                                    font-family: Nunito,sans-serif;padding-left: 64px;
+    margin-top: -19px;">
+                                        {{supportlist.issue}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form [formGroup]="replyform" #form="ngForm">
+                        <div class="row" id="replyareadiv" >
+                            <div class="col-md-12 d-flex">
+                                <textarea type="text" class="form-control" minlength="20"
+                                    style="height: 80px; border-radius: 10px;" [(ngModel)]="replyres"
+                                    formControlName="Rreply" minlength="2" required 
+                                    [ngClass]="{'is-invalid': replysubmitted && r.Rreply.errors }" 
+                                    id="checkout-issue"></textarea>
+                                                                                        
+                                    <div *ngIf="r.Rreply.invalid && (r.Rreply.dirty || r.Rreply.touched)" class="text-danger">
+<!-- 
+                                        <div *ngIf="r.Rreply.errors.required">
+                                             *Must type something.
+                                        </div> -->
+                                        <small *ngIf="r.Rreply.errors.minlength">
+                                             *Reply must contain atleast 2 characters long.
+                                        </small>
+                                    </div>
+
+                                <button type="submit" class="btn btn-primary rounded-pill mt-3 ml-1"
+                                  [disabled]="form.invalid"  (click)="replysupport();form.reset()">Submit</button>
+                            </div>
+                            <div *ngIf="replysubmitted && r.Rreply.errors" class="invalid-feedback">
+                                <div *ngIf="r.Rreply.errors.required" style="color: #ffd333">Reply is
+                                    required</div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="card-body" style="height:400px;overflow-y: scroll;" id="formdiv">
+                    <h6 style="text-align: center;
+                        padding-bottom: 10px;">Past Queries</h6>
+                    <!-- <div>
+                            <input type="text" placeholder="Search for subject and data" class="form-control inputsearchcls">
+                        </div> -->
+                    <div class="row justify-content-center">
+
+                        <div style="width: 100% !important;">
+                            <table class="table table-bordered text-center">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align: center;">Case ID</th>
+                                        <th style="text-align: center;">Status</th>
+                                        <th style="text-align: center;">Subject</th>
+                                        <th style="text-align: center;">Created</th>
+                                        <th style="text-align: center;">Last Comment</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let support of supports">
+                                        <td>{{support.ticketId}} </td>
+                                        <td>{{support.status}} </td>
+                                        <td><a href="javascript::" (click)="openreply(support.id,support.ticketId)"
+                                                style="color:black;">{{support.subject}}
+                                                <i *ngIf="support.isRead==false" style="margin-left: 5px;"
+                                                    class="fas fa-exclamation"></i>
+                                            </a></td>
+                                        <td> {{support.date}}</td>
+                                        <td>{{support.lastComment}} </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div style="flex: auto;">
+                            <p style="color: #ffd333;">Need Some Help?</p>
+                            <strong>GoPermit has an built in help system that provides assistance in each and every page</strong> <br>
+                            <p>Simply click the help button at the top Of each page or the icon wherever you see it for further information.
+                               <br> if you  require further assistance, log a new case
+                            </p>
+                            <!-- <p>if yo require further assistance, log a new case</p> -->
+                        
+                        </div>
+                        <!-- <div class="col-md-6" style="text-align: center;">
+                                <h6 style="border-bottom: 1px solid #eee;
+                                padding-bottom: 10px;">Date</h6>
+                                <ul style="list-style-type: none;">
+                                    <li class="licls" *ngFor="let date of dates">
+                                        {{date.date}}
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                            <div class="col-md-6" style="text-align: center">
+                                <h6 style="border-bottom: 1px solid #eee;
+                                padding-bottom: 10px;">Subject</h6>
+                                <ul style="list-style-type: none;padding-left: 0px;">
+                                    <li class="licls" *ngFor="let subject of subjects">
+                                        <a href="javascript::" (click)="openreply(subject.id)" style="color: gold;">{{subject.tenantSubject}}</a>
+                                    </li>
+
+
+                                </ul>
+                            </div> -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

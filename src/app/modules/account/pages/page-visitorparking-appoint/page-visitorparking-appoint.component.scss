@@ -1,0 +1,258 @@
+.bs-example {
+    margin: 30px 0px;
+}
+body {
+    font-family: "Proxima Nova", sans-serif !important;
+}
+
+.calender_cls {
+    margin: 10px 20px;
+}
+.input_cls {
+    width: 326px;
+}
+.arrow-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 43px;
+    height: 43px;
+    color: var(--primary-color, rgb(0, 162, 255));
+    font-size: 24px;
+    background-clip: padding-box;
+    border: 1px solid var(--text-color-level3, rgba(77, 80, 85, 0.1));
+    border-radius: 50%;
+    margin-left: 30px;
+    margin-bottom: 24px;
+}
+.profile-info .profile-logo {
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--text-color-level3, rgba(77, 80, 85, 0.1));
+    text-align: center;
+}
+.profile-info .profile-info-name {
+    margin: 0 0 3px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: var(--text-color-level2, rgba(77, 80, 85, 0.6));
+    padding-right: 10px;
+    padding-left: 30px;
+}
+.profile-info .profile-info-time {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 32px;
+    padding-right: 10px;
+    padding-left: 30px;
+}
+.profile-info {
+    margin-bottom: 12px;
+}
+
+.timing {
+    padding: 0 30px;
+}
+.timing-details {
+    color: var(--text-color-level2, rgba(77, 80, 85, 0.6));
+    font-weight: 600;
+}
+.time-icon-details {
+    display: flex;
+    text-align: left;
+    padding-bottom: 10px;
+}
+
+.time-icon-details span {
+    margin-top: -5px;
+    margin-right: 10px;
+    font-size: 20px;
+    padding: 0px 10px;
+    font-weight: 200;
+}
+.right-details {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    min-width: 300px;
+    //border-right: 1px solid var(--text-color-level3, rgba(77, 80, 85, 0.1));
+    transition: all 0.22s ease-out;
+    height: auto;
+    overflow: hidden;
+}
+.icon-clock-fill:before {
+    content: "\e980";
+}
+
+.profile-info .profile-small-logo {
+    width: 65px;
+    height: 65px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+}
+.profile-info .profile-logo + .profile-small-logo {
+    box-sizing: content-box;
+    border: 5px solid var(--container-background-color, #ffffff);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+    margin-top: -62px;
+    margin-left: 20px;
+}
+.column {
+    // position: relative;
+    padding-top: 28px;
+}
+.column h2 {
+    width: 100%;
+    padding-right: 32px;
+    padding-left: 32px;
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+.dd-list {
+    padding-right: 32px;
+    padding-left: 32px;
+}
+.dd-time {
+    color: var(--text-color, #4d5055);
+}
+.dd-time:hover {
+    background-color: #c7c7c76e;
+    color: #4d5055 !important;
+    border-radius: 25px;
+    padding: 4px 9px;
+}
+.card {
+    border: 0px solid rgba(0, 0, 0, 0.125) !important;
+    max-width: 100%;
+}
+.no-gutters {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+    background-color: var(--container-background-color, #ffffff);
+}
+
+.bs-datepicker-container {
+    width: 100% !important;
+}
+.bottom {
+    width: 100% !important;
+}
+
+// scrollbar
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 8px;
+}
+::-webkit-scrollbar-thumb {
+    height: 4px;
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+}
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+.timeslot_cls {
+    border-radius: 5px;
+    border: 1px solid #f5d331;
+    padding: 3%;
+    text-align: center;
+    margin-bottom: 3%;
+    font-size: larger;
+    margin-right: 0%;
+}
+.modal-sm {
+    margin-top: 185px !important;
+}
+.time_st {
+    margin-top: 30px;
+    overflow-y: scroll;
+    height: 450px;
+    // margin-left: -80px;
+}
+.timeslot_cls:hover {
+    cursor: pointer;
+}
+.divinput {
+    margin-left: 50px;
+}
+.labelcls{
+    margin-bottom: 0px !important;
+}
+.divbtn {
+    margin-left: 16px;
+    margin-top: 20px;
+    float: right;
+    margin-bottom: 2%;
+}
+.divdetails {
+    margin-left: 50px;
+    margin-top: 26px;
+    font-weight: bold;
+}
+
+
+
+@media (max-width: 768px) {
+    .right-details {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        min-width: 300px;
+        margin-left: 4%;
+        //border-right: 1px solid var(--text-color-level3, rgba(77, 80, 85, 0.1));
+        transition: all 0.22s ease-out;
+        height: auto;
+        overflow: hidden;
+    }
+    .card {
+        height: 100vh !important;
+    }
+    .divinput {
+        margin-left: 25px;
+      //  margin-top: 20px;
+    }
+    .divbtn {
+        margin-left: 16px;
+      //  margin-top: 30px;
+        margin-bottom: 28%;
+        float: right;
+    }
+    .divdetails {
+        margin-left: 25px;
+        margin-top: 26px;
+        font-weight: bold;
+    }
+}
+
+@media (max-width: 425px) {
+    .timeslot_btn {
+       // margin-left: 15%;
+       // margin-right: 5%;
+    }
+    .calender_cls {
+        margin: 0;
+    }
+    .input_cls {
+        width: 290px;
+    }
+}
+
+@media (max-width: 320px) {
+    .timeslot_btn {
+        margin-left: 3%;
+        margin-right: 5%;
+    }
+    .input_cls {
+        width: 250px;
+    }
+}

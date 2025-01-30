@@ -1,0 +1,1832 @@
+<div class="site-preloader" *ngIf="loader"></div>
+
+<div class="block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 d-flex loginform">
+                <div class="card flex-grow-1 mb-md-0">
+                    <div class="card-body">
+                        <h3 style="display: inline" class="card-title">
+                            Manage Parking
+                        </h3>
+                        <!-- <i style="margin-left: 5px;" class="far fa-question-circle" aria-hidden="true" tooltip="Pre select the bay and park your car." placement="bottom"></i> -->
+                        <br /><br />
+                        <form>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>Select a parking bay :</label>
+                                        <i style="margin-left: 5px" class="far fa-question-circle" aria-hidden="true"
+                                            tooltip="Choose among available bay options." placement="bottom"></i>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <select class="form-control" style="width: 50%" [(ngModel)]="baynobj"
+                                            (change)="getvehicledetails('')" [ngModelOptions]="{
+                                                standalone: true
+                                            }">
+                                            <option value="">
+                                                - Select Bay NO -
+                                            </option>
+                                            <option *ngFor="let obj of parkigbaydrp" [ngValue]="obj">
+                                                {{ obj.bayname }}
+                                            </option>
+                                        </select>
+                                        <span id="ddlbayno"></span>
+                                    </div>
+                                </div>
+
+                                <!-- <dl-date-time-picker startView="day" maxView="year" minView="minute" minuteStep="5">
+                                </dl-date-time-picker> -->
+                                <!-- <input type="text" class="form-control" placeholder="Your Parking Bay No"> -->
+                            </div>
+
+                            <div class="form-group" [ngStyle]="{ display: bayconfigstyle }">
+                                <div class="row" *ngIf="isshowblock == true">
+                                    <div class="col-md-4">
+                                        <label>How many vehicle per bay:</label>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <select class="form-control width-0" style="width: 69%"
+                                            [(ngModel)]="vehiclecountobj" (change)="showblocks()" [ngModelOptions]="{
+                                                standalone: true
+                                            }">
+                                            <option value="">- Select -</option>
+                                            <option *ngFor="
+                                                    let obj of vehiclecountlist
+                                                " [ngValue]="obj.Id">
+                                                {{ obj.vehicles }}
+                                            </option>
+                                        </select>
+                                        <span></span>
+                                    </div>
+                                    <div style="width: 40%" *ngIf="infoexp">
+                                        <i style="
+                                                margin-left: 5px;
+                                                color: black;
+                                                display: inline-block;
+                                                margin-right: 5px;
+                                            " class="far fa-square" aria-hidden="true"></i><span>Available Space</span>
+                                        <button type="button" style="
+                                                margin-left: 5px;
+                                                float: right;
+                                            " class="btn btn-primary" (click)="openModal(template)">
+                                            Info
+                                        </button>
+                                        <br />
+                                        <i style="
+                                                margin-left: 5px;
+                                                color: grey;
+                                                display: inline-block;
+                                                margin-right: 5px;
+                                            " class="fas fa-square" aria-hidden="true"></i><span>Unavailable
+                                            Space</span><br />
+                                        <i style="
+                                                margin-left: 5px;
+                                                color: gold;
+                                                display: inline-block;
+                                                margin-right: 5px;
+                                            " class="fas fa-square" aria-hidden="true"></i><span>Allotted Space</span>
+                                    </div>
+
+                                    <ng-template #template>
+                                        <div class="modal-header">
+                                            <!-- <h4 class="modal-title pull-left">Modal</h4> -->
+                                            <button type="button" class="close pull-right" aria-label="Close"
+                                                (click)="modalRef.hide()">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img src="assets/images/1.jpg" style="width: 100%" />
+                                            <br /><br />
+                                            <img src="assets/images/2.jpg" style="width: 100%" />
+                                            <br /><br />
+                                            <img src="assets/images/3.jpg" style="width: 100%" />
+                                        </div>
+                                        <!-- <div class="modal-footer">
+                                           <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+                                        </div> -->
+                                    </ng-template>
+                                    <!-- <dl-date-time-picker startView="day" maxView="year" minView="minute" minuteStep="5">
+                                </dl-date-time-picker> -->
+                                    <!-- <input type="text" class="form-control" placeholder="Your Parking Bay No"> -->
+                                </div>
+                                <div class="text-center" style="margin-top: 0px" *ngIf="datepickershow">
+                                    <div class="dashboard__orders card bo1" style="overflow: auto">
+                                        <!-- <div class="card-header">
+                                        <h5></h5>
+                                    </div> -->
+                                        <div class="card-divider"></div>
+                                        <div class="card-table">
+                                            <div class="table-responsive-sm">
+                                                <p style="color: #063298">
+                                                    Dates in Blue are the dates
+                                                    you have created parking
+                                                    session
+                                                </p>
+                                                <bs-datepicker-inline [minDate]="mindate" [maxDate]="maxDate"
+                                                    [dateCustomClasses]="
+                                                        selectedClass
+                                                    " [bsValue]="dateSelected" (bsValueChange)="
+                                                        onbaynoset($event)
+                                                    ">
+                                                </bs-datepicker-inline>
+                                                <p class="mt-1" style="color: #f5d331">
+                                                    If you want to configure
+                                                    Parking Session for other
+                                                    dates
+                                                    <button class="ml-1 btn btn-primary rounded-pill" (click)="
+                                                            movetoaddmode()
+                                                        " type="submit">
+                                                        Click Here
+                                                    </button>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="form-group">
+                                <form class="product__options">
+                                    <div class="form-group product__option">
+                                        <label class="product__option-label"></label>
+                                        <div class="input-radio-color">
+                                            <div class="input-radio-color__list">
+
+                                                <label class="input-radio-color__item" style="color: #ffd333;"
+                                                    data-toggle="tooltip" title="Yellow">
+                                                    <input type="radio" name="color" (click)="selectingbay1()">
+                                                    <span></span>
+                                                </label>
+                                                <label class="spantop">
+
+                                                    <span>One Vehicle per bay</span>
+                                                </label>
+
+                                                <label class="input-radio-color__item" style="color: #ffd333;"
+                                                    data-toggle="tooltip" title="Red">
+                                                    <input type="radio" name="color" (click)="selectingbay2()">
+                                                    <span></span>
+                                                </label>
+                                                <label class="spantop">
+
+                                                    <span>More than one vehicle per bay</span>
+
+                                                </label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div> -->
+
+                                <div class="row" style="margin-top: 10px" *ngIf="isshowblock1 == true">
+                                    <div class="col-md-4">
+                                        <label>How many vehicle per bay:</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select class="form-control width-0" style="width: 69%"
+                                            [(ngModel)]="vehiclecountobj" (change)="showblocks()" [ngModelOptions]="{
+                                                standalone: true
+                                            }">
+                                            <option value="">- Select -</option>
+                                            <option *ngFor="
+                                                    let obj of vehiclecountlist
+                                                " [ngValue]="obj.Id">
+                                                {{ obj.vehicles }}
+                                            </option>
+                                        </select>
+                                        <span></span>
+                                    </div>
+
+                                    <!-- <dl-date-time-picker startView="day" maxView="year" minView="minute" minuteStep="5">
+                            </dl-date-time-picker> -->
+                                    <!-- <input type="text" class="form-control" placeholder="Your Parking Bay No"> -->
+                                </div>
+                                <div class="form-group" style="margin-top: 5px" [ngStyle]="{ display: single }">
+                                    <div class="card">
+                                        <div class="card-divider"></div>
+                                        <div class="card-body">
+                                            <div class="row no-gutters">
+                                                <div class="col-lg-12 col-lg-12 col-xl-12">
+                                                    <form [formGroup]="
+                                                            singlevehicleForm
+                                                        ">
+                                                        <div class="form-row">
+                                                            <!-- <div class="form-group col-md-6">
+                                                                <label>Bay No</label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Bay No" [(ngModel)]="baynamebj"
+                                                                    formControlName="sbaynobj" required disabled
+                                                                    [ngClass]="{'is-invalid': singlevehiclesubmitted && s.sbaynobj.errors }">
+                                                                <div *ngIf="singlevehiclesubmitted && s.sbaynobj.errors"
+                                                                    class="invalid-feedback">
+                                                                    <div *ngIf="s.sbaynobj.errors.required"
+                                                                        style="color: #ffd333">Bayno is
+                                                                        required</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label>Vehicle Make</label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Vehicle Make"
+                                                                    [(ngModel)]="vechiclemake"
+                                                                    formControlName="svechiclemake" required
+                                                                    [ngClass]="{'is-invalid': singlevehiclesubmitted && s.svechiclemake.errors }">
+                                                                <div *ngIf="singlevehiclesubmitted && s.svechiclemake.errors"
+                                                                    class="invalid-feedback">
+                                                                    <div *ngIf="s.svechiclemake.errors.required"
+                                                                        style="color: #ffd333">Vehicle Make is
+                                                                        required</div>
+                                                                </div>
+                                                            </div> -->
+                                                        </div>
+                                                        <div class="">
+                                                            <!-- <div class="form-group col-md-6">
+                                                                <label>Model</label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Model" [(ngModel)]="model"
+                                                                    formControlName="smodel" required
+                                                                    [ngClass]="{'is-invalid': singlevehiclesubmitted && s.smodel.errors }">
+                                                                <div *ngIf="singlevehiclesubmitted && s.smodel.errors"
+                                                                    class="invalid-feedback">
+                                                                    <div *ngIf="s.smodel.errors.required"
+                                                                        style="color: #ffd333">Model is
+                                                                        required</div>
+                                                                </div>
+                                                            </div> -->
+                                                            <div class="">
+                                                                <div class="codepen-wrapper">
+                                                                    <div class="registration-ui-gb" style="
+                                                                            top: -3px;
+                                                                            height: 49px;
+                                                                        ">
+                                                                        GB
+                                                                        <div class="registration-ui-logo"></div>
+                                                                    </div>
+                                                                    <input type="text" [(ngModel)]="
+                                                                            vrmno
+                                                                        " style="
+                                                                            height: 49px;
+                                                                            margin: -3px
+                                                                                0px
+                                                                                0px
+                                                                                35px;
+                                                                            text-transform: uppercase;
+                                                                        " class="registration-ui" placeholder="VRM No"
+                                                                        formControlName="svrmno" required maxlength="9"
+                                                                        [ngClass]="{
+                                                                            'is-invalid':
+                                                                                singlevehiclesubmitted &&
+                                                                                s
+                                                                                    .svrmno
+                                                                                    .errors
+                                                                        }" />
+                                                                    <div *ngIf="
+                                                                            singlevehiclesubmitted &&
+                                                                            s
+                                                                                .svrmno
+                                                                                .errors
+                                                                        " class="invalid-feedback">
+                                                                        <div *ngIf="
+                                                                                s
+                                                                                    .svrmno
+                                                                                    .errors
+                                                                                    .required
+                                                                            " style="
+                                                                                color: red;
+                                                                            ">
+                                                                            Please
+                                                                            enter
+                                                                            VRM
+                                                                            NO
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <a style="margin-left: 5px;display: none;" class=""
+                                                                        aria-hidden="true"
+                                                                        tooltip="Share your parking bay with other vehicles.Allow other vehicles to park here when you're not using the space."
+                                                                        placement="bottom">Share Your Bay</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4" style="margin-top: 28px;">
+                                                                <label>Parking
+                                                                    Session
+                                                                    Valid From
+                                                                    (Date &
+                                                                    Time)</label>
+                                                                <input type="text" class="form-control" bsDatepicker
+                                                                    [bsConfig]="{
+                                                                        dateInputFormat:
+                                                                            'DD/MM/YYYY'
+                                                                    }" [(ngModel)]="
+                                                                        parkingvalidfrom
+                                                                    " [minDate]="
+                                                                        mindate
+                                                                    " [maxDate]="
+                                                                        maxDate
+                                                                    " readonly="true"
+                                                                    placeholder="Click here to select date"
+                                                                    formControlName="sparkingvalidfrom" required
+                                                                    [ngClass]="{
+                                                                        'is-invalid':
+                                                                            singlevehiclesubmitted &&
+                                                                            s
+                                                                                .sparkingvalidfrom
+                                                                                .errors
+                                                                    }" />
+                                                                <div *ngIf="
+                                                                        singlevehiclesubmitted &&
+                                                                        s
+                                                                            .sparkingvalidfrom
+                                                                            .errors
+                                                                    " class="invalid-feedback">
+                                                                    <div *ngIf="
+                                                                            s
+                                                                                .sparkingvalidfrom
+                                                                                .errors
+                                                                                .required
+                                                                        " style="
+                                                                            color: #ffd333;
+                                                                        ">
+                                                                        Parking
+                                                                        Valid
+                                                                        From is
+                                                                        required
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group col-md-4" style="
+                                                                    margin-top: 15px;
+                                                                ">
+                                                                <timepicker [(ngModel)]="
+                                                                        parkingvalidfromtime
+                                                                    " class="timespan" [showMeridian]="
+                                                                        false
+                                                                    " style="
+                                                                        height: 0px;
+                                                                    " formControlName="sparkingvalidfromtime" required
+                                                                    [ngClass]="{
+                                                                        'is-invalid':
+                                                                            singlevehiclesubmitted &&
+                                                                            s
+                                                                                .sparkingvalidfromtime
+                                                                                .errors
+                                                                    }">
+                                                                </timepicker>
+                                                                <div *ngIf="
+                                                                        singlevehiclesubmitted &&
+                                                                        s
+                                                                            .sparkingvalidfromtime
+                                                                            .errors
+                                                                    " class="invalid-feedback">
+                                                                    <div *ngIf="
+                                                                            s
+                                                                                .sparkingvalidfromtime
+                                                                                .errors
+                                                                                .required
+                                                                        " style="
+                                                                            color: #ffd333;
+                                                                        ">
+                                                                        Parking
+                                                                        Valid
+                                                                        from
+                                                                        time is
+                                                                        required
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4">
+                                                                <label>Parking
+                                                                    Session
+                                                                    Valid Till
+                                                                    (Date &
+                                                                    Time)</label>
+                                                                <input type="text"
+                                                                    placeholder="Click here to select date" [minDate]="
+                                                                        mindate
+                                                                    " [maxDate]="
+                                                                        maxDate
+                                                                    " [bsConfig]="{
+                                                                        dateInputFormat:
+                                                                            'DD/MM/YYYY'
+                                                                    }" formControlName="sparkingvalidTo"
+                                                                    readonly="true" bsDatepicker class="form-control"
+                                                                    [(ngModel)]="
+                                                                        parkingvalidTo
+                                                                    " [ngClass]="{
+                                                                        'is-invalid':
+                                                                            singlevehiclesubmitted &&
+                                                                            s
+                                                                                .sparkingvalidTo
+                                                                                .errors
+                                                                    }" />
+                                                                <div *ngIf="
+                                                                        singlevehiclesubmitted &&
+                                                                        s
+                                                                            .sparkingvalidTo
+                                                                            .errors
+                                                                    " class="invalid-feedback">
+                                                                    <div *ngIf="
+                                                                            s
+                                                                                .sparkingvalidTo
+                                                                                .errors
+                                                                                .required
+                                                                        " style="
+                                                                            color: #ffd333;
+                                                                        ">
+                                                                        Mobile
+                                                                        Number
+                                                                        is
+                                                                        required
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group col-md-4" style="
+                                                                    margin-top: -14px;
+                                                                ">
+                                                                <timepicker [(ngModel)]="
+                                                                        parkingvalidTotime
+                                                                    " class="timespan" [showMeridian]="
+                                                                        false
+                                                                    " style="
+                                                                        height: 0px;
+                                                                    " formControlName="sparkingvalidTotime" required
+                                                                    [ngClass]="{
+                                                                        'is-invalid':
+                                                                            singlevehiclesubmitted &&
+                                                                            s
+                                                                                .sparkingvalidTotime
+                                                                                .errors
+                                                                    }">
+                                                                </timepicker>
+                                                                <div *ngIf="
+                                                                        singlevehiclesubmitted &&
+                                                                        s
+                                                                            .sparkingvalidTotime
+                                                                            .errors
+                                                                    " class="invalid-feedback">
+                                                                    <div *ngIf="
+                                                                            s
+                                                                                .sparkingvalidTotime
+                                                                                .errors
+                                                                                .required
+                                                                        " style="
+                                                                            color: #ffd333;
+                                                                        ">
+                                                                        Parking
+                                                                        Valid to
+                                                                        time is
+                                                                        required
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group text-center">
+                                                            <button class="btn btn-primary" style="
+                                                                    margin-right: 10px;
+                                                                " (click)="
+                                                                    savesinglevehicle()
+                                                                ">
+                                                                Save
+                                                            </button>
+                                                            <!-- <button
+                                                                class="btn btn-primary"
+                                                                style="
+                                                                    margin-right: 10px;
+                                                                "
+                                                                *ngIf="
+                                                                    vehiclesinglelist ==
+                                                                    1
+                                                                "
+                                                                (click)="
+                                                                    openModal(
+                                                                        template,
+                                                                        '1'
+                                                                    )
+                                                                "
+                                                            >
+                                                                Save changes
+                                                            </button> -->
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <button (click)="validation()">testvalidate</button> -->
+
+                                <div class="form-group" [ngStyle]="{ display: multiple }">
+                                    <div class="row" style="margin-top: 15px" style="display: none">
+                                        <div class="col-md-4">
+                                            <label>How many vehicles do you want
+                                                to configure for this
+                                                bay?</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" (keypress)="numberOnly($event)"
+                                                [(ngModel)]="confignumber" placeholder="configure No"
+                                                (change)="configurebasedonNo()" [ngModelOptions]="{
+                                                    standalone: true
+                                                }" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group" [ngStyle]="{ display: multiplebays }">
+                                    <div class="dashboard__orders card bo1" style="overflow: auto">
+                                        <!-- <div class="card-header">
+                                        <h5></h5>
+                                    </div> -->
+                                        <div class="card-divider"></div>
+                                        <div class="card-table">
+                                            <div class="table-responsive-sm">
+                                                <table style="width: 50%" id="myPics">
+                                                    <!-- <colgroup>
+                                                        <col class="" style="width: 24%;">
+                                                        <col class="" style="width: 25%;">
+                                                        <col class="" style="width: 25%;">
+                                                        <col class="" style="width: 25%;">
+
+                                                      </colgroup> -->
+                                                    <thead>
+                                                        <tr>
+                                                            <!-- <th>Bay No</th>
+                                                    <th>Vehicle Make</th>
+                                                    <th>Model</th>
+                                                    <th>VRM No</th>
+                                                    <th>Parking Valid From</th>
+                                                    <th>Parking Valid Till</th> -->
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody style="
+                                                            text-align: center;
+                                                        ">
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " style="
+                                                                    width: 1%;
+                                                                " class="td_size">
+                                                                <!-- <input class="form-control"
+                                                                    id="vehicleno{{i.iterrations}}" type="text"
+                                                                    placeholder="VRM no"> -->
+
+                                                                <div class="codepen-wrapper text-center">
+                                                                    <div class="registration-ui-gb">
+                                                                        GB
+                                                                        <div class="registration-ui-logo"></div>
+                                                                    </div>
+                                                                    <input type="text" id="vehicleno{{
+                                                                            i.iterrations
+                                                                        }}" style="
+                                                                            text-transform: uppercase;
+                                                                        " maxlength="9" class="registration-ui"
+                                                                        placeholder="VRM No" />
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <!-- <tr>
+                                                            <td *ngFor="let i of iterations">
+                                                                <input class="form-control" type="text"
+                                                                    class="form-control" id="make{{i.iterrations}}"
+                                                                    placeholder="Vehicle Make">
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td *ngFor="let i of iterations">
+                                                                <input class="form-control" type="text"
+                                                                    class="form-control" id="model{{i.iterrations}}"
+                                                                    placeholder="Vehicle Model">
+
+                                                            </td>
+                                                        </tr> -->
+
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn0{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '0'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '0'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn0{{
+                                                                        i.iterrations
+                                                                    }}">00:00</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn1{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '1'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '1'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn1{{
+                                                                        i.iterrations
+                                                                    }}">01:00</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn2{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '2'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '2'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn2{{
+                                                                        i.iterrations
+                                                                    }}">02:00</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn3{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '3'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '3'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn3{{
+                                                                        i.iterrations
+                                                                    }}">03:00</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn4{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '4'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '4'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn4{{
+                                                                        i.iterrations
+                                                                    }}">04:00</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn5{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '5'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '5'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn5{{
+                                                                        i.iterrations
+                                                                    }}">05:00</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn6{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '6'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '6'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn6{{
+                                                                        i.iterrations
+                                                                    }}">06:00</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn7{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '7'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '7'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn7{{
+                                                                        i.iterrations
+                                                                    }}">07:00</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn8{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '8'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '8'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn8{{
+                                                                        i.iterrations
+                                                                    }}">08:00</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn9{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '9'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '9'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn9{{
+                                                                        i.iterrations
+                                                                    }}">09:00</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn10{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '10'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '10'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn10{{
+                                                                        i.iterrations
+                                                                    }}">10:00</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn11{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '11'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '11'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn11{{
+                                                                        i.iterrations
+                                                                    }}">11:00</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn12{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '12'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '12'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn12{{
+                                                                        i.iterrations
+                                                                    }}">12:00</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn13{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '13'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '13'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn13{{
+                                                                        i.iterrations
+                                                                    }}">13:00</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn14{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '14'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '14'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn14{{
+                                                                        i.iterrations
+                                                                    }}">14:00</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn15{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '15'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '15'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn15{{
+                                                                        i.iterrations
+                                                                    }}">15:00</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn16{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '16'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '16'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn16{{
+                                                                        i.iterrations
+                                                                    }}">16:00</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn17{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '17'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '17'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn17{{
+                                                                        i.iterrations
+                                                                    }}">17:00</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn18{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '18'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '18'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn18{{
+                                                                        i.iterrations
+                                                                    }}">18:00</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn19{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '19'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '19'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn19{{
+                                                                        i.iterrations
+                                                                    }}">19:00</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn20{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '20'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '20'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn20{{
+                                                                        i.iterrations
+                                                                    }}">20:00</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn21{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '21'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '21'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn21{{
+                                                                        i.iterrations
+                                                                    }}">21:00</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn22{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '22'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '22'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn22{{
+                                                                        i.iterrations
+                                                                    }}">22:00</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <!-- (click)="selectingcolors(i.iterrations,'23')" -->
+                                                            <td *ngFor="
+                                                                    let i of iterations
+                                                                " id="spn23{{
+                                                                    i.iterrations
+                                                                }}" style="
+                                                                    width: 1%;
+                                                                " (mouseenter)="
+                                                                    selectingcolorshover(
+                                                                        i.iterrations,
+                                                                        '23'
+                                                                    )
+                                                                " (mousedown)="
+                                                                    mousedown(
+                                                                        i.iterrations,
+                                                                        '23'
+                                                                    )
+                                                                " (mouseup)="
+                                                                    mouseup()
+                                                                " ondragstart="return false;" ondrop="return false;">
+                                                                <span id="spn23{{
+                                                                        i.iterrations
+                                                                    }}">23:00</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="dashboard__orders card bo1">
+                                        <!-- <div class="card-header">
+                                        <h5></h5>
+                                    </div> -->
+                                        <div class="card-table">
+                                            <div class="table-responsive-sm">
+                                                <div>
+                                                    <div class="row" style="margin-top: 15px" *ngIf="rbtnchoosestatus">
+                                                        <div class="col-md-3">
+                                                            <div class="form-group">
+                                                                <p style="
+                                                                        margin-top: 25px;
+                                                                        margin-left: 20px;
+                                                                    ">
+                                                                    How do you
+                                                                    want to
+                                                                    repeat this
+                                                                    time table:
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="form-group">
+                                                                <form class="product__options">
+                                                                    <div class="form-group product__option">
+                                                                        <label class="product__option-label"></label>
+                                                                        <div class="input-radio-color">
+                                                                            <div class="input-radio-color__list">
+                                                                                <div class="col-md-4">
+                                                                                    <div class="row">
+                                                                                        <div class="col-2">
+                                                                                            <label
+                                                                                                class="input-radio-color__item"
+                                                                                                style="
+                                                                                                    color: #ffd333;
+                                                                                                " data-toggle="tooltip"
+                                                                                                title="Yellow">
+                                                                                                <input type="radio"
+                                                                                                    name="color"
+                                                                                                    id="rbtyes"
+                                                                                                    value="yes"
+                                                                                                    [(ngModel)]="
+                                                                                                        rdbrepeat
+                                                                                                    " (click)="
+                                                                                                        regulardateblock()
+                                                                                                    " />
+                                                                                                <span></span>
+                                                                                            </label>
+                                                                                        </div>
+                                                                                        <div class="col-8">
+                                                                                            <label class="spantop">
+                                                                                                <span>7
+                                                                                                    Days
+                                                                                                    of
+                                                                                                    the
+                                                                                                    week</span>
+                                                                                            </label>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-4">
+                                                                                    <div class="row">
+                                                                                        <div class="col-2">
+                                                                                            <label
+                                                                                                class="input-radio-color__item"
+                                                                                                style="
+                                                                                                    color: #ffd333;
+                                                                                                " data-toggle="tooltip"
+                                                                                                title="Red">
+                                                                                                <input type="radio"
+                                                                                                    name="color"
+                                                                                                    id="rbtno"
+                                                                                                    value="custom"
+                                                                                                    [(ngModel)]="
+                                                                                                        rdbrepeat
+                                                                                                    " (click)="
+                                                                                                        clickfulldates()
+                                                                                                    " />
+                                                                                                <span></span>
+                                                                                            </label>
+                                                                                        </div>
+                                                                                        <div class="col-8">
+                                                                                            <label class="spantop">
+                                                                                                <span>Custom
+                                                                                                    Days</span>
+                                                                                            </label>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-4">
+                                                                                    <div class="row">
+                                                                                        <div class="col-2">
+                                                                                            <label
+                                                                                                class="input-radio-color__item"
+                                                                                                style="
+                                                                                                    color: #ffd333;
+                                                                                                " data-toggle="tooltip"
+                                                                                                title="Red">
+                                                                                                <input type="radio"
+                                                                                                    name="color"
+                                                                                                    id="rbtno"
+                                                                                                    value="no"
+                                                                                                    [(ngModel)]="
+                                                                                                        rdbrepeat
+                                                                                                    " (click)="
+                                                                                                        customdateblock()
+                                                                                                    " />
+                                                                                                <span></span>
+                                                                                            </label>
+                                                                                        </div>
+                                                                                        <div class="col-8">
+                                                                                            <label class="spantop">
+                                                                                                <span>Advanced
+                                                                                                    Date
+                                                                                                    Configuration</span>
+                                                                                            </label>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span id="rbtnmsg"></span>
+
+                                                    <form>
+                                                        <div class="col-lg-12 col-lg-12 col-xl-12" [ngStyle]="{
+                                                                display: regulardateblockdisplay
+                                                            }">
+                                                            <form [formGroup]="
+                                                                    singlevehicleForm
+                                                                ">
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-md-4">
+                                                                        <label>Parking
+                                                                            session
+                                                                            valid
+                                                                            from:</label>
+                                                                        <input class="form-control" [bsValue]="
+                                                                                bsValue
+                                                                            " [minDate]="
+                                                                                mindate
+                                                                            " [maxDate]="
+                                                                                maxDate
+                                                                            " type="text" bsDatepicker [bsConfig]="{
+                                                                                dateInputFormat:
+                                                                                    'DD/MM/YYYY'
+                                                                            }" class="form-control" [(ngModel)]="
+                                                                                multiplevehiclefromdate
+                                                                            " placeholder="Click here to select date"
+                                                                            [ngModelOptions]="{
+                                                                                standalone: true
+                                                                            }" />
+                                                                    </div>
+                                                                    <div class="form-group col-md-4">
+                                                                        <label>Parking
+                                                                            session
+                                                                            valid
+                                                                            to</label>
+                                                                        <input class="form-control" [bsValue]="
+                                                                                bsValue
+                                                                            " [minDate]="
+                                                                                mindate
+                                                                            " [maxDate]="
+                                                                                maxDate
+                                                                            " type="text" bsDatepicker [bsConfig]="{
+                                                                                dateInputFormat:
+                                                                                    'DD/MM/YYYY'
+                                                                            }" class="form-control" [(ngModel)]="
+                                                                                multiplevehicltodate
+                                                                            " placeholder="Click here to select date"
+                                                                            [ngModelOptions]="{
+                                                                                standalone: true
+                                                                            }" />
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </form>
+                                                    <div class="text-center" style="margin-top: 15px" [ngStyle]="{
+                                                            display: customdateblockdisplay
+                                                        }">
+                                                        <p>
+                                                            Select all the dates
+                                                            you want this
+                                                            schedule to be
+                                                            applied to.
+                                                        </p>
+                                                        <bs-datepicker-inline [minDate]="mindate" [maxDate]="maxDate"
+                                                            [dateCustomClasses]="
+                                                                selectedClass1
+                                                            " [datesDisabled]="
+                                                                datedisable
+                                                            " (bsValueChange)="
+                                                                onValueChange(
+                                                                    $event
+                                                                )
+                                                            ">
+                                                        </bs-datepicker-inline>
+                                                        <p class="p-date">
+                                                            Your selected date
+                                                            should be between -
+                                                            {{
+                                                            mindate
+                                                            | date
+                                                            : "dd/MM/yyyy"
+                                                            }}
+                                                            and
+                                                            {{
+                                                            maxDate
+                                                            | date
+                                                            : "dd/MM/yyyy"
+                                                            }}
+                                                        </p>
+
+                                                        <!-- <pre class="mt-3">
+                                            {{dateSelected|json}}
+                                            </pre> -->
+
+                                                        <!-- <ngx-date-picker ></ngx-date-picker> -->
+                                                    </div>
+                                                    <div [ngStyle]="{
+                                                            display: custommuldisaply
+                                                        }">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group row">
+                                                                <div class="form-check" style="
+                                                                        margin-left: 15px;
+                                                                    ">
+                                                                    <span class="form-check-input input-check">
+                                                                        <span class="input-check__body">
+                                                                            <input class="input-check__input"
+                                                                                type="checkbox" id="chkmonday" (change)="
+                                                                                    checkuncheckweeknames(
+                                                                                        'mon'
+                                                                                    )
+                                                                                " />
+                                                                            <span class="input-check__box"></span>
+                                                                        </span>
+                                                                    </span>
+                                                                    <label class="form-check-label"
+                                                                        for="chkmonday">Mon</label>
+                                                                </div>
+                                                                <div class="form-check" style="
+                                                                        margin-left: 15px;
+                                                                    ">
+                                                                    <span class="form-check-input input-check">
+                                                                        <span class="input-check__body">
+                                                                            <input class="input-check__input"
+                                                                                type="checkbox" id="chktuesday"
+                                                                                (change)="
+                                                                                    checkuncheckweeknames(
+                                                                                        'tue'
+                                                                                    )
+                                                                                " />
+                                                                            <span class="input-check__box"></span>
+                                                                        </span>
+                                                                    </span>
+                                                                    <label class="form-check-label"
+                                                                        for="chktuesday">Tue</label>
+                                                                </div>
+                                                                <div class="form-check" style="
+                                                                        margin-left: 15px;
+                                                                    ">
+                                                                    <span class="form-check-input input-check">
+                                                                        <span class="input-check__body">
+                                                                            <input class="input-check__input"
+                                                                                type="checkbox" id="chkwedday" (change)="
+                                                                                    checkuncheckweeknames(
+                                                                                        'wed'
+                                                                                    )
+                                                                                " />
+                                                                            <span class="input-check__box"></span>
+                                                                        </span>
+                                                                    </span>
+                                                                    <label class="form-check-label"
+                                                                        for="chkwedday">Wed</label>
+                                                                </div>
+                                                                <div class="form-check" style="
+                                                                        margin-left: 15px;
+                                                                    ">
+                                                                    <span class="form-check-input input-check">
+                                                                        <span class="input-check__body">
+                                                                            <input class="input-check__input"
+                                                                                type="checkbox" id="chckthur" (change)="
+                                                                                    checkuncheckweeknames(
+                                                                                        'thu'
+                                                                                    )
+                                                                                " />
+                                                                            <span class="input-check__box"></span>
+                                                                        </span>
+                                                                    </span>
+                                                                    <label class="form-check-label"
+                                                                        for="chckthur">Thu</label>
+                                                                </div>
+                                                                <div class="form-check" style="
+                                                                        margin-left: 15px;
+                                                                    ">
+                                                                    <span class="form-check-input input-check">
+                                                                        <span class="input-check__body">
+                                                                            <input class="input-check__input"
+                                                                                type="checkbox" id="chkfri" (change)="
+                                                                                    checkuncheckweeknames(
+                                                                                        'fri'
+                                                                                    )
+                                                                                " />
+                                                                            <span class="input-check__box"></span>
+                                                                        </span>
+                                                                    </span>
+                                                                    <label class="form-check-label"
+                                                                        for="chkfri">Fri</label>
+                                                                </div>
+                                                                <div class="form-check" style="
+                                                                        margin-left: 15px;
+                                                                    ">
+                                                                    <span class="form-check-input input-check">
+                                                                        <span class="input-check__body">
+                                                                            <input class="input-check__input"
+                                                                                type="checkbox" id="chksat" (change)="
+                                                                                    checkuncheckweeknames(
+                                                                                        'sat'
+                                                                                    )
+                                                                                " />
+                                                                            <span class="input-check__box"></span>
+                                                                        </span>
+                                                                    </span>
+                                                                    <label class="form-check-label"
+                                                                        for="chksat">Sat</label>
+                                                                </div>
+                                                                <div class="form-check" style="
+                                                                        margin-left: 15px;
+                                                                    ">
+                                                                    <span class="form-check-input input-check">
+                                                                        <span class="input-check__body">
+                                                                            <input class="input-check__input"
+                                                                                type="checkbox" id="chksun" (change)="
+                                                                                    checkuncheckweeknames(
+                                                                                        'sun'
+                                                                                    )
+                                                                                " />
+                                                                            <span class="input-check__box"></span>
+                                                                        </span>
+                                                                    </span>
+                                                                    <label class="form-check-label"
+                                                                        for="chksun">Sun</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-row" style="
+                                                                margin-left: 15px;
+                                                            ">
+                                                            <div class="form-group col-md-4">
+                                                                <label>Parking
+                                                                    session
+                                                                    valid
+                                                                    from:</label>
+                                                                <input class="form-control" [minDate]="
+                                                                        mindate
+                                                                    " [maxDate]="
+                                                                        maxDate
+                                                                    " type="text" bsDatepicker class="form-control"
+                                                                    [bsConfig]="{
+                                                                        dateInputFormat:
+                                                                            'DD/MM/YYYY'
+                                                                    }" [(ngModel)]="
+                                                                        weekbasedfromdate
+                                                                    " placeholder="Click here to select date"
+                                                                    [ngModelOptions]="{
+                                                                        standalone: true
+                                                                    }" />
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label>Parking
+                                                                    session
+                                                                    valid
+                                                                    to</label>
+                                                                <input class="form-control" [minDate]="
+                                                                        mindate
+                                                                    " [maxDate]="
+                                                                        maxDate
+                                                                    " type="text" bsDatepicker class="form-control"
+                                                                    [bsConfig]="{
+                                                                        dateInputFormat:
+                                                                            'DD/MM/YYYY'
+                                                                    }" [(ngModel)]="
+                                                                        weekbasedtodate
+                                                                    " placeholder="Click here to select date"
+                                                                    [ngModelOptions]="{
+                                                                        standalone: true
+                                                                    }" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="text-center" style="
+                                                            margin-bottom: 10px;
+                                                        ">
+                                                        <span style="
+                                                                margin-top: 5px;
+                                                            " id="multivalidate"></span>
+
+                                                        <button type="submit"
+                                                            class="btn btn-primary mt-2 mt-md-3 mt-lg-4" (click)="
+                                                                savemultiplevehicle()
+                                                            ">
+                                                            Save
+                                                        </button>
+                                                        <!-- <button
+                                                            type="submit"
+                                                            *ngIf="
+                                                                vehiclemultiplelist ==
+                                                                1
+                                                            "
+                                                            class="btn btn-primary mt-2 mt-md-3 mt-lg-4"
+                                                            (click)="
+                                                                openmultpleModal(
+                                                                    template1,
+                                                                    '1'
+                                                                )
+                                                            "
+                                                        >
+                                                            Save changes
+                                                        </button> -->
+                                                        <!-- <button type="submit"
+                                                class="btn btn-primary mt-2 mt-md-3 mt-lg-4"
+                                                (click)="mindateselection()">Testing</button> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #template>
+    <div class="modal-body text-center" style="padding: 1.75rem; position: relative; flex: 1 1 auto">
+        <h6 class="modal-title mb-4">
+            You have made changes to the parking schedule, new changes will be
+            applied for the selected dates.
+        </h6>
+        <button type="button" class="btn btn-primary" (click)="editsinglemultiple()">
+            Proceed
+        </button>
+        {{ " " }}
+        <button type="button" class="btn btn-primary" (click)="decline()">
+            Cancel
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #template1 style="width: 100%">
+    <div class="modal-body text-center" style="padding: 1.75rem; position: relative; flex: 1 1 auto">
+        <h6 class="modal-title mb-4">
+            You have made changes to the parking schedule, new changes will be
+            applied for the selected dates.
+        </h6>
+        <button type="button" class="btn btn-primary" (click)="editmultipletomultiple()">
+            Proceed
+        </button>
+        {{ " " }}
+        <button type="button" class="btn btn-primary" (click)="declinemutliple()">
+            Cancel
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #template2>
+    <div class="modal-body text-center" style="padding: 1.75rem; position: relative; flex: 1 1 auto">
+        <h6 class="modal-title mb-4">
+            You have not configured the parking schedule for this date, If you
+            want to create a new schedule click on proceed below.
+        </h6>
+        <button type="button" class="btn btn-primary" (click)="movetoaddmode()">
+            Proceed
+        </button>
+        {{ " " }}
+        <button type="button" class="btn btn-primary" (click)="declinemutlipledateset()">
+            Cancel
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #template3>
+    <div class="modal-body text-center" style="padding: 1.75rem; position: relative; flex: 1 1 auto">
+        <h6 class="modal-title mb-4">
+            All data will be lost, are you sure you want to continue? .
+        </h6>
+
+        <button type="button" class="btn btn-primary" (click)="editmultipletomultiple()">
+            Continue
+        </button>
+
+        <button style="margin-left: 5px" type="button" class="btn btn-primary" (click)="declinesavecheck()">
+            Cancel
+        </button>
+    </div>
+</ng-template>
+<ng-template #template4>
+    <div class="modal-body text-center" style="padding: 1.75rem;
+    position: relative;
+    flex: 1 1 auto;">
+        <h6 class="modal-title mb-4">Do you want to proceed with delete the current configuration ?.</h6>
+        <button type="button" class="btn btn-outline-primary" (click)="confirmdeletevehicle()">Yes</button>
+
+        <button type="button" class="btn btn-primary ml-2" (click)="declinedeletevehicle()">No</button>
+    </div>
+</ng-template>
+
+<!-- <div class="codepen-wrapper">
+    <span class="registration-ui">N606 GUR</span>
+  </div> -->
+
+<!-- <button type="button" class="btn btn-primary" (click)="getlistbyweekname()">datelist</button> -->
+
+<!-- grid data -->
+<div class="block" id="parkingsession">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 d-flex loginform">
+                <div class="card flex-grow-1 mb-md-0">
+                    <div class="card-body">
+                        <div class="row">
+                            <h5> Parking Sessions</h5>
+
+                        </div>
+                        <div class="card flex-grow-1 mb-md-0" style="width: 30%;">
+                            <div class="card-body">
+                                <div class="row">
+                                    <h5>Car Park Name & Address</h5>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+
+                                        <span>
+                                            {{sitename}}
+
+                                        </span><br>
+                                        <span>
+                                            {{siteaddress}}
+                                        </span><br>
+                                        <span>
+                                            {{sitecity}}
+                                        </span><br>
+                                        <span>
+                                            {{sitestate}}
+                                        </span><br>
+                                        <span>
+                                            {{sitezipcode}}
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row" style="margin-top: 65px;height:400px;overflow-y: scroll;"
+                            id="parkingsessionsi">
+                            <div class="col-md-12">
+                                <table class="table table-responsive-md table-bordered table-stripped">
+                                    <thead>
+                                        <tr>
+                                            <th>Bay Name</th>
+                                            <th>VRM No</th>
+                                            <th>Start Date</th>
+                                            <th>End Date</th>
+                                            <th>Action</th>
+                                            <!-- <th>Cancel</th> -->
+                                        </tr>
+                                    </thead>
+                                    <thead>
+                                        <tr *ngFor="let visitorparking of visitorparkings">
+                                            <td>{{visitorparking.bayName}}</td>
+                                            <td>{{visitorparking.vrm}}</td>
+                                            <td>{{visitorparking.startdate | date: 'dd/MM/yyyy hh:mm'}}</td>
+                                            <td>{{visitorparking.endate | date: 'dd/MM/yyyy hh:mm'}}</td>
+                                            <td>
+                                                <a href="javascript::" (click)="EditVehicle(visitorparking)"><i
+                                                        class="fa fa-edit"></i></a>
+                                                <a href="javascript::" (click)=openModalManage(template4,visitorparking)
+                                                    style="margin-left: 10px;"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                            <!-- <td><button class="btn btn-primary" (click)=openModal(template,visitorparking.id)>Cancel</button></td> -->
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body" id="messagediv">
+                        <p>You have no parking sessions configured, to configure your first parking session please
+                            select the parking bay from the list above.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

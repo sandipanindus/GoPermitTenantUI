@@ -1,0 +1,126 @@
+.customCard {
+    border: 1px solid #eee;
+    padding: 1%;
+    margin-left: 30px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    border-radius: 10px;
+    display: flex;
+}
+
+.customCard >ul {
+    list-style-type: none;
+    display: inline-block;
+}
+.datedivcls{
+    display: inline-block;width: 230px;text-align: center;
+}
+.subjectdiv{
+    display: inline-block; text-align: center;
+}
+.datedivcls >ul{
+    list-style-type: none;
+}
+.subjectdiv >ul{
+    list-style-type: none;
+}
+.licls{
+    margin-bottom: 10px;
+}
+::-webkit-scrollbar {
+    width: 12px;
+    height: 8px;
+}
+::-webkit-scrollbar-thumb {
+    height: 4px;
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+}
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+.inputsearchcls{
+    border-radius: 100px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 8%;
+    padding-left: 20px;
+}
+.arrow-icon{
+    margin-top: -40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 43px;
+    height: 43px;
+    color: #ffd333;
+    font-size: 24px;
+    background-clip: padding-box;
+    border: 1px solid var(--text-color-level3, rgba(77, 80, 85, 0.1));
+    border-radius: 50%;
+
+    margin-bottom: 24px;
+}
+.cancls{
+    margin-left: 10px;
+ }
+.newbtncls{
+    float: right;
+     margin-top: -25px;
+}
+ .issuecls{
+    margin-top: 0px;
+     margin-bottom: 0px;
+     height: 153px;
+}
+.subjectcls{
+    display: none;
+    margin-left: 50px;
+}
+.responsereplycls{
+display: none;overflow-y: scroll;height: 510px;
+}
+.responsedivcls{
+ float: right; border-radius: .75rem;
+}
+.cardcls{
+    padding-left: 1.75rem;
+}
+.respcls{
+    font-size: 1.2rem;
+    line-height: 1.3rem;
+    font-family: Nunito,sans-serif;
+}
+.response_issue{
+    padding-top: 10px;
+
+}
+.reply_issue{
+     padding-top: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .respcls{
+        font-size: 1rem;
+        line-height: 1.4rem;
+        font-family: Nunito,sans-serif;
+    }
+  }
+
+
+ textarea {
+    outline: none;
+    box-shadow:none !important;
+    border:1px solid #ccc !important;
+  }
+  textarea:focus:invalid {
+    outline: none;
+    box-shadow:none !important;
+    border:1px solid #ccc !important;
+  }

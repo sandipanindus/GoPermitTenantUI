@@ -1,0 +1,39 @@
+<!-- <app-page-header [header]="'My Account'" [breadcrumbs]="[
+    {label: 'Home',       url: '/'},
+    {label: 'My Account', url: ''}
+]"></app-page-header> -->
+
+
+<div class="fixed-background"></div>
+<div class="block">
+    <div class="container">
+        <div class="row h-100">
+           
+                <div class="card auth-card">
+                 
+                    <div class="paddings" style="width: 100% !important;padding:80px;">
+                        <a class="c-pointer">
+                           
+                        </a>
+                        <div class="text-center" style="background: initial !important;">
+                            <h1 class="display-3">Thank You!</h1>
+                            <p class="lead">{{success1}}</p>
+                            <p class="lead"><strong>{{success2}}</strong> {{success3}}</p>
+                            <hr>
+                            <p>
+                                Having trouble? <a href="">Contact us</a>
+                            </p>
+                            <p class="lead">
+                                <button Class="btn btn-primary btn-lg btn-shadow" routerLink="/account/login"
+                                    [routerLinkActive]="['routerLinkActive']">
+                                    Login
+                                </button>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+           
+        </div>
+    </div>
+</div>

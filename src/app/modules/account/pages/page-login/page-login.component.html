@@ -1,0 +1,82 @@
+<!-- <app-page-header [header]="'My Account'" [breadcrumbs]="[
+    {label: 'Home',       url: '/'},
+    {label: 'My Account', url: ''}
+]"></app-page-header> -->
+<div class="fixed-background"></div>
+<div class="block">
+    <div class="container" style="margin-top: 35px;">
+        <div class="row h-100">
+            <div class="col-12 col-md-10 mx-auto my-auto">
+                <div class="card auth-card auth-cardst auth-card-0">
+                    <div class="login-container">
+                        
+
+
+                        <div class="loading" style="display: none;" id="loading"></div>
+                        <form [formGroup]="Loginfrom"  class="form-0">
+                            <div class="form-group row">
+                                <div style="margin: 0 auto;">
+                                  <!-- <div style="margin-left: -60px;
+                              margin-top: -60px;" class="logost"> -->
+                                      <a >
+                                          <img src="assets/images/logo/Logo.png" 
+                                              class="logoimgst" />
+                                      </a>
+                                  
+                                  <!-- <div style="margin-left: 290px;
+                              margin-top: -65px;" class="efsst"> -->
+                                      
+                                  
+                              </div>
+                              <!-- <div class="col-md-6 col-xs-6 col-6" style="float:right">
+                                  <a class="logo-park">
+                                      <img src="assets/images/logo/EPS.png" style="height:65px" class="efsimgst" />
+                                  </a>
+                              </div> -->
+                              </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label" style="font-size:0.9rem">Email</label>
+                                <div class="col-sm-10 email_st">
+                                    <input type="email" class="form-control" placeholder="Email"
+                                        [(ngModel)]="SignInEmail" formControlName="Lemail"
+                                        [ngClass]="{'is-invalid': loginsubmitted && f.Lemail.errors }">
+                                    <div *ngIf="loginsubmitted && f.Lemail.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Lemail.errors.required" style="color: #ffd333;">Email required
+                                        </div>
+                                        <div *ngIf="f.Lemail.errors.email" style="color: #ffd333;">Email must be a
+                                            valid email address</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-form-label" style="font-size:0.9rem">Password</label>
+                                <div class="col-sm-10 password_st">
+                                    <input type="password" class="form-control" [(ngModel)]="SignInPassword"
+                                        placeholder="Password" formControlName="Lpass"
+                                        [ngClass]="{'is-invalid': loginsubmitted && f.Lpass.errors}">
+
+                                    <div *ngIf="loginsubmitted && f.Lpass.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Lpass.errors.required" style="color: #ffd333">Password
+                                            required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a routerLink="/account/forgetpassword" class="anchst" style="font-size:0.9rem;color: #3a3a3a;
+                                transition: color 200ms !important;
+                                outline: initial !important;">Forget Password?</a>
+                                <button Class="btn btn-primary btn-lg btn-shadow btnst" (click)="login()">
+                                    Login
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

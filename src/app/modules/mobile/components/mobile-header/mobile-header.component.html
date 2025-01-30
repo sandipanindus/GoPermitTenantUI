@@ -1,0 +1,53 @@
+<div class="mobile-header" [ngClass]="{'mobile-header--sticky': stickyMode}" #element>
+    <div class="mobile-header__panel" #panelElement>
+        <div class="container">
+            <div class="mobile-header__body" style="display: block;" id="mobilediv">
+                <button class="mobile-header__menu-button" (click)="menu.open()">
+                    <app-icon name="menu-18x14" size="18x14" style="margin-top: 15px !important;"></app-icon>
+                </button>
+                <a class="mobile-header__logo" href="javascript::">
+                    
+                        <img src="assets/images/logo/Logo.png" class="img" /> 
+                    
+                </a>
+
+                <app-search
+                    appDropdown="mobile-header__search--open"
+                    class="mobile-header__search"
+                    location="mobile-header"
+                    (closeButtonClick)="searchDropdown.close()"
+                    #search="search"
+                    #searchDropdown="appDropdown"
+                ></app-search>
+
+                <div class="mobile-header__indicators" style="display: none;">
+                    <div class="indicator indicator--mobile-search indicator--mobile d-md-none">
+                        <button class="indicator__button" (click)="searchDropdown.open(); search.inputElement.focus()">
+                            <span class="indicator__area">
+                                <app-icon name="search-20" size="20" ></app-icon>
+                            </span>
+                        </button>
+                    </div>
+
+                    <div class="indicator indicator--mobile d-sm-flex d-none" style="display: none;">
+                        <a routerLink="/wishlist" class="indicator__button">
+                            <span class="indicator__area">
+                                <app-icon name="heart-20" size="20"></app-icon>
+                                <span class="indicator__value">{{ wishlist.count$|async }}</span>
+                            </span>
+                        </a>
+                    </div>
+
+                    <div class="indicator indicator--mobile" style="display: none;">
+                        <a routerLink="/cart" class="indicator__button">
+                            <span class="indicator__area">
+                                <app-icon name="cart-20" size="20"></app-icon>
+                                <span class="indicator__value">{{ cart.quantity$|async }}</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
