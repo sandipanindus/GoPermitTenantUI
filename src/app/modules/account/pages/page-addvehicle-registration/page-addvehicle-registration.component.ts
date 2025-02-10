@@ -12,20 +12,19 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker'
 import { IfStmt } from '@angular/compiler';
 import { ChangeDetectorRef } from '@angular/core';
 
-
 let moment = _moment;
 
 if ('default' in _moment) {
   moment = _moment['default'];
 }
+
 @Component({
-  selector: 'app-page-vehicle-registration',
-  templateUrl: './page-vehicle-registration.component.html',
-  styleUrls: ['./page-vehicle-registration.component.scss'],
-  // encapsulation: ViewEncapsulation.None
+  selector: 'app-page-addvehicle-registration',
+  templateUrl: './page-addvehicle-registration.component.html',
+  styleUrls: ['./page-addvehicle-registration.component.scss'],
   providers: [DatePipe]
 })
-export class PageVehicleRegistrationComponent implements OnInit {
+export class PageAddvehicleRegistrationComponent implements OnInit {
   public isFromGrid: boolean = false;
   public gridEditedObject: any;
   @ViewChild('template2') template2: TemplateRef<any>;
@@ -804,6 +803,11 @@ export class PageVehicleRegistrationComponent implements OnInit {
   //selected bay having records or not
   isrecordsexisted = true
 
+
+  getvehicledetails2(dateFormat: any) {
+    debugger
+    this.route.navigateByUrl('/account/DaySelection');
+  }
   //This param is is used only on edit from grid ..............else the param can be undefined or null 
   getvehicledetails(dateFormat: any) {
     debugger
@@ -1026,8 +1030,6 @@ export class PageVehicleRegistrationComponent implements OnInit {
     // }, 2000);
 
   }
-
-  
   infoexp
   /**
    * binding shedule dates vise click on date
@@ -1684,6 +1686,8 @@ export class PageVehicleRegistrationComponent implements OnInit {
     this.customdateblockdisplay = "none"
 
   }
+
+
   configurebasedonNo() {
     debugger
 
@@ -1706,13 +1710,6 @@ export class PageVehicleRegistrationComponent implements OnInit {
     }
     console.log("count", this.iterations)
   }
-
-
-
-
-
-
-
 
   regulardateblockdisplay = 'none'
   customdateblockdisplay = 'none'
@@ -2147,11 +2144,9 @@ export class PageVehicleRegistrationComponent implements OnInit {
 
 
     });
-
-
-
-
   }
+
+
   startTime(tempDate) {
 
     var h = checkTime(tempDate.getHours()),

@@ -19,14 +19,14 @@
 }
 .site-header__logo {
     flex-shrink: 0;
-    width: 255px;
+    width: 230px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: $header-logo-color;
 
     @include direction {
-        #{$margin-inline-end}: 30px;
+        #{$margin-inline-end}: 10px;
     }
 
     a {

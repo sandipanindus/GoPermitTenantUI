@@ -41,6 +41,7 @@ export class PageCategoryComponent implements OnDestroy {
             this.breadcrumbs = [
                 {label: 'Home', url: this.root.home()},
                 {label: 'Shop', url: this.root.shop()},
+                
             ];
 
             // If categorySlug is undefined then this is a root catalog page.

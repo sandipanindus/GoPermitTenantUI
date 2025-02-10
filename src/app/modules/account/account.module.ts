@@ -52,6 +52,9 @@ import { PagesVisitorConfirmComponent } from './pages/pages-visitor-confirm/page
 import { TooltipModule } from 'ng2-tooltip-directive';
 
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { PageAddvehicleRegistrationComponent } from './pages/page-addvehicle-registration/page-addvehicle-registration.component';
+import { PageAddVisitorRegistrationComponent } from './pages/page-add-visitor-registration/page-add-visitor-registration.component';
+import { CalenderManageParkingComponent } from './pages/calender-manage-parking/calender-manage-parking.component';
 @NgModule({
     declarations: [
         // components
@@ -77,7 +80,10 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
         PagesForgetpasswordComponent,
         PagesResetpasswordComponent,
         PageVisitorparkingAppointComponent,
-        PagesVisitorConfirmComponent
+        PagesVisitorConfirmComponent,
+        PageAddvehicleRegistrationComponent,
+        PageAddVisitorRegistrationComponent,
+        CalenderManageParkingComponent
     ],
     imports: [
         DatepickerModule,

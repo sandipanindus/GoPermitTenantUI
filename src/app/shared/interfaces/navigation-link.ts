@@ -4,4 +4,5 @@ import { Megamenu } from './megamenu';
 
 export interface NavigationLink extends Link {
     menu?: Menu|Megamenu;
+    icon?: string;
 }

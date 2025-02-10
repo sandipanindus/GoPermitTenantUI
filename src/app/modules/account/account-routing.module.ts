@@ -21,6 +21,9 @@ import { PagesForgetpasswordComponent } from './pages/pages-forgetpassword/pages
 import { PagesResetpasswordComponent } from './pages/pages-resetpassword/pages-resetpassword.component';
 import { PageVisitorparkingAppointComponent } from './pages/page-visitorparking-appoint/page-visitorparking-appoint.component';
 import { PagesVisitorConfirmComponent } from './pages/pages-visitor-confirm/pages-visitor-confirm.component';
+import { PageAddvehicleRegistrationComponent } from './pages/page-addvehicle-registration/page-addvehicle-registration.component';
+import { PageAddVisitorRegistrationComponent } from './pages/page-add-visitor-registration/page-add-visitor-registration.component';
+import { CalenderManageParkingComponent } from './pages/calender-manage-parking/calender-manage-parking.component';
 
 const routes: Routes = [
     {
@@ -111,7 +114,17 @@ const routes: Routes = [
             },{
                 path:'visitorconfirm',
                 component:PagesVisitorConfirmComponent
+            },{
+                path:'AddVehicleRegistration',
+                component:PageAddvehicleRegistrationComponent
+            },{
+                path:'AddVisitorRegistration',
+                component:PageAddVisitorRegistrationComponent
+            },{
+                path:'DaySelection',
+                component:CalenderManageParkingComponent
             }
+
         ]
     },
     {

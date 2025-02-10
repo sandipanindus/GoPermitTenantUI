@@ -5,4 +5,5 @@ export interface Megamenu {
     size: 'xl'|'lg'|'nl'|'sm';
     image?: string;
     columns: MegamenuColumn[];
+   
 }

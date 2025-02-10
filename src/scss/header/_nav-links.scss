@@ -31,6 +31,7 @@ $item-padding: 14px;
     list-style: none;
     padding: 0;
     margin: 0;
+    flex-direction: row;
 }
 .nav-links__item {
     height: 100%;
@@ -55,7 +56,7 @@ $item-padding: 14px;
     background: transparent;
     transition: background-color .2s;
     padding: 0 $item-padding;
-    height: $nav-links-item-height;
+    height: 44px;
     border-radius: $nav-links-item-border-radius;
     background: $nav-links-item-default-bg;
     box-shadow: $nav-links-item-default-shadow;
@@ -106,7 +107,7 @@ $item-padding: 14px;
     transform-origin: top;
     z-index: 100;
     display: none;
-
+    left:-40%;
     app-header-menu,
     app-header-megamenu {
         display: flex;

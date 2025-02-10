@@ -3,7 +3,7 @@
     [ngClass]="{'nav-panel--sticky': stickyMode}"
     #element
 >
-    <div class="nav-panel__container container">
+    <div class="nav-panel__container">
         <div class="nav-panel__row">
             <div *ngIf="logo" class="nav-panel__logo">
                 <a [routerLink]="root.home()">
@@ -34,6 +34,7 @@
             </div> -->
 
             <!-- .nav-links -->
+             
             <app-header-links class="nav-panel__nav-links nav-links"  style="display: block;"></app-header-links>
             <!-- .nav-links / end -->
 

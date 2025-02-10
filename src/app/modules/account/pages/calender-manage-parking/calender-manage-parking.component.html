@@ -1,0 +1,34 @@
+<div class="text-center" style="margin-top: 0px" >
+    <div class="dashboard__orders card bo1" style="overflow: auto">
+        <!-- <div class="card-header">
+        <h5></h5>
+    </div> -->
+        <div class="card-divider"></div>
+        <div class="card-table">
+            <div class="table-responsive-sm">
+                <p style="color: #063298">
+                    Dates in Blue are the dates
+                    you have created parking
+                    session
+                </p>
+                <bs-datepicker-inline [minDate]="mindate" [maxDate]="maxDate"
+                    [dateCustomClasses]="
+                        selectedClass
+                    " [bsValue]="dateSelected" (bsValueChange)="
+                        onbaynoset($event)
+                    ">
+                </bs-datepicker-inline>
+                <p class="mt-1" >
+          
+                </p>
+                <div>
+            <div style="margin-left: 480px;">
+                <button style="margin-left:480px;" class="ml-1 btn btn-primary rounded-pill" (click)="back()">
+                    Back
+                </button>
+            </div>
+
+            </div>
+        </div>
+    </div>
+</div>

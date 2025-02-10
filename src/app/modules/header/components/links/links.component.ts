@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, ElementRef, NgZone, OnDestroy, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, HostListener, NgZone, OnDestroy, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { navigation } from '../../../../../data/header-navigation';
 import { NavigationLink } from '../../../../shared/interfaces/navigation-link';
 import { DirectionService } from '../../../../shared/services/direction.service';
@@ -165,10 +165,34 @@ export class LinksComponent implements OnInit, OnDestroy, AfterViewChecked {
         }
         //window.location.href='http://localhost:4800/#/account/'+nav;
     }
+
+    
+    movetohome()
+    {
+        this.route.navigateByUrl('/account/dashboard');
+    }
+
     Logout()
     {
         debugger
         localStorage.clear()
         this.route.navigateByUrl('/account/login');
     }
+
+    dropdownOpen = false;
+
+    toggleDropdown(event: Event) {
+        event.stopPropagation(); // Prevent click event from propagating to document
+        this.dropdownOpen = !this.dropdownOpen;
+    }
+
+    // Close dropdown when clicking outside
+    @HostListener('document:click', ['$event'])
+    onClickOutside(event: Event) {
+        const dropdown = document.querySelector('.nav-links__item');
+        if (dropdown && !dropdown.contains(event.target as Node)) {
+            this.dropdownOpen = false; // Close the dropdown when clicking outside
+        }
+    }
+
 }

@@ -37,6 +37,7 @@ import { TopbarComponent } from './components/topbar/topbar.component';
         // modules (angular)
         CommonModule,
         RouterModule,
+        
         // modules
         SharedModule
     ],

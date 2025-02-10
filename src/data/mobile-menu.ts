@@ -2,14 +2,21 @@ import { MobileMenuItem } from '../app/shared/interfaces/mobile-menu-item';
 
 export const mobileMenu: MobileMenuItem[] = [
 
-    {type: 'link',label: 'Home', url: '/account/dashboard'},
-    {type: 'link',label: 'Manage Parking', url: '/account/VehicleRegistration'},
-    {type: 'link',label: 'Visitor Parking', url: '/account/VisitorParking'},
+   {type: 'link',label: 'Home', url: '/account/dashboard'},
+    {type: 'button',label: 'Manage Parking',  children:[
+        { type:'link', label: 'Create Session', url: '/account/AddVehicleRegistration' },
+        { type:'link',label: 'Manage Parking', url: '/account/VehicleRegistration'}
+    ]},
+    {type: 'button',label: 'Visitor Parking',  children:[
+        { type:'link', label: 'Create Visitor Session', url: '/account/AddVisitorRegistration' },
+        { type:'link',label: 'Manage Visitor Parking', url: '/account/VisitorParking'}
+    ]},
+    // {type: 'link',label: 'Visitor Parking', url: '/account/VisitorParking'},
     {type: 'link',label: 'Support Page', url: '/account/Support'},
     {type: 'link',label: 'Change Password', url: '/account/password'},
     {type: 'link',label: 'Logout', url: '/account/login'},
     
-    // {type: 'link', label: 'Home', url: '/', children: [
+    // {type: 'button', label: 'Home',  children: [
     //     {type: 'link', label: 'Home 1', url: '/'},
     //     {type: 'link', label: 'Home 2', url: '/home-two'},
     //     {type: 'link', label: 'Offcanvas Cart', url: '/offcanvas-cart'}
