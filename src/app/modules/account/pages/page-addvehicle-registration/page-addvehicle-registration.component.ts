@@ -65,6 +65,7 @@ export class PageAddvehicleRegistrationComponent implements OnInit {
 
   ]
   bayconfigstyle = "none"
+  showLoc:boolean=true
   mindate;
   maxDate;
   bsValue = new Date();
@@ -93,6 +94,8 @@ export class PageAddvehicleRegistrationComponent implements OnInit {
   getDateItem(date: Date): string {
     return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
   }
+
+
   onbaynoset(event) {
     debugger
     this.loader = true
@@ -524,7 +527,7 @@ export class PageAddvehicleRegistrationComponent implements OnInit {
 
   }
   onValueChange1(event) {
-
+      debugger
     if (event.length === undefined) {
       const date = this.getDateItem(event);
 
@@ -806,8 +809,9 @@ export class PageAddvehicleRegistrationComponent implements OnInit {
 
   getvehicledetails2(dateFormat: any) {
     debugger
-    this.route.navigateByUrl('/account/DaySelection');
-  }
+    localStorage.setItem('baynobj',JSON.stringify(this.baynobj));
+    this.route.navigate(['/account/DaySelection', this.tenentid.toString(), this.baynobj.bayNo.toString()]);
+    }
   //This param is is used only on edit from grid ..............else the param can be undefined or null 
   getvehicledetails(dateFormat: any) {
     debugger
@@ -816,10 +820,9 @@ export class PageAddvehicleRegistrationComponent implements OnInit {
     this.isshowblock = false;
     this.isshowblock1 = false;
     document.getElementById("parkingsession").style.display = 'none';
-
+    this.showLoc=false
     this.cycleno = 0;
-    // $("#rbtyes").prop("disabled", true);
-    // $("#rbtno").prop("disabled", false);
+ 
     this.loader = true
     setTimeout(() => {
       this.loader = false
@@ -827,8 +830,6 @@ export class PageAddvehicleRegistrationComponent implements OnInit {
     }, 2000);
     this.datepickershow = false
     this.vehiclecountlist = []
-    //this.selectedClass =[]
-    // this.dateselectscustomtop=[]
     for (let i = 0; i < this.dateSelected.length; i++) {
       this.dateSelected.splice(i, this.dateSelected.length);
       this.selectedClass.splice(i, this.selectedClass.length);
@@ -1684,7 +1685,6 @@ export class PageAddvehicleRegistrationComponent implements OnInit {
     this.multiple = "none"
     this.multiplebays = "none"
     this.customdateblockdisplay = "none"
-
   }
 
 
@@ -2046,6 +2046,8 @@ export class PageAddvehicleRegistrationComponent implements OnInit {
 
     });
   }
+
+
   GetSiteDetails() {
     var details = JSON.parse(localStorage.getItem('userinfo'));
     var id = details.siteId;

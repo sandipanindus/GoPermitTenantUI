@@ -6,6 +6,8 @@ import { PageHomeTwoComponent } from './pages/page-home-two/page-home-two.compon
 import { RootComponent } from './components/root/root.component';
 import { PageOffcanvasCartComponent } from './pages/page-offcanvas-cart/page-offcanvas-cart.component';
 import { PageLoginComponent } from '../app/modules/account/pages/page-login/page-login.component';
+import { PagesVisitorConfirmComponent } from './modules/account/pages/pages-visitor-confirm/pages-visitor-confirm.component';
+import { TestComponent } from './pages/test/test.component';
 
 
 const routes: Routes = [
@@ -21,8 +23,10 @@ const routes: Routes = [
             {
                 path: '',
                 component: PageLoginComponent
-            }
+            },
+    
         ],
+       
     },
     {
         path: 'offcanvas-cart',
@@ -73,9 +77,13 @@ const routes: Routes = [
             {
                 path: '**',
                 component: PageNotFoundComponent
-            }
+            },
         ],
     },
+
+    { path: '', 
+        loadChildren: () => import('./pages/test/test.module').then(m => m.TestModule) },
+   
 ];
 
 @NgModule({

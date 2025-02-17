@@ -1,3 +1,17 @@
+
+::ng-deep .floating-btn {
+    position: fixed !important;  /* Ensures it stays in a fixed position */
+   // bottom: 20px !important;      /* Adjust the distance from the bottom */
+    left: 100px !important;        /* Adjust the distance from the left */
+    z-index: 1000 !important;     /* Ensures it appears above other elements */
+    border-radius: 50px !important;  /* Makes the button rounded */
+   // padding: 10px 20px !important;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2) !important; /* Optional: Adds a shadow */
+    top:128px !important;
+    padding-right: 11px;
+    padding-left: 8px;
+  }
+
 .bs-example {
     margin: 30px 0px;
 }
@@ -126,7 +140,7 @@ body {
 }
 .card {
     border: 0px solid rgba(0, 0, 0, 0.125) !important;
-    max-width: 100%;
+  //  max-width: 100%;
 }
 .no-gutters {
     border-radius: 8px;
@@ -215,7 +229,7 @@ body {
         overflow: hidden;
     }
     .card {
-        height: 100vh !important;
+      //  height: 100vh !important;
     }
     .divinput {
         margin-left: 25px;
@@ -254,5 +268,10 @@ body {
     }
     .input_cls {
         width: 250px;
-    }
+    }  
+}
+
+.content-center{
+    display: flex;
+    justify-content: center;
 }

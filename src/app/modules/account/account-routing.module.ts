@@ -24,6 +24,7 @@ import { PagesVisitorConfirmComponent } from './pages/pages-visitor-confirm/page
 import { PageAddvehicleRegistrationComponent } from './pages/page-addvehicle-registration/page-addvehicle-registration.component';
 import { PageAddVisitorRegistrationComponent } from './pages/page-add-visitor-registration/page-add-visitor-registration.component';
 import { CalenderManageParkingComponent } from './pages/calender-manage-parking/calender-manage-parking.component';
+import { AssignManageparkingBaysComponent } from './pages/assign-manageparking-bays/assign-manageparking-bays.component';
 
 const routes: Routes = [
     {
@@ -121,8 +122,11 @@ const routes: Routes = [
                 path:'AddVisitorRegistration',
                 component:PageAddVisitorRegistrationComponent
             },{
-                path:'DaySelection',
+                path:'DaySelection/:tenantid/:bayno',
                 component:CalenderManageParkingComponent
+            },{
+                path:'AssignBays/:tenantid/:bayno/:date',
+                component:AssignManageparkingBaysComponent
             }
 
         ]

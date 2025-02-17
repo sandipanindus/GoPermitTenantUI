@@ -85,6 +85,7 @@ export class PageVisitorparkingAppointComponent implements OnInit {
       this.sessionunit = localStorage.getItem("SessionUnit");
     }
   }
+
   BindTimeSlots(event) {
     debugger;
     this.timeslots = [];
@@ -159,6 +160,8 @@ export class PageVisitorparkingAppointComponent implements OnInit {
   ShowPopup(template: TemplateRef<any>) {
     this.modalRefpopup = this.modalService.show(template, { class: 'modal-sm' });
   }
+
+
   ShowModal(timeslot) {
     this.timeslot = timeslot;
     if (this.bayid == "0") {
@@ -166,6 +169,8 @@ export class PageVisitorparkingAppointComponent implements OnInit {
     }
     else {
       (document.getElementById("detailsdiv") as HTMLDivElement).style.display = 'flex';
+      (document.getElementById("calenderdiv") as HTMLDivElement).style.display = 'none';
+      (document.getElementById("timeslotdiv") as HTMLDivElement).style.display = 'none';
     }
     //this.modalRef = this.modalService.show(template, { class: 'modal-sm modalwidth', });
   }
@@ -248,4 +253,15 @@ export class PageVisitorparkingAppointComponent implements OnInit {
   Refresh() {
     this.router.navigateByUrl('/account/VisitorParking');
   }
+
+  backToVisitor(){
+    this.router.navigateByUrl('/account/AddVisitorRegistration');
+  }
+
+  backToCalender(){
+    (document.getElementById("detailsdiv") as HTMLDivElement).style.display = 'none';
+    (document.getElementById("calenderdiv") as HTMLDivElement).style.display = 'block';
+    (document.getElementById("timeslotdiv") as HTMLDivElement).style.display = 'block';
+  }
+
 }

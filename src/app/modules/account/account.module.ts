@@ -55,6 +55,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { PageAddvehicleRegistrationComponent } from './pages/page-addvehicle-registration/page-addvehicle-registration.component';
 import { PageAddVisitorRegistrationComponent } from './pages/page-add-visitor-registration/page-add-visitor-registration.component';
 import { CalenderManageParkingComponent } from './pages/calender-manage-parking/calender-manage-parking.component';
+import { AssignManageparkingBaysComponent } from './pages/assign-manageparking-bays/assign-manageparking-bays.component';
 @NgModule({
     declarations: [
         // components
@@ -83,7 +84,8 @@ import { CalenderManageParkingComponent } from './pages/calender-manage-parking/
         PagesVisitorConfirmComponent,
         PageAddvehicleRegistrationComponent,
         PageAddVisitorRegistrationComponent,
-        CalenderManageParkingComponent
+        CalenderManageParkingComponent,
+        AssignManageparkingBaysComponent
     ],
     imports: [
         DatepickerModule,

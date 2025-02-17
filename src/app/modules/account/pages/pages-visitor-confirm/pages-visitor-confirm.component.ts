@@ -41,8 +41,11 @@ export class PagesVisitorConfirmComponent implements OnInit {
       Lname: ['', [Validators.required]],
     });
   }
+
+
   get f() { return this.confirmform.controls; }
   ngOnInit(): void {
+    debugger
     document.getElementById('ulmenu').style.display = 'none';
     var Id = this.approute.snapshot.queryParamMap.get('Id');
     this.Id = Id;
@@ -159,8 +162,10 @@ export class PagesVisitorConfirmComponent implements OnInit {
       this.toast.warning("you already booked the slot");
     }
   }
+
+
   Refresh() {
     //this.router.navigateByUrl('/account/dashboard');
-    window.location.href = 'https://gopermit.co.uk/';
+   // window.location.href = 'https://gopermit.co.uk/';
   }
 }

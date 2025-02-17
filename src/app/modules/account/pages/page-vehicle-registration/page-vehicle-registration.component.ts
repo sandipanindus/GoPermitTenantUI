@@ -605,6 +605,8 @@ export class PageVehicleRegistrationComponent implements OnInit {
     this.GetManageParkings();
     this.GetSiteDetails();
 
+    console.log("Bay No",this.baynobj)
+
   }
 
   ngAfterViewInit(): void {
@@ -1027,7 +1029,7 @@ export class PageVehicleRegistrationComponent implements OnInit {
 
   }
 
-  
+
   infoexp
   /**
    * binding shedule dates vise click on date
@@ -2061,10 +2063,6 @@ export class PageVehicleRegistrationComponent implements OnInit {
         this.sitestate = data.result.state;
         this.sitezipcode = data.result.zipcode;
       }
-
-
-
-
     });
 
 
