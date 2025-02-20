@@ -48,7 +48,7 @@ export class PageVehicleRegistrationComponent implements OnInit {
   tenantid: string;
   showtable = false;
   myDateValue: Date;
-
+  editShow:boolean=false
   baynobj: any = ""
   bayno = ""
   vechiclemake = ""
@@ -2104,9 +2104,15 @@ export class PageVehicleRegistrationComponent implements OnInit {
 
   }
 
+  backTo(){
+    this.editShow=false
+    document.getElementById("parkingsession").style.display = 'block';
+  }
+
   EditVehicle(result) {
     debugger;
     this.tenantid = result.registerUserId;
+    this.editShow=true
     this.gridEditedObject = result;
     this.single = 'block';
     this.bayconfigstyle = 'block';
