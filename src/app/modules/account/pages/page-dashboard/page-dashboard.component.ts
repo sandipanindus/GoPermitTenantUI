@@ -54,6 +54,10 @@ export class PageDashboardComponent implements OnInit {
     tenantid;
     vehicles: any;
     profilepath: string;
+
+    emailCode: string | null = null;
+    profile: any;
+
     constructor(private service: TenantserviceService) {
         var details = JSON.parse(localStorage.getItem('userinfo'));
         this.Name = details.firstName + ' ' + details.lastName;
@@ -106,6 +110,12 @@ export class PageDashboardComponent implements OnInit {
         });
     }
     ngOnInit(): void {
+        const userInfo = localStorage.getItem('userinfo');
+        if (userInfo) {
+          const parsedUserInfo = JSON.parse(userInfo);
+          this.emailCode = parsedUserInfo.address ?? null; // Use nullish coalescing in case it's undefined
+        }
+        this.isDialogOpen = true;
         this.getlist();
         document.getElementById('ulmenu').style.display = 'block';
         document.getElementById('logodiv').style.display = 'block';
@@ -235,4 +245,125 @@ export class PageDashboardComponent implements OnInit {
             });
         }
     }
+
+
+
+
+
+
+
+isDialogOpen = false;
+isUploadModalOpen = false;
+isConfirmationModalOpen = false;
+residencyProofFile: File | null = null;
+identityProofFile: File | null = null;
+
+// Open first modal
+openDialog() {
+  this.isDialogOpen = true;
+  document.body.style.overflow = 'hidden';
+}
+
+// Close first modal
+closeDialog() {
+  this.isDialogOpen = false;
+  document.body.style.overflow = 'auto';
+}
+
+// Agree and open document upload modal
+agreeAndOpenUploadModal() {
+  this.closeDialog();
+  this.openUploadModal();
+}
+
+// Open second modal
+openUploadModal() {
+  this.isUploadModalOpen = true;
+  document.body.style.overflow = 'hidden';
+}
+
+// Close second modal
+closeUploadModal() {
+  this.isUploadModalOpen = false;
+  document.body.style.overflow = 'auto';
+}
+
+// Open third modal
+openConfirmationModal() {
+  this.isConfirmationModalOpen = true;
+  document.body.style.overflow = 'hidden';
+}
+
+// Close third modal
+closeConfirmationModal() {
+  this.isConfirmationModalOpen = false;
+  document.body.style.overflow = 'auto';
+}
+
+// Handle file selection
+onFileSelected(event: Event, type: 'residency' | 'identity') {
+  const target = event.target as HTMLInputElement;
+  if (target.files && target.files.length > 0) {
+    type === 'residency'
+      ? (this.residencyProofFile = target.files[0])
+      : (this.identityProofFile = target.files[0]);
+  }
+}
+
+
+
+
+
+// Submit documents and show confirmation
+submitDocuments(residencyProof: HTMLInputElement, ownershipProof: HTMLInputElement) {
+    const residencyFile = residencyProof.files?.[0];
+    const ownershipFile = ownershipProof.files?.[0];
+  
+    if (!residencyFile || !ownershipFile) {
+      alert("Please upload both documents.");
+      return;
+    }
+  
+    if (!this.tenantid) {
+      alert("User ID not found. Please log in again.");
+      return;
+    }
+  
+    // Call the API to upload documents
+    this.service.uploadTenantDocuments(this.tenantid, residencyFile, ownershipFile).subscribe({
+      next: (response) => {
+        console.log("Upload successful:", response);
+  
+        // Fetch updated profile after successful upload
+        this.service.GetProfileById(this.tenantid).subscribe({
+          next: (profileResponse: any) => {
+            console.log("Updated Profile:", profileResponse);
+  
+            // Extract residencyProofId from the response
+            const residencyProofId = profileResponse?.result?.residencyProofId;
+            
+            if (residencyProofId) {
+              localStorage.setItem('residencyProofId', residencyProofId);
+              console.log("Residency Proof ID stored in localStorage:", residencyProofId);
+            }
+  
+            this.closeUploadModal();        // Close the upload modal
+            this.openConfirmationModal();   // Open the confirmation modal
+  
+            // Optionally update local profile data if needed:
+            this.profile = profileResponse?.result;
+          },
+          error: (profileError) => {
+            console.error("Failed to fetch updated profile:", profileError);
+            alert("Documents uploaded, but failed to fetch updated profile.");
+          }
+        });
+      },
+      error: (error) => {
+        console.error("Upload failed:", error);
+        alert("Document upload failed. Please try again.");
+      }
+    });
+  }
+  
 }

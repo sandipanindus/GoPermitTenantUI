@@ -32,9 +32,9 @@
 
 
 
-
-
-      <p>Welcome to Go Permit! Our Fast and Reliable permit management service. <br /><br />
+       
+            
+      <p>Welcome to Go Permit! Our Fast and Reliable permit management service. {{tenantid}}<br /><br />
 
         Go Permit is intended to facilitate online permit management services, which will give you Option to choose the
         right parking bay according to your requirements and needs in just one go!
@@ -72,4 +72,103 @@
   </div>
 
 
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- First Modal: Terms & Conditions -->
+<div class="custom-modal" [class.show]="isDialogOpen">
+  <div class="custom-modal-content">
+    <span class="close-btn" (click)="closeDialog()">&times;</span>
+    <h3 class="modal-title">CONDITIONS OF USE OF PARKING PERMIT</h3>
+    <p class="modal-subtitle">
+      PLEASE READ THE FOLLOWING POINTS BEFORE USING THE PERMIT. <br />
+      THESE TERMS & CONDITIONS APPLY TO ALL RESIDENTS, CUSTOMERS AND VISITORS USING THE PARKING SITE.
+    </p>
+    <ol class="modal-list">
+      <li>
+        The permit is only valid for the period of parking for the Vehicle Registered when the vehicle is parked in a parking zone at the relevant land operated by our company.
+      </li>
+      <li>
+        When a parking bay is not allocated to an applicant, the granting of a permit does not guarantee that a space will be available.
+      </li>
+      <li>
+        Issuance of the parking permit to the applicant named on the permit (permit holder) means the permit holder has agreed there are terms and conditions which are placed on the parking signage on the site and to check and follow all Terms and Conditions present on the signage at the relevant Parking Location and understand that any non-compliance will result in a PCN being issued to the vehicle, for which they will be held responsible as the permit is issued to the applicant.
+      </li>
+ 
+    </ol>
+    <button class="btn btn-custom" (click)="agreeAndOpenUploadModal()">Agree & Close</button>
+  </div>
+</div> 
+
+<!-- Second Modal: Document Upload -->
+<div class="custom-modal-1" [class.show]="isUploadModalOpen">
+  <div class="custom-modal-content-1" (click)="$event.stopPropagation()">
+    <span class="close-btn-1" (click)="closeUploadModal()">&times;</span>
+    <h3 class="modal-title-1">Upload Documents</h3>
+    <p class="modal-subtitle-1">Please provide the following documents for verification:</p>
+
+    <form class="upload-form-1">
+      <div class="upload-row-1">
+        <!-- Proof of Residency -->
+        <div class="upload-column-1">
+          <label for="residencyProof" class="upload-label-1">Proof of Residency:</label>
+          <input type="file" id="residencyProof" #residencyProof class="upload-input-1" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" />
+        </div>
+
+        <!-- Proof of Ownership -->
+        <div class="upload-column-1">
+          <label for="ownershipProof" class="upload-label-1">Proof of Ownership:</label>
+          <input type="file" id="ownershipProof" #ownershipProof class="upload-input-1" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" />
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-custom" (click)="submitDocuments(residencyProof, ownershipProof)">Submit</button>
+    </form>
+  </div>
+</div>
+
+
+<!-- Third Modal: Confirmation -->
+<div class="custom-modal" [class.show]="isConfirmationModalOpen">
+  <div class="custom-modal-content" (click)="$event.stopPropagation()">
+    <span class="close-btn" (click)="closeConfirmationModal()">&times;</span>
+    <h3 class="modal-title">Request Submitted</h3>
+    <p class="modal-subtitle">
+      🎉 Documents submitted successfully! <br />
+      Your request is now in the hands of our admin team. 🕒<br />
+      We’re reviewing your documents with care and will notify you once they’re approved. <br />
+      Sit back, relax, and we’ll keep you posted! 🚀
+    </p>    
+    <button class="btn btn-custom" (click)="closeConfirmationModal()">Close</button>
+  </div>
 </div>
