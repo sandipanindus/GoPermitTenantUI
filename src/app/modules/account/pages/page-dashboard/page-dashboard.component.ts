@@ -113,18 +113,29 @@ export class PageDashboardComponent implements OnInit {
         const userInfo = localStorage.getItem('userinfo');
         if (userInfo) {
           const parsedUserInfo = JSON.parse(userInfo);
-          this.emailCode = parsedUserInfo.address ?? null; // Use nullish coalescing in case it's undefined
+          this.emailCode = parsedUserInfo.address ?? null; // Set emailCode safely
+          this.GetProfile(parsedUserInfo.id); // Fetch profile using user id
+      
+          const residencyProofId = localStorage.getItem('residencyProofId');
+      
+          // Check residencyProofId and open the appropriate modal
+          if (residencyProofId && residencyProofId.trim() !== '') {
+            this.isConfirmationModalOpen = true; // Open third modal directly
+          } else {
+            this.isDialogOpen = true; // Show terms modal if no residencyProofId
+          }
+        } else {
+          console.warn('User info not found in localStorage.');
         }
-        this.isDialogOpen = true;
+      
+        // Load necessary UI elements
         this.getlist();
-        document.getElementById('ulmenu').style.display = 'block';
-        document.getElementById('logodiv').style.display = 'block';
-        document.getElementById('epsdiv').style.display = 'block';
-        document.getElementById('mobilediv').style.display = 'block';
-        var userinfo = localStorage.getItem('userinfo');
-        var user = JSON.parse(userinfo);
-        this.GetProfile(user.id);
-    }
+        document.getElementById('ulmenu')?.style.setProperty('display', 'block');
+        document.getElementById('logodiv')?.style.setProperty('display', 'block');
+        document.getElementById('epsdiv')?.style.setProperty('display', 'block');
+        document.getElementById('mobilediv')?.style.setProperty('display', 'block');
+      }
+      
     GetProfile(Id) {
         //var element = document.getElementById("loader") as HTMLDivElement;
         //  element.style.display = 'block';

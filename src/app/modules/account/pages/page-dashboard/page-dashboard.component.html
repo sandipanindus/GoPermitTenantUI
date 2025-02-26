@@ -108,7 +108,6 @@
 <!-- First Modal: Terms & Conditions -->
 <div class="custom-modal" [class.show]="isDialogOpen">
   <div class="custom-modal-content">
-    <span class="close-btn" (click)="closeDialog()">&times;</span>
     <h3 class="modal-title">CONDITIONS OF USE OF PARKING PERMIT</h3>
     <p class="modal-subtitle">
       PLEASE READ THE FOLLOWING POINTS BEFORE USING THE PERMIT. <br />
@@ -126,14 +125,13 @@
       </li>
  
     </ol>
-    <button class="btn btn-custom" (click)="agreeAndOpenUploadModal()">Agree & Close</button>
+    <button class="btn btn-custom" (click)="agreeAndOpenUploadModal()">Agree</button>
   </div>
 </div> 
 
 <!-- Second Modal: Document Upload -->
 <div class="custom-modal-1" [class.show]="isUploadModalOpen">
   <div class="custom-modal-content-1" (click)="$event.stopPropagation()">
-    <span class="close-btn-1" (click)="closeUploadModal()">&times;</span>
     <h3 class="modal-title-1">Upload Documents</h3>
     <p class="modal-subtitle-1">Please provide the following documents for verification:</p>
 
@@ -169,6 +167,5 @@
       We’re reviewing your documents with care and will notify you once they’re approved. <br />
       Sit back, relax, and we’ll keep you posted! 🚀
     </p>    
-    <button class="btn btn-custom" (click)="closeConfirmationModal()">Close</button>
   </div>
 </div>
