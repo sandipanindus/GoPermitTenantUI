@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { PageChangePasswordComponent } from './page-change-password.component';
 
@@ -6,7 +6,7 @@ describe('PageChangePasswordComponent', () => {
   let component: PageChangePasswordComponent;
   let fixture: ComponentFixture<PageChangePasswordComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ PageChangePasswordComponent ]
     })
