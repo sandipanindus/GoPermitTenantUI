@@ -14,14 +14,30 @@ export class HeaderComponent {
     constructor(public store: StoreService,private router:Router) { 
         
 debugger
-      var data=  localStorage.getItem('userinfo');
-      if(data==null)
-      {
-        setTimeout(()=>{                           //<<<---using ()=> syntax
-            this.router.navigateByUrl('/');
+    //   var data=  localStorage.getItem('userinfo');
+    //   if(data==null)
+    //   {
+    //     setTimeout(()=>{                           //<<<---using ()=> syntax
+    //         this.router.navigateByUrl('/');
 
-       }, 3000);
-      }
+    //    }, 3000);
+    //   }
+
+    var data = localStorage.getItem('userinfo');
+const allowedRoutes = ['/account/forgetpassword', '/account/resetpassword', '/account/setpassword', '/account/approval',
+    '/account/visitorconfirm'
+];
+
+if (data == null) {
+    const currentRoute = this.router.url.split('?')[0];
+    
+    // Redirect only if NOT on an allowed public route
+    if (!allowedRoutes.includes(currentRoute)) {
+        setTimeout(() => {
+            this.router.navigateByUrl('/');
+        }, 3000);
+    }
+}
     }
 
     movetohome()

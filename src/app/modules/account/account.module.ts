@@ -56,6 +56,7 @@ import { PageAddvehicleRegistrationComponent } from './pages/page-addvehicle-reg
 import { PageAddVisitorRegistrationComponent } from './pages/page-add-visitor-registration/page-add-visitor-registration.component';
 import { CalenderManageParkingComponent } from './pages/calender-manage-parking/calender-manage-parking.component';
 import { AssignManageparkingBaysComponent } from './pages/assign-manageparking-bays/assign-manageparking-bays.component';
+import { PageEditVisitorParkingComponent } from './pages/page-edit-visitor-parking/page-edit-visitor-parking.component';
 @NgModule({
     declarations: [
         // components
@@ -85,7 +86,8 @@ import { AssignManageparkingBaysComponent } from './pages/assign-manageparking-b
         PageAddvehicleRegistrationComponent,
         PageAddVisitorRegistrationComponent,
         CalenderManageParkingComponent,
-        AssignManageparkingBaysComponent
+        AssignManageparkingBaysComponent,
+        PageEditVisitorParkingComponent
     ],
     imports: [
         DatepickerModule,

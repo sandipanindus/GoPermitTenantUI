@@ -442,7 +442,22 @@
 
 
 
-
+<div class="form-group" [ngStyle]="{ display: multiple }">
+    <div class="row" style="margin-top: 15px" style="display: none">
+        <div class="col-md-4">
+            <label>How many vehicles do you want
+                to configure for this
+                bay?</label>
+        </div>
+        <div class="col-md-4">
+            <input type="text" class="form-control" (keypress)="numberOnly($event)"
+                [(ngModel)]="confignumber" placeholder="configure No"
+                (change)="configurebasedonNo()" [ngModelOptions]="{
+                    standalone: true
+                }" />
+        </div>
+    </div>
+</div>
 
 
 <div class="form-group" [ngStyle]="{ display: multiplebays }">

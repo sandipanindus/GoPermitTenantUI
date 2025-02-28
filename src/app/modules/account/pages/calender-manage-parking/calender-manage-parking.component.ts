@@ -690,7 +690,7 @@ else{
         this.confignumber = 0;
         this.configurebasedonNo();
         this.clear();
-        this.multiplebays = 'none'
+         this.multiplebays = 'none'
         this.vehiclecountobj = ''
         if (data.result.message == "mutilpledata") {
           // this.isrecordsexisted = false
@@ -930,7 +930,7 @@ else{
 
     for (let t = 0; t < data.length; t++) {
 
-      (document.getElementById('vehicleno' + (data[t].bayconfig)) as HTMLInputElement).value = data[t].vrm;
+   //   (document.getElementById('vehicleno' + (data[t].bayconfig)) as HTMLInputElement).value = data[t].vrm;
 
 
       var endate = new Date(data[t].endDate)
@@ -1482,6 +1482,7 @@ else{
 
 
   selectingbay2() {
+    debugger
     this.single = 'none';
     this.multiple = "block"
     this.multiplebays = "block"
@@ -1489,6 +1490,7 @@ else{
   }
 
   selectingbay1() {
+    debugger
     this.single = 'block';
     this.multiple = "none"
     this.multiplebays = "none"

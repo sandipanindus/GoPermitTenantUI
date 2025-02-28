@@ -35,6 +35,14 @@ export class TenantserviceService {
 
   }
 
+  getVistorParkingDetailsByid(tenId, id): Observable<any> {
+    return this.http.get(this.baseUrl + "Tenant/GetVisitorParkingsById?tenantid=" + tenId + "&id=" + id, { headers: this.header })
+  }
+
+  updateVisitorParkingDet(data): Observable<any> {
+    return this.http.post(this.baseUrl + "Tenant/UpdateVisitorParking",data, { headers: this.header })
+  }
+
   getvehiclestimedetailsbydate(id, bayno, date): Observable<any> {
     return this.http.get(this.baseUrl + "Tenant/getvehcilecountsbydates?tenantid=" + id + "&bayno=" + bayno + "&date=" + date, { headers: this.header })
 
