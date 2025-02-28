@@ -18,7 +18,20 @@ export class PageCategoryService {
     isLoading$: Observable<boolean> = this.isLoadingSource.asObservable();
 
     // list
-    private listState: ProductsList;
+    // private listState: ProductsList;
+    private listState: ProductsList = {
+        page: 1,
+        limit: 10,
+        sort: 'asc',
+        total: 0,
+        items: [], // Ensure this matches your ProductsList interface
+        pages: 0,
+        from: 0,
+        to: 0,
+        filters: [],
+        filterValues: {}
+    };
+    
     private listSource: BehaviorSubject<ProductsList> = new BehaviorSubject<ProductsList>(this.listState);
 
     list$: Observable<ProductsList> = this.listSource.pipe(filter(x => x !== null));
