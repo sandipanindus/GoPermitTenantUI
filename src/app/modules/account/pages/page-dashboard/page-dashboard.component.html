@@ -157,7 +157,7 @@
 
 
 <!-- Third Modal: Confirmation -->
-<div class="custom-modal" [class.show]="isConfirmationModalOpen">
+<!-- <div class="custom-modal" [class.show]="isConfirmationModalOpen">
   <div class="custom-modal-content" (click)="$event.stopPropagation()">
     <span class="close-btn" (click)="closeConfirmationModal()">&times;</span>
     <h3 class="modal-title">Request Submitted</h3>
@@ -167,5 +167,30 @@
       We’re reviewing your documents with care and will notify you once they’re approved. <br />
       Sit back, relax, and we’ll keep you posted! 🚀
     </p>    
+  </div>
+</div> -->
+
+
+
+
+
+<div class="custom-modal" [class.show]="isConfirmationModalOpen">
+  <div class="custom-modal-content" (click)="$event.stopPropagation()">
+    <span class="close-btn" (click)="closeConfirmationModal()">&times;</span>
+    <h3 class="modal-title">Request Submitted</h3>
+    <p class="modal-subtitle">
+      🎉 Documents submitted successfully! <br />
+      Your request is now in the hands of our admin team. 🕒<br />
+      We’re reviewing your documents with care and will notify you once they’re approved. <br />
+      Sit back, relax, and we’ll keep you posted! 🚀
+    </p>
+
+    <!-- Normal CSS Button -->
+    <button class="normal-button">Normal Button</button>
+
+    <!-- Tailwind CSS Button -->
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      Tailwind Button
+    </button>
   </div>
 </div>

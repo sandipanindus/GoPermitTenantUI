@@ -1,7 +1,9 @@
 @import '~ngx-toastr/toastr';
 @import 'scss/style';
 
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 
 .bs-datepicker-head
