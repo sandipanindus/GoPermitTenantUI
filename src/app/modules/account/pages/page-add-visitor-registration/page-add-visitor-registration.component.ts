@@ -3,7 +3,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Address } from '../../../../shared/interfaces/address';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { TenantserviceService } from 'src/app/shared/api/tenantservice.service';
 
 @Component({
@@ -21,7 +21,7 @@ export class PageAddVisitorRegistrationComponent implements OnInit {
   visitorsessions: any = [];
   visitorparkings: any = [];
   visitorparkingid: number;
-  constructor(private approute: ActivatedRoute, private toast: ToastrService, private modalService: BsModalService, private router: Router, private formBuilder: FormBuilder, private service: TenantserviceService) { }
+  constructor(private approute: ActivatedRoute, private toast: ToastrService, private modalService: BsModalService, private router: Router, private formBuilder: UntypedFormBuilder, private service: TenantserviceService) { }
   ngOnInit(): void {
     var userinfo = localStorage.getItem("userinfo");
     this.GetSiteDetails();

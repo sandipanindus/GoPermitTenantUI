@@ -13,7 +13,7 @@ import {
 } from '@angular/core';
 import { Product } from '../../interfaces/product';
 import { RootService } from '../../services/root.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { debounceTime, map, switchMap, takeUntil, throttleTime } from 'rxjs/operators';
 import { fromEvent, of, Subject, asyncScheduler } from 'rxjs';
 import { ShopService } from '../../api/shop.service';
@@ -34,7 +34,7 @@ export type CategoryWithDepth = Category & {depth: number};
 export class SearchComponent implements OnChanges, OnInit, OnDestroy {
     private destroy$: Subject<void> = new Subject<void>();
 
-    form: FormGroup;
+    form: UntypedFormGroup;
 
     hasSuggestions = false;
 
@@ -70,7 +70,7 @@ export class SearchComponent implements OnChanges, OnInit, OnDestroy {
 
     constructor(
         @Inject(DOCUMENT) private document: Document,
-        private fb: FormBuilder,
+        private fb: UntypedFormBuilder,
         private elementRef: ElementRef,
         private zone: NgZone,
         private shop: ShopService,

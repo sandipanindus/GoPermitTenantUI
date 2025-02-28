@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { TenantserviceService } from './../../../../shared/api/tenantservice.service'
 
@@ -11,7 +11,7 @@ import { TenantserviceService } from './../../../../shared/api/tenantservice.ser
 
 })
 export class PageVisitorParkingAddComponent implements OnInit {
-  visitorForm: FormGroup;
+  visitorForm: UntypedFormGroup;
   visitorsubmitted = false;
   vehiclelists: any = [];
   vehiclelistsobj:any=[];
@@ -31,7 +31,7 @@ export class PageVisitorParkingAddComponent implements OnInit {
   baynonew: number;
   mindate=new Date();
   myDate=new Date();
-  constructor(private approute: ActivatedRoute, private toast: ToastrService, private router: Router, private formBuilder: FormBuilder, private service: TenantserviceService) {
+  constructor(private approute: ActivatedRoute, private toast: ToastrService, private router: Router, private formBuilder: UntypedFormBuilder, private service: TenantserviceService) {
     this.visitorForm = this.formBuilder.group({
       Vfirstname: ['', Validators.required],
       Vlastname: ['', Validators.required],

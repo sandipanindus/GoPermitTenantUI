@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { NgForm, UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { TenantserviceService } from './../../../../shared/api/tenantservice.service'
@@ -10,10 +10,10 @@ import { TenantserviceService } from './../../../../shared/api/tenantservice.ser
 })
 export class PagesForgetpasswordComponent implements OnInit {
   @ViewChild('passwordForm') passwordForm: NgForm;
-  forgetpasswordForm: FormGroup;
+  forgetpasswordForm: UntypedFormGroup;
   forgetpasswordsubmitted = false;
   SignInEmail:string;
-  constructor(private router: Router, private toaster: ToastrService, private service: TenantserviceService,private formBuilder:FormBuilder) { 
+  constructor(private router: Router, private toaster: ToastrService, private service: TenantserviceService,private formBuilder:UntypedFormBuilder) { 
     this.forgetpasswordForm = this.formBuilder.group({
       Lemail: ['', [Validators.required, Validators.email, Validators.pattern('[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}')]]
     });

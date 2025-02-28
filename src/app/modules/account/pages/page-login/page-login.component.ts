@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute,NavigationEnd } from '@angular/router'
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import{TenantserviceService} from './../../../../shared/api/tenantservice.service'
     import { from } from 'rxjs';
@@ -14,13 +14,13 @@ export class PageLoginComponent implements OnInit {
   @ViewChild('paswrd', { static: true }) paswrd: ElementRef
 
    //login
-   Loginfrom: FormGroup;
+   Loginfrom: UntypedFormGroup;
    loginsubmitted = false;
    SignInPassword: string;
    SignInEmail: string;
 
 
-    constructor(private approute: ActivatedRoute, private toast: ToastrService,  private route: Router,  private formBuilder: FormBuilder,private service:TenantserviceService) {
+    constructor(private approute: ActivatedRoute, private toast: ToastrService,  private route: Router,  private formBuilder: UntypedFormBuilder,private service:TenantserviceService) {
 
         this.Loginfrom = this.formBuilder.group({
             Lemail: ['', [Validators.required, Validators.email, Validators.pattern('[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}')]],

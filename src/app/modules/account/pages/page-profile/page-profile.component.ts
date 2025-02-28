@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { TenantserviceService } from './../../../../shared/api/tenantservice.service'
 
@@ -10,7 +10,7 @@ import { TenantserviceService } from './../../../../shared/api/tenantservice.ser
     styleUrls: ['./page-profile.component.scss']
 })
 export class PageProfileComponent implements OnInit {
-    profileform: FormGroup;
+    profileform: UntypedFormGroup;
     profilesubmitted = false;
     firstname: string;
     lastname: string;
@@ -23,7 +23,7 @@ export class PageProfileComponent implements OnInit {
     sitename:string;
     fileToUpload: File = null;
     files: Array<any> = new Array<any>();
-    constructor(private approute: ActivatedRoute, private toast: ToastrService, private router: Router, private formBuilder: FormBuilder, private service: TenantserviceService) {
+    constructor(private approute: ActivatedRoute, private toast: ToastrService, private router: Router, private formBuilder: UntypedFormBuilder, private service: TenantserviceService) {
         this.profileform = this.formBuilder.group({           
             Pmobileno: ['', Validators.required],
             Pprofile:['', Validators.required]

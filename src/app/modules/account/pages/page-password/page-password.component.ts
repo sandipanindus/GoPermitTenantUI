@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router'
 import{MustMatch} from '../../../../../app/helpers/must-match.validator';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { TenantserviceService } from './../../../../shared/api/tenantservice.service'
 import { from } from 'rxjs';
@@ -11,13 +11,13 @@ import { from } from 'rxjs';
     styleUrls: ['./page-password.component.sass']
 })
 export class PagePasswordComponent {
-    changepasswordform: FormGroup;
+    changepasswordform: UntypedFormGroup;
     changepasswordsubmitted = false;
     currentpassword: string;
     newpassword: string;
     reenterpassword: string;
     expression:boolean=true;
-    constructor(private approute: ActivatedRoute, private toast: ToastrService, private route: Router, private formBuilder: FormBuilder, private service: TenantserviceService) {
+    constructor(private approute: ActivatedRoute, private toast: ToastrService, private route: Router, private formBuilder: UntypedFormBuilder, private service: TenantserviceService) {
 
         this.changepasswordform = this.formBuilder.group({
             Lcurrentpassword: ['', Validators.required],

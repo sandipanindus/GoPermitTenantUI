@@ -1,6 +1,6 @@
 import { Component, Inject, Input, PLATFORM_ID } from '@angular/core';
 import { Product } from '../../interfaces/product';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { CartService } from '../../services/cart.service';
 import { WishlistService } from '../../services/wishlist.service';
 import { CompareService } from '../../services/compare.service';
@@ -18,7 +18,7 @@ export class ProductComponent {
 
     @Input() product: Product;
 
-    quantity: FormControl = new FormControl(1);
+    quantity: UntypedFormControl = new UntypedFormControl(1);
 
     addingToCart = false;
     addingToWishlist = false;

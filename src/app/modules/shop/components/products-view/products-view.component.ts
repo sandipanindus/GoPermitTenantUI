@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ShopSidebarService } from '../../services/shop-sidebar.service';
 import { PageCategoryService } from '../../services/page-category.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
@@ -19,11 +19,11 @@ export class ProductsViewComponent implements OnInit, OnDestroy {
 
     destroy$: Subject<void> = new Subject<void>();
 
-    listOptionsForm: FormGroup;
+    listOptionsForm: UntypedFormGroup;
     filtersCount = 0;
 
     constructor(
-        private fb: FormBuilder,
+        private fb: UntypedFormBuilder,
         public sidebar: ShopSidebarService,
         public pageService: PageCategoryService,
     ) { }

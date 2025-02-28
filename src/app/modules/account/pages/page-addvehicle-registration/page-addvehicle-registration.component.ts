@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { TenantserviceService } from './../../../../shared/api/tenantservice.service'
 import { DatePipe } from '@angular/common';
@@ -31,7 +31,7 @@ export class PageAddvehicleRegistrationComponent implements OnInit {
   @ViewChild('template3') template3: TemplateRef<any>;
   @ViewChild('template4') template4: TemplateRef<any>;
   rbtnchoosestatus = false;
-  singlevehicleForm: FormGroup;
+  singlevehicleForm: UntypedFormGroup;
   loader = false
   singlevehiclesubmitted = false;
   datepickershow = false;
@@ -562,7 +562,7 @@ export class PageAddvehicleRegistrationComponent implements OnInit {
 
   bsConfig: any
 
-  constructor(private datePipe: DatePipe, private approute: ActivatedRoute, private toast: ToastrService, private route: Router, private formBuilder: FormBuilder, private service: TenantserviceService, private _elementRef: ElementRef, private modalService: BsModalService) {
+  constructor(private datePipe: DatePipe, private approute: ActivatedRoute, private toast: ToastrService, private route: Router, private formBuilder: UntypedFormBuilder, private service: TenantserviceService, private _elementRef: ElementRef, private modalService: BsModalService) {
 
     this.bsconfig = Object.assign({},
     );

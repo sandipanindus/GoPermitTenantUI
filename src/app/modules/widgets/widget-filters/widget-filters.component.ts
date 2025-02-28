@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { DirectionService } from '../../../shared/services/direction.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import {
     ColorFilter,
     ColorFilterItem,
@@ -30,14 +30,14 @@ export class WidgetFiltersComponent implements OnInit, OnDestroy {
     destroy$: Subject<void> = new Subject<void>();
 
     filters: Filter[];
-    filtersForm: FormGroup;
+    filtersForm: UntypedFormGroup;
     isPlatformBrowser = isPlatformBrowser(this.platformId);
     rightToLeft = false;
 
     constructor(
         @Inject(PLATFORM_ID) private platformId: any,
         private direction: DirectionService,
-        private fb: FormBuilder,
+        private fb: UntypedFormBuilder,
         public root: RootService,
         public pageCategory: PageCategoryService,
     ) {
@@ -69,7 +69,7 @@ export class WidgetFiltersComponent implements OnInit, OnDestroy {
         return item.slug;
     }
 
-    makeFiltersForm(filters: Filter[]): FormGroup {
+    makeFiltersForm(filters: Filter[]): UntypedFormGroup {
         const filtersFromGroup = {};
 
         filters.forEach(filter => {
@@ -88,7 +88,7 @@ export class WidgetFiltersComponent implements OnInit, OnDestroy {
         return this.fb.group(filtersFromGroup);
     }
 
-    makeListFilterForm(filter: CheckFilter|ColorFilter): FormGroup {
+    makeListFilterForm(filter: CheckFilter|ColorFilter): UntypedFormGroup {
         const group = {};
 
         filter.items.forEach(item => {

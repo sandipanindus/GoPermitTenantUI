@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsDatepickerConfig, BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { ToastrService } from 'ngx-toastr';
@@ -20,7 +20,7 @@ export class CalenderManageParkingComponent implements OnInit {
   @ViewChild('template3') template3: TemplateRef<any>;
   @ViewChild('template4') template4: TemplateRef<any>;
   rbtnchoosestatus = false;
-  singlevehicleForm: FormGroup;
+  singlevehicleForm: UntypedFormGroup;
   loader = false
   singlevehiclesubmitted = false;
   datepickershow = false;
@@ -358,7 +358,7 @@ else{
 
   bsConfig: any
 
-  constructor(private datePipe: DatePipe, private approute: ActivatedRoute, private toast: ToastrService, private route: Router, private formBuilder: FormBuilder, private service: TenantserviceService, private _elementRef: ElementRef, private modalService: BsModalService) {
+  constructor(private datePipe: DatePipe, private approute: ActivatedRoute, private toast: ToastrService, private route: Router, private formBuilder: UntypedFormBuilder, private service: TenantserviceService, private _elementRef: ElementRef, private modalService: BsModalService) {
 
     this.bsconfig = Object.assign({},
     );

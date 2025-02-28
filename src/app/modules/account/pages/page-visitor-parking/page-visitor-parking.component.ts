@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, TemplateRef } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { TenantserviceService } from './../../../../shared/api/tenantservice.service'
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
@@ -20,7 +20,7 @@ export class PageVisitorParkingComponent implements OnInit {
   visitorsessions: any = [];
   visitorparkings: any = [];
   visitorparkingid: number;
-  constructor(private approute: ActivatedRoute, private toast: ToastrService, private modalService: BsModalService, private router: Router, private formBuilder: FormBuilder, private service: TenantserviceService) { }
+  constructor(private approute: ActivatedRoute, private toast: ToastrService, private modalService: BsModalService, private router: Router, private formBuilder: UntypedFormBuilder, private service: TenantserviceService) { }
   ngOnInit(): void {
     var userinfo = localStorage.getItem("userinfo");
     var user = JSON.parse(userinfo);

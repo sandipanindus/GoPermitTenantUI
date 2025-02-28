@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CartService } from '../../../../shared/services/cart.service';
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 import { CartItem } from '../../../../shared/interfaces/cart-item';
 import { Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
@@ -9,7 +9,7 @@ import { RootService } from '../../../../shared/services/root.service';
 interface Item {
     cartItem: CartItem;
     quantity: number;
-    quantityControl: FormControl;
+    quantityControl: UntypedFormControl;
 }
 
 @Component({
@@ -36,7 +36,7 @@ export class PageCartComponent implements OnInit, OnDestroy {
                 return {
                     cartItem,
                     quantity: cartItem.quantity,
-                    quantityControl: new FormControl(cartItem.quantity, Validators.required)
+                    quantityControl: new UntypedFormControl(cartItem.quantity, Validators.required)
                 };
             }))
         ).subscribe(items => this.items = items);

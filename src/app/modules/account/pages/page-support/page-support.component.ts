@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { TenantserviceService } from './../../../../shared/api/tenantservice.service'
 import { from } from 'rxjs';
@@ -14,8 +14,8 @@ export class PageSupportComponent implements OnInit {
   replytime: string;
   responsetime: string;
   replyres: string;
-  supportform: FormGroup;
-  replyform: FormGroup;
+  supportform: UntypedFormGroup;
+  replyform: UntypedFormGroup;
   supportsubmitted = false;
   replysubmitted = false;
   name: string;
@@ -31,7 +31,7 @@ export class PageSupportComponent implements OnInit {
   supports: any = [];
   supportlists: any = [];
   ticketid: number;
-  constructor(private approute: ActivatedRoute, private toast: ToastrService, private route: Router, private formBuilder: FormBuilder, private service: TenantserviceService) {
+  constructor(private approute: ActivatedRoute, private toast: ToastrService, private route: Router, private formBuilder: UntypedFormBuilder, private service: TenantserviceService) {
 
     this.supportform = this.formBuilder.group({
       Lissue: ['', Validators.required],

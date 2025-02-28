@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { TenantserviceService } from './../../../../shared/api/tenantservice.service'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-pages-visitor-confirm',
@@ -13,7 +13,7 @@ import { DatePipe } from '@angular/common';
   ]
 })
 export class PagesVisitorConfirmComponent implements OnInit {
-  confirmform: FormGroup;
+  confirmform: UntypedFormGroup;
   confirmsubmitted = false;
   Id: string;
   vrm: string;
@@ -32,7 +32,7 @@ export class PagesVisitorConfirmComponent implements OnInit {
   endtime: string;
   bayno: number;
   bayname: string;
-  constructor(private datePipe: DatePipe, private toast: ToastrService, private formBuilder: FormBuilder,
+  constructor(private datePipe: DatePipe, private toast: ToastrService, private formBuilder: UntypedFormBuilder,
     private approute: ActivatedRoute, private router: Router, private service: TenantserviceService) {
     this.confirmform = this.formBuilder.group({
       Lvrm: ['', [Validators.required]],
