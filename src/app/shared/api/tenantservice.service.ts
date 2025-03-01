@@ -12,7 +12,7 @@ export class TenantserviceService {
   constructor(private http: HttpClient) {
 
 
-   this.baseUrl = "https://localhost:5001/api/";
+   this.baseUrl = "http://localhost:53846/api/";
   //this.baseUrl = "http://smartpermitapi.eisappserver.net/api/";
  // this.baseUrl="http://goapi.fadelsoft.co.in/api/"
 
@@ -162,4 +162,35 @@ export class TenantserviceService {
   _getManageParkings(Id) {
     return this.http.get(this.baseUrl + "Tenant/GetManageParkings?tenantid=" + Id)
   }
+
+
+
+
+
+
+  // uploadTenantDocuments(id: string, residencyFile: File, identityFile: File): Observable<any> {
+  //   const formData = new FormData();
+  //   formData.append('fileupload1', residencyFile);
+  //   formData.append('fileupload2', identityFile);
+  
+  //   return this.http.post(
+  //     `${this.baseUrl}Admin/AddTenantUseruploads?Id=${id}`, 
+  //     formData
+  //   );
+  // }
+  
+
+  uploadTenantDocuments(id: string, residencyFile: File, identityFile: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('id', id); // Add the id to the form data
+    formData.append('fileupload1', residencyFile);
+    formData.append('fileupload2', identityFile);
+  
+    return this.http.post(
+      `${this.baseUrl}Admin/AddTenantUseruploads`, // No query param needed
+      formData
+    );
+  }
+  
+  
 }

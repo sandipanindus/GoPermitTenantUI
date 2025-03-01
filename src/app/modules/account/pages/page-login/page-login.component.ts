@@ -67,17 +67,49 @@ export class PageLoginComponent implements OnInit {
 
 
 
-        this.service.Login(this.SignInEmail,this.SignInPassword).subscribe((data: any) => {
-            if(data.status=="200")
-            {
-                this.toast.success("Login sucessfully")
-               localStorage.setItem('userinfo',JSON.stringify(data.result) )
-              localStorage.setItem('token',data.token )
+        // this.service.Login(this.SignInEmail,this.SignInPassword).subscribe((data: any) => {
+        //     if(data.status=="200")
+        //     {
+        //         this.toast.success("Login sucessfully")
+        //        localStorage.setItem('userinfo',JSON.stringify(data.result) )
+        //       localStorage.setItem('token',data.token )
  
-            this.route.navigateByUrl('/account/dashboard');
+        //     this.route.navigateByUrl('/account/dashboard');
 
-            }
-            else{
+        //     }
+        //     else{
+
+
+        this.service.Login(this.SignInEmail, this.SignInPassword).subscribe((data: any) => {
+          if (data.status === "200") {
+            this.toast.success("Login successfully");
+
+            localStorage.setItem('userinfo',JSON.stringify(data.result) )
+            localStorage.setItem('token',data.token )
+        
+            const userId = data.result.id; // Extract the id from login response
+        
+            // Fetch updated profile using the extracted id
+            this.service.GetProfileById(userId).subscribe({
+              next: (profileResponse: any) => {
+                console.log("Updated Profile:", profileResponse);
+        
+                // Extract and store residencyProofId if it exists
+                const residencyProofId = profileResponse?.result?.residencyProofId;
+                if (residencyProofId) {
+                  localStorage.setItem('residencyProofId', residencyProofId);
+                  console.log("Residency Proof ID stored in localStorage:", residencyProofId);
+                }
+        
+                // Navigate after successful profile fetch
+                this.route.navigateByUrl('/account/dashboard');
+              },
+              error: (err) => {
+                console.error("Error fetching profile:", err);
+                this.toast.error("Failed to fetch profile details.");
+              }
+            });
+          } else {
                 this.toast.warning(data.message);
             }
 

@@ -54,6 +54,10 @@ export class PageDashboardComponent implements OnInit {
     tenantid;
     vehicles: any;
     profilepath: string;
+
+    emailCode: string | null = null;
+    profile: any;
+
     constructor(private service: TenantserviceService) {
         var details = JSON.parse(localStorage.getItem('userinfo'));
         this.Name = details.firstName + ' ' + details.lastName;
@@ -106,15 +110,60 @@ export class PageDashboardComponent implements OnInit {
         });
     }
     ngOnInit(): void {
+        const userInfo = localStorage.getItem('userinfo');
+        if (userInfo) {
+          const parsedUserInfo = JSON.parse(userInfo);
+          this.emailCode = parsedUserInfo.address ?? null; // Set emailCode safely
+          this.GetProfile(parsedUserInfo.id); // Fetch profile using user id
+
+          this.fetchAndStoreApprovalStatus(parsedUserInfo.id);
+      
+          const residencyProofId = localStorage.getItem('residencyProofId');
+      
+          // Check residencyProofId and open the appropriate modal
+          if (residencyProofId && residencyProofId.trim() !== '') {
+            this.isConfirmationModalOpen = true; // Open third modal directly
+          } else {
+            this.isDialogOpen = true; // Show terms modal if no residencyProofId
+          }
+        } else {
+          console.warn('User info not found in localStorage.');
+        }
+      
+        // Load necessary UI elements
         this.getlist();
-        document.getElementById('ulmenu').style.display = 'block';
-        document.getElementById('logodiv').style.display = 'block';
-        document.getElementById('epsdiv').style.display = 'block';
-        document.getElementById('mobilediv').style.display = 'block';
-        var userinfo = localStorage.getItem('userinfo');
-        var user = JSON.parse(userinfo);
-        this.GetProfile(user.id);
-    }
+        document.getElementById('ulmenu')?.style.setProperty('display', 'block');
+        document.getElementById('logodiv')?.style.setProperty('display', 'block');
+        document.getElementById('epsdiv')?.style.setProperty('display', 'block');
+        document.getElementById('mobilediv')?.style.setProperty('display', 'block');
+      }
+
+
+      fetchAndStoreApprovalStatus(tenantId: number): void {
+        this.service.GetProfileById(tenantId).subscribe({
+          next: (response: any) => {
+            if (response?.status === "200" && response?.result) {
+              const isApproved = response.result.isApproved;
+      
+              // Store isApproved in localStorage
+              localStorage.setItem('isApproved', isApproved.toString());
+      
+              // Conditionally show the confirmation modal
+              const residencyProofId = localStorage.getItem('residencyProofId');
+              if (!isApproved && residencyProofId && residencyProofId.trim() !== '') {
+                this.isConfirmationModalOpen = true; // Open confirmation modal only if not approved
+              } else {
+                this.isConfirmationModalOpen = false; // Hide modal if approved
+              }
+            }
+          },
+          error: (error) => {
+            console.error("Failed to fetch approval status:", error);
+          }
+        });
+      }
+      
+      
     GetProfile(Id) {
         //var element = document.getElementById("loader") as HTMLDivElement;
         //  element.style.display = 'block';
@@ -235,4 +284,125 @@ export class PageDashboardComponent implements OnInit {
             });
         }
     }
+
+
+
+
+
+
+
+isDialogOpen = false;
+isUploadModalOpen = false;
+isConfirmationModalOpen = false;
+residencyProofFile: File | null = null;
+identityProofFile: File | null = null;
+
+// Open first modal
+openDialog() {
+  this.isDialogOpen = true;
+  document.body.style.overflow = 'hidden';
+}
+
+// Close first modal
+closeDialog() {
+  this.isDialogOpen = false;
+  document.body.style.overflow = 'auto';
+}
+
+// Agree and open document upload modal
+agreeAndOpenUploadModal() {
+  this.closeDialog();
+  this.openUploadModal();
+}
+
+// Open second modal
+openUploadModal() {
+  this.isUploadModalOpen = true;
+  document.body.style.overflow = 'hidden';
+}
+
+// Close second modal
+closeUploadModal() {
+  this.isUploadModalOpen = false;
+  document.body.style.overflow = 'auto';
+}
+
+// Open third modal
+openConfirmationModal() {
+  this.isConfirmationModalOpen = true;
+  document.body.style.overflow = 'hidden';
+}
+
+// Close third modal
+closeConfirmationModal() {
+  this.isConfirmationModalOpen = false;
+  document.body.style.overflow = 'auto';
+}
+
+// Handle file selection
+onFileSelected(event: Event, type: 'residency' | 'identity') {
+  const target = event.target as HTMLInputElement;
+  if (target.files && target.files.length > 0) {
+    type === 'residency'
+      ? (this.residencyProofFile = target.files[0])
+      : (this.identityProofFile = target.files[0]);
+  }
+}
+
+
+
+
+
+// Submit documents and show confirmation
+submitDocuments(residencyProof: HTMLInputElement, ownershipProof: HTMLInputElement) {
+    const residencyFile = residencyProof.files?.[0];
+    const ownershipFile = ownershipProof.files?.[0];
+  
+    if (!residencyFile || !ownershipFile) {
+      alert("Please upload both documents.");
+      return;
+    }
+  
+    if (!this.tenantid) {
+      alert("User ID not found. Please log in again.");
+      return;
+    }
+  
+    // Call the API to upload documents
+    this.service.uploadTenantDocuments(this.tenantid, residencyFile, ownershipFile).subscribe({
+      next: (response) => {
+        console.log("Upload successful:", response);
+  
+        // Fetch updated profile after successful upload
+        this.service.GetProfileById(this.tenantid).subscribe({
+          next: (profileResponse: any) => {
+            console.log("Updated Profile:", profileResponse);
+  
+            // Extract residencyProofId from the response
+            const residencyProofId = profileResponse?.result?.residencyProofId;
+            
+            if (residencyProofId) {
+              localStorage.setItem('residencyProofId', residencyProofId);
+              console.log("Residency Proof ID stored in localStorage:", residencyProofId);
+            }
+  
+            this.closeUploadModal();        // Close the upload modal
+            this.openConfirmationModal();   // Open the confirmation modal
+  
+            // Optionally update local profile data if needed:
+            this.profile = profileResponse?.result;
+          },
+          error: (profileError) => {
+            console.error("Failed to fetch updated profile:", profileError);
+            alert("Documents uploaded, but failed to fetch updated profile.");
+          }
+        });
+      },
+      error: (error) => {
+        console.error("Upload failed:", error);
+        alert("Document upload failed. Please try again.");
+      }
+    });
+  }
+  
 }
