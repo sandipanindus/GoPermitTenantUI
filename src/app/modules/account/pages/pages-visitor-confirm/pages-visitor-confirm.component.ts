@@ -168,4 +168,29 @@ export class PagesVisitorConfirmComponent implements OnInit {
     //this.router.navigateByUrl('/account/dashboard');
    // window.location.href = 'https://gopermit.co.uk/';
   }
+
+
+
+
+  isTermsModalOpen: boolean = false;
+isPrivacyModalOpen: boolean = false;
+
+openModal(type: string): void {
+  if (type === 'terms') {
+    this.isTermsModalOpen = true;
+  } else if (type === 'privacy') {
+    this.isPrivacyModalOpen = true;
+  }
+}
+
+closeModal(type: string): void {
+  if (type === 'terms') {
+    this.isTermsModalOpen = false;
+  } else if (type === 'privacy') {
+    this.isPrivacyModalOpen = false;
+  }
+}
+
+
+
 }

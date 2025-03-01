@@ -115,6 +115,8 @@ export class PageDashboardComponent implements OnInit {
           const parsedUserInfo = JSON.parse(userInfo);
           this.emailCode = parsedUserInfo.address ?? null; // Set emailCode safely
           this.GetProfile(parsedUserInfo.id); // Fetch profile using user id
+
+          this.fetchAndStoreApprovalStatus(parsedUserInfo.id);
       
           const residencyProofId = localStorage.getItem('residencyProofId');
       
@@ -135,6 +137,32 @@ export class PageDashboardComponent implements OnInit {
         document.getElementById('epsdiv')?.style.setProperty('display', 'block');
         document.getElementById('mobilediv')?.style.setProperty('display', 'block');
       }
+
+
+      fetchAndStoreApprovalStatus(tenantId: number): void {
+        this.service.GetProfileById(tenantId).subscribe({
+          next: (response: any) => {
+            if (response?.status === "200" && response?.result) {
+              const isApproved = response.result.isApproved;
+      
+              // Store isApproved in localStorage
+              localStorage.setItem('isApproved', isApproved.toString());
+      
+              // Conditionally show the confirmation modal
+              const residencyProofId = localStorage.getItem('residencyProofId');
+              if (!isApproved && residencyProofId && residencyProofId.trim() !== '') {
+                this.isConfirmationModalOpen = true; // Open confirmation modal only if not approved
+              } else {
+                this.isConfirmationModalOpen = false; // Hide modal if approved
+              }
+            }
+          },
+          error: (error) => {
+            console.error("Failed to fetch approval status:", error);
+          }
+        });
+      }
+      
       
     GetProfile(Id) {
         //var element = document.getElementById("loader") as HTMLDivElement;

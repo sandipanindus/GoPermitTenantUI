@@ -111,14 +111,27 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <label class="checkbox-inline">
+                            <!-- <label class="checkbox-inline">
                                 <input type="checkbox" id="chkcc" value="">
                                 <span class="ml-2">By clicking 'Submit', you agree to Go Permit's <a
                                         href="assets/images/Condition of use of permit -residents & visitors.docx"
                                         style="color: blue;"> Tenant Terms </a> & <a
                                         href="assets/images/Privacy Policy.docx" style="color: blue;"> Privacy
                                         Policy</a>.</span>
-                            </label>
+                            </label> -->
+
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="chkcc" value="">
+                                <span class="ml-2">
+                                  By clicking 'Submit', you agree to Go Permit's 
+                                  <a href="#" (click)="openModal('terms'); $event.preventDefault()" style="color: blue;">
+                                    Tenant Terms
+                                  </a> & 
+                                  <a href="#" (click)="openModal('privacy'); $event.preventDefault()" style="color: blue;">
+                                    Privacy Policy
+                                  </a>.
+                                </span>
+                              </label>
                         </div>
                         <div class="form-row float-right">
                             <button class="btn btn-primary" (click)="UpdateVisitorSlot()">Confirm</button>
@@ -189,5 +202,323 @@
 
             </div>
         </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- Tenant Terms Modal -->
+<div class="custom-modal" [class.show]="isTermsModalOpen">
+    <div class="custom-modal-content" (click)="$event.stopPropagation()">
+      <span class="close-btn" (click)="closeModal('terms')">&times;</span>
+      <h3 class="modal-title">Conditions of Use of Parking Permit</h3>
+      <p class="modal-subtitle">
+        PLEASE READ THE FOLLOWING POINTS BEFORE USING THE PERMIT. <br />
+        THESE TERMS & CONDITIONS APPLY TO ALL RESIDENTS, CUSTOMERS AND VISITORS USING THE PARKING SITE.
+      </p>
+      <ul class="modal-list">
+        <li>1.	The permit is only valid for the period of parking for the Vehicle Registered when the vehicle is parked in a parking zone at the relevant land operated by our company.</li>
+        <li>2.	When a parking bay is not allocated to an applicant, the granting of a permit does not guarantee that a space will be available.</li>
+        <li>3.	Issuance of the parking permit to the applicant named on the permit (permit holder) means the permit holder has agreed there are terms and conditions which are placed on the parking signage on the site and to check and follow all Terms and Conditions present on the signage at the relevant Parking Location and understand that any non-compliance will result in a PCN being issued to the vehicle, for which they will be held responsible as the permit is issued to the applicant.</li>
+        <li>4.	If another person was driving the vehicle, it is the permit holder’s responsibility to provide their name and address so liability can be transferred effectively. If the charge remains unpaid the permit holder will be held responsible for the outstanding charge.</li>
+        <li>5.	 The Permit holder agrees that it is their responsibility to comply with the terms and conditions of parking at the relevant land, in case the vehicle was being driven by another driver the permit holder will remain liable for making the driver aware of the terms and conditions of usage of the permit and for any PCN resulting from Non-Compliance if the charge remains unpaid, Unless liability is transferred.</li>
+        <li>6.	The Permit holder agrees they have been made aware that there are additional terms and conditions that always apply and must be adhered by all vehicles, as well as the requirement (if requested) of “VEHICLES FULLY DISPLAYING A VALID PARKING PERMIT WITH ALL DETAILS CLEARLY VISIBLE INSIDE THE FRONT WINDSCREEN”.</li>
+        <li>7.	The permit holder agrees that breach of any Terms and Conditions will result in a Parking Charge Notice being issued to the any and all vehicles.</li>
+        <li>8.	The permit holder agrees that GoPermit is not liable for any theft, damage, loss and injury to the permit holder and the vehicle.</li>
+        <li>9.	For further information please visit our website  <a href="https://www.gopermit.com" target="_blank">www.GoPermit.com</a> or email us  <a href="mailto:support@gopermit.co.uk">support@gopermit.co.uk</a>.</li>
+      </ul>
+      <div class="modal-footer">
+        <button class="ok-btn" (click)="closeModal('terms')">OK</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Privacy Policy Modal -->
+  <div class="custom-modal2" [class.show]="isPrivacyModalOpen">
+    <div class="custom-modal-content2" (click)="$event.stopPropagation()">
+      <span class="close-btn2" (click)="closeModal('privacy')">&times;</span>
+      <h3 class="modal-title2">Privacy Policy</h3>
+      <p class="modal-subtitle2">Overview</p>
+      <p>GoPermit is a parking management company for privately owned sites. GoPermit is the ‘data controller’ for the purpose of General Data Protection Regulation. This policy has been produced and will continue to be updated in line with the Data Protection Act 2018 and General Data Protection Regulation. This policy will explain your rights and what to expect when we ‘the data controller’ collect personal data from you, including information about the right to access the information obtained. GoPermit has authorization from ‘Landowners’ to manage and operate their car parks using a variety of different services. This may include Enforcement officers patrolling our sites, ANPR, MNPR, and CCTV monitoring.</p>
+      <p class="modal-subtitle2">What we do</p>
+      <p>We monitor the entry and exit of our privately managed ANPR, CCTV, or patrolled car park sites. We obtain images of people and vehicles, including vehicle registration numbers. These are obtained to confirm the length of stay and enforce non-compliance of the Terms and Conditions of entry onto our privately-owned sites. We also use our cameras to detect and deter criminal activity and to provide activity information to our clients.</p>
+      <p class="modal-subtitle2">Who we are</p>
+        <p>GoPermit is a company registered in England and Wales whose registered office is at Office 2, 51 Pinfold Street, Birmingham, West Midlands, B2 4AY.</p>
+        <p>Our Data Protection Team can be contacted by emailing <a href="mailto:support@gopermit.co.uk">support@gopermit.co.uk</a>.</p>
+
+        <p class="modal-subtitle2">What data do we collect?</p>
+        <p>We collect data for the purposes of delivering our services, which include, but are not limited to, executing parking charge notices to motorists deemed to be in contravention of our contractual terms and conditions upheld on behalf of our client.</p>
+        <p>The data we collect comprises images of vehicles within the premises or the VRM (Vehicle Registration Mark) and may include written notes as supporting evidence of a motorist failing to comply with site terms and also vehicle movements during the period of contravention.</p>
+
+
+        <p class="modal-subtitle2">How do we collect data?</p>
+<ul>
+  <li>If you are the registered keeper of a vehicle which has had a Parking Charge Notice issued against it, your details will be requested by the DVLA (Driving Vehicle Licensing Agency).</li>
+  <li>If you are not the registered keeper of the vehicle, there are other methods we use to obtain your information, including if you no longer live at the address held by the DVLA.</li>
+  <li>A third party has confirmed that the vehicle was on hire or lease to you at the time of contravention.</li>
+  <li>A third party has confirmed you were either accountable or driving the vehicle at the time of contravention.</li>
+  <li>A third party credit reference.</li>
+  <li>A third party living at the residence who can confirm you no longer live at the address.</li>
+  <li>A third party passing over forwarding addresses.</li>
+</ul>
+
+<hr style="border: 2px solid #808080;"> <!-- Standard gray -->
+
+
+<p>Euro Parking Services, for the purposes set out in this Privacy Policy, may share information related to a Parking Charge with the following services:</p>
+<ul>
+  <li>The payment processor for the processing of any online payments.</li>
+  <li>The International Parking Community for auditing purposes of our car park management services.</li>
+  <li>The DVLA (Driver Vehicle Licensing Agency) for the purpose of obtaining registered keeper details.</li>
+  <li>The Independent Appeal Service (IAS) for the purpose of considering any appeal made.</li>
+  <li>Print and mail service providers for the purpose of responding to any queries or appeals.</li>
+  <li>Email Service Providers for the purpose of responding to queries or appeals by email.</li>
+  <li>Credit reference agents for the purpose of ensuring we are writing to you at the most recent correspondence address.</li>
+  <li>Collection Agents for the purpose of enforcing a parking contract.</li>
+  <li>Gladstone’s Solicitors or any third party they may instruct on their behalf for the purpose of enforcing a parking contract or responding to a legal query or any other duty authorized sub-contractor.</li>
+</ul>
+
+
+<p>Other than stated above, information supplied to us is subject to confidentiality and will not be disclosed otherwise without your prior consent.</p>
+<p>We will not ask you for any more information than we need, and we do not keep your information for any longer than necessary.</p>
+<p>We take reasonable steps to keep your details up to date and accurate. Please keep in mind that we may hold your records after your appeal has been considered, as we are required to have effective audit trails and to comply with regulatory and legislative requirements.</p>
+
+<p class="modal-subtitle2">Your Rights and Data Security</p>
+<p>The General Data Protection Regulation gives you the right to access information held about you. You can access personal data we hold about you by sending an email to <a href="mailto:support@gopermit.co.uk">support@gopermit.co.uk</a>.</p>
+<p>As an organisation, we look after your personal data by implementing security measures appropriate to its nature and the potential harm that might result from a breach. However, please note that the transmission of information via the internet is not completely secure. While we strive to protect your personal data, we cannot guarantee its security during transmission to our site. Any transmission is at your own risk. Once we have received your information, we will use strict procedures and security features to prevent unauthorised access.</p>
+
+<hr style="border: 2px solid #808080;"> <!-- Standard gray -->
+
+<p class="modal-subtitle2">The Legal Position</p>
+<p>This privacy notice includes the following information to help you understand clearly how your data is being used:</p>
+<ul>
+  <li>The lawful basis for processing your data</li>
+  <li>Categories of data processed</li>
+  <li>What we do with your personal data</li>
+</ul>
+
+<p class="modal-subtitle2">Your Rights Under the Data Protection Act (DPA)</p>
+<ul>
+  <li>The right to be informed</li>
+  <li>The right of access</li>
+  <li>The right to rectification</li>
+  <li>The right to erasure</li>
+  <li>The right to restrict processing</li>
+  <li>The right to data portability</li>
+  <li>The right to object</li>
+  <li>Rights in relation to automated decision-making and profiling</li>
+</ul>
+
+<p>Please note that you have the right to request the above. However, when we receive your request, we may object if we do not agree with it. If you do make a request, we will inform you whether it has been granted or not and provide the reason why.</p>
+
+
+<p class="modal-subtitle2">Right of Access</p>
+<p>You have the right to submit a Subject Access Request, which can be done via an email request to our Data Protection Officer (DPO). We will need to obtain proof of your identity before providing you with information we hold about you. You can make a request by emailing <a href="mailto:support@gopermit.co.uk">support@gopermit.co.uk</a> or calling <a href="tel:08451210065">0845 121 0065</a>. For more information about data protection, please visit the <a href="https://www.ico.org.uk" target="_blank">ICO website</a>.</p>
+
+<hr style="border: 2px solid #808080;"> <!-- Standard gray -->
+
+<p class="modal-subtitle2">Our Legitimate Interest for Processing Your Personal Data</p>
+<p>The processing is necessary for a contract which has been entered into and there is a legitimate interest to do so. We are entitled to:</p>
+<ul>
+  <li>Pursue a motorist for an unpaid parking tariff</li>
+  <li>Pursue a motorist for an unpaid parking charge</li>
+  <li>Ensure safety and security and help deter/detect criminal activity</li>
+</ul>
+
+<p class="modal-subtitle2">Sharing Your Personal Data</p>
+<p>Your personal data may be shared for the payment of a parking tariff or charge with third parties, such as a payment facilitator, an external software provider, debt recovery companies, solicitors, and high court officers/bailiffs where necessary to ensure compliance with your obligations under the contract. We will not transfer your personal data outside of the EU.</p>
+
+<hr style="border: 2px solid #808080;"> <!-- Standard gray -->
+
+<p class="modal-subtitle2">The Five Categories of “Personal Data” We Process</p>
+
+<p><strong>Unpaid Charge/Tariff:</strong></p>
+<p>As a compliant user of our privately managed car parking site, the personal data we obtain is your registration number. We may capture images of the vehicle, occupants, or bystanders. Your data will be retained for 3 months only, after which it will be erased.</p>
+
+<p><strong>Unpaid Fee:</strong></p>
+<p>Where a fee is payable, we may request personal details of the registered keeper of the vehicle from the Driver and Vehicle Licensing Agency (DVLA) and other third parties, such as registered keepers or hire companies, to assist in resolving any dispute.</p>
+
+<p><strong>Appeals:</strong></p>
+<p>If you challenge a parking charge and we reject your appeal, we will provide your registration number and parking charge number along with the time and date of the parking event to the Independent Appeals Service (IAS) and/or the International Parking Committee (IPC) for independent adjudication.</p>
+
+<p><strong>Windscreen Parking Charge:</strong></p>
+<p>If you receive a Parking Charge Notice on your windscreen, we will have obtained your personal details, including images of your vehicle, occupants, bystanders, and the vehicle registration number. If payment is made within 28 days, your personal details will not be retained for longer than 3 months. If unpaid beyond 28 days, we may request personal details from the DVLA and other third parties.</p>
+
+<p><strong>Postal Parking Charge:</strong></p>
+<p>If you receive a Parking Charge Notice by post, we will have previously obtained your personal details, including images of your vehicle, occupants, bystanders, and the vehicle registration. We will also have obtained personal details of the registered keeper of the vehicle from the DVLA.</p>
+
+
+<p class="modal-subtitle2">Personal Details We Obtain</p>
+<p>The personal details we will obtain include:</p>
+<ul>
+  <li>The name and address of the registered keeper</li>
+  <li>The make, model, and colour of the vehicle</li>
+  <li>Confirmation of the registration number</li>
+  <li>Any other information that we gather in pursuance of the unpaid fee, including information that is shared by you with us</li>
+</ul>
+
+<p>Your data will be held for a sufficient time to enable the fee to be settled by you or another person and to resolve any dispute. However, your data will not normally be held for longer than 6 years. In some circumstances, your data may be held for longer than 6 years. Examples include:</p>
+<ul>
+  <li>When there is an ongoing dispute requiring us to retain the data for longer than normal.</li>
+  <li>Where a court order has been made allowing us to pursue outstanding money after the expiration of 6 years.</li>
+</ul>
+
+
+<p class="modal-subtitle2">Changes to Our Privacy Notice</p>
+<p>From time to time, we may amend the way in which we process personal data. This may lead to changes in how we collect and/or use your personal information. We may amend the terms of this Privacy Policy at any time.</p>
+
+<hr style="border: 2px solid #808080;"> <!-- Standard gray -->
+
+<p class="modal-subtitle2">GoPermit Website Privacy Policy</p>
+<p>We take care to protect the privacy of users of the GoPermit Website. With regard to each of your visits to our website, we may automatically collect technical information, including:</p>
+<ul>
+  <li>Internet Protocol (IP) address used to connect your computer to the Internet</li>
+  <li>Your login information</li>
+  <li>Browser type and version</li>
+  <li>Time zone setting</li>
+  <li>Browser plug-in types and versions</li>
+  <li>Operating system and platform</li>
+  <li>Information about your visit, including the full Uniform Resource Locators (URL) clickstream to, through, and from our site (including date and time)</li>
+  <li>Products you viewed or searched for</li>
+  <li>Page response times, download errors, length of visits to certain pages</li>
+  <li>Page interaction information (such as scrolling, clicks, and mouse-overs)</li>
+  <li>Methods used to browse away from the page</li>
+  <li>Any phone number used to call our customer service number</li>
+</ul>
+
+<p>The information we collect and store during normal use of the site is used to monitor and analyse how parts of the site are used. Such use does not result in any personally identifiable data being collected or stored.</p>
+<p>By submitting your information and/or using this website, you consent to the use of that information as set out in this Privacy Policy.</p>
+
+<p class="modal-subtitle2">GoPermit Privacy Policy on Appeals</p>
+<p>This privacy statement has been produced in accordance with the General Data Protection Regulation (GDPR) and The Data Protection Act 2018. It applies to all personal data, as defined in these acts, submitted when you click on the “Appeal your Parking Charge Notice” button.</p>
+
+
+<p class="modal-subtitle2">GoPermit Privacy Policy on Appeals</p>
+<p>This privacy statement has been produced in accordance with the General Data Protection Regulation (GDPR) and The Data Protection Act 2018. It applies to all personal data, as defined in these acts, submitted when you click on the “Appeal your Parking Charge Notice” button.</p>
+
+<hr style="border: 2px solid #808080;"> <!-- Standard gray -->
+
+<p class="modal-subtitle2">For an Appeal</p>
+<p>When submitting an appeal, we may collect the following information:</p>
+<ul>
+  <li>Parking charge reference</li>
+  <li>Vehicle registration number</li>
+  <li>Your capacity (e.g., driver, registered keeper, hirer/lease, or other)</li>
+  <li>Your name, postal address, email address, and telephone number</li>
+  <li>Details of the appeal and any uploaded evidence</li>
+</ul>
+
+<p>These details will be used for the purpose of progressing your parking charge to cancellation or payment and may be shared appropriately to do so and for audit purposes. Information supplied to us is subject to confidentiality and will not be disclosed without your prior consent, except in line with this purpose. Where necessary, your data may be shared with:</p>
+<ul>
+  <li>The International Parking Committee (IPC)</li>
+  <li>Driver and Vehicle Licensing Agency (DVLA)</li>
+  <li>Independent Appeals Service (IAS)</li>
+  <li>Print and mail service providers</li>
+  <li>Email service providers</li>
+  <li>Credit reference agents</li>
+  <li>Collection agents or solicitors</li>
+  <li>Any other duly authorized sub-contractors</li>
+</ul>
+
+<p class="modal-subtitle2">Use of the Information</p>
+<p>When you submit an appeal via the “Appeal” button, you accept that GoPermit will collect and process the personal data you provide through the GoPermit website for the purposes outlined above.</p>
+
+<p>Depending on the nature of your appeal, the information you provide may be considered sensitive personal data. For example, if you submit details related to a medical condition, we will only use this information as part of your appeal and not for any other purpose.</p>
+
+<p>We will request your consent where we need to disclose this information to a third party to verify your appeal.</p>
+
+<p>By submitting your appeal, you consent to the use of all information as set out in this privacy policy.</p>
+
+
+<p class="modal-subtitle2">GoPermit Privacy Statement Concerning Payment Page</p>
+<p>This privacy statement has been produced in accordance with the General Data Protection Regulation (GDPR) and applies to all personal data, as defined in the Act, submitted when you choose to pay for your Parking Charge Notice (PCN) through our website.</p>
+
+<p class="modal-subtitle2">Accepted Use of the Information</p>
+<p>When you choose to pay your PCN online, you will be redirected to the separately hosted web pages of the Payment Processor for Card Payments.</p>
+
+<hr style="border: 2px solid #808080;"> <!-- Standard gray -->
+
+<p class="modal-subtitle2">Making an Online Payment</p>
+<p>Any personal data you supply via the Payment Processor will be collected and processed by the Payment Processor only for the following purposes. This information may include:</p>
+<ul>
+  <li>Your parking charge reference</li>
+  <li>Card number</li>
+  <li>Expiry date</li>
+  <li>Security code</li>
+</ul>
+
+<p>The parking charge reference will be used to locate the relevant parking charge, enabling the Payment Processor to populate the payment screen with the outstanding amount payable. The other details will be used by the Payment Processor to process the transaction.</p>
+
+<p>We will receive only the status of the parking charge, such as “paid,” and the parking charge reference to help us allocate the payment made.</p>
+
+<p class="modal-subtitle2">Security of Your Personal Data</p>
+<p>We take appropriate security measures to protect your personal data, considering its nature and the potential harm that could result from a breach. However, please note that the transmission of information via the internet is not completely secure. While we do our best to protect your personal data, we cannot guarantee the security of data transmitted to our site. Any transmission is at your own risk, and we recommend taking appropriate precautions to mitigate this risk.</p>
+
+
+<p class="modal-subtitle2">GoPermit Privacy Statement Concerning Payment Page</p>
+<p>This privacy statement has been produced in accordance with the General Data Protection Regulation (GDPR) and applies to all personal data, as defined in the Act, submitted when you choose to pay for your Parking Charge Notice (PCN) through our website.</p>
+
+<p class="modal-subtitle2">Payments Processed by Cyprium</p>
+<p>Our payments are processed by Cyprium. We shall provide Cyprium with information regarding the Parking Charge value due for payment. This information, along with any information you provide directly to Cyprium, shall be processed in line with the <a href="http://www.cyprium-uk.co.uk/" target="_blank">Cyprium Privacy Policy</a>.</p>
+
+<p class="modal-subtitle2">Accepted Use of the Information</p>
+<p>When you choose to pay your PCN online, you will be redirected to the separately hosted web pages of the Payment Processor for card payments.</p>
+
+<p class="modal-subtitle2">Making an Online Payment</p>
+<p>Any personal data you supply via the Payment Processor will be collected and processed by the Payment Processor only for the following purposes. This information may include:</p>
+<ul>
+  <li>Your parking charge reference</li>
+  <li>Card number</li>
+  <li>Expiry date</li>
+  <li>Security code</li>
+</ul>
+
+<p>The parking charge reference will be used to locate the relevant parking charge, enabling the Payment Processor to populate the payment screen with the outstanding amount payable. The other details will be used by the Payment Processor to process the transaction.</p>
+
+<p>We will receive only the status of the parking charge, such as “paid,” and the parking charge reference to help us allocate the payment made.</p>
+
+<p class="modal-subtitle2">Security of Your Personal Data</p>
+<p>All online card payments are protected by Secure Socket Layer (SSL) with an encryption key length of 128 bits. Your payment card details are directly processed by the Payment Processor and are neither collected nor accessible by Euro Parking Services Ltd. The Payment Processor’s online payment management solutions are independently and rigorously security assessed and certified by Visa and MasterCard as a Payment Card Industry Data Security Standard (PCI DSS) Level 1 payment processor.</p>
+
+<p>Further details about this payment card security standard can be found on the <a href="https://www.pcisecuritystandards.org/security_standards/pci_dss.shtml" target="_blank">PCI Standards Security Council website</a>.</p>
+
+<p class="modal-subtitle2">Independent Payment Processor</p>
+<p>The Payment Processor facilitates transactions that are carried out when redirected from the GoPermit website. The Payment Processor provides a checkout facility only, via its own independent site.</p>
+
+
+<p class="modal-subtitle2">Police Enquiries – Privacy Statement</p>
+<p>This privacy statement has been produced in accordance with the Data Protection Act 2018 and the General Data Protection Regulation (GDPR). The statement applies to all personal data.</p>
+
+<p>Park Watch will only process and supply information to the Police Services based on their grounds for requesting personal data, as stated in the British Transport Police information request form, under the Data Protection Act 2018 and in line with GDPR.</p>
+
+<hr style="border: 2px solid #808080;"> <!-- Standard gray -->
+
+<p class="modal-subtitle2">How to Complain</p>
+<p>GoPermit is committed to ensuring your data rights are upheld. If you are unhappy with how we have used your personal data or have concerns about any correspondence received, you can contact us:</p>
+<ul>
+  <li>By email: <a href="mailto:support@gopermit.co.uk">support@gopermit.co.uk</a></li>
+  <li>By phone: <a href="tel:08451210065">0845 121 0065</a></li>
+</ul>
+
+<hr style="border: 2px solid #808080;"> <!-- Standard gray -->
+
+
+<p class="modal-subtitle2">Contact Us</p>
+<p>If you have any queries relating to this Privacy Policy, please contact us:</p>
+<ul>
+  <li>By email: <a href="mailto:support@gopermit.co.uk">support@gopermit.co.uk</a></li>
+  <li>By phone: <a href="tel:08451210065">0845 121 0065</a></li>
+</ul>
+
+      
+      <div class="modal-footer2">
+        <button class="ok-btn2" (click)="closeModal('privacy')">OK</button>
+      </div>
     </div>
 </div>
