@@ -11,8 +11,8 @@ export class TenantserviceService {
   header
   constructor(private http: HttpClient) {
 
-
-   this.baseUrl = "http://localhost:53846/api/";
+   // this.baseUrl = "http://goapi.fadelsoft.co.in/api/";
+   this.baseUrl = "https://localhost:5001/api/";
   //this.baseUrl = "http://smartpermitapi.eisappserver.net/api/";
  // this.baseUrl="http://goapi.fadelsoft.co.in/api/"
 

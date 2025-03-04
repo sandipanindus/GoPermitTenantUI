@@ -71,12 +71,16 @@ export class LinksComponent implements OnInit, OnDestroy, AfterViewChecked {
     onSubItemClick(): void {
         this.hoveredItem = null;
     }
-
+    UserName    
     ngOnInit(): void {
         merge(
             this.header.navPanelPositionState$,
             this.header.navPanelVisibility$,
         ).pipe(takeUntil(this.destroy$)).subscribe(() => this.hoveredItem = null);
+        const userInfo = localStorage.getItem('userinfo');
+       
+         const parsedUserInfo = JSON.parse(userInfo);
+         this.UserName=parsedUserInfo.firstName
     }
 
     ngOnDestroy(): void {

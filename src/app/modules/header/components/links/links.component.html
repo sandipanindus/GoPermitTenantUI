@@ -22,6 +22,9 @@
     
         <!-- Dropdown Menu -->
         <div *ngIf="dropdownOpen" class="dropdown-menu">
+            <a class="dropdown-item flex-wrap" >
+                <i class="fas fa-user"></i> Welcome {{UserName}}
+            </a>
             <a class="dropdown-item" [routerLink]="'/account/password'">
                 <i class="fas fa-lock"></i> Change Password
             </a>

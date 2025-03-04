@@ -82,12 +82,13 @@ export class CalenderManageParkingComponent implements OnInit {
   getDateItem(date: Date): string {
     return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
   }
+
   onbaynoset(event) {
     debugger
     if(event==null||event==undefined||event.length==0){
 
        }
-else{
+  else{
     this.loader = true
     setTimeout(() => {
       this.loader = false
@@ -883,16 +884,6 @@ else{
           this.dateSelected1 = this.dateSelected;
           this.cycleno = this.vehilsdatalist.result.data[0][0].maxissavecount + 1
 
-          // for (let i = 0; i < this.dateSelected.length; i++) {
-          //   this.dateSelected.splice(i, this.dateSelected.length);
-          //   this.selectedClass.splice(i, this.selectedClass.length);
-
-          // }
-
-          // for (let i = 0; i < this.dateselectscustomtop.length; i++) {
-          //   this.dateselectscustomtop.splice(i, this.dateselectscustomtop.length);
-
-          // }
           this.rbtnchoosestatus = true
 
           this.bindingmultiplecustomdates(data.result);
@@ -974,19 +965,10 @@ else{
 
     }
     this.vehiclemultiplelist = 1
-    //this.multiple='display'
-    //this.multiplebays='display'
     setTimeout(() => {
       this.bindingmultiplevehicles(data)
     }, 2000);
 
-    // this.dateSelected =[]
-
-
-    // for (let i = 0; i < data.result.length; i++) {
-
-    // }
-    //console.log(configno);
   }
 
   savevehcile: any = []
@@ -1053,7 +1035,7 @@ else{
     this.savevehcile.push({
       Make: this.vechiclemake,
       Model: this.model,
-      vrm: this.vrmno,
+      vrm: this.vrmno.toUpperCase(),
       bayno: this.bayno.toString(),
       StartDate: this.parkingvalidfrom.getFullYear() + '-' + (this.parkingvalidfrom.getMonth() + 1) + "-" + this.parkingvalidfrom.getDate() + " " + this.parkingvalidfromtime.getHours() + ":" + this.parkingvalidfromtime.getMinutes() + ":" + '00',
       EndDate: this.parkingvalidTo.getFullYear() + '-' + (this.parkingvalidTo.getMonth() + 1) + "-" + this.parkingvalidTo.getDate() + " " + this.parkingvalidTotime.getHours() + ":" + this.parkingvalidTotime.getMinutes() + ":" + '00',
@@ -1079,7 +1061,7 @@ else{
 
         this.toast.success('Vehicle added sucessfully');
         window.location.reload();
-        // this.route.navigateByUrl('/account/dashboard');
+         this.route.navigateByUrl('/account/VehicleRegistration');
 
 
 
@@ -1128,7 +1110,7 @@ else{
   //saving for custom dates retrive and finding
   cycleno = 0;
   savemultiplevehicle() {
-
+    debugger
     if (this.cycleno > 0) {
       // var dates= this.comparedates();
 
@@ -1269,13 +1251,11 @@ else{
               bayno: this.baynobj.bayNo.toString(),
               StartDate: vehiclestartdate1,
               EndDate: vehicleenddate1,
-              TenantId: +this.tenentid,
+              TenantId: +this.tenantid.toString(),
               id: i,
               loginId: 0,
               dates: this.dateSelected.toString(),
               Issavecount: this.cycleno
-
-
             })
             noshedulevehicle = 0;
           }
@@ -1300,11 +1280,11 @@ else{
                 Make: '',
                 //Model: (document.getElementById('model' + i) as HTMLInputElement).value,
                 Model: '',
-                vrm: (document.getElementById('vehicleno' + i) as HTMLInputElement).value,
+                vrm: (document.getElementById('vehicleno' + i) as HTMLInputElement).value.toUpperCase(),
                 bayno: this.baynobj.bayNo.toString(),
                 StartDate: vehiclestartdate1,
                 EndDate: vehicleenddate1,
-                TenantId: +this.tenentid,
+                TenantId: +this.tenantid.toString(),
                 id: i,
                 loginId: 0,
                 dates: this.dateSelected.toString(),
@@ -1335,11 +1315,11 @@ else{
               Make: '',
               // Model: (document.getElementById('model' + i) as HTMLInputElement).value,
               Model: '',
-              vrm: (document.getElementById('vehicleno' + i) as HTMLInputElement).value,
+              vrm: (document.getElementById('vehicleno' + i) as HTMLInputElement).value.toUpperCase(),
               bayno: this.baynobj.bayNo.toString(),
               StartDate: vehiclestartdate1,
               EndDate: vehicleenddate2,
-              TenantId: +this.tenentid,
+              TenantId: +this.tenantid.toString(),
               id: i,
               loginId: 0,
               dates: this.dateSelected.toString(),
