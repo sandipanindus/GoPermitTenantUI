@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { fromTouchClick } from './fromTouchClick';\nimport { share } from 'rxjs/operators';\nlet globalListener = null;\nexport function fromGlobalTouchClick() {\n  if (globalListener === null) {\n    globalListener = fromTouchClick(document).pipe(share());\n  }\n\n  return globalListener;\n}","map":null,"metadata":{},"sourceType":"module"}

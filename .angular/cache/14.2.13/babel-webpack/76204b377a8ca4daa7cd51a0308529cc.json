@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Logindto {\n  constructor(Email, Password) {\n    this.Email = Email;\n    this.Password = Password;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

@@ -1,0 +1,1 @@
+{"ast":null,"code":"export function parseFilterValue(filterType, value) {\n  switch (filterType) {\n    case 'range':\n      return value.split('-').map(x => parseFloat(x));\n\n    case 'check':\n    case 'color':\n      return value.trim() === '' ? [] : value.split(',');\n  }\n\n  return value;\n}","map":null,"metadata":{},"sourceType":"module"}
