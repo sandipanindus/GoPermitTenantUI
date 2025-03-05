@@ -79,7 +79,7 @@
                         <label>Enter driver details</label>
                     </div>
                     <div class="divinput">
-                        <label class="labelcls">First Name</label>
+                        <label class="labelcls">First Name<span class="text-red-500">*</span></label>
                         <input type="text" class="form-control" placeholder="First Name"
                             [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
                         <!-- <div *ngIf="visitorsubmitted && v.Vname.errors" class="invalid-feedback">
@@ -88,7 +88,7 @@
                         </div> -->
                     </div>
                     <div class="divinput">
-                        <label class="labelcls">Surname</label>
+                        <label class="labelcls">Surname<span class="text-red-500">*</span></label>
                         <input type="text" class="form-control" placeholder="Surname"
                             [(ngModel)]="surname" [ngModelOptions]="{standalone: true}">
                         <!-- <div *ngIf="visitorsubmitted && v.Vsurname.errors" class="invalid-feedback">
@@ -97,7 +97,7 @@
                         </div> -->
                     </div>
                     <div class="divinput">
-                        <label class="labelcls">Mobile No</label>
+                        <label class="labelcls">Mobile No<span class="text-red-500">*</span></label>
                         <input type="text"  class="form-control" placeholder="Mobile No"
                             [(ngModel)]="mobileno" [ngModelOptions]="{standalone: true}">
                         <!-- <div *ngIf="visitorsubmitted && v.Vmobileno.errors" class="invalid-feedback">
@@ -108,7 +108,7 @@
                     </div>
 
                     <div class="divinput">
-                        <label class="labelcls">Email</label>
+                        <label class="labelcls">Email<span class="text-red-500">*</span></label>
                         <input type="text"  class="form-control" placeholder="Email"
                             [(ngModel)]="email" formControlName="Vemail" required
                             [ngClass]="{'is-invalid': visitorsubmitted && v.Vemail.errors }">
@@ -131,7 +131,8 @@
                     <div class="divinput">
                         <label class="labelcls">VRM</label>
                         <input type="text" class="form-control" placeholder="VRM"
-                            [(ngModel)]="vrm" [ngModelOptions]="{standalone: true}">
+                            [(ngModel)]="vrm" [ngModelOptions]="{standalone: true}"
+                            (input)="vrm = vrm.toUpperCase()">
                         <!-- <div *ngIf="visitorsubmitted && v.Vvrm.errors" class="invalid-feedback">
                             <div *ngIf="v.Vvrm.errors.required" style="color: #ffd333">VRM is
                                 required</div>
@@ -139,8 +140,15 @@
                     </div>
 
                     <div class="divbtn">
-                        <button class="btn btn-primary mb-2" style="border-radius: 10px;"
-                            (click)="AddVisitor()">Submit</button>
+                        <!-- <button class="btn btn-primary mb-2" style="border-radius: 10px;"
+                            (click)="AddVisitor()">Submit</button> -->
+                            <button 
+                                class="bg-[#FFD333] text-black font-bold py-2 px-4 rounded disabled:bg-gray-400 disabled:cursor-not-allowed" 
+                                [disabled]="!visitorForm.valid"
+                                (click)="AddVisitor()">
+                                Submit
+                                </button>
+
                     </div>
                 </form>
 

@@ -30,26 +30,64 @@
     position: relative;
 }
 
-.menu_nav{
-  // display: flex;
-  // flex-direction: row;
-   justify-content: end;
-   width: 1000px;
-}
+// .menu_nav{
+//   // display: flex;
+//   // flex-direction: row;
+//    justify-content: end;
+//    width: 1000px;
+// }
 
-.menu_cls{
- display: flex;
-   flex-direction: row;
-   justify-content: end;
-   width: 1000px;
-}
+// .menu_cls{
+//  display: flex;
+//    flex-direction: row;
+//    justify-content: end;
+//    width: 1000px;
+// }
 
-.profile_cls{
- display: flex;
-   flex-direction: row;
-  justify-content: end;
-  width: 1000px;
-}
+// .profile_cls{
+//  display: flex;
+//    flex-direction: row;
+//   justify-content: end;
+//   width: 1000px;
+// }
+
+
+// .menu_nav,
+// .menu_cls,
+// .profile_cls {
+//    display: flex;
+//    flex-direction: row;
+//    justify-content: flex-end; // Keep menu aligned to the right
+//    width: auto; // Remove fixed width
+//    min-width: 1000px; // Ensures it stays wide enough on larger screens
+//    position: absolute;
+//    right: 0; // Stick to the right edge
+// }
+
+
+.menu_nav {
+    display: flex;
+    flex-direction: column; // Stack items vertically
+    align-items: flex-end; // Align content to the right
+    width: auto; // No fixed width
+    min-width: 1000px; // Keeps it wide enough
+    position: absolute;
+    right: 0; // Stick to the right edge
+    margin-right: 2%;
+ }
+ 
+ .menu_cls,
+ .profile_cls {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end; // Keep aligned to the right
+    width: 100%; // Ensure they take up full width of .menu_nav
+    gap: 10px;
+
+ }
+ 
+
+
 
 .Sp_cls{
  border-color: #2e4638;

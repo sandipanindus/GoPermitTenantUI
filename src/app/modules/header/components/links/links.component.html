@@ -11,7 +11,8 @@
         <button class=" btn-2 rounded-pill Sp_cls " style="margin-right: 10px; margin-top: 6px;">
             <a class="nav-links__item-link" [routerLink]="'/account/Support'" style="cursor: pointer;">
                 <div class="nav-links__item-body2">
-                    <i class="fas fa-headset" style="font-size: 20px; margin-right: 8px;"></i> Support </div>
+                    <i class="fas fa-headset" style="font-size: 20px; margin-right: 8px;margin-left: 6px"  tooltip="Support"></i>  
+                </div>
             </a>
         </button>
     
@@ -22,9 +23,6 @@
     
         <!-- Dropdown Menu -->
         <div *ngIf="dropdownOpen" class="dropdown-menu">
-            <a class="dropdown-item flex-wrap" >
-                <i class="fas fa-user"></i> Welcome {{UserName}}
-            </a>
             <a class="dropdown-item" [routerLink]="'/account/password'">
                 <i class="fas fa-lock"></i> Change Password
             </a>

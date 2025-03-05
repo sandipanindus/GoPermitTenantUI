@@ -5,18 +5,15 @@ import { ToastrService } from 'ngx-toastr';
 import { TenantserviceService } from './../../../../shared/api/tenantservice.service'
 import { DatePipe } from '@angular/common';
 import { DateButton } from 'angular-bootstrap-datetimepicker';
-import * as _moment from 'moment';
+import * as moment from 'moment';
 import { unitOfTime } from 'moment';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker'
 import { IfStmt } from '@angular/compiler';
 import { ChangeDetectorRef } from '@angular/core';
 
-let moment = _moment;
 
-if ('default' in _moment) {
-  moment = _moment['default'];
-}
+
 
 @Component({
   selector: 'app-page-addvehicle-registration',

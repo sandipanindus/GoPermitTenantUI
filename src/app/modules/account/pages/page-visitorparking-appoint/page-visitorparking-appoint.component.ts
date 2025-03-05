@@ -3,7 +3,7 @@ import { esLocale } from 'ngx-bootstrap/locale';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { Address } from '../../../../shared/interfaces/address';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { TenantserviceService } from './../../../../shared/api/tenantservice.service'
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
@@ -26,7 +26,7 @@ export class PageVisitorparkingAppointComponent implements OnInit {
   model: string;
   starttime: string;
   endtime: string;
-  visitorForm: FormGroup;
+  visitorForm: UntypedFormGroup;
   visitorsubmitted = false;
   modalRef: BsModalRef;
   surname: string;
@@ -45,7 +45,7 @@ export class PageVisitorparkingAppointComponent implements OnInit {
   bayid: string;
   @ViewChild('template1') template1: any;
   modalRefpopup: BsModalRef;
-  constructor(private datePipe: DatePipe,private approute: ActivatedRoute, private toast: ToastrService, private modalService: BsModalService, private router: Router, private formBuilder: FormBuilder, private service: TenantserviceService) {
+  constructor(private datePipe: DatePipe,private approute: ActivatedRoute, private toast: ToastrService, private modalService: BsModalService, private router: Router, private formBuilder: UntypedFormBuilder, private service: TenantserviceService) {
     this.visitorForm = this.formBuilder.group({
       //Vname: ['', Validators.required],
     //  Vsurname: ['', Validators.required],
@@ -213,7 +213,7 @@ export class PageVisitorparkingAppointComponent implements OnInit {
         Email: this.email,
         MobileNumber: this.mobileno,
         Model: this.model,
-        VRM: this.vrm,
+        VRM: this.vrm?.toUpperCase(),  // Ensure uppercase before submission
         StartTime: this.timeslot,
         Duration: this.duration,
         SessionUnit: this.sessionunit,
