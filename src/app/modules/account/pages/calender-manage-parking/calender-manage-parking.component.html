@@ -125,7 +125,7 @@
 
   <div class="row" style="margin-top: 25px" *ngIf="isshowblock1 == true">
     <div class="col-md-4">
-        <label>How many vehicle per bay:</label>
+        <label>How many vehicle per bay22:</label>
     </div>
     <div class="col-md-3">
         <select class="form-control width-0" style="width: 69%"
@@ -487,15 +487,24 @@
                     <th>Parking Valid Till</th> -->
                         </tr>
                     </thead>
-                    <tbody style="
-                            text-align: center;
-                        ">
+                    <tbody style=" text-align: center;">
+                        
                         <tr>
+                            <td *ngFor="let i of iterations" style="width: 1%;" class="td_size">
+                                <div class="codepen-wrapper text-center">
+                                    <div class="registration-ui-gb" style="top: 30px !important;">
+                                        GB{{ i.iterrations }}
+                                        <div class="registration-ui-logo"></div>
+                                    </div>
+                                    <input type="text" id="vehicleno{{ i.iterrations }}" style="text-transform: uppercase;"
+                                        maxlength="9" class="registration-ui" placeholder="VRM No" [(ngModel)]="i.vrm" />
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- <tr>
                             <td *ngFor="let i of iterations" style=" width: 1%;"
                                  class="td_size">
-                                <!-- <input class="form-control"
-                                    id="vehicleno{{i.iterrations}}" type="text"
-                                    placeholder="VRM no"> -->
 
                                 <div class="codepen-wrapper text-center">
                                     <div class="registration-ui-gb" style="top: 30px !important;">
@@ -507,23 +516,8 @@
                                         placeholder="VRM No" />
                                 </div>
                             </td>
-                        </tr>
-                        <!-- <tr>
-                            <td *ngFor="let i of iterations">
-                                <input class="form-control" type="text"
-                                    class="form-control" id="make{{i.iterrations}}"
-                                    placeholder="Vehicle Make">
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td *ngFor="let i of iterations">
-                                <input class="form-control" type="text"
-                                    class="form-control" id="model{{i.iterrations}}"
-                                    placeholder="Vehicle Model">
-
-                            </td>
                         </tr> -->
+                       
 
                         <tr>
                             <td *ngFor="

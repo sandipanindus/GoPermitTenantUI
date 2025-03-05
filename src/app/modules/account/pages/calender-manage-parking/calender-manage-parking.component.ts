@@ -699,7 +699,6 @@ export class CalenderManageParkingComponent implements OnInit {
           this.datepickershow = true
           this.single = 'none';
 
-
           this.rdbrepeat = 'no'
           this.customdateblock()
 
@@ -943,20 +942,24 @@ export class CalenderManageParkingComponent implements OnInit {
 
   }
 
+
+
   bindingmultiplecustomdates(data) {
-    // var configno = 0;
-    // this.rdbrepeat = 'yes'
-    // this.regulardateblock()
-    // this.selectingbay2();
+    debugger
 
-    var res = Math.max.apply(Math, data.map(function (a) { return a.bayconfig; }))
+    console.log("Config Bys",data)
+    var res = Math.max(...data.map(a => a.bayconfig || 0));
+    this.confignumber = isNaN(res) ? 0 : res;
+  
+    this.confignumber = data.length;
+    this.iterations = [];
+    for (let i = 0; i < this.confignumber; i++) {
+      this.iterations.push({
+        iterrations: i + 1,
+        vrm: data[i]?.vrm || '',
+      });
+    }
 
-    //alert('Max y = ' + res);
-    this.confignumber = res;
-
-    // for (let i = 0; i < data.result[0].selectedddates.length; i++) {
-    //   this.onValueChange1(new Date(data.result[0].selectedddates[i].fromDate))
-    // }
     this.vehiclecountobj = +this.confignumber;
     if (this.vehiclecountobj == 1) {
 
@@ -970,6 +973,78 @@ export class CalenderManageParkingComponent implements OnInit {
     }, 2000);
 
   }
+
+  // bindingmultiplecustomdates(data) {
+  //   debugger;
+  //   console.log("Config Bys", data);
+  
+  //   // Find max bayconfig value
+  //   var res = Math.max(...data.map(a => a.bayconfig || 0));
+  //   this.confignumber = isNaN(res) ? 0 : res;
+  
+  //   this.vehiclecountobj = +this.confignumber;
+  
+  //   if (this.vehiclecountobj > 1) {
+  //     this.configurebasedonNo(data);
+  //   }
+  
+  //   this.vehiclemultiplelist = 1;
+  
+  //   setTimeout(() => {
+  //     this.bindingmultiplevehicles(data);
+  //   }, 1000);
+  // }
+
+  configurebasedonNo() {
+    debugger
+
+    if ((this.confignumber >= 2 && this.confignumber <= 10) || this.confignumber == 0) {
+    }
+    else {
+      this.toast.warning('Choose value 2 to 10');
+      this.confignumber = ''
+      return false;
+
+    }
+   // this.iterations = [];
+    this.multiplebays = "block"
+    var no = +this.confignumber;
+
+    // for (let i = 1; i <= no; i++) {
+    //   this.iterations.push(
+    //     { iterrations: i }
+    //   )
+    // }
+    console.log("count", this.iterations)
+  }
+
+  // configurebasedonNo(data) {
+  //   debugger;
+  
+  //   if ((this.confignumber >= 2 && this.confignumber <= 10) || this.confignumber === 0) {
+  //     // Allow valid config numbers
+  //   } else {
+  //     this.toast.warning('Choose a value between 2 and 10');
+  //     this.confignumber = '';
+  //     return false;
+  //   }
+  
+  //   this.iterations = [];
+  //   this.multiplebays = "block";
+  
+  //   let no = this.confignumber > 0 ? this.confignumber : data.length; // Use data length if config is 0
+  
+  //   for (let i = 0; i < no; i++) {
+  //     this.iterations.push({
+  //       iterrations: i + 1,
+  //       vrm: data[i]?.vrm || '',
+  //       make: data[i]?.make || '',
+  //       model: data[i]?.model || ''
+  //     });
+  //   }
+  
+  //   console.log("Updated Iterations:", this.iterations);
+  // }
 
   savevehcile: any = []
   parkingvalidTotime
@@ -1109,6 +1184,8 @@ export class CalenderManageParkingComponent implements OnInit {
   multiplevehicltodate;
   //saving for custom dates retrive and finding
   cycleno = 0;
+
+
   savemultiplevehicle() {
     debugger
     if (this.cycleno > 0) {
@@ -1476,34 +1553,6 @@ export class CalenderManageParkingComponent implements OnInit {
     this.multiplebays = "none"
     this.customdateblockdisplay = "none"
   }
-
-  configurebasedonNo() {
-    debugger
-
-    if ((this.confignumber >= 2 && this.confignumber <= 10) || this.confignumber == 0) {
-    }
-    else {
-      this.toast.warning('Choose value 2 to 10');
-      this.confignumber = ''
-      return false;
-
-    }
-    this.iterations = [];
-    this.multiplebays = "block"
-    var no = +this.confignumber;
-
-    for (let i = 1; i <= no; i++) {
-      this.iterations.push(
-        { iterrations: i }
-      )
-    }
-    console.log("count", this.iterations)
-  }
-
-
-
-
-
 
 
 
