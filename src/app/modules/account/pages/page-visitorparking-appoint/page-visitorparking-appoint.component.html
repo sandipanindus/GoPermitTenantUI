@@ -23,9 +23,16 @@
 
                             </div>
 
-                            <button class="btn btn-primary mb-2 floating-btn" (click)="backToVisitor()">
+                            <!-- <button class="btn btn-primary mb-2 floating-btn" (click)="backToVisitor()">
                                 <i class="fa fa-arrow-left mr-2"></i>Back
-                              </button>
+                              </button> -->
+
+                              <button 
+                                    class="bg-[#E6BC00] hover:bg-[#CCAA00] text-black font-medium py-2 px-4 rounded-md mb-2 flex items-center floating-btn" 
+                                    (click)="backToVisitor()">
+                                    <i class="fa fa-arrow-left mr-2"></i>Back
+                                </button>
+
                         </div>
                         <div class="column" style="padding-top: 0px !important;">
                             <h2>
@@ -60,10 +67,23 @@
                         </div>
                         <div style="display: none;margin-bottom: 8px; border:1px solid white !important"
                             id="timebtndiv_{{timeslot.id}}">
-                            <button class="timeslot_btn btn btn-secondary mr-1 btn-lg" style="border-radius: 5px;width: 50%;"
-                                id="btntime_{{timeslot.id}}">{{timeslot.time}}</button>
-                            <button class="btn btn-primary btn-lg" style="border-radius: 5px;width: 50%;"
-                                id="btnconfirm_{{timeslot.id}}" (click)="ShowModal(timeslot.time)">Confirm</button>
+                            <!-- <button class="timeslot_btn btn btn-secondary mr-1 btn-lg" style="border-radius: 5px;width: 50%;"
+                                id="btntime_{{timeslot.id}}">{{timeslot.time}}</button> -->
+                                <button 
+                                class="timeslot_btn bg-gray-200 hover:bg-gray-300 text-black font-medium py-3 w-1/2 rounded-md mr-1" 
+                                [id]="'btntime_' + timeslot.id">
+                                {{ timeslot.time }}
+                            </button>
+
+                            <!-- <button class="btn btn-primary btn-lg" style="border-radius: 5px;width: 50%;"
+                                id="btnconfirm_{{timeslot.id}}" (click)="ShowModal(timeslot.time)">Confirm</button> -->
+                                <button 
+                                    class="bg-[#FFD333] hover:bg-[#E6C02E] text-black font-medium py-3 w-1/2 rounded-md" 
+                                    [id]="'btnconfirm_' + timeslot.id" 
+                                    (click)="ShowModal(timeslot.time)">
+                                    Confirm
+                                </button>
+
                         </div>
                     </div>
                 </div>
@@ -71,17 +91,28 @@
         
 
             <div class="col-lg-4 col-md-4 col-sm-4" style="display: none;" id="detailsdiv">
-                <button class="btn btn-primary mb-2 floating-btn" (click)="backToCalender()">
+                <!-- <button class="btn btn-primary mb-2 floating-btn" (click)="backToCalender()">
                     <i class="fa fa-arrow-left mr-2"></i>Back
-                  </button>
+                  </button> -->
+                  <button 
+  class="bg-[#E6BC00] hover:bg-[#CCAA00] text-black font-medium py-2 px-4 rounded-md mb-2 flex items-center shadow-md floating-btn" 
+  (click)="backToVisitor()">
+  <i class="fa fa-arrow-left mr-2"></i>Back
+</button>
+
                 <form [formGroup]="visitorForm" style="width: 100% !important;">
                     <div class="divdetails">
                         <label>Enter driver details</label>
                     </div>
                     <div class="divinput">
                         <label class="labelcls">First Name<span class="text-red-500">*</span></label>
-                        <input type="text" class="form-control" placeholder="First Name"
-                            [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
+                        <!-- <input type="text" class="form-control placeholder-[#A0A0A0]" placeholder="First Name"
+                            [(ngModel)]="name" [ngModelOptions]="{standalone: true}"> -->
+                            <div class="relative">
+                                <input type="text" class="w-full px-3 py-2 border rounded-md focus:ring focus:ring-yellow-400"
+                                    placeholder="First Name" [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
+                                <i class="fa fa-user absolute right-3 top-3 text-gray-400"></i>
+                            </div>
                         <!-- <div *ngIf="visitorsubmitted && v.Vname.errors" class="invalid-feedback">
                             <div *ngIf="v.Vname.errors.required" style="color: #ffd333">FirstName is
                                 required</div>
@@ -89,8 +120,13 @@
                     </div>
                     <div class="divinput">
                         <label class="labelcls">Surname<span class="text-red-500">*</span></label>
-                        <input type="text" class="form-control" placeholder="Surname"
-                            [(ngModel)]="surname" [ngModelOptions]="{standalone: true}">
+                        <!-- <input type="text" class="form-control placeholder-[#A0A0A0]" placeholder="Surname"
+                            [(ngModel)]="surname" [ngModelOptions]="{standalone: true}"> -->
+                            <div class="relative">
+                                <input type="text" class="w-full px-3 py-2 border rounded-md focus:ring focus:ring-yellow-400"
+                                    placeholder="Surname" [(ngModel)]="surname" [ngModelOptions]="{standalone: true}">
+                                <i class="fa fa-user-tag absolute right-3 top-3 text-gray-400"></i>
+                            </div>
                         <!-- <div *ngIf="visitorsubmitted && v.Vsurname.errors" class="invalid-feedback">
                             <div *ngIf="v.Vsurname.errors.required" style="color: #ffd333">Surname is
                                 required</div>
@@ -98,8 +134,13 @@
                     </div>
                     <div class="divinput">
                         <label class="labelcls">Mobile No<span class="text-red-500">*</span></label>
-                        <input type="text"  class="form-control" placeholder="Mobile No"
-                            [(ngModel)]="mobileno" [ngModelOptions]="{standalone: true}">
+                        <!-- <input type="text"  class="form-control placeholder-[#A0A0A0]" placeholder="Mobile No"
+                            [(ngModel)]="mobileno" [ngModelOptions]="{standalone: true}"> -->
+                            <div class="relative">
+                                <input type="text" class="w-full px-3 py-2 border rounded-md focus:ring focus:ring-yellow-400"
+                                    placeholder="Mobile No" [(ngModel)]="mobileno" [ngModelOptions]="{standalone: true}">
+                                <i class="fa fa-phone absolute right-3 top-3 text-gray-400"></i>
+                            </div>
                         <!-- <div *ngIf="visitorsubmitted && v.Vmobileno.errors" class="invalid-feedback">
                             <div *ngIf="v.Vmobileno.errors.required" style="color: #ffd333">
                                 Mobile Number is
@@ -109,9 +150,14 @@
 
                     <div class="divinput">
                         <label class="labelcls">Email<span class="text-red-500">*</span></label>
-                        <input type="text"  class="form-control" placeholder="Email"
+                        <!-- <input type="text"  class="form-control placeholder-[#A0A0A0]" placeholder="Email"
                             [(ngModel)]="email" formControlName="Vemail" required
-                            [ngClass]="{'is-invalid': visitorsubmitted && v.Vemail.errors }">
+                            [ngClass]="{'is-invalid': visitorsubmitted && v.Vemail.errors }"> -->
+                            <div class="relative">
+                                <input type="email" class="w-full px-3 py-2 border rounded-md focus:ring focus:ring-yellow-400"
+                                    placeholder="Email" [(ngModel)]="email" formControlName="Vemail">
+                                <i class="fa fa-envelope absolute right-3 top-3 text-gray-400"></i>
+                            </div>
                         <div *ngIf="visitorsubmitted && v.Vemail.errors" class="invalid-feedback">
                             <div *ngIf="v.Vemail.errors.required" style="color:  #ffd333;">
                                 Email is required
@@ -130,20 +176,20 @@
                     </div>
                     <div class="divinput">
                         <label class="labelcls">VRM</label>
-                        <input type="text" class="form-control" placeholder="VRM"
+                        <div class="relative">
+
+                        <input type="text" class="form-control placeholder-[#A0A0A0]" placeholder="VRM"
                             [(ngModel)]="vrm" [ngModelOptions]="{standalone: true}"
                             (input)="vrm = vrm.toUpperCase()">
-                        <!-- <div *ngIf="visitorsubmitted && v.Vvrm.errors" class="invalid-feedback">
-                            <div *ngIf="v.Vvrm.errors.required" style="color: #ffd333">VRM is
-                                required</div>
-                        </div> -->
+                            <i class="fa fa-car absolute right-3 top-3 text-gray-400"></i>
+                        </div>
                     </div>
 
                     <div class="divbtn">
                         <!-- <button class="btn btn-primary mb-2" style="border-radius: 10px;"
                             (click)="AddVisitor()">Submit</button> -->
                             <button 
-                                class="bg-[#FFD333] text-black font-bold py-2 px-4 rounded disabled:bg-gray-400 disabled:cursor-not-allowed" 
+                                class="bg-[#FFD333] text-black font-bold py-2 px-4 rounded disabled:bg-[#e0e0e0] disabled:text-[#A0A0A0] disabled:cursor-not-allowed" 
                                 [disabled]="!visitorForm.valid"
                                 (click)="AddVisitor()">
                                 Submit
