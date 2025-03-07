@@ -1,3 +1,15 @@
+// .dashboard-content {
+//   margin-left: 16rem; /* Same width as sidebar */
+//   padding: 20px;
+//   width: calc(100% - 16rem);
+// }
+
+
+.dashboard-content {
+  @apply p-5 w-full md:ml-64 md:w-[calc(100%-16rem)];
+}
+
+
 .spantop
 {
     margin-top: 5px;

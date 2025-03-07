@@ -23,11 +23,18 @@ export class LinksComponent implements OnInit, OnDestroy, AfterViewChecked {
 
     reCalcSubmenuPosition = false;
 
+    isSidebarOpen = false; // Sidebar starts closed on mobile
+
+
     constructor(private approute: ActivatedRoute, private route: Router,
         private direction: DirectionService,
         private header: HeaderService,
         private zone: NgZone,
     ) { }
+
+    toggleSidebar() {
+        this.isSidebarOpen = !this.isSidebarOpen;
+      }
 
     onItemMouseEnter(item: NavigationLink): void {
         if (this.hoveredItem !== item) {

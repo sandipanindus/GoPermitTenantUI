@@ -1,7 +1,25 @@
+.menu_nav {
+    display: flex;
+    justify-content: flex-end; /* Push to the right */
+    align-items: center; /* Center vertically */
+    height: 100px; /* Adjust height as needed */
+    padding-right: 20px; /* Some spacing from the edge */
+    position: absolute;
+    right: 0;
+    width: auto;
+}
+
+.profile_cls {
+    display: flex;
+    align-items: center; /* Keep items in a row */
+    gap: 20px; /* Space between support button & profile icon */
+}
+
 .dropdown-menu {
     position: absolute;
     top: 100%;
-    right: 0; /* Ensure dropdown aligns to the right */
+    right: 0;
+    left: -400%;
     background: white;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
@@ -10,7 +28,6 @@
     display: flex;
     flex-direction: column;
     z-index: 1000;
-    left: -555%
 }
 
 .dropdown-item {
@@ -26,93 +43,13 @@
     border: 2px solid #ffd333;
 }
 
-/* Ensure the parent <li> does not interfere with positioning */
-.nav-links__item {
-    position: relative;
+.Sp_cls {
+    background: #3d464d;
+    color: #191e1b;
+    border: none;
 }
 
-// .menu_nav{
-//   // display: flex;
-//   // flex-direction: row;
-//    justify-content: end;
-//    width: 1000px;
-// }
-
-// .menu_cls{
-//  display: flex;
-//    flex-direction: row;
-//    justify-content: end;
-//    width: 1000px;
-// }
-
-// .profile_cls{
-//  display: flex;
-//    flex-direction: row;
-//   justify-content: end;
-//   width: 1000px;
-// }
-
-
-// .menu_nav,
-// .menu_cls,
-// .profile_cls {
-//    display: flex;
-//    flex-direction: row;
-//    justify-content: flex-end; // Keep menu aligned to the right
-//    width: auto; // Remove fixed width
-//    min-width: 1000px; // Ensures it stays wide enough on larger screens
-//    position: absolute;
-//    right: 0; // Stick to the right edge
-// }
-
-
-.menu_nav {
-    display: flex;
-    flex-direction: column; // Stack items vertically
-    align-items: flex-end; // Align content to the right
-    width: auto; // No fixed width
-    min-width: 1000px; // Keeps it wide enough
-    position: absolute;
-    right: 0; // Stick to the right edge
-    margin-right: 2%;
- }
- 
- .menu_cls,
- .profile_cls {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end; // Keep aligned to the right
-    width: 100%; // Ensure they take up full width of .menu_nav
-    gap: 10px;
-
- }
- 
-
-
-
-.Sp_cls{
- border-color: #2e4638;
-// background: #099247;
- background: #3d464d;
- color: #191e1b;
- fill: #3d464d;
-}
-
-.btn-2{
+.btn-2 {
     font-size: 1rem;
     height: 32px;
 }
-
-.nav-links__item-body2 {
-    display: flex;
-    align-items: center;
-    background: transparent;
-    transition: background-color 0.2s;
-    /* padding: 0 14px; */
-    height: 44px;
-    border-radius: 2px;
-    background: transparent;
-    box-shadow: none;
-}
-
-

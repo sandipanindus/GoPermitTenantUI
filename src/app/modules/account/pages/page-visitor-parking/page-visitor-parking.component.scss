@@ -1,4 +1,10 @@
-.modal-dialog .div{
+
+.dashboard-content {
+    @apply p-5 w-full md:ml-64 md:w-[calc(100%-16rem)];
+  }
+  
+  
+  .modal-dialog .div{
     border-radius: .75rem!important;
 }
 body{
