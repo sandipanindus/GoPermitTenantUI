@@ -8,14 +8,22 @@
 <div  id="schedulediv">
 
     <div class="container">
-    <div class="card">
-        <div  class="row content-center no-gutters">
+        <div class="card relative p-4">
+            <!-- Back Button Positioned at Top Left -->
+            <button 
+                class="absolute top-4 left-4 bg-[#FFD333] hover:bg-[#E6C200] text-black font-semibold py-2 px-4 rounded-lg flex items-center space-x-2 transition duration-300 ease-in-out shadow-md"
+                (click)="backToVisitor()">
+                <i class="fa fa-arrow-left mr-2"></i>Back
+            </button>
+        
+            <div class="row content-center no-gutters">
             
             <div id="calenderdiv" class="col-lg-4 col-md-6 col right-details">
                 <div class="content" style="padding: 25px 0px;">
                     <div class="inner-content">
                         <div class="profile-info">
 
+                          
 
                             <h4 class="profile-info-name" id="tenantname"></h4>
                             <h1 class="profile-info-time">{{duration}} {{sessionunit}} Parking</h1>
@@ -32,11 +40,11 @@
                                 <i class="fa fa-arrow-left mr-2"></i>Back
                               </button> -->
 
-                              <button 
+                              <!-- <button 
                                     class="bg-[#E6BC00] hover:bg-[#CCAA00] text-black font-medium py-2 px-4 rounded-md mb-2 flex items-center floating-btn" 
                                     (click)="backToVisitor()">
                                     <i class="fa fa-arrow-left mr-2"></i>Back
-                                </button>
+                                </button> -->
 
                         </div>
                         <div class="column" style="padding-top: 0px !important;">

@@ -2,4 +2,62 @@ ul li {
     transition: background 0.3s ease-in-out;
   }
   
-  
+  .menu_nav {
+    display: flex;
+    justify-content: flex-end; /* Push to the right */
+    align-items: center; /* Center vertically */
+    height: 100px; /* Adjust height as needed */
+    padding-right: 20px; /* Some spacing from the edge */
+    position: absolute;
+    right: 0;
+    width: auto;
+}
+
+.profile_cls {
+    display: flex;
+    align-items: center; /* Keep items in a row */
+    gap: 20px; /* Space between support button & profile icon */
+}
+
+
+
+.dropdown-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+.dropdown-item:hover {
+    background: #ffd333;
+    border: 2px solid #ffd333;
+}
+
+.Sp_cls {
+    background: #3d464d;
+    color: #191e1b;
+    border: none;
+}
+
+.btn-2 {
+    font-size: 1rem;
+    height: 32px;
+}
+
+
+
+.dropdown-menu[_ngcontent-serverApp-c46] {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: -470%;
+  background: white;
+  box-shadow: 0 4px 6px #0000001a;
+  border-radius: 5px;
+  padding: 10px 0;
+  width: 190px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}

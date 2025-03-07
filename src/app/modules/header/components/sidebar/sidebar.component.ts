@@ -21,4 +21,21 @@ export class SidebarComponent implements OnInit {
       this.route.navigateByUrl('/account/dashboard');
   }
 
+
+  dropdownOpen = false;
+
+  toggleDropdown(event: Event) {
+      event.stopPropagation(); // Prevent click event from propagating to document
+      this.dropdownOpen = !this.dropdownOpen;
+  }
+
+
+  
+  Logout()
+  {
+      debugger
+      localStorage.clear()
+      this.route.navigateByUrl('/account/login');
+  }
+
 }

@@ -1,6 +1,6 @@
 <div class="dashboard-content">
 
-  <owl-carousel-o [options]="customOptions">
+  <!-- <owl-carousel-o [options]="customOptions">
   <ng-template carouselSlide>
     <img style="width: 93% !important;height: 224px;" src="../../../../../assets/images/parking1.jpg" />
   </ng-template>
@@ -17,7 +17,31 @@
   <ng-template carouselSlide>
     <img style="width: 93% !important;height: 224px;" src="../../../../../assets/images/parking5.jpg" />
   </ng-template>
-</owl-carousel-o>
+</owl-carousel-o> -->
+
+
+ <!-- Carousel inside a card -->
+ <div class="card carousel-card" style="width: 100%; margin-bottom: 20px; padding: 15px;">
+  <div class="card-body1">
+    <owl-carousel-o [options]="customOptions">
+      <ng-template carouselSlide>
+        <img class="carousel-image" src="../../../../../assets/images/parking1.jpg" />
+      </ng-template>
+      <ng-template carouselSlide>
+        <img class="carousel-image" src="../../../../../assets/images/parking2.jpg" />
+      </ng-template>
+      <ng-template carouselSlide>
+        <img class="carousel-image" src="../../../../../assets/images/parking3.jpg" />
+      </ng-template>
+      <ng-template carouselSlide>
+        <img class="carousel-image" src="../../../../../assets/images/parking4.jpg" />
+      </ng-template>
+      <ng-template carouselSlide>
+        <img class="carousel-image" src="../../../../../assets/images/parking5.jpg" />
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+</div>
 
 <div class="dashboard" style="margin-top: -20px;">
   <div class="dashboard__profile card profile-card" style="width: 100%;">
@@ -36,7 +60,7 @@
 
        
             
-      <p>Welcome to Go Permit! Our Fast and Reliable permit management service. {{tenantid}}<br /><br />
+      <p>Welcome to Go Permit! Our Fast and Reliable permit management service. <br /><br />
 
         Go Permit is intended to facilitate online permit management services, which will give you Option to choose the
         right parking bay according to your requirements and needs in just one go!
