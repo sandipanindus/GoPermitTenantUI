@@ -14,7 +14,7 @@
                         </h3> -->
                         <!-- <i style="margin-left: 5px;" class="far fa-question-circle" aria-hidden="true" tooltip="Pre select the bay and park your car." placement="bottom"></i> -->
                         <br /><br />
-                        <form>
+                        <!-- <form> -->
                             <div class="form-group">
                                 <!-- <div class="row">
                                     <div class="col-md-4">
@@ -499,7 +499,7 @@
                                                                 " (click)="
                                                                     savesinglevehicle()
                                                                 ">
-                                                                Save
+                                                                Save22
                                                             </button>
                                                             <!-- <button
                                                                 class="btn btn-primary"
@@ -574,26 +574,23 @@
                                                             text-align: center;
                                                         ">
                                                         <tr>
-                                                            <td *ngFor="
-                                                                    let i of iterations
-                                                                " style="
-                                                                    width: 1%;
-                                                                " class="td_size">
-                                                                <!-- <input class="form-control"
-                                                                    id="vehicleno{{i.iterrations}}" type="text"
-                                                                    placeholder="VRM no"> -->
+                                                            <td *ngFor="let i of iterations" style="width: 1%;" class="td_size">
 
-                                                                <div class="codepen-wrapper text-center">
-                                                                    <div class="registration-ui-gb">
-                                                                        GB
+                                                                <!-- <div class="codepen-wrapper text-center">
+                                                                    <div class="registration-ui-gb"> GB
                                                                         <div class="registration-ui-logo"></div>
                                                                     </div>
-                                                                    <input type="text" id="vehicleno{{
-                                                                            i.iterrations
-                                                                        }}" style="
-                                                                            text-transform: uppercase;
-                                                                        " maxlength="9" class="registration-ui"
+                                                                    <input type="text" id="vehicleno{{  i.iterrations}}" style="text-transform: uppercase;"
+                                                                         maxlength="9" class="registration-ui"
                                                                         placeholder="VRM No" />
+                                                                </div> -->
+                                                                <div class="codepen-wrapper text-center">
+                                                                    <div class="registration-ui-gb">
+                                                                        GB{{ i.iterrations }}
+                                                                        <div class="registration-ui-logo"></div>
+                                                                    </div>
+                                                                    <input type="text" id="vehicleno{{ i.iterrations }}" style="text-transform: uppercase;"
+                                                                        maxlength="9" class="registration-ui" placeholder="VRM No" [(ngModel)]="i.vrm" />
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -1657,7 +1654,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        <!-- </form> -->
                     </div>
                 </div>
             </div>

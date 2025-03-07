@@ -704,9 +704,6 @@ export class PageVehicleRegistrationComponent implements OnInit {
   showblocks() {
     debugger
 
-    // if (this.ismultivehicel != true) {
-    //   this.cycleno = 0;
-    // }
     this.loader = true
     setTimeout(() => {
       this.loader = false
@@ -731,6 +728,7 @@ export class PageVehicleRegistrationComponent implements OnInit {
 
     this.weekbasedfromdate = this.mindate
     this.weekbasedtodate = this.maxDate
+    this.vehiclecountobj=this.confignumber
     if (this.vehiclecountobj == 1) {
       this.vrmno = '';
       this.datepickershow = false;
@@ -744,13 +742,8 @@ export class PageVehicleRegistrationComponent implements OnInit {
     }
     else if (this.vehiclecountobj > 1) {
       this.infoexp = true;
-
       this.savevtnstatus = 2;
-
       this.selectingbay2()
-
-
-
       this.confignumber = +this.vehiclecountobj;
       this.configurebasedonNo();
       this.clear();
@@ -896,29 +889,25 @@ export class PageVehicleRegistrationComponent implements OnInit {
 
           this.datepickershow = true
           this.single = 'none';
-
-
+          this.confignumber=data.result.data[0].length
+          this.configurebasedonNo();
           this.rdbrepeat = 'no'
           this.customdateblock()
 
-          // this.dateSelected =null
           for (let i = 0; i < data.result.data.length; i++) {
             if (data.result.data[i][0] != undefined) {
               for (let k = 0; k < data.result.data[i][0].selectedddates.length; k++) {
-
                 this.onValueChange1(new Date(data.result.data[i][0].selectedddates[k].fromDate))
               }
             }
-
           }
 
           this.bindingmultiplecustomdates(data.result.data[0]);
           this.vehiclecountobj = +this.vehilsdatalist.result.data[0][0].configno
+          console.log("Iterations",this.iterations)
           this.multiplebays = 'none'
           this.single = 'none'
           this.multiple = 'none';
-          //(document.getElementById("rbtyes") as HTMLInputElement).disabled = true;
-
         }
         else {
 
@@ -1147,15 +1136,18 @@ export class PageVehicleRegistrationComponent implements OnInit {
   }
 
   bindingmultiplecustomdates(data) {
+    debugger
     // var configno = 0;
     // this.rdbrepeat = 'yes'
     // this.regulardateblock()
     // this.selectingbay2();
 
-    var res = Math.max.apply(Math, data.map(function (a) { return a.bayconfig; }))
-
+    var res = Math.max(...data.map(a => a.bayconfig || 0));
+    this.confignumber = isNaN(res) ? 0 : res;
+  
+     this.confignumber = data.length;
     //alert('Max y = ' + res);
-    this.confignumber = res;
+    // this.confignumber = res;
 
     // for (let i = 0; i < data.result[0].selectedddates.length; i++) {
     //   this.onValueChange1(new Date(data.result[0].selectedddates[i].fromDate))
@@ -1164,9 +1156,17 @@ export class PageVehicleRegistrationComponent implements OnInit {
     if (this.vehiclecountobj == 1) {
 
     } else {
-      this.configurebasedonNo();
-
+    //  this.configurebasedonNo();
+    this.iterations = [];
+    for (let i = 0; i < this.confignumber; i++) {
+      this.iterations.push({
+        iterrations: i + 1,
+        vrm: data[i]?.vrm || '',
+      });
     }
+
+    this.vehiclecountobj = +this.confignumber;
+  }
     this.vehiclemultiplelist = 1
     //this.multiple='display'
     //this.multiplebays='display'
@@ -1673,6 +1673,7 @@ export class PageVehicleRegistrationComponent implements OnInit {
 
 
   selectingbay2() {
+    debugger
     this.single = 'none';
     this.multiple = "block"
     this.multiplebays = "block"

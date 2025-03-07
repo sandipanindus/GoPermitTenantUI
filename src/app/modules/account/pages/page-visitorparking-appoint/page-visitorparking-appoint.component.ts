@@ -91,7 +91,13 @@ export class PageVisitorparkingAppointComponent implements OnInit {
     this.timeslots = [];
     (document.getElementById("detailsdiv") as HTMLDivElement).style.display = 'none';
     this.selecteddate = new Date(event);
-    this.date = this.selecteddate.toDateString();
+    this.date = this.selecteddate.toLocaleDateString('en-US', { 
+      weekday: 'short', 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    });
+    console.log("Selected Date:", this.date);
     var element = document.getElementById("loader") as HTMLDivElement;
     element.style.display = 'block';
     ((document).getElementById("timeslotdiv") as HTMLDivElement).style.display = 'none';
