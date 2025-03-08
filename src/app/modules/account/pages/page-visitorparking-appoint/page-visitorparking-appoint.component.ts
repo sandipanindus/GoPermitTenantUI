@@ -178,7 +178,6 @@ export class PageVisitorparkingAppointComponent implements OnInit {
       (document.getElementById("calenderdiv") as HTMLDivElement).style.display = 'none';
       (document.getElementById("timeslotdiv") as HTMLDivElement).style.display = 'none';
     }
-    //this.modalRef = this.modalService.show(template, { class: 'modal-sm modalwidth', });
   }
   cancel(): void {
     this.modalRef.hide();

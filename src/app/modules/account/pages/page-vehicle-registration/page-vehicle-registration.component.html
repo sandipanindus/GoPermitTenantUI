@@ -185,11 +185,18 @@
                                 </form>
                             </div> -->
 
+                            <div class="col-md-3 mt-2" *ngIf="showCalendar">
+                                <bs-datepicker-inline [minDate]="mindate" [maxDate]="maxDate"
+                                    [dateCustomClasses]="selectedClass"
+                                    [bsValue]="dateSelected" (bsValueChange)="onbaynoset($event)">
+                                </bs-datepicker-inline>
+                            </div>
+
                                 <div class="row" style="margin-top: 10px" *ngIf="isshowblock1 == true">
                                     <div class="col-md-4">
                                         <label>How many vehicle per bay:</label>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="row col-md-3">
                                         <select class="form-control width-0" style="width: 69%"
                                             [(ngModel)]="vehiclecountobj" (change)="showblocks()" [ngModelOptions]="{
                                                 standalone: true
@@ -201,8 +208,13 @@
                                                 {{ obj.vehicles }}
                                             </option>
                                         </select>
-                                        <span></span>
+                                        <span class="ml-2 mt-2" style="cursor: pointer;" (click)="openCalender(template5)">
+                                            <i class="fa fa-calendar" style="font-size: 20px;"></i>
+                                        </span>
                                     </div>
+
+                                    
+                                   
 
                                     <!-- <dl-date-time-picker startView="day" maxView="year" minView="minute" minuteStep="5">
                             </dl-date-time-picker> -->
@@ -499,7 +511,7 @@
                                                                 " (click)="
                                                                     savesinglevehicle()
                                                                 ">
-                                                                Save22
+                                                                Save
                                                             </button>
                                                             <!-- <button
                                                                 class="btn btn-primary"
@@ -1736,6 +1748,19 @@
     </div>
 </ng-template>
 
+
+<ng-template #template5 class="modal-content2">
+    <div class="modal-body text-center mt-2">
+        <bs-datepicker-inline 
+            [minDate]="newmindate" 
+            [maxDate]="maxDate"
+            [dateCustomClasses]="selectedClass"
+            [bsValue]="dateSelected" 
+            (click)="closeModal()"
+            (bsValueChange)="onbaynoset($event)">
+        </bs-datepicker-inline>
+    </div>
+</ng-template>
 <!-- <div class="codepen-wrapper">
     <span class="registration-ui">N606 GUR</span>
   </div> -->

@@ -87,7 +87,11 @@ export class PageVehicleRegistrationComponent implements OnInit {
 
 
 
-
+  closeModal() {
+    if (this.modalRef) {
+      this.modalRef.hide(); // Hide the modal
+    }
+  }
 
 
 
@@ -96,7 +100,11 @@ export class PageVehicleRegistrationComponent implements OnInit {
   }
   onbaynoset(event) {
     debugger
-    this.loader = true
+    if(event.length==undefined){
+      this.closeModal()
+    }
+   // this.loader = true
+  // this.closeModal()
     setTimeout(() => {
       this.loader = false
 
@@ -106,19 +114,6 @@ export class PageVehicleRegistrationComponent implements OnInit {
     } else if (typeof (event) == "string" && this.isFromGrid) {
       this.Bindbasedondate(event);
     }
-
-    //   this.dateSelected.forEach(element => {
-    //    if(this.getDateItem(element)!=this.getDateItem(event))
-    //    {
-    //     this.confignumber = 0;
-    //     this.configurebasedonNo();
-    //     this.clear();
-    //     this.multiplebays = 'none'
-    //     this.vehiclecountobj = ''
-    //     this.datepickershow=false;
-    //     this.cycleno=this.vehilsdatalist.result.data[0][0].maxissavecount+1
-    //    }
-    //  });
 
   }
   isDisabledStateyes = false;
@@ -555,6 +550,9 @@ export class PageVehicleRegistrationComponent implements OnInit {
         }
       })
     }
+
+    this.newmindate=new Date()
+    console.log("Date Selected",this.selectedClass)
   }
 
 
@@ -665,9 +663,11 @@ export class PageVehicleRegistrationComponent implements OnInit {
 
   }
 
+  isDateSelected: boolean = false;
   //save chnages
   modalRef: BsModalRef;
   openModal(template: TemplateRef<any>) {
+    this.isDateSelected = false; // Reset flag on open
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
   }
   decline(): void {
@@ -790,6 +790,12 @@ export class PageVehicleRegistrationComponent implements OnInit {
     this.parkingvalidTotime = null
   }
 
+  showCalendar:boolean=false
+
+  toggleDatepicker(){
+    this.showCalendar = !this.showCalendar;
+  }
+
   vehiclesinglelist = 0;
   vehiclemultiplelist = 0;
   baynamebj
@@ -798,6 +804,7 @@ export class PageVehicleRegistrationComponent implements OnInit {
   rbtncheck = 0;
   //selected bay having records or not
   isrecordsexisted = true
+  newmindate
 
   //This param is is used only on edit from grid ..............else the param can be undefined or null 
   getvehicledetails(dateFormat: any) {
@@ -811,11 +818,11 @@ export class PageVehicleRegistrationComponent implements OnInit {
     this.cycleno = 0;
     // $("#rbtyes").prop("disabled", true);
     // $("#rbtno").prop("disabled", false);
-    this.loader = true
-    setTimeout(() => {
-      this.loader = false
+    // this.loader = true
+    // setTimeout(() => {
+    //   this.loader = false
 
-    }, 2000);
+    // }, 2000);
     this.datepickershow = false
     this.vehiclecountlist = []
     //this.selectedClass =[]
@@ -887,7 +894,7 @@ export class PageVehicleRegistrationComponent implements OnInit {
         if (data.result.message == "mutilpledata") {
           // this.isrecordsexisted = false
 
-          this.datepickershow = true
+        //  this.datepickershow = true
           this.single = 'none';
           this.confignumber=data.result.data[0].length
           this.configurebasedonNo();
@@ -908,6 +915,9 @@ export class PageVehicleRegistrationComponent implements OnInit {
           this.multiplebays = 'none'
           this.single = 'none'
           this.multiple = 'none';
+          var today = new Date();
+          this.newmindate = today
+
         }
         else {
 
@@ -1009,6 +1019,10 @@ export class PageVehicleRegistrationComponent implements OnInit {
       }
 
     })
+
+    var today = new Date();
+    this.newmindate = today
+    console.log("Min Date",this.newmindate)
 
     // setTimeout(() => {
     //   this.vehiclecountobj = 1;
@@ -1693,7 +1707,7 @@ export class PageVehicleRegistrationComponent implements OnInit {
     if ((this.confignumber >= 2 && this.confignumber <= 10) || this.confignumber == 0) {
     }
     else {
-      this.toast.warning('Choose value 2 to 10');
+    //  this.toast.warning('Choose value 2 to 10');
       this.confignumber = ''
       return false;
 
@@ -2101,6 +2115,12 @@ export class PageVehicleRegistrationComponent implements OnInit {
     // debugger;
     this.tenantid = result.id;
     this.baynonew = result.bayno;
+    this.modalRef = this.modalService.show(template4, { class: 'modal-sm' });
+
+  }
+
+  openCalender(template4: TemplateRef<any>) {
+    
     this.modalRef = this.modalService.show(template4, { class: 'modal-sm' });
 
   }

@@ -282,3 +282,21 @@ width: 50%!important;
   padding-right: 11px;
   padding-left: 8px;
 }
+
+::ng-deep .modal-content2 {
+  margin: 0px 0px 0px -194px !important;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 115% !important;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  outline: 0;
+}
+
+.custom-modal.show {
+  display: block; /* Show the modal when 'show' class is added */
+}
