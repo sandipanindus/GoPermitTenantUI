@@ -354,7 +354,7 @@
                                                                             s
                                                                                 .sparkingvalidfrom
                                                                                 .errors
-                                                                    }" />
+                                                                    }" disabled />
                                                                 <div *ngIf="
                                                                         singlevehiclesubmitted &&
                                                                         s
@@ -506,11 +506,7 @@
                                                         </div>
 
                                                         <div class="form-group text-center">
-                                                            <button class="btn btn-primary" style="
-                                                                    margin-right: 10px;
-                                                                " (click)="
-                                                                    savesinglevehicle()
-                                                                ">
+                                                            <button class="btn btn-primary" [disabled]="isLoading" style="margin-right: 10px;" (click)=" savesinglevehicle()">
                                                                 Save
                                                             </button>
                                                             <!-- <button
@@ -1635,7 +1631,7 @@
                                                             " id="multivalidate"></span>
 
                                                         <button type="submit"
-                                                            class="btn btn-primary mt-2 mt-md-3 mt-lg-4" (click)="
+                                                            class="btn btn-primary mt-2 mt-md-3 mt-lg-4" [disabled]="isLoading" (click)="
                                                                 savemultiplevehicle()
                                                             ">
                                                             Save
@@ -1830,8 +1826,8 @@
                                         <tr *ngFor="let visitorparking of visitorparkings">
                                             <td>{{visitorparking.bayName}}</td>
                                             <td>{{visitorparking.vrm}}</td>
-                                            <td>{{visitorparking.startdate | date: 'dd/MM/yyyy hh:mm'}}</td>
-                                            <td>{{visitorparking.endate | date: 'dd/MM/yyyy hh:mm'}}</td>
+                                            <td>{{visitorparking.startdate | date: 'dd/MM/yyyy HH:mm'}}</td>
+                                            <td>{{visitorparking.endate | date: 'dd/MM/yyyy HH:mm'}}</td>
                                             <td>
                                                 <a href="javascript::" (click)="EditVehicle(visitorparking)"><i
                                                         class="fa fa-edit"></i></a>

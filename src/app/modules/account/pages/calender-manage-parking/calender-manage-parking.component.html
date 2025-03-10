@@ -421,15 +421,7 @@
                         </div>
 
                         <div class="form-group text-center">
-                            <!-- <button class="btn btn-black  mr-4 md-3 " (click)="backToVisitor()">
-                                Back
-                              </button> -->
-
-                            <button class="btn btn-primary" style="
-                                    margin-right: 10px;
-                                " (click)="
-                                    savesinglevehicle()
-                                ">
+                            <button class="btn btn-primary" style="margin-right: 10px;" [disabled]="isLoading" (click)="savesinglevehicle()">
                                 Save
                             </button>
                           </div>
@@ -1535,10 +1527,7 @@
                               </button> -->
                             
 
-                        <button type="submit"
-                            class="btn btn-primary mt-2 mt-md-3 mt-lg-4" (click)="
-                                savemultiplevehicle()
-                            ">
+                        <button type="submit" [disabled]="isLoading" class="btn btn-primary mt-2 mt-md-3 mt-lg-4" (click)="savemultiplevehicle() ">
                             Save
                         </button>
                         <!-- <button

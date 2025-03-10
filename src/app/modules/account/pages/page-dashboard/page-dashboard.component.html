@@ -156,8 +156,10 @@
 </div>
 
 
+<div *ngIf="showSubmitAlert">
 <!-- Third Modal: Confirmation -->
 <div class="custom-modal" [class.show]="isConfirmationModalOpen">
+  <!-- <div class="custom-modal" *ngIf="isConfirmationModalOpen"> -->
   <div class="custom-modal-content" (click)="$event.stopPropagation()">
    
     <h3 class="modal-title">Request Submitted</h3>
@@ -168,4 +170,5 @@
       Sit back, relax, and we’ll keep you posted! 🚀
     </p>    
   </div>
+</div>
 </div>

@@ -109,22 +109,25 @@ export class PageDashboardComponent implements OnInit {
             console.log(this.vehicles);
         });
     }
+    showSubmitAlert:boolean=false
     ngOnInit(): void {
+      this.showSubmitAlert=false
         const userInfo = localStorage.getItem('userinfo');
         if (userInfo) {
           const parsedUserInfo = JSON.parse(userInfo);
           this.emailCode = parsedUserInfo.address ?? null; // Set emailCode safely
           this.GetProfile(parsedUserInfo.id); // Fetch profile using user id
-
           this.fetchAndStoreApprovalStatus(parsedUserInfo.id);
       
           const residencyProofId = localStorage.getItem('residencyProofId');
       
           // Check residencyProofId and open the appropriate modal
           if (residencyProofId && residencyProofId.trim() !== '') {
+            this.showSubmitAlert=true;
             this.isConfirmationModalOpen = true; // Open third modal directly
           } else {
             this.isDialogOpen = true; // Show terms modal if no residencyProofId
+            this.showSubmitAlert=false;
           }
         } else {
           console.warn('User info not found in localStorage.');
@@ -140,6 +143,7 @@ export class PageDashboardComponent implements OnInit {
 
 
       fetchAndStoreApprovalStatus(tenantId: number): void {
+        this.showSubmitAlert=false
         this.service.GetProfileById(tenantId).subscribe({
           next: (response: any) => {
             if (response?.status === "200" && response?.result) {
@@ -152,8 +156,11 @@ export class PageDashboardComponent implements OnInit {
               const residencyProofId = localStorage.getItem('residencyProofId');
               if (!isApproved && residencyProofId && residencyProofId.trim() !== '') {
                 this.isConfirmationModalOpen = true; // Open confirmation modal only if not approved
+                this.showSubmitAlert=true
               } else {
+                this.showSubmitAlert=false
                 this.isConfirmationModalOpen = false; // Hide modal if approved
+                
               }
             }
           },

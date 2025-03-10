@@ -1049,10 +1049,10 @@ export class CalenderManageParkingComponent implements OnInit {
   savevehcile: any = []
   parkingvalidTotime
   parkingvalidfromtime
+  isLoading:boolean=false
   savesinglevehicle() {
     debugger
-
-
+    this.isLoading=true
     this.loader = true
     setTimeout(() => {
       this.loader = false
@@ -1079,33 +1079,6 @@ export class CalenderManageParkingComponent implements OnInit {
     if (this.cycleno > 0) {
       this.dateSelected = this.getDateslist(this.parkingvalidfrom, this.parkingvalidTo);
     }
-    // if (this.baynobj == "") {
-    //   document.getElementById('ddlbayno').innerText = "Choose bay no";
-    //   document.getElementById('ddlbayno').style.color = "red";
-    //   document.getElementById('ddlbayno').style.display = 'block'
-
-    //   setTimeout(() => {
-    //     document.getElementById('ddlbayno').style.display = 'none'
-
-    //   }, 4000);
-    //   return false
-    // }
-    // if (this.baynobj == "" || this.vechiclemake == "" || this.model == "" || this.vrmno == "" || this.parkingvalidfrom == undefined || this.parkingvalidTo == undefined || this.parkingvalidTotime == undefined || this.parkingvalidfromtime == undefined) {
-    //   document.getElementById('Spnsinglemsg').innerText = "please fill all details";
-    //   document.getElementById('Spnsinglemsg').style.color = "red";
-    //   document.getElementById('Spnsinglemsg').style.display = 'block'
-
-    //   setTimeout(() => {
-    //     document.getElementById('Spnsinglemsg').style.display = 'none'
-
-    //   }, 4000);
-
-    //   return false
-
-
-    // }
-
-
 
     this.savevehcile.push({
       Make: this.vechiclemake,
@@ -1127,19 +1100,16 @@ export class CalenderManageParkingComponent implements OnInit {
         var a = this.modalRef
         if (a != undefined) {
           this.decline()
-
         }
+        this.isLoading=false
         var b = this.modalRef3
         if (b != undefined) {
           this.declinesavecheck()
         }
 
         this.toast.success('Vehicle added sucessfully');
-        window.location.reload();
+      //  window.location.reload();
          this.route.navigateByUrl('/account/VehicleRegistration');
-
-
-
       }
 
     })
@@ -1188,6 +1158,7 @@ export class CalenderManageParkingComponent implements OnInit {
 
   savemultiplevehicle() {
     debugger
+    this.isLoading=true
     if (this.cycleno > 0) {
       // var dates= this.comparedates();
 
@@ -1414,6 +1385,7 @@ export class CalenderManageParkingComponent implements OnInit {
 
     this.service.SaveVehicle(this.multiplevehiclelist).subscribe((data: any) => {
       if (data.status == "200") {
+        this.isLoading=false
         var a = this.modalRef1
         if (a != undefined) {
           this.declinemutliple()
@@ -1424,7 +1396,7 @@ export class CalenderManageParkingComponent implements OnInit {
 
         }
         this.toast.success('vehicle added sucessfully')
-        this.route.navigateByUrl('/account/dashboard');
+        this.route.navigateByUrl('/account/VehicleRegistration');
 
       }
     })

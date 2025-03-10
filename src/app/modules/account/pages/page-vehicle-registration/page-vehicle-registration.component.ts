@@ -1202,8 +1202,7 @@ export class PageVehicleRegistrationComponent implements OnInit {
   parkingvalidfromtime
   savesinglevehicle() {
     debugger
-
-
+    this.isLoading=true
     this.loader = true
     setTimeout(() => {
       this.loader = false
@@ -1211,9 +1210,9 @@ export class PageVehicleRegistrationComponent implements OnInit {
     }, 2000);
     this.savevehcile = []
     this.singlevehiclesubmitted = true;
-    if (this.singlevehicleForm.invalid) {
-      return;
-    }
+    // if (this.singlevehicleForm.invalid) {
+    //   return;
+    // }
     if (this.cycleno < 1) {
       this.cycleno = 1
     }
@@ -1275,6 +1274,7 @@ export class PageVehicleRegistrationComponent implements OnInit {
 
     this.service.SaveVehicle(this.savevehcile).subscribe((data: any) => {
       if (data.status == "200") {
+        this.isLoading=false
         var a = this.modalRef
         if (a != undefined) {
           this.decline()
@@ -1335,8 +1335,9 @@ export class PageVehicleRegistrationComponent implements OnInit {
   multiplevehicltodate;
   //saving for custom dates retrive and finding
   cycleno = 0;
+  isLoading:boolean=false
   savemultiplevehicle() {
-
+    this.isLoading=true
     if (this.cycleno > 0) {
       // var dates= this.comparedates();
 
@@ -1565,6 +1566,7 @@ export class PageVehicleRegistrationComponent implements OnInit {
 
     this.service.SaveVehicle(this.multiplevehiclelist).subscribe((data: any) => {
       if (data.status == "200") {
+        this.isLoading=false
         var a = this.modalRef1
         if (a != undefined) {
           this.declinemutliple()
@@ -2060,7 +2062,7 @@ export class PageVehicleRegistrationComponent implements OnInit {
 
         this.visitorparkings = data.result;
 
-        console.log(this.visitorparkings)
+        console.log("visitorparkings",this.visitorparkings)
 
       }
 
@@ -2151,7 +2153,7 @@ export class PageVehicleRegistrationComponent implements OnInit {
     // this.baynobj.startdate = result.startdate;
     // this.getvehicledetails();
     var tempDate = new Date(result.endate);
-    tempDate.setDate(tempDate.getDate() - 1);
+   // tempDate.setDate(tempDate.getDate() - 1);
     this.parkigbaydrp.forEach(element => {
       debugger;
       if (element.bayNo == result.bayno) {
