@@ -1287,7 +1287,7 @@ export class PageVehicleRegistrationComponent implements OnInit {
 
         this.toast.success('Vehicle added sucessfully');
         window.location.reload();
-        // this.route.navigateByUrl('/account/dashboard');
+         this.route.navigateByUrl('/account/VehicleRegistration');
 
 
 
@@ -1577,7 +1577,8 @@ export class PageVehicleRegistrationComponent implements OnInit {
 
         }
         this.toast.success('vehicle added sucessfully')
-        this.route.navigateByUrl('/account/dashboard');
+        window.location.reload();
+        this.route.navigateByUrl('/account/VehicleRegistration');
 
       }
     })
