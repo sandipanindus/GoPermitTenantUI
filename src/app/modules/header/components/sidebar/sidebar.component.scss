@@ -1,63 +1,253 @@
+// ul li {
+//     transition: background 0.3s ease-in-out;
+//   }
+  
+//   .menu_nav {
+//     display: flex;
+//     justify-content: flex-end; /* Push to the right */
+//     align-items: center; /* Center vertically */
+//     height: 100px; /* Adjust height as needed */
+//     padding-right: 20px; /* Some spacing from the edge */
+//     position: absolute;
+//     right: 0;
+//     width: auto;
+// }
+
+// .profile_cls {
+//     display: flex;
+//     align-items: center; /* Keep items in a row */
+//     gap: 20px; /* Space between support button & profile icon */
+// }
+
+
+
+// .dropdown-item {
+//     padding: 8px 12px;
+//     cursor: pointer;
+//     text-decoration: none;
+//     color: black;
+//     display: block;
+// }
+
+// .dropdown-item:hover {
+//     background: #ffd333;
+//     border: 2px solid #ffd333;
+// }
+
+// .Sp_cls {
+//     background: #3d464d;
+//     color: #191e1b;
+//     border: none;
+// }
+
+// .btn-2 {
+//     font-size: 1rem;
+//     height: 32px;
+// }
+
+
+
+// .dropdown-menu[_ngcontent-serverApp-c46] {
+//   position: absolute;
+//   top: 100%;
+//   right: 0;
+//   left: -470%;
+//   background: white;
+//   box-shadow: 0 4px 6px #0000001a;
+//   border-radius: 5px;
+//   padding: 10px 0;
+//   width: 190px;
+//   display: flex;
+//   flex-direction: column;
+//   z-index: 1000;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.sidebar-container {
+    width: 16rem; /* w-64 */
+    height: 100vh; /* h-screen */
+    background: #f3f4f6; /* bg-[#f3f4f6] */
+    color: #000000; /* text-[#000000] */
+    position: fixed; /* fixed */
+    left: 0; /* left-0 */
+    top: 0; /* top-0 */
+   // border-right: 1px solid #4e46e6; /* border-[#4e46e6] */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-lg */
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    padding: 1rem; /* p-3 */
+    border-bottom: 1px solid #e5e7eb; /* border-b border-gray-300 */
+    flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+.scrollable-content {
+    flex-grow: 1; /* Take up remaining space */
+    overflow-y: auto; /* Enable scrolling */
+    padding: 1rem; /* p-3 */
+}
+
+.footer {
+    padding: 1rem; /* p-3 */
+    border-top: 1px solid #e5e7eb; /* border-t border-gray-300 */
+    flex-shrink: 0; /* Prevent footer from shrinking */
+}
+
+/* Hover effects for list items */
 ul li {
+    transition: background 0.3s ease-in-out;
+}
+
+ul li:hover {
+    background: #e0e7ff; /* hover:bg-[#e0e7ff] */
+    color: #4e46e6; /* hover:text-[#4e46e6] */
+}
+
+/* Dropdown menu styling */
+// .dropdown-menu {
+//     position: absolute;
+//     top: 100%;
+//     right: 0;
+//     background: white;
+//     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+//     border-radius: 0.5rem; /* rounded-lg */
+//     padding: 0.5rem 0; /* py-2 */
+//     width: 12rem; /* w-48 */
+//     z-index: 1000;
+// }
+
+// .dropdown-item {
+//     padding: 0.5rem 0.75rem; /* px-4 py-2 */
+//     cursor: pointer;
+//     text-decoration: none;
+//     color: black;
+//     display: block;
+// }
+
+// .dropdown-item:hover {
+//     background: #ffd333; /* hover:bg-[#ffd333] */
+//     border: 2px solid #ffd333;
+// }
+
+
+
+
+
+
+
+
+
+
+.footer-icons {
+    display: flex;
+    justify-content: center; /* Center the icons horizontally */
+    gap: 1.5rem; /* Space between the two circles */
+    padding: 0.5rem 0; /* Add some padding */
+}
+
+/* Icon Circle Styling */
+.icon-circle {
+    width: 40px; /* Circle size */
+    height: 40px; /* Circle size */
+    border-radius: 50%; /* Make it a circle */
+    background-color: #e5e7eb; /* Light gray background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+/* Support Circle */
+.support-circle {
+    background-color: #1a1c29; /* Dark background for support */
+    color: #ffffff; /* White icon */
+}
+
+/* Profile Circle */
+// .profile-circle {
+//     background-color: #3d464d; /* Purple background for profile */
+//     color: #ffffff; /* White icon */
+// }
+
+/* Hover Effects */
+// .icon-circle:hover {
+//     opacity: 0.9; /* Slight fade on hover */
+//     transform: scale(1.05); /* Slight zoom effect */
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Profile Circle */
+.profile-circle {
+    position: relative; /* Ensure the dropdown is positioned relative to this container */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ef711a;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
     transition: background 0.3s ease-in-out;
   }
   
-  .menu_nav {
-    display: flex;
-    justify-content: flex-end; /* Push to the right */
-    align-items: center; /* Center vertically */
-    height: 100px; /* Adjust height as needed */
-    padding-right: 20px; /* Some spacing from the edge */
+  .dropdown-menu {
+    display: block !important; /* For debugging */
     position: absolute;
+    top: -400%;
     right: 0;
-    width: auto;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0;
+    width: 12rem;
+    z-index: 1000;
 }
 
-.profile_cls {
-    display: flex;
-    align-items: center; /* Keep items in a row */
-    gap: 20px; /* Space between support button & profile icon */
-}
-
-
-
-.dropdown-item {
-    padding: 8px 12px;
+  
+  /* Dropdown Items */
+  .dropdown-item {
+    padding: 0.5rem 0.75rem;
     cursor: pointer;
     text-decoration: none;
     color: black;
     display: block;
-}
-
-.dropdown-item:hover {
+  }
+  
+  .dropdown-item:hover {
     background: #ffd333;
     border: 2px solid #ffd333;
-}
-
-.Sp_cls {
-    background: #3d464d;
-    color: #191e1b;
-    border: none;
-}
-
-.btn-2 {
-    font-size: 1rem;
-    height: 32px;
-}
-
-
-
-.dropdown-menu[_ngcontent-serverApp-c46] {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  left: -470%;
-  background: white;
-  box-shadow: 0 4px 6px #0000001a;
-  border-radius: 5px;
-  padding: 10px 0;
-  width: 190px;
-  display: flex;
-  flex-direction: column;
-  z-index: 1000;
-}
+  }

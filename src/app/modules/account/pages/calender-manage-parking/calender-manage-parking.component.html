@@ -1,6 +1,8 @@
-<button *ngIf="backBtn1" class="btn btn-primary mb-2 floating-btn" (click)="backToVisitor()">
-    <i class="fa fa-arrow-left mr-2"></i>Back
-  </button>
+<div class="dashboard-content">
+
+<!-- <button *ngIf="backBtn1" class="btn btn-primary mb-2 floating-btn" (click)="backToVisitor()">
+    <i class="fa fa-arrow-left mr-2"></i>Back123
+  </button> -->
 
   <button *ngIf="backBtn2" class="btn btn-primary mb-2 floating-btn" (click)="back1()">
     <i class="fa fa-arrow-left mr-2"></i>Back
@@ -12,6 +14,9 @@
 
   <div class="card flex-grow-1 mb-md-0" style="margin-top: 25px;" *ngIf="isshowblock == true">
     <div class="card-body">
+        <button *ngIf="backBtn1" class="bg-[#FFD333] text-black font-medium px-4 py-2 rounded-lg flex items-center gap-2 mb-2" (click)="backToVisitor()">
+            <i class="fa fa-arrow-left"></i> Back
+          </button>
   <div class="row" >
     <div class="col-md-4">
         <label>How many vehicle per bay:</label>
@@ -1568,3 +1573,5 @@
     </div>
 </div>
 
+
+</div>

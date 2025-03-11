@@ -23,12 +23,12 @@ export class SidebarComponent implements OnInit {
 
 
   dropdownOpen = false;
-
   toggleDropdown(event: Event) {
-      event.stopPropagation(); // Prevent click event from propagating to document
-      this.dropdownOpen = !this.dropdownOpen;
+    console.log("Dropdown clicked!"); // Debugging
+    event.stopPropagation();
+    this.dropdownOpen = !this.dropdownOpen;
   }
-
+  
 
   
   Logout()
