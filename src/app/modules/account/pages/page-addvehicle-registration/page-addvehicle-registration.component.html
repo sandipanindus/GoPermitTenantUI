@@ -1,4 +1,7 @@
-<div class="card-body">
+<div class="dashboard-content">
+
+
+    <div class="card-body">
     <div>
         <h5> Parking Sessions</h5>
 
@@ -72,7 +75,7 @@
                                 Manage Parking
                             </h3>
                              <br /><br />
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-md-4">
                                     <label>Select a parking bay :</label>
                                     <i style="margin-left: 5px" class="far fa-question-circle" aria-hidden="true"
@@ -92,8 +95,29 @@
                                     </select>
                                     <span id="ddlbayno"></span>
                                 </div>
-                            </div>
+                            </div> -->
 
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                  <label>Select a parking bay :</label>
+                                  <i style="margin-left: 5px" class="far fa-question-circle" aria-hidden="true"
+                                    tooltip="Choose among available bay options." placement="bottom"></i>
+                              
+                                  <!-- Move the dropdown below the label -->
+                                  <div class="mt-3">
+                                    <select class="form-control" style="width: 60%" [(ngModel)]="baynobj"
+                                      (change)="getvehicledetails2('')" [ngModelOptions]="{ standalone: true }">
+                                      <option value="">- Select Bay NO -</option>
+                                      <option *ngFor="let obj of parkigbaydrp" [ngValue]="obj">
+                                        {{ obj.bayname }}
+                                      </option>
+                                    </select>
+                                  </div>
+                                  <span id="ddlbayno"></span>
+                                </div>
+                              </div>
+                              
                             <!-- <dl-date-time-picker startView="day" maxView="year" minView="minute" minuteStep="5">
                             </dl-date-time-picker> -->
                             <!-- <input type="text" class="form-control" placeholder="Your Parking Bay No"> -->
@@ -1724,3 +1748,6 @@
 <div id="parkingsession"></div>
 <div id="parkingsessionsi"></div>
 <div id="messagediv"></div>
+
+
+</div>

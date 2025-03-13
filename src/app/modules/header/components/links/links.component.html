@@ -1,89 +1,72 @@
-<ul class="nav-links__list"  >
-    <div class="site-header__logo" id="logodiv" style="display: block; margin-top: 20px;">
-        <a  (click)="movetohome()" >
-            <img src="assets/images/logo/test4.png" />
-        </a>
+<!-- <ul class="nav-links__list">
+    <app-sidebar class="hidden md:block w-64 text-white h-screen"></app-sidebar>
+
+    <div class="menu_nav">
+        <div class="profile_cls">
+            <button class="btn-2 rounded-pill Sp_cls">
+                <a class="nav-links__item-link" [routerLink]="'/account/Support'">
+                    <div class="nav-links__item-body2">
+                        <i class="fas fa-headset text-[#E5E7EB] text-[25px] mx-[4px]" tooltip="Support"></i>
+                    </div>
+                </a>
+            </button>
+
+            <li class="nav-links__item" (click)="toggleDropdown($event)" style="cursor: pointer; position: relative;">
+                <a class="nav-links__item-link">
+                    <i class="fas fa-user-circle text-[33px] bg-[#E5E7EB] rounded-full "></i>
+                </a>
+
+                <div *ngIf="dropdownOpen" class="dropdown-menu">
+                    <a class="dropdown-item" [routerLink]="'/account/password'">
+                        <i class="fas fa-lock"></i> Change Password
+                    </a>
+                    <a class="dropdown-item" [routerLink]="'/account/profile'">
+                        <i class="fas fa-user"></i> Edit Profile
+                    </a>
+                    <a class="dropdown-item" (click)="Logout()">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </li>
+        </div>
     </div>
-    
-<div class="menu_nav">
+</ul> -->
 
-    <div class="profile_cls">
-        <button class=" btn-2 rounded-pill Sp_cls " style="margin-right: 10px; margin-top: 6px;">
-            <a class="nav-links__item-link" [routerLink]="'/account/Support'" style="cursor: pointer;">
-                <div class="nav-links__item-body2">
-                    <i class="fas fa-headset" style="font-size: 20px; margin-right: 8px;"></i> Support </div>
-            </a>
-        </button>
-    
-        <li class="nav-links__item" (click)="toggleDropdown($event)" style="cursor: pointer; position: relative; ">
-        <a class="nav-links__item-link" style="cursor: pointer;">
-            <i class="fas fa-user-circle" style="font-size: 30px;margin-top: 6px;"></i>
-        </a>
-    
-        <!-- Dropdown Menu -->
-        <div *ngIf="dropdownOpen" class="dropdown-menu">
-            <a class="dropdown-item flex-wrap" >
-                <i class="fas fa-user"></i> Welcome {{UserName}}
-            </a>
-            <a class="dropdown-item" [routerLink]="'/account/password'">
-                <i class="fas fa-lock"></i> Change Password
-            </a>
-            <a class="dropdown-item" [routerLink]="'/account/profile'">
-                <i class="fas fa-user"></i> Edit Profile
-            </a>
-            <a class="dropdown-item" (click)="Logout()">
-                <i class="fas fa-sign-out-alt"></i> Logout
-            </a>
+
+
+
+
+
+
+
+
+
+
+<ul class="nav-links__list">
+    <app-sidebar class="hidden md:block w-64 text-white h-screen"></app-sidebar>
+
+    <!-- <div class="menu_nav">
+        <div class="profile_cls">
+            <li class="nav-links__item" (click)="toggleDropdown($event)" style="cursor: pointer; position: relative;">
+                <a class="nav-links__item-link">
+                    <i class="fas fa-user-circle text-[33px] bg-[#E5E7EB] rounded-full"></i>
+                </a>
+
+                <div *ngIf="dropdownOpen" class="dropdown-menu">
+                    <a class="dropdown-item" [routerLink]="'/account/Support'">
+                        <i class="fas fa-headset"></i> Support
+                    </a>
+                    <a class="dropdown-item" [routerLink]="'/account/password'">
+                        <i class="fas fa-lock"></i> Change Password
+                    </a>
+                    <a class="dropdown-item" [routerLink]="'/account/profile'">
+                        <i class="fas fa-user"></i> Edit Profile
+                    </a>
+                    <a class="dropdown-item" (click)="Logout()">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </li>
         </div>
-        
-        </li>
-    </div>
-
- <div class="menu_cls">
-    <li  *ngFor="let item of items" class="nav-links__item" [ngClass]="{
-            'nav-links__item--has-submenu': item.menu,
-            'nav-links__item--hover': hoveredItem === item
-        }" (mouseenter)="onItemMouseEnter(item)" (mouseleave)="onItemMouseLeave(item)"
-        (appOutsideTouchClick)="onOutsideTouchClick(item)" #itemElement>
-
-        <ng-template #link >
-            <div class="nav-links__item-body">
-                <i *ngIf="item.icon" [ngClass]="'fas ' + item.icon" style="font-size: 20px; margin-right: 8px;"></i>
-                {{ item.label }}
-                <app-icon *ngIf="item.menu" class="nav-links__item-arrow" name="arrow-rounded-down-9x6" size="9x6"></app-icon>
-            </div>
-        </ng-template>
-
-        <a *ngIf="!item.external" class="nav-links__item-link" id="link{{item.nav}}" [routerLink]="item.url" [target]="item.target"
-            (appTouchClick)="onTouchClick($event, item)" (click)="navigate(item.nav)">
-            <ng-container [ngTemplateOutlet]="link"></ng-container>
-        </a>
-
-        <a *ngIf="item.external" class="nav-links__item-link" [href]="item.url" id="link{{item.nav}}" [target]="item.target"
-            (appTouchClick)="onTouchClick($event, item)" (click)="navigate(item.nav)">
-            <ng-container [ngTemplateOutlet]="link"></ng-container>
-        </a>
-
-        <div
-            *ngIf="item.menu && item.menu.type == 'menu'"
-            class="nav-links__submenu nav-links__submenu--type--menu"
-            [ngClass]="{'nav-links__submenu--open': hoveredItem === item}"
-            #submenuElement
-        >
-            <app-header-menu [items]="item.menu.items" (itemClick)="onSubItemClick()"></app-header-menu>
-        </div>
-        <div
-            *ngIf="item.menu && item.menu.type == 'megamenu'"
-            class="nav-links__submenu nav-links__submenu--type--megamenu nav-links__submenu--size--{{ item.menu.size }}"
-            [ngClass]="{'nav-links__submenu--open': hoveredItem === item}"
-            #submenuElement
-        >
-            <app-header-megamenu [menu]="item.menu" (itemClick)="onSubItemClick()"></app-header-megamenu>
-        </div>
-    </li>
-</div>
-
-</div>
-    
-
+    </div> -->
 </ul>

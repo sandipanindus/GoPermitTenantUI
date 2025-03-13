@@ -1,6 +1,9 @@
-<button *ngIf="backBtn1" class="btn btn-primary mb-2 floating-btn" (click)="backToVisitor()">
-    <i class="fa fa-arrow-left mr-2"></i>Back
-  </button>
+<div class="dashboard-content">
+
+
+<!-- <button *ngIf="backBtn1" class="btn btn-primary mb-2 floating-btn" (click)="backToVisitor()">
+    <i class="fa fa-arrow-left mr-2"></i>Back1
+  </button> -->
 
   <button *ngIf="backBtn2" class="btn btn-primary mb-2 floating-btn" (click)="back1()">
     <i class="fa fa-arrow-left mr-2"></i>Back
@@ -10,8 +13,31 @@
     <i class="fa fa-arrow-left mr-2"></i>Back
   </button>
 
+  <!-- <button *ngIf="backBtn1" 
+  class="flex items-center gap-2 px-2 py-2.5 bg-[#FFD333] text-black font-semibold 
+         rounded-lg shadow-md hover:bg-[#e6c200] hover:shadow-lg 
+         transition-all duration-300 ease-in-out" 
+  (click)="backToVisitor()">
+<i class="fa fa-arrow-left"></i>
+<span>Back</span>
+</button> -->
+
+
+
+<button *ngIf="backBtn1"
+  class="flex items-center justify-center w-10 h-10 bg-[#FFD333] text-black 
+         rounded-full shadow-md hover:bg-[#e6c200] hover:shadow-lg 
+         transition-all duration-300 ease-in-out active:scale-90"
+  (click)="backToVisitor()">
+  <i class="fa fa-arrow-left text-lg"></i>
+</button>
+
+
+
   <div class="card flex-grow-1 mb-md-0" style="margin-top: 25px;" *ngIf="isshowblock == true">
     <div class="card-body">
+       
+
   <div class="row" >
     <div class="col-md-4">
         <label>How many vehicle per bay:</label>
@@ -1556,3 +1582,6 @@
     </div>
 </div>
 
+
+
+</div>

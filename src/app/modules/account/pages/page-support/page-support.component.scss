@@ -1,4 +1,9 @@
-.customCard {
+.dashboard-content {
+    @apply p-5 w-full md:ml-64 md:w-[calc(100%-16rem)];
+  }
+  
+  
+  .customCard {
     border: 1px solid #eee;
     padding: 1%;
     margin-left: 30px;

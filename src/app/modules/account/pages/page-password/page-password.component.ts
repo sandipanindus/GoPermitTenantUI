@@ -8,7 +8,7 @@ import { from } from 'rxjs';
 @Component({
     selector: 'app-page-password',
     templateUrl: './page-password.component.html',
-    styleUrls: ['./page-password.component.sass']
+    styleUrls: ['./page-password.component.scss']
 })
 export class PagePasswordComponent {
     changepasswordform: FormGroup;

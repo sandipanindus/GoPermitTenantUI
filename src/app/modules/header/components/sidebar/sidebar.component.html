@@ -1,0 +1,237 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="w-64 h-screen bg-[#f3f4f6] text-[#000000] fixed left-0 top-0 border-[#4e46e6] shadow-lg flex flex-col"> -->
+
+
+    <!-- <div class="w-64 h-screen bg-[#f3f4f6] text-[#000000] fixed left-0 top-0 border-[#4e46e6] shadow-lg flex flex-col">
+        <div class="flex-grow overflow-y-auto">
+    <div class="p-3 flex justify-between items-center border-b border-gray-300">
+        <a (click)="movetohome()">
+            <img src="assets/images/logo/test4.png" class="h-14" alt="Go Permit Logo" />
+        </a>
+
+        <li class="relative cursor-pointer" (click)="toggleDropdown($event)">
+            <a class="nav-links__item-link">
+                <i class="fas fa-user-circle text-[33px] bg-[#E5E7EB] rounded-full"></i>
+            </a>
+
+            <div *ngIf="dropdownOpen" class="dropdown-menu absolute right-0 mt-2 bg-white shadow-md rounded-lg w-48">
+                <a class="dropdown-item flex items-center px-4 py-2 hover:bg-gray-100" [routerLink]="'/account/password'">
+                    <i class="fas fa-lock mr-2"></i> Change Password
+                </a>
+                <a class="dropdown-item flex items-center px-4 py-2 hover:bg-gray-100" [routerLink]="'/account/profile'">
+                    <i class="fas fa-user mr-2"></i> Edit Profile
+                </a>
+                <a class="dropdown-item flex items-center px-4 py-2 hover:bg-gray-100" (click)="Logout()">
+                    <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                </a>
+            </div>
+        </li>
+    </div>
+
+
+ <ul class="space-y-2 px-2 mt-4 flex-grow">
+    <li class="py-3 px-4 rounded-lg flex items-center gap-2 hover:bg-[#e0e7ff] hover:text-[#4e46e6] transition-all cursor-pointer">
+        <i class="fas fa-home text-lg"></i>
+        <a [routerLink]="'/account/dashboard'" class="w-full">Home</a>
+    </li>
+
+    <li class="py-3 px-4 rounded-lg flex items-center justify-between hover:bg-[#e0e7ff] hover:text-[#4e46e6] transition-all cursor-pointer" (click)="showManageParking = !showManageParking">
+        <div class="flex items-center gap-2">
+            <i class="fas fa-parking text-lg"></i>
+            Manage Parking
+        </div>
+        <i class="fas" [ngClass]="showManageParking ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+    </li>
+    <ul class="ml-6 space-y-2 transition-all" *ngIf="showManageParking">
+        <li class="py-2 px-4 rounded-lg flex items-center gap-2 hover:text-[#4e46e6] cursor-pointer">
+            <i class="fas fa-plus-circle"></i>
+            <a [routerLink]="'/account/AddVehicleRegistration'">Create Session</a>
+        </li>
+        <li class="py-2 px-4 rounded-lg flex items-center gap-2 hover:text-[#4e46e6] cursor-pointer">
+            <i class="fas fa-list"></i>
+            <a [routerLink]="'/account/VehicleRegistration'">Manage Session</a>
+        </li>
+    </ul>
+
+    <li class="py-3 px-4 rounded-lg flex items-center justify-between hover:bg-[#e0e7ff] hover:text-[#4e46e6] transition-all cursor-pointer" (click)="showVisitorParking = !showVisitorParking">
+        <div class="flex items-center gap-2">
+            <i class="fas fa-car text-lg"></i>
+            Visitor Parking
+        </div>
+        <i class="fas" [ngClass]="showVisitorParking ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+    </li>
+    <ul class="ml-6 space-y-2 transition-all" *ngIf="showVisitorParking">
+        <li class="py-2 px-4 rounded-lg flex items-center gap-2 hover:text-[#4e46e6] cursor-pointer">
+            <i class="fas fa-user-plus"></i>
+            <a [routerLink]="'/account/AddVisitorRegistration'">Create Visitor </a>
+        </li>
+        <li class="py-2 px-4 rounded-lg flex items-center gap-2 hover:text-[#4e46e6] cursor-pointer">
+            <i class="fas fa-list"></i>
+            <a [routerLink]="'/account/VisitorParking'">Manage Visitor </a>
+        </li>
+    </ul>
+</ul>
+
+<ul class="space-y-2 px-2 pb-4 mt-auto">
+    <li class="py-3 px-4 rounded-lg flex items-center gap-2 hover:bg-[#e0e7ff] hover:text-[#4e46e6] transition-all cursor-pointer">
+        <i class="fas fa-headset mr-2"></i>
+        <a [routerLink]="'/account/Support'" class="w-full">Support</a>
+    </li>
+    <li class="py-3 px-4 rounded-lg flex items-center gap-2 hover:bg-[#e0e7ff] hover:text-[#4e46e6] transition-all cursor-pointer">
+        <i class="fas fa-file-alt text-lg"></i>
+        <a [routerLink]="'/account/terms'" class="w-full">Terms & Conditions</a>
+    </li>
+    <li class="py-3 px-4 rounded-lg flex items-center gap-2 hover:bg-[#e0e7ff] hover:text-[#4e46e6] transition-all cursor-pointer">
+        <i class="fas fa-file-contract text-lg"></i>
+        <a [routerLink]="'/account/policy'" class="w-full">Privacy Policy</a>
+    </li>
+</ul>
+
+
+
+</div>
+    </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="sidebar-container">
+        <!-- Header (Fixed) -->
+        <div class="header">
+            <a (click)="movetohome()">
+                <img src="assets/images/logo/test4.png" class="h-14" alt="Go Permit Logo" />
+            </a>
+        </div>
+    
+        <!-- Scrollable Middle Content -->
+        <div class="scrollable-content">
+            <ul >
+                <li class="py-2 px-4 rounded-lg flex items-center gap-2 hover:bg-[#e0e7ff] hover:text-[#4e46e6] transition-all cursor-pointer">
+                    <i class="fas fa-home text-lg"></i>
+                    <a [routerLink]="'/account/dashboard'" class="w-full">Home</a>
+                </li>
+    
+                <!-- Manage Parking Section -->
+                <li class="py-3 px-4 rounded-lg flex items-center justify-between hover:bg-[#e0e7ff] hover:text-[#4e46e6] transition-all cursor-pointer" (click)="showManageParking = !showManageParking">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-parking text-lg"></i>
+                        Manage Parking
+                    </div>
+                    <i class="fas" [ngClass]="showManageParking ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                </li>
+                <ul class="ml-6  transition-all" *ngIf="showManageParking">
+                    <li class="py-2 px-2 rounded-lg flex items-center gap-2 hover:text-[#4e46e6] cursor-pointer">
+                        <i class="fas fa-plus-circle"></i>
+                        <a [routerLink]="'/account/AddVehicleRegistration'">Create Session</a>
+                    </li>
+                    <li class="py-2 px-2 rounded-lg flex items-center gap-2 hover:text-[#4e46e6] cursor-pointer">
+                        <i class="fas fa-list"></i>
+                        <a [routerLink]="'/account/VehicleRegistration'">Manage Session</a>
+                    </li>
+                </ul>
+    
+                <!-- Visitor Parking Section -->
+                <li class="py-3 px-4 rounded-lg flex items-center justify-between hover:bg-[#e0e7ff] hover:text-[#4e46e6] transition-all cursor-pointer" (click)="showVisitorParking = !showVisitorParking">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-car text-lg"></i>
+                        Visitor Parking
+                    </div>
+                    <i class="fas" [ngClass]="showVisitorParking ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                </li>
+                <ul class="ml-6  transition-all" *ngIf="showVisitorParking">
+                    <li class="py-2 px-2 rounded-lg flex items-center gap-2 hover:text-[#4e46e6] cursor-pointer">
+                        <i class="fas fa-user-plus"></i>
+                        <a [routerLink]="'/account/AddVisitorRegistration'">Create Visitor</a>
+                    </li>
+                    <li class="py-2 px-2 rounded-lg flex items-center gap-2 hover:text-[#4e46e6] cursor-pointer">
+                        <i class="fas fa-list"></i>
+                        <a [routerLink]="'/account/VisitorParking'">Manage Visitor</a>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+    
+        <!-- Footer (Fixed) -->
+        <div class="footer">
+            <!-- <ul >
+                <li class="py-1 px-2 rounded-lg flex items-center gap-2 hover:bg-[#e0e7ff] hover:text-[#4e46e6] transition-all cursor-pointer">
+                    <i class="fas fa-file-alt text-lg"></i>
+                    <a [routerLink]="'/account/terms'" class="w-full">Terms..</a>
+                </li>
+                <li class="py-1 px-2 rounded-lg flex items-center gap-2 hover:bg-[#e0e7ff] hover:text-[#4e46e6] transition-all cursor-pointer">
+                    <i class="fas fa-file-contract text-lg"></i>
+                    <a [routerLink]="'/account/policy'" class="w-full">Policy..</a>
+                </li>
+            </ul> -->
+
+
+              <!-- Support and User Profile Circles -->
+    <div class="footer-icons">
+        <div class="icon-circle support-circle   transition-all">
+            <a [routerLink]="'/account/Support'">
+                <i class="fas fa-headset"></i>
+            </a>
+        </div>
+        <!-- <div class="icon-circle profile-circle">
+            <i class="fas fa-user-circle"></i>
+        </div> -->
+
+        <div class="icon-circle profile-circle" (click)="toggleDropdown($event)">
+            <i class="fas fa-user-circle"></i>
+        
+            <div *ngIf="dropdownOpen" class="dropdown-menu absolute right-0 mt-2 bg-white shadow-md rounded-lg w-48">
+                <a class="dropdown-item flex items-center px-4 py-2 hover:bg-gray-100" [routerLink]="'/account/password'">
+                    <i class="fas fa-lock mr-2"></i> Change Password
+                </a>
+                <a class="dropdown-item flex items-center px-4 py-2 hover:bg-gray-100" [routerLink]="'/account/profile'">
+                    <i class="fas fa-user mr-2"></i> Edit Profile
+                </a>
+                <a class="dropdown-item flex items-center px-4 py-2 hover:bg-gray-100" (click)="Logout()">
+                    <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                </a>
+            </div>
+        </div>
+        
+    </div>
+
+
+            <ul class="flex justify-evenly w-full">
+                <li class="py-1 px-2 rounded-lg flex items-center gap-2 hover:bg-[#e0e7ff] hover:text-[#4e46e6] transition-all cursor-pointer">
+                    <i class="fas fa-file-alt text-lg"></i>
+                    <a [routerLink]="'/account/terms'" class="w-full">Terms & Conditions</a>
+                </li>
+                <li class="py-1 px-2 rounded-lg flex items-center gap-2 hover:bg-[#e0e7ff] hover:text-[#4e46e6] transition-all cursor-pointer">
+                    <i class="fas fa-file-contract text-lg"></i>
+                    <a [routerLink]="'/account/policy'" class="w-full">Privacy Policy</a>
+                </li>
+            </ul>
+
+
+            
+  
+        </div>
+    </div>

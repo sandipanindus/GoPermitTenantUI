@@ -1,19 +1,30 @@
-<div class="site-preloader" *ngIf="loader"></div>
+<div class="dashboard-content">
+
+
+
+    <div class="site-preloader" *ngIf="loader"></div>
 
 <div class="block">
     <div class="container">
+        <button *ngIf="editShow"
+        class="flex items-center justify-center mb-2 w-10 h-10 bg-[#FFD333] text-black 
+               rounded-full shadow-md hover:bg-[#e6c200] hover:shadow-lg 
+               transition-all duration-300 ease-in-out active:scale-90"
+        (click)="backTo()">
+        <i class="fa fa-arrow-left text-lg"></i>
+      </button>
         <div class="row">
             <div class="col-md-12 d-flex loginform">
                 <div *ngIf="editShow"  class="card flex-grow-1 mb-md-0">
                     <div class="card-body">
-                        <button  class="btn btn-primary mb-2 floating-btn" (click)="backTo()">
+                        <!-- <button  class="btn btn-primary mb-2 floating-btn" (click)="backTo()">
                             <i class="fa fa-arrow-left mr-2"></i>Back
-                          </button>
+                          </button> -->
                         <!-- <h3 style="display: inline" class="card-title">
                             Manage Parking
                         </h3> -->
                         <!-- <i style="margin-left: 5px;" class="far fa-question-circle" aria-hidden="true" tooltip="Pre select the bay and park your car." placement="bottom"></i> -->
-                        <br /><br />
+                        <!-- <br /><br /> -->
                         <!-- <form> -->
                             <div class="form-group">
                                 <!-- <div class="row">
@@ -1850,4 +1861,12 @@
             </div>
         </div>
     </div>
+</div>
+
+
+
+
+
+
+
 </div>

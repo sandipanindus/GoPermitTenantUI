@@ -1,3 +1,8 @@
+.dashboard-content {
+  @apply p-5 w-full md:ml-64 md:w-[calc(100%-16rem)];
+}
+
+
 .spantop
 {
     margin-top: 5px;

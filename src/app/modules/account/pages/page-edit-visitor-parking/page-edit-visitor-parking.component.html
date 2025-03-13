@@ -1,3 +1,6 @@
+<!-- <div class="dashboard-content">
+
+
 <div class="container">
     <div class="card">
         <button  class="btn btn-primary mb-2 floating-btn" (click)="back2()">
@@ -38,3 +41,75 @@
 
         </div>
         </div>
+
+
+</div> -->
+
+
+
+
+
+
+<div class="dashboard-content">
+    <div class="container">
+        <button 
+  class="flex items-center justify-center w-10 h-10 bg-[#FFD333] text-black mb-2
+         rounded-full shadow-md hover:bg-[#e6c200] hover:shadow-lg 
+         transition-all duration-300 ease-in-out active:scale-90"
+  (click)="back2()">
+  <i class="fa fa-arrow-left text-lg"></i>
+</button>
+      <div class="card">
+        <div style="width: 100%; padding: 10px;">
+          <!-- Back Button -->
+          <!-- <button class="bg-[#FFD333] text-black font-medium px-4 py-2 rounded-lg flex items-center gap-2 mb-2" 
+                  (click)="back2()">
+            <i class="fa fa-arrow-left"></i> Back
+          </button> -->
+  
+          <div class="divdetails ml-2">
+            <label>Edit Visitor Parking</label>
+          </div>
+  
+          <!-- Visitor Parking Form -->
+          <form [formGroup]="visitorForm">
+            <div class="divinput col-md-6">
+              <label class="labelcls">VRM</label>
+              <input type="text" class="form-control" placeholder="VRM" formControlName="vrm">
+            </div>
+  
+            <div class="divinput col-md-6">
+              <label class="labelcls">Start Date</label>
+              <input type="time" class="form-control" placeholder="Start Date" formControlName="startTime">
+            </div>
+  
+            <div class="divinput col-md-6">
+              <label class="labelcls">End Date</label>
+              <input type="time" class="form-control" placeholder="End Date" formControlName="endTime">
+            </div>
+  
+            <!-- Submit Button -->
+            <div class="divbtn mt-2 ml-2">
+              <!-- <button class="btn btn-primary mb-2" 
+                      style="border-radius: 10px;" 
+                      (click)="update()" 
+                      [disabled]="visitorForm.invalid"> 
+                Submit
+              </button> -->
+
+
+              <button class="bg-[#FFD333] text-black font-bold py-2 px-4 rounded disabled:bg-[#e0e0e0] disabled:text-[#A0A0A0] disabled:cursor-not-allowed" 
+              [disabled]="visitorForm.invalid"
+              (click)="update()">
+              Submit
+              </button>
+              <span *ngIf="isUpdated" class="text-success ml-2">
+                <i class="fa fa-check-circle"></i> Updated Successfully
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

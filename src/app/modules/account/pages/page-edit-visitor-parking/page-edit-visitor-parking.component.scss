@@ -1,3 +1,7 @@
+.dashboard-content {
+  @apply p-5 w-full md:ml-64 md:w-[calc(100%-16rem)];
+}
+
 ::ng-deep .floating-btn {
     position: fixed !important;  /* Ensures it stays in a fixed position */
    // bottom: 20px !important;      /* Adjust the distance from the bottom */

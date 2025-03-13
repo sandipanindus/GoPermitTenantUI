@@ -1,3 +1,7 @@
+.dashboard-content {
+    @apply p-5 w-full md:ml-64 md:w-[calc(100%-16rem)];
+  }
+
 
 @media (min-width: 768px)
 {
