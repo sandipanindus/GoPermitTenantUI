@@ -1,6 +1,28 @@
 <div class="dashboard-content">
 
 
+    <!-- <div  class="flex items-center justify-center mt-1 mb-1" >
+        <div class="relative flex items-center">
+          <div class="flex items-center justify-center w-12 h-12 text-white bg-blue-500 rounded-full shadow-lg font-semibold">
+            1
+          </div>
+        </div>
+      
+        <div class="w-16 h-1 bg-blue-500"></div>
+      
+        <div class="relative flex items-center">
+            <div class="flex items-center justify-center w-12 h-12 text-white bg-blue-500 rounded-full shadow-lg font-semibold">
+                ✔
+          </div>
+        </div>
+      
+      
+
+
+
+      </div> -->
+
+
 <!-- <button *ngIf="backBtn1" class="btn btn-primary mb-2 floating-btn" (click)="backToVisitor()">
     <i class="fa fa-arrow-left mr-2"></i>Back1
   </button> -->
@@ -39,7 +61,7 @@
        
 
   <div class="row" >
-    <div class="col-md-4">
+    <!-- <div class="col-md-4">
         <label>How many vehicle per bay:</label>
     </div>
 
@@ -56,7 +78,24 @@
             </option>
         </select>
         <span></span>
+    </div> -->
+  
+    <div class="w-full mb-4">
+        <label class="block mb-2">How many vehicles per bay:</label>
+        <select 
+            class="form-control w-48 p-2 border rounded-md" 
+            [(ngModel)]="vehiclecountobj" 
+            (change)="showblocks()" 
+            [ngModelOptions]="{ standalone: true }"
+        >
+            <option value="">- Select -</option>
+            <option *ngFor="let obj of vehiclecountlist" [ngValue]="obj.Id">
+                {{ obj.vehicles }}
+            </option>
+        </select>
     </div>
+    
+  
     <div style="width: 40%" *ngIf="infoexp">
         <i style="
                 margin-left: 5px;

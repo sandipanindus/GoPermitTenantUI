@@ -19,6 +19,9 @@ export class PageDashboardComponent implements OnInit {
     dateSelected = [];
     selectedClass = [];
 
+    isApproved: boolean = false; // Declare isApproved at the top
+
+
     // carousel settings
 
     customOptions: OwlOptions = {
@@ -147,14 +150,14 @@ export class PageDashboardComponent implements OnInit {
         this.service.GetProfileById(tenantId).subscribe({
           next: (response: any) => {
             if (response?.status === "200" && response?.result) {
-              const isApproved = response.result.isApproved;
+              this.isApproved = response.result.isApproved;
       
               // Store isApproved in localStorage
-              localStorage.setItem('isApproved', isApproved.toString());
+              localStorage.setItem('isApproved', this.isApproved.toString());
       
               // Conditionally show the confirmation modal
               const residencyProofId = localStorage.getItem('residencyProofId');
-              if (!isApproved && residencyProofId && residencyProofId.trim() !== '') {
+              if (!this.isApproved && residencyProofId && residencyProofId.trim() !== '') {
                 this.isConfirmationModalOpen = true; // Open confirmation modal only if not approved
                 this.showSubmitAlert=true
               } else {

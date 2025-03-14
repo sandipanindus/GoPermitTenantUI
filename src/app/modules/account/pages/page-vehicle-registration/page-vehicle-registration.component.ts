@@ -1176,6 +1176,7 @@ export class PageVehicleRegistrationComponent implements OnInit {
       this.iterations.push({
         iterrations: i + 1,
         vrm: data[i]?.vrm || '',
+        sId: data[i].id
       });
     }
 
@@ -1265,14 +1266,14 @@ export class PageVehicleRegistrationComponent implements OnInit {
       StartDate: this.parkingvalidfrom.getFullYear() + '-' + (this.parkingvalidfrom.getMonth() + 1) + "-" + this.parkingvalidfrom.getDate() + " " + this.parkingvalidfromtime.getHours() + ":" + this.parkingvalidfromtime.getMinutes() + ":" + '00',
       EndDate: this.parkingvalidTo.getFullYear() + '-' + (this.parkingvalidTo.getMonth() + 1) + "-" + this.parkingvalidTo.getDate() + " " + this.parkingvalidTotime.getHours() + ":" + this.parkingvalidTotime.getMinutes() + ":" + '00',
       TenantId: +this.tenentid,
-      id: 1,
+      id: this.selectedId,
       loginId: 0,
       dates: this.dateSelected.toString(),
       Issavecount: this.cycleno
 
     })
 
-    this.service.SaveVehicle(this.savevehcile).subscribe((data: any) => {
+    this.service.UpdateVehicles(this.savevehcile).subscribe((data: any) => {
       if (data.status == "200") {
         this.isLoading=false
         var a = this.modalRef
@@ -1287,10 +1288,15 @@ export class PageVehicleRegistrationComponent implements OnInit {
 
         this.toast.success('Vehicle added sucessfully');
         window.location.reload();
-         this.route.navigateByUrl('/account/VehicleRegistration');
+        // this.route.navigateByUrl('/account/dashboard');
 
 
 
+      }
+
+      else if (data.status == "-200"){
+        this.toast.error('Range Already Exist')
+        this.isLoading=false
       }
 
     })
@@ -1337,18 +1343,21 @@ export class PageVehicleRegistrationComponent implements OnInit {
   cycleno = 0;
   isLoading:boolean=false
   savemultiplevehicle() {
+    debugger
     this.isLoading=true
     if (this.cycleno > 0) {
       // var dates= this.comparedates();
 
       if (this.isrecordsexisted === false) {
         this.opensavechekModal(this.template3)
+        this.isLoading=false
         return false;
       }
     }
 
     var msg = this.validation();
     if (msg == false) {
+      this.isLoading=false
       return false
     }
     this.loader = true
@@ -1368,6 +1377,7 @@ export class PageVehicleRegistrationComponent implements OnInit {
         document.getElementById('ddlbayno').style.display = 'none'
 
       }, 4000);
+      this.isLoading=false
       return false
     }
 
@@ -1396,6 +1406,7 @@ export class PageVehicleRegistrationComponent implements OnInit {
             document.getElementById('multivalidate').style.display = 'none'
 
           }, 4000);
+          this.isLoading=false
           return false;
         }
 
@@ -1447,7 +1458,7 @@ export class PageVehicleRegistrationComponent implements OnInit {
 
 
     var no = +this.confignumber;
-
+    this.iterations
     for (let i = 1; i <= no; i++) {
       this.multiplevehicletimelist = []
       var noshedulevehicle = 0;
@@ -1479,7 +1490,7 @@ export class PageVehicleRegistrationComponent implements OnInit {
               StartDate: vehiclestartdate1,
               EndDate: vehicleenddate1,
               TenantId: +this.tenentid,
-              id: i,
+              id: this.iterations[i-1].sId,
               loginId: 0,
               dates: this.dateSelected.toString(),
               Issavecount: this.cycleno
@@ -1514,7 +1525,7 @@ export class PageVehicleRegistrationComponent implements OnInit {
                 StartDate: vehiclestartdate1,
                 EndDate: vehicleenddate1,
                 TenantId: +this.tenentid,
-                id: i,
+                id: this.iterations[i-1].sId,
                 loginId: 0,
                 dates: this.dateSelected.toString(),
                 Issavecount: this.cycleno
@@ -1549,7 +1560,7 @@ export class PageVehicleRegistrationComponent implements OnInit {
               StartDate: vehiclestartdate1,
               EndDate: vehicleenddate2,
               TenantId: +this.tenentid,
-              id: i,
+              id: this.iterations[i-1].sId,
               loginId: 0,
               dates: this.dateSelected.toString(),
               Issavecount: this.cycleno
@@ -1564,7 +1575,7 @@ export class PageVehicleRegistrationComponent implements OnInit {
       console.log(this.multiplevehiclelist)
     }
 
-    this.service.SaveVehicle(this.multiplevehiclelist).subscribe((data: any) => {
+    this.service.UpdateVehicles(this.multiplevehiclelist).subscribe((data: any) => {
       if (data.status == "200") {
         this.isLoading=false
         var a = this.modalRef1
@@ -1577,9 +1588,13 @@ export class PageVehicleRegistrationComponent implements OnInit {
 
         }
         this.toast.success('vehicle added sucessfully')
-        window.location.reload();
-        this.route.navigateByUrl('/account/VehicleRegistration');
+        this.route.navigateByUrl('/account/dashboard');
 
+      }
+
+      else if (data.status == "-200"){
+        this.toast.error('Range Already Exist')
+        this.isLoading=false
       }
     })
 
@@ -2133,14 +2148,17 @@ export class PageVehicleRegistrationComponent implements OnInit {
     document.getElementById("parkingsession").style.display = 'block';
   }
 
+  selectedId
   EditVehicle(result) {
     debugger;
+    this.iterations
     this.tenantid = result.registerUserId;
     this.editShow=true
     this.gridEditedObject = result;
     this.single = 'block';
     this.bayconfigstyle = 'block';
     this.isshowblock1 = true;
+    this.selectedId=result.id
     this.vehiclecountobj = result.maxvehicle.toString();
     // this.showblocks();
     this.vrmno = result.vrm;

@@ -43,6 +43,11 @@ export class PageVisitorparkingAppointComponent implements OnInit {
   timeslots: any = [];
   bayno: string;
   bayid: string;
+
+  isSecond: boolean = true;
+  isThird: boolean = false;
+  isFourth: boolean = false;
+
   @ViewChild('template1') template1: any;
   modalRefpopup: BsModalRef;
   constructor(private datePipe: DatePipe,private approute: ActivatedRoute, private toast: ToastrService, private modalService: BsModalService, private router: Router, private formBuilder: FormBuilder, private service: TenantserviceService) {
@@ -170,6 +175,9 @@ export class PageVisitorparkingAppointComponent implements OnInit {
 
   ShowModal(timeslot) {
     this.timeslot = timeslot;
+    this.isSecond = false; 
+    this.isThird = true;
+
     if (this.bayid == "0") {
       this.toast.info("there is no bayid for that site");
     }
@@ -190,6 +198,9 @@ export class PageVisitorparkingAppointComponent implements OnInit {
   }
   AddVisitor() {
     debugger;
+    this.isThird = false;
+    this.isFourth = true;
+
     var element = document.getElementById("loader") as HTMLDivElement;
     element.style.display = 'block';
     if (this.bayid == "0") {
@@ -264,6 +275,9 @@ export class PageVisitorparkingAppointComponent implements OnInit {
   }
 
   backToCalender(){
+    this.isThird= false;
+    this.isSecond=true;
+    
     (document.getElementById("detailsdiv") as HTMLDivElement).style.display = 'none';
     (document.getElementById("calenderdiv") as HTMLDivElement).style.display = 'block';
     (document.getElementById("timeslotdiv") as HTMLDivElement).style.display = 'block';

@@ -1061,6 +1061,7 @@ export class CalenderManageParkingComponent implements OnInit {
     this.savevehcile = []
     this.singlevehiclesubmitted = true;
     if (this.singlevehicleForm.invalid) {
+      this.isLoading=false
       return;
     }
     if (this.cycleno < 1) {
@@ -1110,6 +1111,11 @@ export class CalenderManageParkingComponent implements OnInit {
         this.toast.success('Vehicle added sucessfully');
       //  window.location.reload();
          this.route.navigateByUrl('/account/VehicleRegistration');
+      }
+
+      else if (data.status == "-200"){
+        this.toast.error('Range Already Exist')
+        this.isLoading=false
       }
 
     })
@@ -1164,12 +1170,14 @@ export class CalenderManageParkingComponent implements OnInit {
 
       if (this.isrecordsexisted === false) {
         this.opensavechekModal(this.template3)
+        this.isLoading=false
         return false;
       }
     }
 
     var msg = this.validation();
     if (msg == false) {
+      this.isLoading=false
       return false
     }
     this.loader = true
@@ -1189,6 +1197,7 @@ export class CalenderManageParkingComponent implements OnInit {
         document.getElementById('ddlbayno').style.display = 'none'
 
       }, 4000);
+      this.isLoading=false
       return false
     }
 
@@ -1217,6 +1226,7 @@ export class CalenderManageParkingComponent implements OnInit {
             document.getElementById('multivalidate').style.display = 'none'
 
           }, 4000);
+          this.isLoading=false
           return false;
         }
 
@@ -1398,6 +1408,11 @@ export class CalenderManageParkingComponent implements OnInit {
         this.toast.success('vehicle added sucessfully')
         this.route.navigateByUrl('/account/VehicleRegistration');
 
+      }
+
+      else if (data.status == "-200"){
+        this.toast.error('Range Already Exist')
+        this.isLoading=false
       }
     })
 
@@ -1696,16 +1711,8 @@ export class CalenderManageParkingComponent implements OnInit {
 
 
   async selectingcolorshover(iiteration, id) {
-
-
     if (this.down) {
-
-
-
-
       var no = +this.confignumber;
-
-
       for (let i = 1; i <= no; i++) {
         if (i == iiteration) {
           var data = document.getElementById('spn' + id + '' + i).style.backgroundColor
@@ -1781,7 +1788,7 @@ export class CalenderManageParkingComponent implements OnInit {
 
         }
         else {
-          document.getElementById('spn' + id + '' + i).style.backgroundColor = 'grey';
+       //   document.getElementById('spn' + id + '' + i).style.backgroundColor = 'grey';
 
         }
 

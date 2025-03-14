@@ -12,9 +12,10 @@ export class TenantserviceService {
   constructor(private http: HttpClient) {
 
    // this.baseUrl = "http://goapi.fadelsoft.co.in/api/";
-   this.baseUrl = "http://localhost:53846/api/";
+  this.baseUrl = "https://localhost:5001/api/";
   //this.baseUrl = "http://smartpermitapi.eisappserver.net/api/";
- // this.baseUrl="http://goapi.fadelsoft.co.in/api/"
+
+ //  this.baseUrl="http://api.gopermit.co.uk/api/"
 
  // this.baseUrl = "https://api.gopermit.co.uk/api/";
 
@@ -27,6 +28,11 @@ export class TenantserviceService {
 
   getparkingbays(id): Observable<any> {
     return this.http.get(this.baseUrl + "Tenant/baynobytenant?tenantid=" + id, { headers: this.header })
+
+  }
+
+  getvehiclestimedetailsById(id, bayno, sId): Observable<any> {
+    return this.http.get(this.baseUrl + "Tenant/getvehcilecountsById?tenantid=" + id + "&bayno=" + bayno + "&Id=" +sId, { headers: this.header })
 
   }
 
@@ -50,8 +56,13 @@ export class TenantserviceService {
 
   SaveVehicle(obj): Observable<any> {
     return this.http.post(this.baseUrl + "Tenant/AddVehicles", obj, { headers: this.header })
-
   }
+
+  UpdateVehicles(obj): Observable<any> {
+    debugger
+    return this.http.post(this.baseUrl + "Tenant/UpdateVehicles", obj, { headers: this.header })
+  }
+
   getvehicles(id): Observable<any> {
     let header = new HttpHeaders().set(
       "Authorization",
