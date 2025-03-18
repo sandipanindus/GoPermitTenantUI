@@ -1,1 +1,24 @@
 <router-outlet></router-outlet>
+
+
+<!-- Terms & Conditions Modal -->
+<div *ngIf="showTermsModal" class="modal-overlay">
+    <div class="modal-container">
+        <i class="fas fa-times close-icon" (click)="closeTermsModal()"></i>
+        <h2 class="modal-title">Terms & Conditions</h2>
+        <p class="modal-text">
+            Welcome to our platform! By using our services, you agree to follow these terms. We expect responsible behavior and compliance with applicable laws. Any misuse, illegal activity, or violation of guidelines may result in account suspension. We reserve the right to update these terms at any time, and continued usage implies acceptance of changes. You are responsible for maintaining your account security and keeping your information up to date. We do not tolerate fraudulent activities or unauthorized access. Please review these terms regularly. If you disagree with any part of these terms, discontinue use of our platform immediately.
+        </p>
+    </div>
+</div>
+
+<!-- Privacy Policy Modal -->
+<div *ngIf="showPolicyModal" class="modal-overlay">
+    <div class="modal-container">
+        <i class="fas fa-times close-icon" (click)="closePolicyModal()"></i>
+        <h2 class="modal-title">Privacy Policy</h2>
+        <p class="modal-text">
+            Your privacy is important to us. We collect and store user data securely, ensuring that it is protected from unauthorized access. We may use your data to enhance user experience, provide customer support, and improve our services. Your personal information is never sold or shared with third parties without your consent. By using our platform, you consent to data collection as outlined in this policy. You have the right to request access, updates, or deletion of your data. We continuously review and update our policies to align with industry standards. Contact us for any privacy-related concerns.
+        </p>
+    </div>
+</div>

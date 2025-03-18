@@ -28,12 +28,12 @@
   </button> -->
 
   <button *ngIf="backBtn2" class="btn btn-primary mb-2 floating-btn" (click)="back1()">
-    <i class="fa fa-arrow-left mr-2"></i>Back
+    <i class="fa fa-arrow-left mr-2"></i>Back1
   </button>
 
-  <button *ngIf="backBtn3" class="btn btn-primary mb-2 floating-btn" (click)="back2()">
-    <i class="fa fa-arrow-left mr-2"></i>Back
-  </button>
+  <!-- <button *ngIf="backBtn3" class="btn btn-primary mb-2 floating-btn" (click)="back2()">
+    <i class="fa fa-arrow-left mr-2"></i>Back2
+  </button> -->
 
   <!-- <button *ngIf="backBtn1" 
   class="flex items-center gap-2 px-2 py-2.5 bg-[#FFD333] text-black font-semibold 
@@ -187,6 +187,17 @@
         </div>
     </div>
 </div>
+
+
+
+
+<button *ngIf="backBtn3"
+  class="flex items-center justify-center w-10 h-10 bg-[#FFD333] text-black 
+         rounded-full shadow-md hover:bg-[#e6c200] hover:shadow-lg 
+         transition-all duration-300 ease-in-out active:scale-90"
+  (click)="back2()">
+  <i class="fa fa-arrow-left text-lg"></i>
+</button>
 
   <div class="row" style="margin-top: 25px" *ngIf="isshowblock1 == true">
     <div class="col-md-4">

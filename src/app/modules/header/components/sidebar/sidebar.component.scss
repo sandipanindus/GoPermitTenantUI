@@ -251,3 +251,103 @@ ul li:hover {
     background: #ffd333;
     border: 2px solid #ffd333;
   }
+
+
+
+
+
+
+
+
+
+  /* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's on top of other content */
+}
+
+/* Modal Container */
+.modal-small {
+    background-color: #ffffff; /* White background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    padding: 24px;
+    max-width: 400px; /* Limit width for better readability */
+    width: 90%; /* Responsive width */
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out; /* Fade-in animation */
+}
+
+/* Close Button */
+.close-button {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #666; /* Neutral color */
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+        color: #333; /* Darker on hover */
+    }
+}
+
+/* Modal Title */
+.modal-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333; /* Dark text */
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+/* Modal Text */
+.modal-text {
+    font-size: 16px;
+    color: #666; /* Neutral text color */
+    line-height: 1.5;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+/* Modal Button */
+.modal-button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff; /* White text */
+    background-color: #007bff; /* Blue background */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

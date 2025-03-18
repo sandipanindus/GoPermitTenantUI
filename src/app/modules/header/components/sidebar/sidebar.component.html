@@ -219,19 +219,55 @@
     </div>
 
 
-            <ul class="flex justify-evenly w-full">
-                <li class="py-1 px-2 rounded-lg flex items-center gap-2 hover:bg-[#e0e7ff] hover:text-[#4e46e6] transition-all cursor-pointer">
-                    <i class="fas fa-file-alt text-lg"></i>
-                    <a [routerLink]="'/account/terms'" class="w-full">Terms & Conditions</a>
-                </li>
-                <li class="py-1 px-2 rounded-lg flex items-center gap-2 hover:bg-[#e0e7ff] hover:text-[#4e46e6] transition-all cursor-pointer">
-                    <i class="fas fa-file-contract text-lg"></i>
-                    <a [routerLink]="'/account/policy'" class="w-full">Privacy Policy</a>
-                </li>
-            </ul>
+    <ul class="flex justify-evenly w-full">
+        <li class="py-1 px-2 rounded-lg flex items-center gap-2 hover:bg-[#e0e7ff] hover:text-[#4e46e6] transition-all cursor-pointer"
+        (click)="openTermsModal()">
+        <i class="fas fa-file-alt text-2xl"></i>
+        Terms & Conditions
+        </li>
+        <li class="py-1 px-2 rounded-lg flex items-center gap-2 hover:bg-[#e0e7ff] hover:text-[#4e46e6] transition-all cursor-pointer"
+        (click)="openPolicyModal()">
+            <i class="fas fa-file-contract text-2xl"></i>
+            Privacy Policy
+        </li>
+    </ul>
 
 
             
   
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Terms & Conditions Modal -->
+<div *ngIf="showTermsModal" class="modal-overlay">
+    <div class="modal-small">
+        <button class="close-button" (click)="showTermsModal = false">
+            <i class="fas fa-times"></i>
+        </button>
+        <h2 class="modal-title">Terms & Conditions</h2>
+        <p class="modal-text">Please review our terms before using the platform.</p>
+        <button class="modal-button" (click)="showTermsModal = false">Close</button>
+    </div>
+</div>
+
+<!-- Privacy Policy Modal -->
+<div *ngIf="showPolicyModal" class="modal-overlay">
+    <div class="modal-small">
+        <button class="close-button" (click)="showPolicyModal = false">
+            <i class="fas fa-times"></i>
+        </button>
+        <h2 class="modal-title">Privacy Policy</h2>
+        <p class="modal-text">We value your privacy. Your data is safe with us.</p>
+        <button class="modal-button" (click)="showPolicyModal = false">Close</button>
+    </div>
+</div>

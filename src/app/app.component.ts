@@ -8,13 +8,28 @@ import { isPlatformBrowser, ViewportScroller } from '@angular/common';
 import { CurrencyService } from './shared/services/currency.service';
 import { filter, first } from 'rxjs/operators';
 
+import { ModalService } from '../app/modules/header/components/sidebar/modal.service';
+
+
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-    constructor( private router:Router) {
+
+    showTermsModal = false;
+    showPolicyModal = false;
+
+
+    constructor( private router:Router,private modalService: ModalService) {
+        this.modalService.isTermsModalOpen$.subscribe(state => {
+            this.showTermsModal = state;
+          });
+      
+          this.modalService.isPolicyModalOpen$.subscribe(state => {
+            this.showPolicyModal = state;
+          });
  }
 
     ngOnInit(): void {
@@ -45,4 +60,13 @@ export class AppComponent implements OnInit {
         }, 2000);
        
     }
+
+
+    closeTermsModal() {
+        this.modalService.closeTermsModal();
+      }
+    
+      closePolicyModal() {
+        this.modalService.closePolicyModal();
+      }
 }
