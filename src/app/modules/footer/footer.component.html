@@ -6,11 +6,11 @@
             <div class="site-footer__widgets1">
                 <div class="row">
     
-                    <div class="site-header__logo" id="logodiv" style="display: block;">
+                    <!-- <div class="site-header__logo" id="logodiv" style="display: block;"> -->
                         <!-- <a  [routerLink]="['/account/dashboard']" routerLinkActive="router-link-active"  >
                             <img src="assets/images/logo/Logo.png" />
                         </a> -->
-                    </div>
+                    <!-- </div> -->
                     <!-- <div class="col-12 col-md-6 col-lg-4">
                         <app-footer-contacts></app-footer-contacts>
                     </div>
@@ -39,10 +39,27 @@
                     <div class="col-12 col-md-12 col-lg-4">
                         <app-footer-newsletter class="site-footer__widget"></app-footer-newsletter>
                     </div> -->
-    
-                    <div class="col-md-9" style="text-align: end;">
-                       &copy; {{date | date: 'yyyy'}}   GO PERMIT -All rights reserved.
+                    <div class="col-md-11 text-right" style="margin-right: 5%;">
+                        &copy; {{date | date: 'yyyy'}} GO PERMIT - All rights reserved.
                     </div>
+                
+                    <!-- Terms and Policy Section Below with Margin Right -->
+                    <div class="col-md-11 text-right mt-2" style="margin-right: 5%;">
+                        <ul class="inline-flex gap-4">
+                            <li class="py-1 px-2 rounded-lg flex items-center gap-2 hover:bg-[#e0e7ff] hover:text-[#4e46e6] transition-all cursor-pointer"
+                            (click)="openTermsModal()">
+                                <i class="fas fa-file-alt text-2xl"></i>
+                                Terms & Conditions
+                            </li>
+                            <li class="py-1 px-2 rounded-lg flex items-center gap-2 hover:bg-[#e0e7ff] hover:text-[#4e46e6] transition-all cursor-pointer"
+                            (click)="openPolicyModal()">
+                                <i class="fas fa-file-contract text-2xl"></i>
+                                Privacy Policy
+                            </li>
+                        </ul>
+                    </div>
+                    
+                  
                 </div>
             </div>
     

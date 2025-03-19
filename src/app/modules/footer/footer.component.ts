@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { theme } from '../../../data/theme';
+import { ModalService } from './modal.service';
+import { Router } from '@angular/router';
+
 
 @Component({
     selector: 'app-footer',
@@ -9,5 +12,19 @@ import { theme } from '../../../data/theme';
 export class FooterComponent {
     theme = theme;
     date = new Date();
-    constructor() { }
+    showTermsModal = false;
+  showPolicyModal = false;
+
+  constructor(private route: Router, private modalService: ModalService) { }
+
+
+
+  openTermsModal() {
+    this.modalService.openTermsModal();
+  }
+
+  openPolicyModal() {
+    this.modalService.openPolicyModal();
+  }
+
 }

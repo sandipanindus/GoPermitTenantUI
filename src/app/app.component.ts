@@ -8,7 +8,7 @@ import { isPlatformBrowser, ViewportScroller } from '@angular/common';
 import { CurrencyService } from './shared/services/currency.service';
 import { filter, first } from 'rxjs/operators';
 
-import { ModalService } from '../app/modules/header/components/sidebar/modal.service';
+import { ModalService } from '../app/modules/footer/modal.service';
 
 
 @Component({

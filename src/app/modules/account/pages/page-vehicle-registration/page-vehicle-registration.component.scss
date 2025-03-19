@@ -2,6 +2,11 @@
   @apply p-5 w-full md:ml-64 md:w-[calc(100%-16rem)];
 }
 
+.expired-row {
+  background-color: lightgray !important;
+  color: #555; /* Optional: Makes text more readable */
+}
+
 
 .spantop
 {

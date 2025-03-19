@@ -19,7 +19,12 @@ export class PageDashboardComponent implements OnInit {
     dateSelected = [];
     selectedClass = [];
 
-    isApproved: boolean = false; // Declare isApproved at the top
+
+    isConfirmationModalOpen: boolean = false;    // Confirmation modal visibility
+
+    isApproved: boolean | null = null;         // Approval status (initially null)
+
+    isLoading: boolean = true;                  // Loading flag to prevent flicker
 
 
     // carousel settings
@@ -145,8 +150,39 @@ export class PageDashboardComponent implements OnInit {
       }
 
 
+      // fetchAndStoreApprovalStatus(tenantId: number): void {
+      //   this.showSubmitAlert=false
+      //   this.service.GetProfileById(tenantId).subscribe({
+      //     next: (response: any) => {
+      //       if (response?.status === "200" && response?.result) {
+      //         this.isApproved = response.result.isApproved;
+      
+      //         // Store isApproved in localStorage
+      //         localStorage.setItem('isApproved', this.isApproved.toString());
+      
+      //         // Conditionally show the confirmation modal
+      //         const residencyProofId = localStorage.getItem('residencyProofId');
+      //         if (!this.isApproved && residencyProofId && residencyProofId.trim() !== '') {
+      //           this.isConfirmationModalOpen = true; // Open confirmation modal only if not approved
+      //           this.showSubmitAlert=true
+      //         } else {
+      //           this.showSubmitAlert=false
+      //           this.isConfirmationModalOpen = false; // Hide modal if approved
+                
+      //         }
+      //       }
+      //     },
+      //     error: (error) => {
+      //       console.error("Failed to fetch approval status:", error);
+      //     }
+      //   });
+      // }
+      
+
       fetchAndStoreApprovalStatus(tenantId: number): void {
-        this.showSubmitAlert=false
+        this.showSubmitAlert = false; // Hide submit alert initially
+        this.isLoading = true;        // Set loading to true before API call
+      
         this.service.GetProfileById(tenantId).subscribe({
           next: (response: any) => {
             if (response?.status === "200" && response?.result) {
@@ -155,20 +191,20 @@ export class PageDashboardComponent implements OnInit {
               // Store isApproved in localStorage
               localStorage.setItem('isApproved', this.isApproved.toString());
       
-              // Conditionally show the confirmation modal
-              const residencyProofId = localStorage.getItem('residencyProofId');
-              if (!this.isApproved && residencyProofId && residencyProofId.trim() !== '') {
-                this.isConfirmationModalOpen = true; // Open confirmation modal only if not approved
-                this.showSubmitAlert=true
+              // Prevent modal flicker by checking after loading is complete
+              if (!this.isApproved) {
+                this.isConfirmationModalOpen = true;
+                this.showSubmitAlert = true;
               } else {
-                this.showSubmitAlert=false
-                this.isConfirmationModalOpen = false; // Hide modal if approved
-                
+                this.isConfirmationModalOpen = false;
+                this.showSubmitAlert = false;
               }
             }
+            this.isLoading = false; // Mark loading complete after success
           },
           error: (error) => {
             console.error("Failed to fetch approval status:", error);
+            this.isLoading = false; // Mark loading complete even if API fails
           }
         });
       }
@@ -303,9 +339,26 @@ export class PageDashboardComponent implements OnInit {
 
 isDialogOpen = false;
 isUploadModalOpen = false;
-isConfirmationModalOpen = false;
+// isConfirmationModalOpen = false;
 residencyProofFile: File | null = null;
 identityProofFile: File | null = null;
+
+isScrolledToBottom: boolean = false;
+
+
+
+ // Check if the user scrolled to the bottom
+ onScroll(event: any): void {
+  const target = event.target;
+  const scrollHeight = target.scrollHeight;
+  const scrollTop = target.scrollTop;
+  const clientHeight = target.clientHeight;
+
+  // Enable button when scrolled to the bottom
+  if (scrollHeight - scrollTop <= clientHeight + 10) {
+    this.isScrolledToBottom = true;
+  }
+}
 
 // Open first modal
 openDialog() {
@@ -327,6 +380,7 @@ agreeAndOpenUploadModal() {
 
 // Open second modal
 openUploadModal() {
+  this.closeConfirmationModal()
   this.isUploadModalOpen = true;
   document.body.style.overflow = 'hidden';
 }
@@ -337,17 +391,29 @@ closeUploadModal() {
   document.body.style.overflow = 'auto';
 }
 
-// Open third modal
+// // Open third modal
+// openConfirmationModal() {
+//   this.isConfirmationModalOpen = true;
+//   document.body.style.overflow = 'hidden';
+// }
+
+// // Close third modal
+// closeConfirmationModal() {
+//   this.isConfirmationModalOpen = false;
+//   document.body.style.overflow = 'auto';
+// }
+
+
+// Open confirmation modal
 openConfirmationModal() {
   this.isConfirmationModalOpen = true;
-  document.body.style.overflow = 'hidden';
 }
 
-// Close third modal
+// Close confirmation modal
 closeConfirmationModal() {
   this.isConfirmationModalOpen = false;
-  document.body.style.overflow = 'auto';
 }
+
 
 // Handle file selection
 onFileSelected(event: Event, type: 'residency' | 'identity') {
@@ -397,7 +463,7 @@ submitDocuments(residencyProof: HTMLInputElement, ownershipProof: HTMLInputEleme
             }
   
             this.closeUploadModal();        // Close the upload modal
-            this.openConfirmationModal();   // Open the confirmation modal
+            this.openConfirmationModal();         // Open success confirmation modal
   
             // Optionally update local profile data if needed:
             this.profile = profileResponse?.result;

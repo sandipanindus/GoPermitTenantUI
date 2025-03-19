@@ -133,7 +133,7 @@
 
 
 <!-- First Modal: Terms & Conditions -->
-<div class="custom-modal" [class.show]="isDialogOpen">
+<!-- <div class="custom-modal" [class.show]="isDialogOpen">
   <div class="custom-modal-content">
     <h3 class="modal-title">CONDITIONS OF USE OF PARKING PERMIT</h3>
     <p class="modal-subtitle">
@@ -154,7 +154,82 @@
     </ol>
     <button class="btn btn-custom" (click)="agreeAndOpenUploadModal()">Agree</button>
   </div>
-</div> 
+</div>  -->
+
+
+<div class="terms-modal show" [class.show]="isDialogOpen" >
+  <div class="terms-modal-content">
+    <h3 class="modal-title">CONDITIONS OF USE OF PARKING PERMIT</h3>
+    <p class="modal-subtitle">
+      PLEASE READ THE FOLLOWING POINTS BEFORE USING THE PERMIT. <br />
+      THESE TERMS & CONDITIONS APPLY TO ALL RESIDENTS, CUSTOMERS, AND VISITORS USING THE PARKING SITE.
+    </p>
+    <!-- Scrollable Terms Content -->
+    <div
+      class="terms-scrollable-content"
+      (scroll)="onScroll($event)"
+      #termsContent
+    >
+
+    
+      <ol class="modal-list">
+        <li>
+          The permit is only valid for the period of parking for the Vehicle
+          Registered when the vehicle is parked in a parking zone at the
+          relevant land operated by our company.
+        </li>
+        <li>
+          When a parking bay is not allocated to an applicant, the granting of
+          a permit does not guarantee that a space will be available.
+        </li>
+        <li>
+          Issuance of the parking permit to the applicant named on the permit
+          (permit holder) means the permit holder has agreed there are terms and
+          conditions which are placed on the parking signage on the site and to
+          check and follow all Terms and Conditions present on the signage at
+          the relevant Parking Location and understand that any non-compliance
+          will result in a PCN being issued to the vehicle, for which they will
+          be held responsible as the permit is issued to the applicant.
+        </li>
+        <li>
+          The permit is non-transferable and can only be used for the vehicle
+          registered under the permit holder's name.
+        </li>
+        <li>
+          Any misuse or tampering with the permit will result in immediate
+          revocation without prior notice.
+        </li>
+        <li>
+          The company reserves the right to withdraw or cancel the permit at any
+          time if the terms and conditions are not adhered to.
+        </li>
+        <li>
+          All vehicles must be parked in the designated areas only, and failure
+          to comply may lead to enforcement action.
+        </li>
+        <li>
+          By accepting this permit, the permit holder agrees to abide by all the
+          terms and conditions stated here and displayed on the site.
+        </li>
+      </ol>
+    </div>
+
+    <!-- Close button -->
+    <span class="terms-close-btn" (click)="closeDialog()">&times;</span>
+
+    <!-- Agree button - Disabled initially -->
+    <button
+      class="btn btn-custom"
+      [disabled]="!isScrolledToBottom"
+      (click)="agreeAndOpenUploadModal()"
+    >
+      Agree
+    </button>
+  </div>
+</div>
+
+
+
 
 <!-- Second Modal: Document Upload -->
 <div class="custom-modal-1" [class.show]="isUploadModalOpen">
@@ -166,13 +241,13 @@
       <div class="upload-row-1">
         <!-- Proof of Residency -->
         <div class="upload-column-1">
-          <label for="residencyProof" class="upload-label-1">Proof of Residency:</label>
+          <label for="residencyProof" class="upload-label-1">Residency Proof:</label>
           <input type="file" id="residencyProof" #residencyProof class="upload-input-1" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" />
         </div>
 
         <!-- Proof of Ownership -->
         <div class="upload-column-1">
-          <label for="ownershipProof" class="upload-label-1">Proof of Ownership:</label>
+          <label for="ownershipProof" class="upload-label-1">ID Proof:</label>
           <input type="file" id="ownershipProof" #ownershipProof class="upload-input-1" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" />
         </div>
       </div>
@@ -184,7 +259,7 @@
 
 
 <!-- Third Modal: Confirmation -->
-<div class="custom-modal" *ngIf="isConfirmationModalOpen && !isApproved">
+<!-- <div class="custom-modal" *ngIf="isConfirmationModalOpen && isApproved">
   <div class="custom-modal-content" (click)="$event.stopPropagation()">
    
     <h3 class="modal-title">Request Submitted</h3>
@@ -195,5 +270,60 @@
       Sit back, relax, and we’ll keep you posted! 🚀
     </p>    
   </div>
-</div>
+</div> -->
 
+
+
+
+<!-- Third Modal: Confirmation -->
+<!-- <div class="custom-modal" >
+  <div class="custom-modal-content" (click)="$event.stopPropagation()">
+    <h3 class="modal-title">Request Submitted</h3>
+    <p class="modal-subtitle">
+      🎉 Documents submitted successfully! <br />
+      Your request is now in the hands of our admin team. 🕒<br />
+      We’re reviewing your documents with care and will notify you once they’re approved. <br />
+      Sit back, relax, and we’ll keep you posted! 🚀
+    </p>
+  </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+<!-- Confirmation Modal -->
+<!-- <div *ngIf="!isLoading && isConfirmationModalOpen" class="custom-modal-confirm">
+  <div class="custom-modal-content-confirm">
+    <h3 class="modal-title-confirm">Success!</h3>
+    <p class="modal-subtitle">
+      🎉 Documents submitted successfully! <br />
+      Your request is now in the hands of our admin team. 🕒<br />
+      We’re reviewing your documents with care and will notify you once they’re approved. <br />
+      Sit back, relax, and we’ll keep you posted! 🚀
+    </p>    
+  </div>
+</div> -->
+
+
+
+
+<!-- Confirmation Modal -->
+<div
+  *ngIf="!isLoading && isConfirmationModalOpen && !isDialogOpen"
+  class="custom-modal-confirm"
+>
+  <div class="custom-modal-content-confirm">
+    <h3 class="modal-title-confirm">Success!</h3>
+    <p class="modal-subtitle">
+      🎉 Documents submitted successfully! <br />
+      Your request is now in the hands of our admin team. 🕒<br />
+      We’re reviewing your documents with care and will notify you once they’re approved. <br />
+      Sit back, relax, and we’ll keep you posted! 🚀
+    </p>
+  </div>
+</div>

@@ -1836,7 +1836,10 @@
                                         </tr>
                                     </thead>
                                     <thead>
-                                        <tr *ngFor="let visitorparking of visitorparkings">
+                                        <tr
+                                        *ngFor="let visitorparking of visitorparkings"
+                                        [ngClass]="{'expired-row': isDateExpired(visitorparking.endate)}"
+                                      >
                                             <td>{{visitorparking.bayName}}</td>
                                             <td>{{visitorparking.vrm}}</td>
                                             <td>{{visitorparking.startdate | date: 'dd/MM/yyyy HH:mm'}}</td>

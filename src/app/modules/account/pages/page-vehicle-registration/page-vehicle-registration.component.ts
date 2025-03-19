@@ -2084,6 +2084,18 @@ export class PageVehicleRegistrationComponent implements OnInit {
 
     });
   }
+
+
+// Updated method to check if the date has expired
+isDateExpired(endate: string | Date): boolean {
+  if (!endate) return false; // Handle null or undefined safely
+  const endDateTime = new Date(endate);
+  const today = new Date();
+  return endDateTime.getTime() < today.getTime(); // Check if the date has passed
+}
+
+
+
   GetSiteDetails() {
     var details = JSON.parse(localStorage.getItem('userinfo'));
     var id = details.siteId;
