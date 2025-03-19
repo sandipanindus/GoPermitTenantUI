@@ -17,8 +17,11 @@ export class SidebarComponent implements OnInit {
   showPolicyModal = false;
 
   constructor(private route: Router, private modalService: ModalService) { }
-
+username
   ngOnInit(): void {
+    var userinfo = localStorage.getItem("userinfo");
+    var user = JSON.parse(userinfo);
+    this.username=user.firstName
   }
 
   movetohome()

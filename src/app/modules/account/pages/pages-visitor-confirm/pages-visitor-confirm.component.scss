@@ -210,6 +210,12 @@ a {
   .close-btn:hover {
     color: red;
   }
+
+  .logo_sty{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   
   .modal-title {
     font-size: 20px;

@@ -16,8 +16,8 @@ export class PageThankyouComponent implements OnInit {
     document.getElementById('ulmenu').style.display = 'none';
     var status = this.approute.snapshot.queryParamMap.get('status')
     if (status == "set") {
-      this.success1 = "Password generated successfully";
-      this.success2 = "Please login here";
+      this.success1 = "Your password has been successfully created";
+      this.success2 = "You can now log in";
       this.success3 = "to continue";
     }
     else if (status == "forget") {
