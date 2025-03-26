@@ -6,6 +6,7 @@ import { addresses } from '../../../../../data/account-addresses';
 import { TenantserviceService } from './../../../../shared/api/tenantservice.service';
 
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-page-dashboard',
@@ -65,8 +66,11 @@ export class PageDashboardComponent implements OnInit {
 
     emailCode: string | null = null;
     profile: any;
+    modalContent: string = '';
+    termsandConditions: string = '';
+    
 
-    constructor(private service: TenantserviceService) {
+    constructor(private service: TenantserviceService,private http: HttpClient) {
         var details = JSON.parse(localStorage.getItem('userinfo'));
         this.Name = details.firstName + ' ' + details.lastName;
         this.EMail = details.email;
@@ -120,6 +124,14 @@ export class PageDashboardComponent implements OnInit {
     showSubmitAlert:boolean=false
     ngOnInit(): void {
       this.showSubmitAlert=false
+      this.http.get('assets/documents-upload.html', { responseType: 'text' })
+      .subscribe((html: string) => {
+        this.modalContent = html;
+      })
+      this.http.get('assets/terms-conditions.html', { responseType: 'text' })
+      .subscribe((html: string) => {
+        this.termsandConditions = html;
+      })
         const userInfo = localStorage.getItem('userinfo');
         if (userInfo) {
           const parsedUserInfo = JSON.parse(userInfo);
@@ -132,7 +144,7 @@ export class PageDashboardComponent implements OnInit {
           // Check residencyProofId and open the appropriate modal
           if (residencyProofId && residencyProofId.trim() !== '') {
             this.showSubmitAlert=true;
-            this.isConfirmationModalOpen = true; // Open third modal directly
+            this.isConfirmationModalOpen = true; // Open third modal directly  
           } else {
             this.isDialogOpen = true; // Show terms modal if no residencyProofId
             this.showSubmitAlert=false;

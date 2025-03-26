@@ -165,8 +165,8 @@ export class PagesVisitorConfirmComponent implements OnInit {
 
 
   Refresh() {
-    //this.router.navigateByUrl('/account/dashboard');
-   // window.location.href = 'https://gopermit.co.uk/';
+    this.router.navigateByUrl('/account/login');
+  
   }
 
 

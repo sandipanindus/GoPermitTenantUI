@@ -171,9 +171,9 @@
       #termsContent
     >
 
-    
+   
       <ol class="modal-list">
-        <li>
+        <!-- <li>
           The permit is only valid for the period of parking for the Vehicle
           Registered when the vehicle is parked in a parking zone at the
           relevant land operated by our company.
@@ -210,8 +210,12 @@
         <li>
           By accepting this permit, the permit holder agrees to abide by all the
           terms and conditions stated here and displayed on the site.
-        </li>
+        </li> -->
+
+
+        <div  [innerHTML]="termsandConditions"></div>
       </ol>
+
     </div>
 
     <!-- Close button -->
@@ -317,7 +321,7 @@
   *ngIf="!isLoading && isConfirmationModalOpen && !isDialogOpen"
   class="custom-modal-confirm"
 >
-  <div class="custom-modal-content-confirm">
+  <!-- <div class="custom-modal-content-confirm">
     <h3 class="modal-title-confirm">Success!</h3>
     <p class="modal-subtitle">
       🎉 Documents submitted successfully! <br />
@@ -325,5 +329,8 @@
       We’re reviewing your documents with care and will notify you once they’re approved. <br />
       Sit back, relax, and we’ll keep you posted! 🚀
     </p>
-  </div>
+  </div> -->
+  <div class="custom-modal-content-confirm">
+  <div  [innerHTML]="modalContent"></div>
+</div>
 </div>

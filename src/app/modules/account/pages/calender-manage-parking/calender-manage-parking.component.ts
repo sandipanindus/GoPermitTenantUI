@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsDatepickerConfig, BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { ToastrService } from 'ngx-toastr';
-import { TenantserviceService } from 'src/app/shared/api/tenantservice.service';
+import { TenantserviceService } from '../../../../shared/api/tenantservice.service';
 
 
 @Component({
@@ -385,7 +385,9 @@ export class CalenderManageParkingComponent implements OnInit {
   }
  
   
+  
   ngOnInit(): void {
+    debugger
    this.baynobj = JSON.parse(localStorage.getItem('baynobj'));
     this.approute.params.subscribe(params => {
       this.tenantid = params['tenantid'];
@@ -534,11 +536,10 @@ export class CalenderManageParkingComponent implements OnInit {
 
       this.selectingbay2()
 
-
-
       this.confignumber = +this.vehiclecountobj;
       this.configurebasedonNo();
       this.clear();
+      this.bindingemptydates(this.vehiclecountobj);
       this.vehiclemultiplelist = 0;
       this.datebtm = true;
       if (this.cycleno == 0) {
@@ -942,7 +943,16 @@ export class CalenderManageParkingComponent implements OnInit {
 
   }
 
-
+  bindingemptydates(val){
+    this.confignumber = val;
+    this.iterations = [];
+    for (let i = 0; i < this.confignumber; i++) {
+      this.iterations.push({
+        iterrations: i + 1,
+       // vrm: data[i]?.vrm || '',
+      });
+    }
+  }
 
   bindingmultiplecustomdates(data) {
     debugger
