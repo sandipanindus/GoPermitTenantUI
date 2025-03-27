@@ -27,9 +27,9 @@
     <i class="fa fa-arrow-left mr-2"></i>Back1
   </button> -->
 
-  <button *ngIf="backBtn2" class="btn btn-primary mb-2 floating-btn" (click)="back1()">
+  <!-- <button *ngIf="backBtn2" class="btn btn-primary mb-2 floating-btn" (click)="back1()">
     <i class="fa fa-arrow-left mr-2"></i>Back1
-  </button>
+  </button> -->
 
   <!-- <button *ngIf="backBtn3" class="btn btn-primary mb-2 floating-btn" (click)="back2()">
     <i class="fa fa-arrow-left mr-2"></i>Back2
@@ -52,6 +52,15 @@
          transition-all duration-300 ease-in-out active:scale-90"
   (click)="backToVisitor()">
   <i class="fa fa-arrow-left text-lg"></i>
+</button>
+
+
+<button *ngIf="backBtn2"
+class="flex items-center justify-center w-10 h-10 bg-[#FFD333] text-black 
+        rounded-full shadow-md hover:bg-[#e6c200] hover:shadow-lg 
+        transition-all duration-300 ease-in-out active:scale-90"
+(click)="back1()">
+<i class="fa fa-arrow-left text-lg"></i>
 </button>
 
 
