@@ -1088,7 +1088,9 @@ export class CalenderManageParkingComponent implements OnInit {
       this.dateselectscustomtop.splice(i, this.dateselectscustomtop.length);
     }
     if (this.cycleno > 0) {
-      this.dateSelected = this.getDateslist(this.parkingvalidfrom, this.parkingvalidTo);
+      
+    this.dateSelected = this.getDateslist(this.parkingvalidfrom, this.parkingvalidTo);
+  //  this.dateSelected = this.getSingleDateslist(this.parkingvalidfrom, this.parkingvalidTo);
     }
 
     this.savevehcile.push({
@@ -1137,6 +1139,19 @@ export class CalenderManageParkingComponent implements OnInit {
 
   //getting dates from to Todate for save singlevehile with custom dates 
   //scenarios if cycleno is more we are passing dates list in datefield
+  getSingleDateslist(startDate, stopDate) {
+
+    var dateArray = [];
+    var currentDate = new Date(startDate.setHours(0, 0, 0));
+    var endDate = new Date(stopDate.setHours(0, 0, 0));
+    while (currentDate <= endDate) {
+      dateArray.push(new Date(+currentDate));
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+    dateArray.push(new Date(endDate));
+    return dateArray;
+  }
+
   getDateslist(startDate, stopDate) {
 
     var dateArray = [];
@@ -1175,15 +1190,15 @@ export class CalenderManageParkingComponent implements OnInit {
   savemultiplevehicle() {
     debugger
     this.isLoading=true
-    if (this.cycleno > 0) {
-      // var dates= this.comparedates();
+    // if (this.cycleno > 0) {
+    //   // var dates= this.comparedates();
 
-      if (this.isrecordsexisted === false) {
-        this.opensavechekModal(this.template3)
-        this.isLoading=false
-        return false;
-      }
-    }
+    //   if (this.isrecordsexisted === false) {
+    //     this.opensavechekModal(this.template3)
+    //     this.isLoading=false
+    //     return false;
+    //   }
+    // }
 
     var msg = this.validation();
     if (msg == false) {
@@ -1197,7 +1212,7 @@ export class CalenderManageParkingComponent implements OnInit {
     }, 2000);
     this.multiplevehiclelist = []
     this.multiplevehicletimelist = []
-    debugger
+    
     if (this.baynobj.bayNo == "" || this.baynobj.bayNo == undefined || this.baynobj.bayNo == null) {
       document.getElementById('ddlbayno').innerText = "Choose bay no";
       document.getElementById('ddlbayno').style.color = "red";
