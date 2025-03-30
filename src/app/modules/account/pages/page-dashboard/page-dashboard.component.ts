@@ -139,16 +139,7 @@ export class PageDashboardComponent implements OnInit {
           this.GetProfile(parsedUserInfo.id); // Fetch profile using user id
           this.fetchAndStoreApprovalStatus(parsedUserInfo.id);
       
-          const residencyProofId = localStorage.getItem('residencyProofId');
-      
-          // Check residencyProofId and open the appropriate modal
-          if (residencyProofId && residencyProofId.trim() !== '') {
-            this.showSubmitAlert=true;
-            this.isConfirmationModalOpen = true; // Open third modal directly  
-          } else {
-            this.isDialogOpen = true; // Show terms modal if no residencyProofId
-            this.showSubmitAlert=false;
-          }
+        
         } else {
           console.warn('User info not found in localStorage.');
         }
@@ -205,8 +196,20 @@ export class PageDashboardComponent implements OnInit {
       
               // Prevent modal flicker by checking after loading is complete
               if (!this.isApproved) {
-                this.isConfirmationModalOpen = true;
-                this.showSubmitAlert = true;
+
+                const residencyProofId = localStorage.getItem('residencyProofId');
+      
+                // Check residencyProofId and open the appropriate modal
+                if (residencyProofId && residencyProofId.trim() !== '') {
+                  this.showSubmitAlert=true;
+                  this.isConfirmationModalOpen = true; // Open third modal directly  
+                } else {
+                  this.isDialogOpen = true; // Show terms modal if no residencyProofId
+                  this.showSubmitAlert=false;
+                }
+
+                // this.isConfirmationModalOpen = true;
+                // this.showSubmitAlert = true;
               } else {
                 this.isConfirmationModalOpen = false;
                 this.showSubmitAlert = false;

@@ -6,8 +6,411 @@
 
 
 .dashboard-content {
-  @apply p-5 w-full md:ml-64 md:w-[calc(100%-16rem)];
+  @apply  w-full md:ml-64 md:w-[calc(100%-16rem)];
 }
+
+.hero-section {
+  display: flex;
+  justify-content: space-between;
+  background: #535D7E;
+  padding: 40px 60px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  color: #fff;
+  flex-direction: row; // Default for larger screens
+
+  @media (max-width: 768px) {
+    flex-direction: column; // Stack content and image vertically on mobile
+    padding: 20px 15px; // Reduce padding for smaller screens
+  }
+}
+
+.hero-content {
+  max-width: 500px;
+  margin-bottom: 20px; // Space between content and image in mobile
+
+  @media (max-width: 768px) {
+    max-width: 100%; // Take full width on mobile
+   // text-align: center; // Optional: Center text in mobile
+  }
+}
+
+.greeting {
+  font-size: 18px;
+  margin-top: '5%';
+}
+
+h1 {
+  font-size: 36px;
+  margin: 0;
+}
+
+
+
+.sub-heading {
+  font-size: 16px;
+  color: #fbc531;
+  margin-top: 10px;
+}
+
+.description {
+  margin-top: 15px;
+  line-height: 1.6;
+  color: #dcdde1;
+  padding-right: 5%;
+}
+
+// .hero-image img {
+//   max-width: 100%;
+//   height: auto;
+//   border-radius: 12px;
+// }
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+
+  @media (max-width: 768px) {
+    margin-top: 10px; // Add spacing between text and image in mobile
+  }
+}
+
+
+#parking-management-title {
+  font-size: 24px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 15px;
+  line-height: 1.4;
+  text-align: left;
+}
+
+// .management-section {
+//   background-color: #f8f9fa;
+//   padding: 10px 10px;
+//   border-radius: 12px;
+//   margin-top: 20px;
+
+//   .management-content {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     position: relative;
+
+//     .management-text {
+//       position: absolute;
+//       left: 0;
+//       top: 50%;
+//       transform: translateY(-50%);
+//       max-width: 50%;
+//     //  padding: 20px 30px;
+//       border-radius: 12px;
+
+//       h2 {
+//         font-size: 24px;
+//         color: #333;
+//         margin-bottom: 15px;
+//       }
+
+//       ul {
+//         list-style: none;
+//         padding: 0;
+
+//         li {
+//           display: flex;
+//           align-items: flex-start;
+//           margin-bottom: 12px;
+//           font-size: 16px;
+//           color: #555;
+//         }
+
+//         .dot {
+//           width: 10px;
+//           height: 10px;
+//           background-color: #23EA13;
+//           border-radius: 50%;
+//           margin-right: 10px;
+//           margin-top: 5px;
+//         }
+//       }
+//     }
+
+//     .management-image {
+//       width: 100%;
+
+//       img {
+//         width: 100%;
+//         height: auto;
+//         border-radius: 12px;
+//       }
+//     }
+//   }
+// }
+
+
+
+.management-section {
+  background-color: #f8f9fa;
+  padding: 10px 10px;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+.management-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+/* Text Section Styling */
+.management-text {
+  max-width: 50%;
+  padding: 20px 30px;
+  position: relative;
+  border-radius: 12px;
+}
+
+.management-text h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.management-text ul {
+  list-style: none;
+  padding: 0;
+}
+
+.management-text li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #555;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: #23EA13;
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+/* Image Section */
+.management-image {
+  width: 40%; /* Reduce width for main view */
+  max-width: 400px; /* Set a maximum width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.management-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* Hide Mobile Image by Default */
+.mobile-image {
+  display: none;
+}
+
+/* 📱 Mobile View (Max Width: 768px) */
+@media (max-width: 768px) {
+  .management-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .management-text {
+    max-width: 100%;
+    width: 100%;
+    padding: 15px 20px;
+  }
+
+  .management-image {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  /* Hide Desktop Image in Mobile */
+  .desktop-image {
+    display: none;
+  }
+
+  /* Show Mobile Image in Mobile */
+  .mobile-image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* 🖥️ Desktop View (Min Width: 769px) */
+@media (min-width: 769px) {
+  .mobile-image {
+    display: none;
+  }
+
+  .desktop-image {
+    display: block;
+  }
+
+  .management-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .management-text {
+    max-width: 50%;
+  }
+
+  .management-image {
+    width: 50%;
+  }
+}
+
+
+
+
+
+// .steps-section {
+//   padding: 60px 40px;
+//   text-align: center;
+//   border-radius: 12px;
+//   margin-top: 40px;
+
+//   .steps-image {
+//     max-width: 100%;
+//     text-align: center;
+
+//     img {
+//       width: 100%;
+//       height: auto;
+//       border-radius: 12px;
+//     }
+//   }
+
+//   #steps-title {
+//     font-size: 24px;
+//     color: #333;
+//     font-weight: bold;
+//     margin-top: 20px;
+//     padding: 15px 20px;
+//     background-color: #535D7E; 
+//     color: #211c1c;
+//     font-weight: bold;
+//     margin-bottom: 15px;
+//     line-height: 1.4;
+//     text-align: left;
+//   }
+// }
+
+
+
+
+.steps-section {
+  text-align: left;
+  border-radius: 12px;
+  margin-top: 40px;
+
+  .steps-image {
+    max-width: 950px; // ✅ Increase image size
+    margin: 0 auto; // ✅ Center the image horizontally
+    text-align: center;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+  }
+
+  #steps-title {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+    margin-top: 20px;
+    line-height: 1.4;
+    text-align: left;
+
+    display: inline-block; // ✅ Restrict background to just the text
+    background-color: #535d7e;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+}
+
+
+
+
+
+
+.support-footer {
+  margin-top: 30px;
+  font-size: 20px;
+  color: #333;
+  line-height: 1.6;
+
+ 
+}
+
+
+
+
+
+
+.support-section {
+  text-align: left;
+  border-radius: 12px;
+
+  .support-image {
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+  }
+
+  #support-title {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+    margin-top: 20px;
+    line-height: 1.4;
+    text-align: left;
+
+    display: inline-block; // ✅ Restrict background to just the text
+ 
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .spantop
@@ -87,10 +490,10 @@
 // just stuff to make the pen not look terrible
 
 h1 {
-  margin: 2em 0 0;
+  margin: 1em 0 0;
   font-size: 2em;
   font-family: helvetica, ariel, sans-serif;
-  text-align: center;
+ // text-align: center;
 }
 
 h2 {

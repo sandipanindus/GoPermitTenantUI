@@ -246,7 +246,7 @@
                 <i class="fa fa-arrow-left text-lg"></i>
                 </button>
           
-    <div class="card">
+    <div class="card" >
         <div  class="row content-center no-gutters">
             
             <div id="calenderdiv" class="col-lg-4 col-md-6 col right-details">
@@ -260,7 +260,7 @@
                         </div>
                         <div class="timing">
                             <div data-container="details" class="timing-details">
-                                <div class="time-icon-details" style="display: none;">
+                                <div class="time-icon-details" style="display: none; color: white;">
                                     <i class="fa fa-clock" aria-hidden="true"></i>
                                     <span>{{duration}}&nbsp;{{sessionunit}}</span></div>
 
@@ -270,7 +270,7 @@
                                 <i class="fa fa-arrow-left mr-2"></i>Back1
                               </button> -->
                         </div>
-                        <div class="column" style="padding-top: 0px !important;">
+                        <div class="column" style="padding-top: 0px !important; color: white;">
                             <h2>
                                 Select a Date & Time
                             </h2>
@@ -292,13 +292,13 @@
 
 
             <div  class="col-lg-3 col-md-5 time_st" id="timeslotdiv" style="display: none;">
-                <div class="column" style="padding-top: 0px !important;">
+                <div class="column" style="padding-top: 0px !important; color: white;">
                     <h2>{{date}}</h2>
 
                     <div *ngFor="let timeslot of timeslots">
                         <div class="timeslot_cls" id="timeslotandiv_{{timeslot.id}}"
                             (click)="ShowDiv(timeslot.id,timeslot.time)">
-                            <a href="javascript::" style="color:#f5d331" (click)="ShowDiv(timeslot.id,timeslot.time)"
+                            <a href="javascript::" style="color:black ; font-weight: bold" (click)="ShowDiv(timeslot.id,timeslot.time)"
                                 id="time_{{timeslot.id}}">{{timeslot.time}}</a>
                         </div>
                         <!-- <div style="display: none;margin-bottom: 8px; border:1px solid white !important"
@@ -309,12 +309,12 @@
                                 id="btnconfirm_{{timeslot.id}}" (click)="ShowModal(timeslot.time)">Confirm</button>
                         </div> -->
 
-                        <div style="display: none;margin-bottom: 8px; border:1px solid white !important"
+                        <div style="display: none;margin-bottom: 8px;"
                             id="timebtndiv_{{timeslot.id}}">
                             <!-- <button class="timeslot_btn btn btn-secondary mr-1 btn-lg" style="border-radius: 5px;width: 50%;"
                                 id="btntime_{{timeslot.id}}">{{timeslot.time}}</button> -->
                                 <button 
-                                class="timeslot_btn bg-gray-200 hover:bg-gray-300 text-black font-medium py-3 w-1/2 rounded-md mr-1" 
+                                class="timeslot_btn bg-gray-200 hover:bg-gray-300 text-black font-bold py-3 w-1/2 rounded-md mr-1" 
                                 [id]="'btntime_' + timeslot.id">
                                 {{ timeslot.time }}
                             </button>
@@ -322,7 +322,7 @@
                             <!-- <button class="btn btn-primary btn-lg" style="border-radius: 5px;width: 50%;"
                                 id="btnconfirm_{{timeslot.id}}" (click)="ShowModal(timeslot.time)">Confirm</button> -->
                                 <button 
-                                    class="bg-[#FFD333] hover:bg-[#E6C02E] text-black font-medium py-3 w-1/2 rounded-md" 
+                                    class="bg-[#FFD333] hover:bg-[#E6C02E] text-black font-bold py-3 w-1/2 rounded-md" 
                                     [id]="'btnconfirm_' + timeslot.id" 
                                     (click)="ShowModal(timeslot.time)">
                                     Confirm
@@ -414,7 +414,7 @@
                     <div class="divinput">
 
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="chkcc" value=""><span class="ml-2">CC to me</span>
+                            <input type="checkbox" id="chkcc" value=""><span class="ml-2 mt-2" style="color: white;">CC to me</span>
                         </label>
 
                     </div>
@@ -432,12 +432,23 @@
                     <div class="divbtn">
                         <!-- <button class="btn btn-primary mb-2" style="border-radius: 10px;"
                             (click)="AddVisitor()">Submit</button> -->
-                            <button 
+                            <!-- <button 
                                 class="bg-[#FFD333] text-black font-bold py-2 px-4 rounded disabled:bg-[#e0e0e0] disabled:text-[#A0A0A0] disabled:cursor-not-allowed" 
                                 [disabled]="!visitorForm.valid"
                                 (click)="AddVisitor()">
                                 Submit
-                                </button>
+                                </button> -->
+
+                                <button 
+                                    class="bg-[#FFD333] text-black font-bold py-2 px-4 rounded disabled:bg-[#e0e0e0] disabled:text-[#A0A0A0] disabled:cursor-not-allowed mx-auto block" 
+                                    [disabled]="!visitorForm.valid"
+                                    (click)="AddVisitor()">
+                                    Submit
+                                    </button>
+
+
+
+
 
                     </div>
                 </form>
@@ -539,8 +550,8 @@
 <div class="fixed-background"></div>
 
 <div class="bs-example" id="thankyoudiv" style="display: none;">
-    <div class="card" style="margin: 0px auto;max-width: 100%;height: 450px !important;">
-        <div class="row no-gutters" style="height: 450px!important;">
+    <div class="card" style="margin: 0px auto;max-width: 100%;">
+        <div class="row no-gutters">
             <div style="width: 100% !important;">
                 <a class="c-pointer">
                 </a>
@@ -561,16 +572,40 @@
                     </p>
                 </div> -->
 
-                <div class="text-center bg-transparent">
-                    <!-- Centered Checkmark -->
+
+                <!-- <div class="info-box">
+                    <p>
+                      <strong>An e-permit has been sent to your email address at<br>
+                        ----@ind---s--rkingservices.com (Email ID).
+                      </strong>
+                      The visitors must validate the e-permit by following the instructions provided in the email. Please ensure that the parking session is validated before the parking session begins. The parking space will be reserved for 15 minutes and if the e-permit is not confirmed in time then it may be lapsed.
+                    </p>
+                    <button class="okay-btn" (click)="Refresh()">Okay</button>
+                  </div> -->
+
+
+
+                  <div class="info-box">
+                    <p>
+                      <strong>An e-permit has been sent to your email address at<br>
+                        {{ email ? email : 'your registered email' }}.
+                      </strong>
+                      The visitors must validate the e-permit by following the instructions provided in the email. Please ensure that the parking session is validated before the parking session begins. The parking space will be reserved for 15 minutes and if the e-permit is not confirmed in time then it may be lapsed.
+                    </p>
+                    <div class="btn-container">
+                      <button class="okay-btn" (click)="Refresh()">Okay</button>
+                    </div>
+                  </div>
+                  
+                  
+
+                <!-- <div class="text-center bg-transparent">
                     <div class="flex justify-center mb-4">
                       <img src="assets/images/logo/check-48-primary.png" width="100" height="48" alt="Confirmation Checkmark" />
                     </div>
                   
-                    <!-- Thank You Heading -->
                     <h1 class="display-3">Thank You!</h1>
                   
-                    <!-- Confirmation Message -->
                     <p class="lead">
                       <strong>An E-Permit invitation has been sent to {{name}} {{email}}. The visitor must validate the EPermit by following the instructions in the email. Please ensure the permit is validated
                         before the parking session begins. The parking space will be reserved for 15 minutes
@@ -579,13 +614,12 @@
                   
                     <hr>
                   
-                    <!-- Centered Button -->
                     <p class="lead">
                       <button class="px-6 py-2 text-black bg-[#FFD333] rounded-lg shadow-md hover:bg-yellow-400 transition duration-300 mt-3" (click)="Refresh()">
                         Ok
                       </button>
                     </p>
-                  </div>
+                  </div> -->
                   
 
             </div>

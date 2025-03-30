@@ -35,15 +35,43 @@
       </div> -->
 
 
-    <div class="card-body">
+
+
+
+      <div class="parking-container">
+        <h2 class="parking-header">Parking Sessions</h2>
+        <p class="description">
+          Easily select and manage your designated parking bay from the options available. This feature allows you to configure your parking space based on your specific requirements.
+        </p>
+      
+        <div class="instructions">
+            <h3 class="highlight">How to Select a Parking Bay:</h3>
+            <div class="step">
+            <div class="dot"></div>
+            <p>Click on the dropdown menu labelled <strong>"Select Bay No."</strong> to view available parking bays.</p>
+          </div>
+          <div class="step">
+            <div class="dot"></div>
+            <p>Choose the bay that corresponds to your assigned or preferred space.</p>
+          </div>
+          <div class="step">
+            <div class="dot"></div>
+            <p>Once selected, follow the on-screen instructions to configure or update your parking details.</p>
+          </div>
+        </div>
+      </div>
+
+      
+
+
+
+    <!-- <div class="card-body">
     <div>
         <h5> Parking Sessions</h5>
 
         <div  class="d-flex align-items-center mt-2  flex-wrap">
-            <!-- Location Icon -->
             <i class="fas fa-map-marker-alt text-danger" style="font-size: 30px; margin-right: 8px;"></i>
             
-            <!-- Site Information (Will Wrap Properly on Small Screens) -->
             
               <span class="mr-1">{{sitename}},</span>
               <span class="mr-1">{{siteaddress}},</span>
@@ -54,48 +82,15 @@
           
           
           
-    <!-- <div class="card flex-grow-1 mb-md-0" style="width: 30%;">
-        <div class="card-body">
-            <div class="row">
-                <h5>Car Park Name & Address</h5>
-
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-
-                    <span>
-                        {{sitename}}
-
-                    </span><br>
-                    <span>
-                        {{siteaddress}}
-                    </span><br>
-                    <span>
-                        {{sitecity}}
-                    </span><br>
-                    <span>
-                        {{sitestate}}
-                    </span><br>
-                    <span>
-                        {{sitezipcode}}
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
+  
+    </div>
+    </div>
     </div> -->
-   
-    </div>
-    </div>
-    </div>
 
 <div class="container">
     <div class="row">
         <div class="col-md-12 d-flex loginform">
-            <div class="card flex-grow-1 mb-md-0">
+            <div class="card1 mb-md-0">
                 <div class="card-body">
                     <!-- <h3 style="display: inline" class="card-title">
                         Manage Parking
@@ -108,7 +103,7 @@
                             <h3 style="display: inline" class="card-title">
                                 Manage Parking
                             </h3>
-                             <br /><br />
+                             <br />
                             <!-- <div class="row">
                                 <div class="col-md-4">
                                     <label>Select a parking bay :</label>
@@ -133,14 +128,14 @@
 
 
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-12">
                                   <label>Select a parking bay :</label>
-                                  <i style="margin-left: 5px" class="far fa-question-circle" aria-hidden="true"
-                                    tooltip="Choose among available bay options." placement="bottom"></i>
+                                  <!-- <i style="margin-left: 5px" class="far fa-question-circle" aria-hidden="true"
+                                    tooltip="Choose among available bay options." placement="bottom"></i> -->
                               
                                   <!-- Move the dropdown below the label -->
                                   <div class="mt-3">
-                                    <select class="form-control" style="width: 60%" [(ngModel)]="baynobj"
+                                    <select class="form-control" style="width: 100%" [(ngModel)]="baynobj"
                                       (change)="getvehicledetails2('')" [ngModelOptions]="{ standalone: true }">
                                       <option value="">- Select Bay NO -</option>
                                       <option *ngFor="let obj of parkigbaydrp" [ngValue]="obj">
@@ -164,7 +159,7 @@
                                 </div>
 
                                 <div class="col-md-3">
-                                    <select class="form-control width-0" style="width: 69%"
+                                    <select class="form-control width-0" style="width: 100%"
                                         [(ngModel)]="vehiclecountobj" (change)="showblocks()" [ngModelOptions]="{
                                             standalone: true
                                         }">

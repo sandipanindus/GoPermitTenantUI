@@ -354,6 +354,8 @@ export class CalenderManageParkingComponent implements OnInit {
         }
       })
     }
+
+    console.log("Selected Dates",this.selectedClass)
   }
 
 
@@ -842,6 +844,7 @@ export class CalenderManageParkingComponent implements OnInit {
   Bindbasedondate(date) {
     debugger;
     // this.ismultivehicel=true
+    this.vehiclecountobj=""
     this.datepickershow=false
     this.service.getvehiclestimedetailsbydate(this.tenantid.toString(), this.bayno.toString(), date).subscribe((data: any) => {
       if (data.status == "200") {
@@ -891,7 +894,7 @@ export class CalenderManageParkingComponent implements OnInit {
 
         }
         else {
-          this.openmultpledatesetModal(this.template2)
+        //  this.openmultpledatesetModal(this.template2)
         }
       }
 
@@ -1089,8 +1092,8 @@ export class CalenderManageParkingComponent implements OnInit {
     }
     if (this.cycleno > 0) {
       
-    this.dateSelected = this.getDateslist(this.parkingvalidfrom, this.parkingvalidTo);
-  //  this.dateSelected = this.getSingleDateslist(this.parkingvalidfrom, this.parkingvalidTo);
+   // this.dateSelected = this.getDateslist(this.parkingvalidfrom, this.parkingvalidTo);
+   this.dateSelected = this.getSingleDateslist(this.parkingvalidfrom, this.parkingvalidTo);
     }
 
     this.savevehcile.push({
@@ -1139,16 +1142,23 @@ export class CalenderManageParkingComponent implements OnInit {
 
   //getting dates from to Todate for save singlevehile with custom dates 
   //scenarios if cycleno is more we are passing dates list in datefield
-  getSingleDateslist(startDate, stopDate) {
-
-    var dateArray = [];
-    var currentDate = new Date(startDate.setHours(0, 0, 0));
-    var endDate = new Date(stopDate.setHours(0, 0, 0));
-    while (currentDate <= endDate) {
-      dateArray.push(new Date(+currentDate));
+   getSingleDateslist(startDate, stopDate) {
+    const dateArray = [];
+  
+    let currentDate = new Date(startDate);
+    let endDate = new Date(stopDate);
+  
+    currentDate.setHours(0, 0, 0, 0);
+    endDate.setHours(0, 0, 0, 0);
+  
+    while (currentDate < endDate) {
+      dateArray.push(new Date(currentDate));
       currentDate.setDate(currentDate.getDate() + 1);
     }
+  
+    // Add the end date explicitly
     dateArray.push(new Date(endDate));
+  
     return dateArray;
   }
 
@@ -1225,6 +1235,8 @@ export class CalenderManageParkingComponent implements OnInit {
       this.isLoading=false
       return false
     }
+    this.multiplevehiclefromdate
+    this.multiplevehicltodate
 
     if (this.rdbrepeat == 'no') {
 
@@ -1233,6 +1245,7 @@ export class CalenderManageParkingComponent implements OnInit {
         this.multiplevehiclefromdate = new Date(Math.min.apply(null, this.dateSelected1));
         this.multiplevehicltodate = new Date(Math.max.apply(null, this.dateSelected1));
         //this.dateSelected =null;
+        this.dateSelected = this.getSingleDateslist(this.multiplevehiclefromdate, this.multiplevehicltodate);
 
       }
       else {
@@ -1260,6 +1273,8 @@ export class CalenderManageParkingComponent implements OnInit {
     } else if (this.rdbrepeat == 'custom') {
       if (this.cycleno < 1) {
         this.cycleno = 1
+        this.dateSelected = this.getSingleDateslist(this.multiplevehiclefromdate, this.multiplevehicltodate);
+
       }
 
 
@@ -1295,7 +1310,13 @@ export class CalenderManageParkingComponent implements OnInit {
       }
 
       if (this.cycleno > 0) {
-        this.dateSelected = this.getDateslist(this.multiplevehiclefromdate, this.multiplevehicltodate);
+      //  this.dateSelected = this.getDateslist(this.multiplevehiclefromdate, this.multiplevehicltodate);
+
+       this.dateSelected = this.getSingleDateslist(this.multiplevehiclefromdate, this.multiplevehicltodate);
+      }
+      else{
+      //  this.dateSelected = this.getSingleDateslist(this.multiplevehiclefromdate, this.multiplevehicltodate);
+
       }
     }
 

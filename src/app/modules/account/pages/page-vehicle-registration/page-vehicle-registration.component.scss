@@ -310,3 +310,20 @@ width: 50%!important;
 .custom-modal.show {
   display: block; /* Show the modal when 'show' class is added */
 }
+
+
+
+
+
+.info-box {
+  //max-width: 800px; // Adjust width if needed
+  margin: 20px auto;
+  color: #fff; // White text
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.info-box strong {
+  font-weight: bold;
+  color: #fff; // Keeps the bold text white
+}

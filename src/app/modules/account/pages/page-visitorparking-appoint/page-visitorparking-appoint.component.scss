@@ -53,7 +53,8 @@ body {
     font-size: 16px;
     font-weight: 600;
     line-height: 24px;
-    color: var(--text-color-level2, rgba(77, 80, 85, 0.6));
+   // color: var(--text-color-level2, rgba(77, 80, 85, 0.6));
+   color: white;
     padding-right: 10px;
     padding-left: 30px;
 }
@@ -64,6 +65,7 @@ body {
     line-height: 32px;
     padding-right: 10px;
     padding-left: 30px;
+    color: white;
 }
 .profile-info {
     margin-bottom: 12px;
@@ -147,9 +149,13 @@ body {
   //  max-width: 100%;
 }
 .no-gutters {
-    border-radius: 8px;
-    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
-    background-color: var(--container-background-color, #ffffff);
+    //border-radius: 8px;
+    //box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+    // background-color: var(--container-background-color, #ffffff);
+
+
+    background-color: #535D7E;
+
 }
 
 .bs-datepicker-container {
@@ -179,15 +185,27 @@ body {
 ::-webkit-scrollbar-corner {
     background-color: transparent;
 }
+// .timeslot_cls {
+//    // border-radius: 5px;
+//    // border: 1px solid #f5d331;
+//     padding: 3%;
+//     text-align: center;
+//     margin-bottom: 3%;
+//     font-size: larger;
+//     margin-right: 0%;
+// }
+
 .timeslot_cls {
-    border-radius: 5px;
-    border: 1px solid #f5d331;
     padding: 3%;
     text-align: center;
     margin-bottom: 3%;
     font-size: larger;
     margin-right: 0%;
-}
+    background: linear-gradient(to right, #FFFFFF, #A9AD2A); // Gradient from white to greenish
+    border-radius: 5px; // Optional: Rounded corners if needed
+    border: 1px solid #A9AD2A; // Optional: Border to match the gradient
+  }
+  
 .modal-sm {
     margin-top: 185px !important;
 }
@@ -204,19 +222,32 @@ body {
     margin-left: 50px;
 }
 .labelcls{
-    margin-bottom: 0px !important;
+    margin-bottom: 10px !important;
+    margin-top: 10px !important;
+    font-size: 20px;
+    color: white;
 }
 .divbtn {
     margin-left: 16px;
     margin-top: 20px;
-    float: right;
+  //  float: right;
     margin-bottom: 2%;
 }
+// .divdetails {
+//     margin-left: 50px;
+//     margin-top: 26px;
+//     font-weight: bold;
+// }
+
 .divdetails {
-    margin-left: 50px;
-    margin-top: 26px;
+    margin-left: 0; // Remove left margin
+   // margin-top: 26px; // Keep the top margin as it is
     font-weight: bold;
-}
+    text-align: center; // Center the content horizontally
+    color: white;
+    font-size: 28px;
+  }
+  
 
 
 
@@ -243,7 +274,7 @@ body {
         margin-left: 16px;
       //  margin-top: 30px;
         margin-bottom: 28%;
-        float: right;
+      //  float: right;
     }
     .divdetails {
         margin-left: 25px;
@@ -279,3 +310,103 @@ body {
     display: flex;
     justify-content: center;
 }
+
+
+
+
+
+// .info-box {
+//     max-width: 800px;
+//     margin: 20px auto;
+//     padding: 20px 30px;
+//     background: linear-gradient(to right, #798E9C, #6E7F91); // Gradient background
+//     border-radius: 20px;
+//     text-align: center;
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//     color: #fff;
+//     line-height: 1.6;
+//     font-size: 16px;
+//   }
+  
+//   .info-box p {
+//     margin-bottom: 20px;
+//     font-size: 16px;
+//   }
+  
+//   .info-box strong {
+//     font-weight: bold;
+//     color: #fff;
+//     font-size: 18px;
+//   }
+  
+//   .okay-btn {
+//     background-color: #FFD333; // Button background
+//     color: #000; // Text color
+//     font-weight: bold;
+//     padding: 10px 30px;
+//     border: none;
+//     border-radius: 8px;
+//     cursor: pointer;
+//     outline: none;
+//     font-size: 16px;
+//   }
+  
+//   .okay-btn:hover {
+//     background-color: #FFC107; // Slightly darker yellow on hover
+//     transition: background-color 0.2s ease-in-out;
+//   }
+  
+
+
+
+.info-box {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px 30px 50px; // Increased padding at the bottom to create space for the button
+    background: linear-gradient(to right, #798E9C, #6E7F91);
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    line-height: 1.6;
+    font-size: 16px;
+    position: relative; // Add relative position to contain the button
+  }
+  
+  .info-box p {
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+  
+  .info-box strong {
+    font-weight: bold;
+    color: #fff;
+    font-size: 18px;
+  }
+  
+  // Button container to push button to the bottom
+  .btn-container {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  // Okay button styles
+  .okay-btn {
+    background-color: #FFD333;
+    color:white;
+    font-weight: bold;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    outline: none;
+    font-size: 16px;
+  }
+  
+  .okay-btn:hover {
+    background-color: #FFC107;
+    transition: background-color 0.2s ease-in-out;
+  }
+  

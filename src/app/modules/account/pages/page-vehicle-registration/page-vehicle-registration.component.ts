@@ -728,7 +728,7 @@ export class PageVehicleRegistrationComponent implements OnInit {
 
     this.weekbasedfromdate = this.mindate
     this.weekbasedtodate = this.maxDate
-    this.vehiclecountobj=this.confignumber
+   // this.vehiclecountobj=this.confignumber
     if (this.vehiclecountobj == 1) {
       this.vrmno = '';
       this.datepickershow = false;

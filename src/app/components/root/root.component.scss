@@ -1,0 +1,48 @@
+// .site__body1 {
+//     position: relative;
+//     min-height: 100vh;
+//     padding-bottom: 0; // Remove padding at the bottom
+//     background-color: #535D7E; // Keeping the background consistent
+//   }
+  
+//   .bottom-image-container {
+//     position: fixed;
+//     bottom: 0;
+//     left: 5%;
+//     width: 100%;
+//     height: auto;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     z-index: 10; // Make sure it stays on top if needed
+//   }
+  
+//   .bottom-image {
+//     width: 15%; // Make the image take full width
+//     height: auto; // Maintain aspect ratio
+//     max-height: auto; // Adjust the height based on preference
+//     object-fit: cover; // Stretch to fit without losing quality
+//   }
+  
+
+
+
+
+
+
+
+
+
+.bottom-image-container {
+    width: 120%;
+    display: flex;
+    justify-content: center;
+    background-color: #535D7E;
+  }
+  
+  .bottom-image {
+    width: 100%; // Adjust width as per requirement
+    max-width: 270px; // Optional: limit image width
+    height: auto;
+  }
+  

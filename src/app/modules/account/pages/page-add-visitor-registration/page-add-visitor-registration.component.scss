@@ -93,8 +93,8 @@ body{
     padding: 25px 15px;
 }
 .block_cls{
-    max-width: 320px;
-    margin: 0 auto 20px auto;
+    max-width: 340px;
+    margin: 0 auto 0 auto;
     text-align: center;
 }
 .profile_info{
@@ -115,59 +115,107 @@ body{
     color: var(--text-color-level2, rgba(77, 80, 85, 0.6));
     font-size: 14px;
 }
-.meeting_cls{
+// .meeting_cls{
+//     display: flex;
+//     flex-wrap: wrap;
+//    max-width: 900px;
+//     margin: 0 auto;
+// }
+
+// .meetingan_{
+//     flex: 0 calc(50% - 40px);
+//     min-height: 180px;
+//     margin: 20px;
+//     padding: 20px;
+//     display: block;
+//     box-sizing: inherit;
+//     flex: 100%;
+//     max-width: 500px;
+//     min-height: 0;
+//     margin: auto;
+//     padding: 20px 10px;
+//     color: var(--text-color, rgb(77, 80, 85));
+//     text-decoration: none;
+//     border: 1px solid transparent;
+//     border-top: 1px solid var(--text-color-level3, rgba(77, 80, 85, 0.1));
+//     transition: border-color 0.1s ease;
+// }
+
+
+
+
+.meeting_cls {
     display: flex;
+    justify-content: center; // Center horizontally
     flex-wrap: wrap;
-   max-width: 900px;
+    max-width: 900px;
     margin: 0 auto;
-}
-
-.meetingan_{
-    flex: 0 calc(50% - 40px);
-    min-height: 180px;
-    margin: 20px;
-    padding: 20px;
-    display: block;
-    box-sizing: inherit;
-    flex: 100%;
-    max-width: 500px;
-    min-height: 0;
-    margin: auto;
-    padding: 20px 10px;
-    color: var(--text-color, rgb(77, 80, 85));
-    text-decoration: none;
-    border: 1px solid transparent;
-    border-top: 1px solid var(--text-color-level3, rgba(77, 80, 85, 0.1));
-    transition: border-color 0.1s ease;
-}
-
-.meetingan_:hover {
-    background-color: rgba(77, 80, 85, 0.1);
-}
-
-.header1{
+  }
+  
+  .meetingan_ {
     display: flex;
+    justify-content: center;
     align-items: center;
-    height: 40px;
-    margin-bottom: 20px;
-}
-.eventtypecls{
-    flex: 0 0 auto;
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-    background-clip: padding-box;
-    border: solid 2px #ffffff;
-    border-radius: 50%;
-    background-color:#f5d331;
-}
-.eventtyeheader{
-    flex: 1 1 auto;
-    margin: 0;
+    width: 100%; // Full width to center content
+    max-width: 300px; // Optional: limit width
+    min-height: 60px; // Reduce height to match design
+    margin: 10px auto; // Center the box
+    padding: 10px 20px;
+    background-color: #fff; // White background
+    border: 1px solid #ccc; // Optional: subtle border
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // Optional: slight shadow
+    border-radius: 5px; // Optional: rounded corners
+    text-decoration: none;
+    color: #333; // Dark text
+  }
+
+
+
+// .meetingan_:hover {
+//     background-color: rgba(77, 80, 85, 0.1);
+// }
+
+// .header1{
+//     display: flex;
+//     align-items: center;
+//    // height: 40px;
+//    // margin-bottom: 20px;
+// }
+
+.header1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+// .eventtypecls{
+//     flex: 0 0 auto;
+//     width: 30px;
+//     height: 30px;
+//     margin-right: 10px;
+//     background-clip: padding-box;
+//     border: solid 2px #ffffff;
+//     border-radius: 50%;
+//     background-color:#f5d331;
+// }
+// .eventtyeheader{
+//     flex: 1 1 auto;
+//     margin: 0;
+//     font-weight: 600;
+//     font-size: 18px;
+//     line-height: 1.2;
+// }
+
+.eventtyeheader {
     font-weight: 600;
     font-size: 18px;
     line-height: 1.2;
-}
+    margin: 0;
+    text-align: center; // Center the text
+  }
+
+
 .eventtypearrow{
     position: relative;
     right: -8px;
@@ -219,3 +267,13 @@ body{
     }
 }
 
+
+
+
+
+.card1 {
+   // border: 2px solid #f0f0f0;
+    border-radius: 45px;
+    background-color: #859aa7;
+
+}

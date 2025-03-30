@@ -252,6 +252,12 @@ export class PageVisitorparkingAppointComponent implements OnInit {
             (document.getElementById("thankyoudiv") as HTMLDivElement).style.display = 'block';
             //this.router.navigateByUrl('account/VisitorParking');
 
+              // Scroll to top after submission
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth'
+                });
+
           }
           else {
             element.style.display = 'none';
@@ -266,6 +272,35 @@ export class PageVisitorparkingAppointComponent implements OnInit {
       }
     }
   }
+
+
+  // AddVisitor() {
+  //   // Show thank you div directly for testing
+  //   (document.getElementById("schedulediv") as HTMLDivElement).style.display = 'none';
+  //   (document.getElementById("thankyoudiv") as HTMLDivElement).style.display = 'block';
+
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: 'smooth' // Optional for smooth scroll
+  //   });
+  // }
+
+
+  // AddVisitor() {
+  //   // Hide form div
+  //   (document.getElementById('schedulediv') as HTMLDivElement).style.display = 'none';
+  
+  //   // Show thank you div
+  //   (document.getElementById('thankyoudiv') as HTMLDivElement).style.display = 'block';
+  
+  //   // Scroll to top after submission
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: 'smooth'
+  //   });
+  // }
+  
+  
   Refresh() {
     this.router.navigateByUrl('/account/VisitorParking');
   }
