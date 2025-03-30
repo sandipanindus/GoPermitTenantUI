@@ -161,8 +161,9 @@
 
 
                                 <div class="row" id="visitorlist"
-                                    style="margin-top: 20px;height:400px;overflow-y: scroll;">
-                                    <div class="col-md-12">
+                                    style="margin-top: 20px;height:auto;overflow-y: scroll;">
+                                    <!-- <div class="col-md-12">
+
                                         <table class="table table-responsive-md table-bordered table-stripped">
                                             <thead>
                                                 <tr>
@@ -177,6 +178,11 @@
                                                 </tr>
                                             </thead>
                                             <thead>
+
+                                                <tr *ngIf="visitorparkings?.length === 0">
+                                                    <td colspan="8" class="no-data">No data available</td>
+                                                  </tr>
+                                                  
                                                 <tr *ngFor="let visitorparking of visitorparkings">
                                                     <td>{{visitorparking.date}}</td>
                                                     <td>{{visitorparking.vrm}}</td>
@@ -190,25 +196,78 @@
                                                             Validated</span>
                                                         <span *ngIf="visitorparking.status==false">E-Permit Sent</span>
                                                     </td>
-                                                    <!-- <td *ngIf="visitorparking.status">false</td> -->
 
                                                     <td>
                                                         <a href="javascript::" (click)="Edit(visitorparking.id)"><i
                                                             class="fa fa-edit"></i></a>
-                                                    <!-- <a href="javascript::" (click)=delete(visitorparking)
-                                                        style="margin-left: 10px;"><i class="fa fa-trash"></i></a> -->
+                                                   
 
                                                         <a href="javascript:void(0);" matTooltip="Cancel"  (click)=openModal(template,visitorparking.id)
                                                         style="margin-left: 10px;"><i class="fa fa-trash"></i></a>
 
-                                                        <!-- <button *ngIf="visitorparking.status==false"
-                                                            class="btn btn-primary"
-                                                            (click)=openModal(template,visitorparking.id)>Cancel</button> -->
+                                                       
                                                     </td>
                                                 </tr>
                                             </thead>
                                         </table>
-                                    </div>
+                                    </div> -->
+
+
+
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped">
+                                          <thead>
+                                            <tr>
+                                              <th>Date</th>
+                                              <th>VRM</th>
+                                              <th>Name</th>
+                                              <th>Contact</th>
+                                              <th>Start Time</th>
+                                              <th>End Time</th>
+                                              <th>Status</th>
+                                              <th>Action</th>
+                                            </tr>
+                                          </thead>
+                                      
+                                          <tbody>
+                                            <!-- Show No Data Available if the array is empty -->
+                                            <tr *ngIf="visitorparkings?.length === 0">
+                                              <td colspan="8" class="no-data">No Data Available</td>
+                                            </tr>
+                                      
+                                            <!-- Loop through visitorparkings if records are available -->
+                                            <tr *ngFor="let visitorparking of visitorparkings">
+                                              <td>{{ visitorparking.date }}</td>
+                                              <td>{{ visitorparking.vrm }}</td>
+                                              <td>{{ visitorparking.name }}</td>
+                                              <td>{{ visitorparking.contact }}</td>
+                                              <td>{{ visitorparking.starttime }}</td>
+                                              <td>{{ visitorparking.endtime }}</td>
+                                              <td>
+                                                <span *ngIf="visitorparking.status == true">E-Permit Validated</span>
+                                                <span *ngIf="visitorparking.status == false">E-Permit Sent</span>
+                                              </td>
+                                              <td>
+                                                <a href="javascript::" (click)="Edit(visitorparking.id)">
+                                                  <i class="fa fa-edit"></i>
+                                                </a>
+                                                <a
+                                                  href="javascript:void(0);"
+                                                  matTooltip="Cancel"
+                                                  (click)="openModal(template, visitorparking.id)"
+                                                  style="margin-left: 10px;"
+                                                >
+                                                  <i class="fa fa-trash"></i>
+                                                </a>
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                      
+
+
+
                                 </div>
 
 

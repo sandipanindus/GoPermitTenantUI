@@ -253,3 +253,19 @@ body{
 //     padding: 1rem;
 //     border-color: white;
 // }
+
+
+
+.no-data {
+    text-align: center;
+    font-weight: bold;
+    padding: 12px;
+    width: 100%;
+  }
+  
+  /* Center text in table */
+  .table tbody tr td.no-data {
+    text-align: center;
+    vertical-align: middle;
+  }
+  

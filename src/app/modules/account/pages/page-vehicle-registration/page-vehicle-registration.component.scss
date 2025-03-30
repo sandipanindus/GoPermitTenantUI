@@ -327,3 +327,52 @@ width: 50%!important;
   font-weight: bold;
   color: #fff; // Keeps the bold text white
 }
+
+
+
+
+
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  border: 1px solid #ddd; /* Optional: Adds a border */
+  margin-bottom: 15px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  white-space: nowrap; /* Prevent text wrapping */
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.expired-row {
+  background-color: #f8d7da; /* Light red for expired rows */
+}
+
+/* Optional: Make headers bold and align center */
+.table th {
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Add horizontal scroll only on small screens */
+@media (max-width: 768px) {
+  .table th,
+  .table td {
+    font-size: 14px;
+    padding: 6px 8px;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}

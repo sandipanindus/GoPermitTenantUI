@@ -50,6 +50,8 @@ shouldShowFormImage(): boolean {
       '/account/Support',
       '/account/VisitorParkingAppointment',
       '/account/DaySelection',
+      '/account/password',
+      '/account/profile'
     ];
   
     // Check if the current URL matches any of the routes
