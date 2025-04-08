@@ -7,6 +7,7 @@ import { TenantserviceService } from './../../../../shared/api/tenantservice.ser
 
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-page-dashboard',
@@ -70,7 +71,7 @@ export class PageDashboardComponent implements OnInit {
     termsandConditions: string = '';
     
 
-    constructor(private service: TenantserviceService,private http: HttpClient) {
+    constructor(private service: TenantserviceService,private http: HttpClient,private _router:Router,) {
         var details = JSON.parse(localStorage.getItem('userinfo'));
         this.Name = details.firstName + ' ' + details.lastName;
         this.EMail = details.email;
@@ -106,6 +107,13 @@ export class PageDashboardComponent implements OnInit {
         console.log(details);
     }
 
+    openCreateSession() {
+      this._router.navigate(['/account/AddVehicleRegistration'])
+    }
+
+    openCreateVisitor() {
+      this._router.navigate(['/account/AddVisitorRegistration'])
+    }
     getlist() {
         debugger;
 

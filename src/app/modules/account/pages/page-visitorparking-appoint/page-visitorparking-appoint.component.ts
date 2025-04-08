@@ -214,12 +214,12 @@ export class PageVisitorparkingAppointComponent implements OnInit {
         return;
       }
       var chkcc = document.getElementById("chkcc") as HTMLInputElement;
-      if (chkcc.checked == true) {
+      // if (chkcc.checked == true) {
         this.cctome = true;
-      }
-      else {
-        this.cctome = false;
-      }
+      // }
+      // else {
+      //   this.cctome = false;
+      // }
 
       var data = ({
         TenantId: this.tenantid,
@@ -316,6 +316,22 @@ export class PageVisitorparkingAppointComponent implements OnInit {
     (document.getElementById("detailsdiv") as HTMLDivElement).style.display = 'none';
     (document.getElementById("calenderdiv") as HTMLDivElement).style.display = 'block';
     (document.getElementById("timeslotdiv") as HTMLDivElement).style.display = 'block';
+  }
+
+  showConfirmButton: boolean = false;
+  updatedTime: string | null = null;
+
+  addTenMinutes() {
+    const current = new Date();
+    current.setMinutes(current.getMinutes() + 10);
+
+    const hours = current.getHours().toString().padStart(2, '0');
+    const minutes = current.getMinutes().toString().padStart(2, '0');
+    this.updatedTime = `${hours}:${minutes}`;
+
+    this.ShowModal(this.updatedTime);
+
+    console.log("New time:", this.updatedTime);
   }
 
 }

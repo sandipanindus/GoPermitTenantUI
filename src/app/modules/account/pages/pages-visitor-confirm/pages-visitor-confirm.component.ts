@@ -115,7 +115,10 @@ export class PagesVisitorConfirmComponent implements OnInit {
 
     })
   }
+
+  
   UpdateVisitorSlot() {
+    debugger
     if (this.result == true) {
       var element = document.getElementById("loader") as HTMLDivElement;
       element.style.display = 'block';

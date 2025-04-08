@@ -157,20 +157,37 @@
     <!-- Text Section -->
     <div class="management-text">
       <ul>
-        <li>
+        <!-- <li>
           <span class="dot"></span>Select and manage your parking bay according
           to your requirements.
+        </li> -->
+        <li>
+          <span class="dot"></span>
+          <span>
+          Select and manage your parking bay according to your requirements. Go to Manage Parking: 
+          <span class="click-link" (click)="openCreateSession()">Click here</span>
+          </span>
         </li>
         <li>
-          <span class="dot"></span>Add, remove, or edit your bay configuration
+          <span class="dot"></span>
+          <span>
+          Add, remove, or edit your bay configuration
           anytime.
+          </span>
         </li>
         <li>
-          <span class="dot"></span>Register and manage visitor parking with ease.
+          <span class="dot"></span>
+          <span>
+          Register and manage visitor parking with ease. Go to Visitor Parking: 
+          <span class="click-link" (click)="openCreateVisitor()">Click here</span>
+          </span>
         </li>
         <li>
-          <span class="dot"></span>Share a single parking bay between multiple
+          <span class="dot"></span>
+          <span>
+          Share a single parking bay between multiple
           vehicles.
+          </span>
         </li>
       </ul>
     </div>

@@ -295,6 +295,34 @@
                 <div class="column" style="padding-top: 0px !important; color: white;">
                     <h2>{{date}}</h2>
 
+                    <!-- <label class="checkbox-inline">
+                        <input type="checkbox" id="chkcc" value=""><span class="ml-2 mt-2" style="color: white;">Current Time</span>
+                    </label> -->
+
+                    <div class="flex items-center space-x-4">
+                        <!-- Checkbox -->
+                    <span>
+                        <span>
+                        <label class="inline-flex items-center text-white">
+                          <input type="checkbox" [(ngModel)]="showConfirmButton" class="mr-2" />
+                          Current Time
+                        </label>
+                        </span>
+                      
+                        <!-- Confirm Button -->
+                        <span>
+                        <button 
+                          *ngIf="showConfirmButton" 
+                          class="bg-[#FFD333] hover:bg-[#E6C02E] text-black font-bold py-1 px-2 rounded-md"
+                          style="margin-left: 10px; margin-bottom: 4px;"
+                          (click)="addTenMinutes()">
+                          Confirm
+                        </button>
+                        </span>
+                    </span>
+                      </div>
+                                      
+       
                     <div *ngFor="let timeslot of timeslots">
                         <div class="timeslot_cls" id="timeslotandiv_{{timeslot.id}}"
                             (click)="ShowDiv(timeslot.id,timeslot.time)">
@@ -411,13 +439,13 @@
                                 valid email address</div>
                         </div>
                     </div>
-                    <div class="divinput">
+                    <!-- <div class="divinput">
 
                         <label class="checkbox-inline">
                             <input type="checkbox" id="chkcc" value=""><span class="ml-2 mt-2" style="color: white;">CC to me</span>
                         </label>
 
-                    </div>
+                    </div> -->
                     <div class="divinput">
                         <label class="labelcls">VRM</label>
                         <div class="relative">
