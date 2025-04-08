@@ -1587,8 +1587,8 @@ export class PageVehicleRegistrationComponent implements OnInit {
           this.declinesavecheck();
 
         }
-        this.toast.success('vehicle added sucessfully')
-        this.route.navigateByUrl('/account/dashboard');
+        this.toast.success('Vehicle added sucessfully');
+        window.location.reload();
 
       }
 

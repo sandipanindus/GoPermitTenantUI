@@ -31,7 +31,10 @@ export class PageSupportComponent implements OnInit {
   supports: any = [];
   supportlists: any = [];
   ticketid: number;
-  constructor(private approute: ActivatedRoute, private toast: ToastrService, private route: Router, private formBuilder: FormBuilder, private service: TenantserviceService) {
+  replyform1!: FormGroup;
+  // replyres = '';
+  
+  constructor(private approute: ActivatedRoute,private fb: FormBuilder, private toast: ToastrService, private route: Router, private formBuilder: FormBuilder, private service: TenantserviceService) {
 
     this.supportform = this.formBuilder.group({
       Lissue: ['', Validators.required],
@@ -45,8 +48,11 @@ export class PageSupportComponent implements OnInit {
   get f() { return this.supportform.controls; }
   get r() { return this.replyform.controls; }
   ngOnInit(): void {
-    document.getElementById('ulmenu').style.display = 'block'
-
+    this.replyform1 = this.fb.group({
+      Rreply: ['', [Validators.required, Validators.minLength(2)]]
+    });
+    document.getElementById('ulmenu').style.display = 'block';
+    (document).getElementById("chatcontainer").style.display = 'none';
     debugger;
     var userinfo = localStorage.getItem("userinfo");
     var user = JSON.parse(userinfo);
@@ -67,7 +73,8 @@ export class PageSupportComponent implements OnInit {
     this.service.GetSupportById(id, ticketid, this.tenantid).subscribe((data: any) => {
       debugger;
       if (data.status == "200") {
-        (document).getElementById("responsereplydiv").style.display = 'block';
+      //  (document).getElementById("responsereplydiv").style.display = 'block';
+        (document).getElementById("chatcontainer").style.display = 'block';
         (document).getElementById("arrowdiv").style.display = 'block';
         (document).getElementById("subjectdiv").style.display = 'block';
         (document).getElementById("formdiv").style.display = 'none';
@@ -76,6 +83,7 @@ export class PageSupportComponent implements OnInit {
         element.style.display = 'none';
         if (data.result.length > 0) {
           this.supportlists = data.result;
+          console.log("Support Lists",this.supportlists)
           var length = this.supportlists.length;
           this.showsubject = this.supportlists[0].subject;
           if (this.supportlists[length - 1].createdBy == 1) {
@@ -127,6 +135,7 @@ export class PageSupportComponent implements OnInit {
   openform() {
     window.location.reload();
     (document).getElementById("responsereplydiv").style.display = 'none';
+    (document).getElementById("chatcontainer").style.display = 'none';
     (document).getElementById("arrowdiv").style.display = 'none';
     (document).getElementById("subjectdiv").style.display = 'none';
     (document).getElementById("formdiv").style.display = 'block';
@@ -152,6 +161,9 @@ export class PageSupportComponent implements OnInit {
 
     })
   }
+
+
+
   support() {
     var element = document.getElementById("loader") as HTMLDivElement;
     element.style.display = 'block';
@@ -194,10 +206,11 @@ export class PageSupportComponent implements OnInit {
     })
   }
   replysupport() {
+    debugger
     var element = document.getElementById("loader") as HTMLDivElement;
     element.style.display = 'block';
     this.replysubmitted = true;
-    if (this.replyform.invalid) {
+    if (this.replyform1.invalid) {
       element.style.display = 'none';
       return;
     }
@@ -217,7 +230,7 @@ export class PageSupportComponent implements OnInit {
 
     var data = ({
       tenantId: loginId,
-      id: parseInt(localStorage.getItem("ParentId")),
+      id: parseInt(localStorage.getItem("Id")),
       ticketId: parseInt(localStorage.getItem("TicketId")),
       issue: this.replyres,
       subject: this.showsubject,
@@ -229,6 +242,7 @@ export class PageSupportComponent implements OnInit {
     this.service.ReplySupport(data).subscribe((data: any) => {
       if (data.status == "200") {
         this.toast.success("your reply send successfully")
+        this.replyres="";
         element.style.display = 'none';
         setTimeout(() => {
           this.openreply(localStorage.getItem("Id"),
@@ -243,4 +257,32 @@ export class PageSupportComponent implements OnInit {
 
     })
   }
+
+  replysupport1() {
+    if (this.replyform.invalid) return;
+
+    // Create new message object
+    let newMessage = {
+      issue: this.replyres,
+      name: "Shakeel Khan", // Logged-in user's name
+      id: this.supportlists.length + 1,
+      date: new Date().toLocaleString(),
+    //  createdBy: this.loggedInUserId,
+      class: "reply_issue",  // Mark as a reply
+      profilePath: null
+    };
+
+    // Push new message & reset form
+    this.supportlists.push(newMessage);
+    this.replyform.reset();
+    this.scrollToBottom();
+  }
+
+  scrollToBottom() {
+    setTimeout(() => {
+      let chatBox = document.querySelector(".chat-box");
+      if (chatBox) chatBox.scrollTop = chatBox.scrollHeight;
+    }, 100);
+  }
+
 }

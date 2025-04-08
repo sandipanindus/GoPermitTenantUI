@@ -63,13 +63,14 @@
             </div>
             <div class="col-md-12" id="pastquerydiv">
 
-                <h6 id="subjectdiv" class="subjectcls">Subject : <span style="color:black">{{showsubject}}</span></h6>
+                <h6 id="subjectdiv" class="subjectcls mt-2">Subject : <span style="color:black">{{showsubject}}</span></h6>
                 <div style="display: none;" id="arrowdiv">
 
                     <a class="arrow-icon" aria-label="Go to previous page" (click)="openform()" href="javascript::">
                         <i class="fa fa-arrow-left" aria-hidden="true"></i>
                     </a>
                 </div>
+
                 <div id="responsereplydiv" class="responsereplycls" style="height: 70vh;">
                     <div *ngFor="let supportlist of supportlists">
                         <div class="card mb-3 d-inline-block responsedivcls" style="width: 70% !important;"
@@ -107,7 +108,7 @@
                                     <p class="mb-0 text-semi-muted respcls" style="font-size: .85rem !important;
                                     line-height: 1.3rem !important;
                                     font-family: Nunito,sans-serif;padding-left: 64px;
-    margin-top: -19px;">
+    margin-top:                         -19px;">
                                         {{supportlist.issue}}
                                     </p>
                                 </div>
@@ -115,7 +116,7 @@
                                     <p class="mb-0 text-semi-muted respcls" style="font-size: .85rem !important;
                                     line-height: 1.3rem !important;
                                     font-family: Nunito,sans-serif;padding-left: 64px;
-    margin-top: -19px;">
+    margin-top:                                         -19px;">
                                         {{supportlist.issue}}
                                     </p>
                                 </div>
@@ -152,6 +153,44 @@
                         </div>
                     </form>
                 </div>
+
+                <div id="chatcontainer" class="chat-wrapper">
+                    <div class="chat-container">
+                      <!-- Message Box -->
+                      <div class="chat-box">
+                        <div *ngFor="let msg of supportlists" class="chat-message"
+                             [ngClass]="{'sent': msg.class === 'reply_issue', 'received': msg.class === 'response_issue'}">
+
+                          <!-- <div class="profile-pic" 
+                               [ngStyle]="{'background-image': 'url(' + (msg.profilePath ? msg.profilePath : 'assets/images/avatars/avatar-1.jpg') + ')'}">
+                          </div> -->
+                          <div class="message-content">
+                            <div class="message-header">
+                              <strong>{{ msg.name }}</strong>
+                              <span class="message-time">{{ msg.date }}</span>
+                            </div>
+                            <p class="message-text">{{ msg.issue }}</p>
+                          </div>
+                        </div>
+                      </div>
+                  
+                      <!-- Input stays at bottom -->
+                      <form [formGroup]="replyform1" (ngSubmit)="replysupport()">
+                        <div class="input-container">
+                          <textarea formControlName="Rreply" placeholder="Type your message..." [(ngModel)]="replyres" 
+                                    class="message-input" required minlength="2"></textarea>
+                                    <button type="submit" class="send-button" [disabled]="replyform1.invalid">
+                                        <i class="fas fa-paper-plane"></i>
+                                      </button>
+                             </div>
+                      </form>
+                    </div>
+                  </div>
+                  
+                  
+                  
+
+                  
                 <div class="card-body" style="height:300px;overflow-y: scroll;" id="formdiv">
                     <h6 style="text-align: center;
                         padding-bottom: 10px;">Past Queries</h6>

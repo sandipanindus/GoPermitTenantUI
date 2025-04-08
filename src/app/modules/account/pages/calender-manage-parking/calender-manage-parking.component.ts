@@ -358,6 +358,23 @@ export class CalenderManageParkingComponent implements OnInit {
     console.log("Selected Dates",this.selectedClass)
   }
 
+  addUniqueDate(event: Date) {
+    const date = this.getDateItem(event);
+  
+    // Check if the date already exists
+    if (!this.dateSelected.some(item => this.getDateItem(item) === date)) {
+      this.dateSelected.push(event);
+      this.dataselected.push(event);
+    }
+  
+    // Update selectedClass
+    this.selectedClass = this.dateSelected.map(date => ({
+      date,
+      classes: ['custom-selected-date']
+    }));
+  
+    console.log("Selected Dates", this.selectedClass);
+  }
 
   bsConfig: any
 
@@ -706,14 +723,23 @@ export class CalenderManageParkingComponent implements OnInit {
           this.customdateblock()
 
           // this.dateSelected =null
-          for (let i = 0; i < data.result.data.length; i++) {
-            if (data.result.data[i][0] != undefined) {
-              for (let k = 0; k < data.result.data[i][0].selectedddates.length; k++) {
+          // for (let i = 0; i < data.result.data[0].length; i++) {
+          //   if (data.result.data[0][i] != undefined) {
+          //     for (let k = 0; k < data.result.data[0][i].selectedddates.length; k++) {
 
-                this.onValueChange1(new Date(data.result.data[i][0].selectedddates[k].fromDate))
+          //       this.onValueChange1(new Date(data.result.data[0][i].selectedddates[k].fromDate))
+          //     }
+          //   }
+
+          // }
+
+          for (let i = 0; i < data.result.data[0].length; i++) {
+            if (data.result.data[0][i] !== undefined) {
+              for (let k = 0; k < data.result.data[0][i].selectedddates.length; k++) {
+                const date = new Date(data.result.data[0][i].selectedddates[k].fromDate);
+                this.addUniqueDate(date);
               }
             }
-
           }
 
           this.bindingmultiplecustomdates(data.result.data[0]);
@@ -1458,6 +1484,7 @@ export class CalenderManageParkingComponent implements OnInit {
 
       else if (data.status == "-200"){
         this.toast.error('Range Already Exist')
+        window.location.reload()
         this.isLoading=false
       }
     })
