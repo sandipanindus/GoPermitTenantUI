@@ -52,6 +52,13 @@
     <div *ngIf="shouldShowFormImage()" class="bottom-image-container">
         <img src="assets/newimages/car_parking.png" alt="Bottom Image" class="bottom-image" />
       </div>
+
+
+      
+      <!-- Show the thank you image -->
+      <div *ngIf="shouldShowThankYouImage()" class="bottom-image-container">
+        <img src="assets/newimages/thank_you.png" alt="Thank You Image" class="bottom-image" />
+    </div>
       
     <footer class="site__footer">
 
@@ -63,10 +70,6 @@
 
 
 
-      <!-- Show the thank you image -->
-        <div *ngIf="shouldShowThankYouImage()" class="bottom-image-container">
-            <img src="assets/newimages/thank_you.png" alt="Thank You Image" class="bottom-image" />
-        </div>
       
       <!-- <footer class="site__footer">     
         <app-footer></app-footer>
