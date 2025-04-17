@@ -136,6 +136,51 @@ h2 {
   font-weight: 600;
 }
 
+
+.codepen-wrapper1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.plate-container1 {
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 1px 1px 3px #999;
+}
+
+/* GB part */
+.registration-ui-gb1 {
+  background-color: #063298;
+  color: #f8d038;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0 10px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: helvetica, arial, sans-serif;
+}
+
+/* Input part */
+.registration-ui1 {
+  background: linear-gradient(to bottom, #f8d038 0%, #f5ca2e 100%);
+  font-weight: 600;
+  font-size: 1.5em;
+  border: 1px solid #000;
+  border-left: none; /* Remove left border to merge with GB box */
+  height: 50px;
+  width: 180px;
+  padding-left: 10px;
+  font-family: helvetica, arial, sans-serif;
+  text-transform: uppercase;
+}
+
+
 .registration-ui-logo {
 	content: '';
 	display: block;
@@ -548,4 +593,16 @@ width: 50%!important;
 .gradient-border-datepicker bs-datepicker-inline .bs-datepicker {
   border: none;
   background: transparent; /* Prevent white background overlap */
+}
+
+
+.space-container {
+  width: 40%;
+  margin-top: 3%;
+}
+
+@media (max-width: 767px) {
+  .space-container {
+      width: 100%;
+  }
 }

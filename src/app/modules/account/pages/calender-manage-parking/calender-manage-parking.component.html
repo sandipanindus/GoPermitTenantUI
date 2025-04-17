@@ -131,13 +131,13 @@ class="flex items-center justify-center w-10 h-10 bg-[#FFD333] text-black
 
       
   
-    <div style="width: 40%" *ngIf="infoexp">
+    <!-- <div style="width: 40%;margin-top: 3%;"  *ngIf="infoexp">
         <i style="
                 margin-left: 5px;
                 color: black;
                 display: inline-block;
                 margin-right: 5px;
-            " class="far fa-square" aria-hidden="true"></i><span>Available Space</span>
+            " class="far fa-square" aria-hidden="true"></i><span style="color: white;">Available Space</span>
         <button type="button" style="
                 margin-left: 5px;
                 float: right;
@@ -150,15 +150,38 @@ class="flex items-center justify-center w-10 h-10 bg-[#FFD333] text-black
                 color: grey;
                 display: inline-block;
                 margin-right: 5px;
-            " class="fas fa-square" aria-hidden="true"></i><span>Unavailable
+            " class="fas fa-square" aria-hidden="true"></i><span style="color: white;">Unavailable
             Space</span><br />
         <i style="
                 margin-left: 5px;
                 color: gold;
                 display: inline-block;
                 margin-right: 5px;
-            " class="fas fa-square" aria-hidden="true"></i><span>Allotted Space</span>
+            " class="fas fa-square" aria-hidden="true"></i><span style="color: white;">Allotted Space</span>
+    </div> -->
+
+    <!-- <div style="width: 40%; margin-top: 3%;" *ngIf="infoexp"> -->
+        <div class="space-container" *ngIf="infoexp">
+        <div style="margin-bottom: 5px;">
+            <i style="margin-left: 5px; color: black; display: inline-block; margin-right: 5px;" class="far fa-square" aria-hidden="true"></i>
+            <span style="color: white;">Available Space</span>
+        </div>
+    
+        <div style="margin-bottom: 5px;">
+            <i style="margin-left: 5px; color: grey; display: inline-block; margin-right: 5px;" class="fas fa-square" aria-hidden="true"></i>
+            <span style="color: white;">Unavailable Space</span>
+            <button type="button" style="margin-left: 5px; float: right;" class="btn btn-primary" (click)="openModal(template)">
+                Info
+            </button>
+        </div>
+    
+        <div>
+            <i style="margin-left: 5px; color: gold; display: inline-block; margin-right: 5px;" class="fas fa-square" aria-hidden="true"></i>
+            <span style="color: white;">Allotted Space</span>
+        </div>
     </div>
+    
+
 
     <ng-template #template>
         <div class="modal-header">
@@ -713,7 +736,7 @@ class="flex items-center justify-center w-10 h-10 bg-[#FFD333] text-black
                     <tbody style=" text-align: center;">
                         
                         <tr>
-                            <td *ngFor="let i of iterations" style="width: 1%;" class="td_size">
+                            <!-- <td *ngFor="let i of iterations" style="width: 1%;" class="td_size">
                                 <div class="codepen-wrapper text-center">
                                     <div class="registration-ui-gb" style="top: 30px !important;">
                                         GB{{ i.iterrations }}
@@ -722,24 +745,29 @@ class="flex items-center justify-center w-10 h-10 bg-[#FFD333] text-black
                                     <input type="text" id="vehicleno{{ i.iterrations }}" style="text-transform: uppercase;"
                                         maxlength="9" class="registration-ui" placeholder="VRM No" [(ngModel)]="i.vrm" />
                                 </div>
-                            </td>
+                            </td> -->
+                            
+
+
+                            <td *ngFor="let i of iterations" style="width: 1%;" class="td_size">
+                                <div class="codepen-wrapper1 text-center">
+                                  <div class="plate-container1">
+                                    <div class="registration-ui-gb1">GB</div>
+                                    <input
+                                      type="text"
+                                      id="vehicleno{{ i.iterations }}"
+                                      maxlength="9"
+                                      class="registration-ui1"
+                                      placeholder="VRM No"
+                                      [(ngModel)]="i.vrm"
+                                    />
+                                  </div>
+                                </div>
+                              </td>
+                              
                         </tr>
 
-                        <!-- <tr>
-                            <td *ngFor="let i of iterations" style=" width: 1%;"
-                                 class="td_size">
-
-                                <div class="codepen-wrapper text-center">
-                                    <div class="registration-ui-gb" style="top: 30px !important;">
-                                        GB1
-                                        <div class="registration-ui-logo"></div>
-                                    </div>
-                                    <input type="text" id="vehicleno{{ i.iterrations }}" style="text-transform: uppercase;"
-                                         maxlength="9" class="registration-ui"
-                                        placeholder="VRM No" />
-                                </div>
-                            </td>
-                        </tr> -->
+                     
                        
 
                         <tr>
