@@ -28,7 +28,7 @@
                                         </div>
                                     </div>
                                     <input type="text" class="registration-ui" placeholder="VRM No" required
-                                        maxlength="9" [(ngModel)]="vrm" formControlName="Lvrm"
+                                        maxlength="9" [(ngModel)]="vrm" formControlName="Lvrm" (input)="vrm = vrm.toUpperCase()"
                                         [ngClass]="{'is-invalid': confirmsubmitted && f.Lvrm.errors }">
                                     <div *ngIf="confirmsubmitted && f.Lvrm.errors" class="invalid-feedback">
                                         <div *ngIf="f.Lvrm.errors.required" style="color: #ffd333">VRM No is

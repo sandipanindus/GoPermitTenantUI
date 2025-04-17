@@ -615,11 +615,10 @@
 
                   <div class="info-box">
                     <p>
-                      <strong>An e-permit has been sent to your email address at<br>
-                        {{ email ? email : 'your registered email' }}.
+                      <strong>An email ({{email ? email : 'your registered email'}}) with further instructions has been sent to the visitor.<br>
+                      
                       </strong>
-                      The visitors must validate the e-permit by following the instructions provided in the email. Please ensure that the parking session is validated before the parking session begins. The parking space will be reserved for 15 minutes and if the e-permit is not confirmed in time then it may be lapsed.
-                    </p>
+                      To validate parking in one of the visitor bays, the visitor must confirm the email. Please note that the visitor bay will be released if the confirmation is not completed at least 15 minutes before the session.                    </p>
                     <div class="btn-container">
                       <button class="okay-btn" (click)="Refresh()">Okay</button>
                     </div>
