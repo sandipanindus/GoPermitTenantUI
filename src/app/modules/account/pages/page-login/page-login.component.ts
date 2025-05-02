@@ -139,4 +139,13 @@ export class PageLoginComponent implements OnInit {
     
         }
       }
+
+      showPassword = false;
+   
+      
+      togglePasswordVisibility(field: 'password' ) {
+        if (field === 'password') {
+          this.showPassword = !this.showPassword;
+        }
+      }
 }

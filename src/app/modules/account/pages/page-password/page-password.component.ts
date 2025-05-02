@@ -62,4 +62,19 @@ export class PagePasswordComponent {
         })
 
     }
+
+    showCurrent = false;
+    showNewPassword = false;
+    showConfirmPassword = false;
+    
+    togglePasswordVisibility(field: 'currentpassword' | 'newpassword' | 'confirmpassword') {
+      if (field === 'currentpassword') {
+        this.showCurrent = !this.showCurrent;
+      } else if (field === 'newpassword') {
+        this.showNewPassword = !this.showNewPassword;
+      }else if (field === 'confirmpassword') {
+        this.showConfirmPassword = !this.showConfirmPassword;
+      }
+    }
+
 }

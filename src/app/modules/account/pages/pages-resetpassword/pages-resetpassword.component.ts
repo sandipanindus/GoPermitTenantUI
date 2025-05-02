@@ -66,4 +66,17 @@ export class PagesResetpasswordComponent implements OnInit {
     });
   }
 
+
+  showPassword = false;
+  showConfirmpassword = false;
+      
+  togglePasswordVisibility(field: 'password' | 'confirmpassword' ) {
+    if (field === 'password') {
+      this.showPassword = !this.showPassword;
+    }
+    if (field === 'confirmpassword') {
+      this.showConfirmpassword = !this.showConfirmpassword;
+    }
+  }
+
 }

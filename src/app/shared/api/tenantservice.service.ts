@@ -12,14 +12,14 @@ export class TenantserviceService {
   constructor(private http: HttpClient) {
 
    // this.baseUrl = "http://goapi.fadelsoft.co.in/api/";
-  this.baseUrl = "http://localhost:53846/api/";
+   this.baseUrl = "https://localhost:5001/api/";
   //this.baseUrl = "http://smartpermitapi.eisappserver.net/api/";
 
 
-// this.baseUrl="https://apiuat.gopermit.co.uk/api/"
+ // this.baseUrl="https://apiuat.gopermit.co.uk/api/"
 
 
-  // this.baseUrl = "https://api.gopermit.co.uk/api/";
+ //  this.baseUrl = "https://api.gopermit.co.uk/api/";
 
     this.header = new HttpHeaders().set(
       "Authorization",
@@ -51,9 +51,12 @@ export class TenantserviceService {
     return this.http.post(this.baseUrl + "Tenant/UpdateVisitorParking",data, { headers: this.header })
   }
 
+  getvehiclestimedetailsbydatevrm(id, bayno, date, vrm): Observable<any> {
+    return this.http.get(this.baseUrl + "Tenant/getvehcilecountsbydatesvrm?tenantid=" + id + "&bayno=" + bayno + "&date=" + date + "&vrm=" + vrm, { headers: this.header })
+  }
+
   getvehiclestimedetailsbydate(id, bayno, date): Observable<any> {
     return this.http.get(this.baseUrl + "Tenant/getvehcilecountsbydates?tenantid=" + id + "&bayno=" + bayno + "&date=" + date, { headers: this.header })
-
   }
 
   SaveVehicle(obj): Observable<any> {

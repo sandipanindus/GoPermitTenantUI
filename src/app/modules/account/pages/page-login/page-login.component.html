@@ -57,9 +57,13 @@
                             <div class="form-group row">
                                 <label class="col-form-label" style="font-size:0.9rem; color: white;font-weight: bold;">Password</label>
                                 <div class="col-sm-10 password_st">
-                                    <input type="password" class="form-control" [(ngModel)]="SignInPassword"
+                                    <input [type]="showPassword ? 'text' : 'password'" class="form-control" [(ngModel)]="SignInPassword"
                                         placeholder="Password" formControlName="Lpass"
                                         [ngClass]="{'is-invalid': loginsubmitted && f.Lpass.errors}">
+                                        <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+                                        (click)="togglePasswordVisibility('password')"
+                                        style="position: absolute; top: 50%; right: 15px; transform: translateY(-50%); cursor: pointer;font-size: 18px;"></i>
+                                       
 
                                     <div *ngIf="loginsubmitted && f.Lpass.errors" class="invalid-feedback">
                                         <div *ngIf="f.Lpass.errors.required" style="color: #ffd333">Password

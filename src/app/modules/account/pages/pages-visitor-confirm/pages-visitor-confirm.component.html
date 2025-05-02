@@ -143,7 +143,7 @@
         </div>
     </div>
 </div>
-<div class="bs-example" id="thankyoudiv" style="display:none;">
+<div class="bs-example" id="thankyoudiv" style="display: none;">
     <div class="card" style="margin: 0px auto;max-width: 100%;height: 450px !important;">
         <div class="row no-gutters" style="height: 450px!important;">
             <div style="width: 100% !important;">
@@ -155,12 +155,32 @@
                     <h1 class="display-3">Thank You!</h1>
                     <p class="lead"> Your E-Permit has been validated Sucessfully</p>
                 </div>
-                <div style="margin-left: 35%;">
+                <!-- <div style="margin-left: 35%; margin-top: 20px ;">
                     <p  style="text-transform: capitalize;font-weight: 800;"> Parking Session :</p>
                     <p > Valid From <span style="margin-left: 2%;">:</span> {{starttime}} {{date}} </p>
                     <p > Valid Till <span style="margin-left: 5%;">:</span> {{endtime}} {{date}}</p>
                     <p > Bay <span style="margin-left: 11%;">:</span> {{bayname}}</p>
-                </div>
+                </div> -->
+
+                <div style="margin-left: 35%; margin-top: 10px;">
+                    <p style="text-transform: capitalize; font-weight: 800;">Parking Session</p>
+                  
+                    <div style="display: flex; margin-bottom: 5px;">
+                      <div style="width: 100px; font-weight: bold;">Valid From</div>
+                      <div>: {{starttime}} {{date}}</div>
+                    </div>
+                  
+                    <div style="display: flex; margin-bottom: 5px;">
+                      <div style="width: 100px; font-weight: bold;">Valid Till</div>
+                      <div>: {{endtime}} {{date}}</div>
+                    </div>
+                  
+                    <div style="display: flex; margin-bottom: 5px;">
+                      <div style="width: 100px; font-weight: bold;">Bay</div>
+                      <div>: {{bayname}}</div>
+                    </div>
+                  </div>
+                  
                 <div class="text-center">
 
                     <p> Please note: Grace peroid dont apply to any parking session less then 1 hour </p>

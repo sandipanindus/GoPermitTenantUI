@@ -1042,7 +1042,7 @@ export class PageVehicleRegistrationComponent implements OnInit {
   Bindbasedondate(date) {
     debugger;
     // this.ismultivehicel=true
-    this.service.getvehiclestimedetailsbydate(this.tenentid.toString(), this.baynobj.bayNo.toString(), date).subscribe((data: any) => {
+    this.service.getvehiclestimedetailsbydatevrm(this.tenentid.toString(), this.baynobj.bayNo.toString(), date, this.vrm.toString()).subscribe((data: any) => {
       if (data.status == "200") {
         this.isshowblock1 = true;
 
@@ -2160,11 +2160,13 @@ isDateExpired(endate: string | Date): boolean {
     document.getElementById("parkingsession").style.display = 'block';
   }
 
+  vrm
   selectedId
   EditVehicle(result) {
     debugger;
     this.iterations
     this.tenantid = result.registerUserId;
+    this.vrm=result.vrm;
     this.editShow=true
     this.gridEditedObject = result;
     this.single = 'block';
