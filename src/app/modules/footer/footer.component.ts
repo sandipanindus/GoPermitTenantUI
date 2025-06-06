@@ -17,10 +17,17 @@ export class FooterComponent {
 
   constructor(private route: Router, private modalService: ModalService) { }
 
+  // isLoginPage(): boolean {
+  //   const url = this.route.url;
+  //   return url === '/account/login' || url === '/';
+  // }
+
+
   isLoginPage(): boolean {
     const url = this.route.url;
-    return url === '/account/login' || url === '/';
+    return url === '/account/login' || url === '/' || url === '/account/forgetpassword';
   }
+  
   
 
   openTermsModal() {
