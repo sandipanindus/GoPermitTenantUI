@@ -25,7 +25,7 @@ export class FooterComponent {
 
   isLoginPage(): boolean {
     const url = this.route.url;
-    return url === '/account/login' || url === '/' || url === '/account/forgetpassword' || url === '/account/setpassword';
+    return url === '/account/login' || url === '/' || url === '/account/forgetpassword' || url === '/account/setpassword' || url === '/account/resetpassword' || url === '/account/thankyou?stattus=set';
   }
   
   
