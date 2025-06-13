@@ -1089,14 +1089,22 @@ export class CalenderManageParkingComponent implements OnInit {
   parkingvalidTotime
   parkingvalidfromtime
   isLoading:boolean=false
+
+  // savesinglevehicle22(){
+  //       this.loader = true
+  //   setTimeout(() => {
+  //     this.loader = false
+
+  //   }, 5000);
+  // }
   savesinglevehicle() {
     debugger
     this.isLoading=true
     this.loader = true
-    setTimeout(() => {
-      this.loader = false
+    // setTimeout(() => {
+    //   this.loader = false
 
-    }, 2000);
+    // }, 2000);
     this.savevehcile = []
     this.singlevehiclesubmitted = true;
     if (this.singlevehicleForm.invalid) {
@@ -1138,7 +1146,9 @@ export class CalenderManageParkingComponent implements OnInit {
     })
 
     this.service.SaveVehicle(this.savevehcile).subscribe((data: any) => {
+       this.loader=false
       if (data.status == "200") {
+        this.loader=false
         var a = this.modalRef
         if (a != undefined) {
           this.decline()
@@ -1155,6 +1165,7 @@ export class CalenderManageParkingComponent implements OnInit {
       }
 
       else if (data.status == "-200"){
+         this.loader=false
         this.toast.error('Range Already Exist')
         this.isLoading=false
       }
@@ -1242,10 +1253,10 @@ export class CalenderManageParkingComponent implements OnInit {
       return false
     }
     this.loader = true
-    setTimeout(() => {
-      this.loader = false
+    // setTimeout(() => {
+    //   this.loader = false
 
-    }, 2000);
+    // }, 2000);
     this.multiplevehiclelist = []
     this.multiplevehicletimelist = []
     
@@ -1466,6 +1477,7 @@ export class CalenderManageParkingComponent implements OnInit {
     }
 
     this.service.SaveVehicle(this.multiplevehiclelist).subscribe((data: any) => {
+      this.loader=false
       if (data.status == "200") {
         this.isLoading=false
         var a = this.modalRef1

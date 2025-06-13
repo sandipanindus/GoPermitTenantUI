@@ -33,6 +33,7 @@ export class AppComponent implements OnInit {
  }
 
     ngOnInit(): void {
+        debugger
         // var data=  localStorage.getItem('userinfo');
         // if(data==null)
         // {

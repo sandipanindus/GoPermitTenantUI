@@ -42,6 +42,7 @@ export class PageLoginComponent implements OnInit {
 
     login()
     {
+      debugger
         this.loginsubmitted = true;
         if (this.Loginfrom.invalid) {
           return;

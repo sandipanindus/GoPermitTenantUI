@@ -215,7 +215,7 @@
                                     <tr *ngFor="let support of supports">
                                         <td>{{support.ticketId}} </td>
                                         <td>{{support.status}} </td>
-                                        <td><a href="javascript::" (click)="openreply(support.id,support.ticketId)"
+                                        <td><a href="javascript::" (click)="openreplyComment(support.id,support.ticketId,support.status)"
                                                 style="color:black;">{{support.subject}}
                                                 <i *ngIf="support.isRead==false" style="margin-left: 5px;"
                                                     class="fas fa-exclamation"></i>

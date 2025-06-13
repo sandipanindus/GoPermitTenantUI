@@ -1,17 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DropcartType } from '../../modules/header/components/dropcart/dropcart.component';
+import { TenantserviceService } from 'src/app/shared/api/tenantservice.service';
 
 @Component({
   selector: 'app-main',
   templateUrl: './root.component.html',
   styleUrls: ['./root.component.scss']
 })
-export class RootComponent {
+export class RootComponent implements OnInit, OnDestroy{
   headerLayout: 'classic' | 'compact';
   dropcartType: DropcartType;
+  inactivityTimeout: any;
+  maxInactivityTime = 45 * 60 * 1000; // 45 minutes
 
   constructor(
+    private service: TenantserviceService,
     public route: ActivatedRoute,
     private router: Router // Add Router here
   ) {
@@ -20,6 +24,40 @@ export class RootComponent {
       this.dropcartType = data.dropcartType || 'dropdown';
     });
   }
+
+
+    ngOnInit(): void {
+    this.resetInactivityTimer();
+      const userInfo = localStorage.getItem('userinfo');
+     const parsedUserInfo = JSON.parse(userInfo);
+    this.getUserDetails(parsedUserInfo.id);
+  }
+
+  ngOnDestroy(): void {
+    clearTimeout(this.inactivityTimeout);
+
+  }
+
+  @HostListener('window:mousemove')
+  @HostListener('window:keydown')
+  @HostListener('window:click')
+  @HostListener('window:scroll')
+  resetInactivityTimer(): void {
+    clearTimeout(this.inactivityTimeout);
+    this.inactivityTimeout = setTimeout(() => {
+      this.logoutUser();
+    }, this.maxInactivityTime);
+  }
+
+  logoutUser(): void {
+    // Clear localStorage and navigate to login/home page
+    localStorage.removeItem('userinfo');
+    this.router.navigateByUrl('/');
+  }
+
+  isLoggedIn(): boolean {
+  return localStorage.getItem('userinfo') !== null;
+}
 
   // Function to show image only for AddVisitorRegistration route
 //   shouldShowImage(): boolean {
@@ -81,6 +119,19 @@ shouldShowFormImage(): boolean {
   
     // Return true only if the current route is NOT in the excluded list
     return !routesToExcludeStyles.some(route => this.router.url.includes(route));
+  }
+
+  getUserDetails(id){
+   this.service.GetProfileById(id).subscribe({
+          next: (response: any) => {
+            if (response?.status === "200" && response?.result) {
+              if(!response.result.isActive){
+             localStorage.removeItem('userinfo');
+            this.router.navigateByUrl('/');
+              }
+            }
+          }
+        })
   }
   
   

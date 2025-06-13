@@ -65,6 +65,7 @@ export class PageSupportComponent implements OnInit {
   }
   openreply(id, ticketid) {
     debugger
+
     localStorage.setItem("Id", id);
     localStorage.setItem("TicketId", ticketid)
     var element = document.getElementById("loader") as HTMLDivElement;
@@ -121,7 +122,77 @@ export class PageSupportComponent implements OnInit {
       }
 
     })
+
+  
+
   }
+
+
+   openreplyComment(id, ticketid, Status) {
+    debugger
+
+   if(Status != "Closed"){
+    localStorage.setItem("Id", id);
+    localStorage.setItem("TicketId", ticketid)
+    var element = document.getElementById("loader") as HTMLDivElement;
+    element.style.display = 'block';
+
+    this.service.GetSupportById(id, ticketid, this.tenantid).subscribe((data: any) => {
+      debugger;
+      if (data.status == "200") {
+      //  (document).getElementById("responsereplydiv").style.display = 'block';
+        (document).getElementById("chatcontainer").style.display = 'block';
+        (document).getElementById("arrowdiv").style.display = 'block';
+        (document).getElementById("subjectdiv").style.display = 'block';
+        (document).getElementById("formdiv").style.display = 'none';
+        (document).getElementById("supportheaderdiv").style.display = 'none';
+
+        element.style.display = 'none';
+        if (data.result.length > 0) {
+          this.supportlists = data.result;
+          console.log("Support Lists",this.supportlists)
+          var length = this.supportlists.length;
+          this.showsubject = this.supportlists[0].subject;
+          if (this.supportlists[length - 1].createdBy == 1) {
+            if (this.supportlists[0].status == "closed") {
+              document.getElementById("replyareadiv").style.display = 'block';
+            } else {
+              document.getElementById("replyareadiv").style.display = 'block';
+            }
+            localStorage.setItem("ParentId", this.supportlists[length - 1].id);
+            this.showsubject = this.supportlists[0].subject;
+            this.ticketid = this.supportlists[0].id;
+          }
+          else {
+            document.getElementById("replyareadiv").style.display = 'none';
+          }
+          // for(var i=0;i<this.supportlist.length;i++){
+          //   if(id==this.supportlist[i].id){
+          //     this.reply=this.supportlist[i].issue;
+          //     this.showsubject=this.supportlist[i].subject;
+          //     this.replytime=this.supportlist[i].createdOn.split('T')[1].substring(0,5);
+          //   }
+          //   else{
+          //     this.response=this.supportlist[i].issue;
+          //    // this.showsubject=this.supportlist[i].subject;
+          //     this.responsetime=this.supportlist[i].createdOn.split('T')[1].substring(0,5);
+          //   }
+          // }
+        }
+
+
+      }
+      else {
+        element.style.display = 'none';
+        //this.toast.warning(data.message)
+      }
+
+    })
+
+  }
+
+  }
+
   openformdiv() {
     (document).getElementById("pastquerydiv").style.display = 'none';
     (document).getElementById("supportformdiv").style.display = 'block';
