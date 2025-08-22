@@ -46,16 +46,21 @@ export class PagesVisitorConfirmComponent implements OnInit {
   get f() { return this.confirmform.controls; }
   ngOnInit(): void {
     debugger
-    document.getElementById('ulmenu').style.display = 'none';
+    const ulMenu = document.getElementById('ulmenu');
+    if (ulMenu) {
+      ulMenu.style.display = 'none';
+    }
     var Id = this.approute.snapshot.queryParamMap.get('Id');
     this.Id = Id;
     this.GetVisitorSlot(Id);
   }
   errortext
+  enddate
   GetVisitorSlot(Id) {
     this.service.GetVisitorSlot(Id).subscribe((data: any) => {
       debugger;
       if (data.status == "200") {
+        console.log("VRM22",data)
         if (data.result != null) {
           if (data.result == false) {
             (document.getElementById("formdiv") as HTMLDivElement).style.display = 'none';
@@ -75,6 +80,7 @@ export class PagesVisitorConfirmComponent implements OnInit {
             this.email = data.result.email;
             this.contact = data.result.contact;
             this.date = data.result.date;
+            this.enddate=data.result.endDate;
             this.fromtime = data.result.startTime;
             this.starttime = data.result.startTime;
             this.totime = data.result.endTime;

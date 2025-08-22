@@ -30,7 +30,10 @@ export class RootComponent implements OnInit, OnDestroy{
     this.resetInactivityTimer();
       const userInfo = localStorage.getItem('userinfo');
      const parsedUserInfo = JSON.parse(userInfo);
+     console.log("parsedUserInfo",parsedUserInfo)
+     if(parsedUserInfo != null){
     this.getUserDetails(parsedUserInfo.id);
+     }
   }
 
   ngOnDestroy(): void {
@@ -89,7 +92,7 @@ shouldShowFormImage(): boolean {
       '/account/VisitorParkingAppointment',
       '/account/DaySelection',
       '/account/password',
-      '/account/profile'
+      '/account/profile',
     ];
   
     // Check if the current URL matches any of the routes

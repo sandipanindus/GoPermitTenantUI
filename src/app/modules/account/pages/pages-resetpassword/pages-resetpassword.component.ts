@@ -15,7 +15,10 @@ export class PagesResetpasswordComponent implements OnInit {
   constructor(private router: Router, private toaster: ToastrService, private service: TenantserviceService) { }
 
   ngOnInit(): void {
-    document.getElementById('ulmenu').style.display = 'none';
+    const ulMenu = document.getElementById('ulmenu');
+if (ulMenu) {
+  ulMenu.style.display = 'none';
+}
     document.getElementById('logodiv').style.display = 'none';
     document.getElementById('epsdiv').style.display = 'none';
     document.getElementById('mobilediv').style.display = 'none';

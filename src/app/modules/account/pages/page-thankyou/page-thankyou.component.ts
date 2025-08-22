@@ -13,7 +13,10 @@ export class PageThankyouComponent implements OnInit {
   constructor(private approute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    document.getElementById('ulmenu').style.display = 'none';
+    const ulMenu = document.getElementById('ulmenu');
+if (ulMenu) {
+  ulMenu.style.display = 'none';
+}
     var status = this.approute.snapshot.queryParamMap.get('status')
     if (status == "set") {
       this.success1 = "Your password has been successfully created";

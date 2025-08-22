@@ -224,6 +224,7 @@
                                               <th>Contact</th>
                                               <th>Start Time</th>
                                               <th>End Time</th>
+                                              <th>End Date</th>
                                               <th>Status</th>
                                               <th>Action</th>
                                             </tr>
@@ -243,6 +244,7 @@
                                               <td>{{ visitorparking.contact }}</td>
                                               <td>{{ visitorparking.starttime }}</td>
                                               <td>{{ visitorparking.endtime }}</td>
+                                              <td>{{ visitorparking.endDate }}</td>
                                               <td>
                                                 <span *ngIf="visitorparking.status == true">E-Permit Validated</span>
                                                 <span *ngIf="visitorparking.status == false">E-Permit Sent</span>
